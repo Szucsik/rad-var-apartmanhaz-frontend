@@ -1,0 +1,86 @@
+div.header-container {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 80px;
+    background-color: #1c1d2e;
+    overflow: hidden;
+}
+
+div.logo-container {
+    font-size: 28px;
+    font-family: Cormorant-Light;
+    text-align: center;
+    color: white;
+    width: 300px;
+    float: left;
+}
+
+div.menu-item {
+    width:200px;
+    height: 80px;
+    text-align: center;
+    float: left;
+    vertical-align: middle;
+}
+
+div.lang-item {
+    margin-top: 8px;
+    width: 250px;
+    height: 80px;
+    text-align: center;
+    float: right;
+    vertical-align: middle;
+}
+
+.btns {
+    height: 100%;
+    width: 100%;
+    display: table-cell;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.btns:hover {
+    background-color: #292B42;
+    border-color: #292B42;
+}
+
+.btns:focus {
+    border-color: #292B42;
+}
+
+/* Language icons */
+:host ::ng-deep {
+    .lang-hun-icon {
+        width: 50px;
+        height: 50px;
+        background-image: url('/assets/flag-hu.png');
+    }
+    
+    .lang-ger-icon {
+        width: 50px;
+        height: 50px;
+        background-image: url('/assets/flag-gr.png');
+    }
+
+    .lang-eng-icon {
+        width: 50px;
+        height: 50px;
+        background-image: url('/assets/flag-en.png');
+    }
+
+    .p-speeddial-button {
+        background-image: url('/assets/flag-hu.png');
+        background-repeat: no-repeat;
+        color: transparent;
+        background-color: transparent;
+    }
+
+    .p-speeddial-button:hover {
+        background-image: url('/assets/flag-hu.png');
+        background-repeat: no-repeat;
+        color: transparent;
+        background-color: transparent;
+    }
+}

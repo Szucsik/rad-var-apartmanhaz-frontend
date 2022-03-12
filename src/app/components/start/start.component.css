@@ -1,0 +1,45 @@
+.castle-img {
+    width: 40px;
+}
+
+.title-member {
+    margin-left: 5px;
+    float: left;
+    color: white;
+    font-size: 48px;
+    font-family: Cormorant-Light;
+}
+
+div.titleTextFirst {
+    height: 150px;
+    width: 200px;
+    text-align: right;
+}
+
+div.castle-img {
+    height: 108px;
+    width: 50px;
+    padding-top: 42px;
+    text-align: center;
+}
+
+div.titleTextLast {
+    height: 150px;
+    width: 300px;
+}
+
+div.inner-box {
+    background-color: #1c1d2e;
+    height: 100%;
+    width: 100%;
+}
+
+div.outer-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #010817;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
