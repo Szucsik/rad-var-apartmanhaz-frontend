@@ -1,11 +1,4 @@
-html, body {
-    height: 100%;
-    margin: 0px;
-    background-color: black;
-}
-
-
 @font-face {
     font-family: Cormorant-Light;
     src: url('/assets/Cormorant-Light.ttf');
-  }
+}

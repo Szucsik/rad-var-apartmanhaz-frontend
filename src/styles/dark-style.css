@@ -1,0 +1,48 @@
+html, body {
+    height: 100%;
+    margin: 0px;
+    background-color: black;
+}
+
+/* Start screen color details */
+.start-inner-box-background-color {
+    background-color: #1c1d2e;
+}
+
+.start-outer-box-background-color {
+    background-color: #010817;
+}
+
+.start-logo-details {
+    color: white;
+    font-size: 48px;
+    font-family: Cormorant-Light;
+}
+
+/* Menu header color details */
+
+.header-background-color {
+    background-color: #1c1d2e;
+}
+
+.header-logo-details {
+    color: white;
+    font-size: 28px;
+    font-family: Cormorant-Light;
+}
+
+.header-menu-item-details {
+    color: white;
+    font-size: 25px;
+    font-family: Cormorant-Light;
+    background-color: #1c1d2e;
+}
+
+.btns:hover {
+    background-color: #292B42!important;
+    border-color: #292B42!important;
+}
+
+.btns:focus {
+    border-color: #292B42!important;
+}

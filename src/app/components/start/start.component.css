@@ -5,9 +5,6 @@
 .title-member {
     margin-left: 5px;
     float: left;
-    color: white;
-    font-size: 48px;
-    font-family: Cormorant-Light;
 }
 
 div.titleTextFirst {
@@ -29,7 +26,6 @@ div.titleTextLast {
 }
 
 div.inner-box {
-    background-color: #1c1d2e;
     height: 100%;
     width: 100%;
 }
@@ -38,7 +34,6 @@ div.outer-box {
     position: absolute;
     top: 0;
     left: 0;
-    background-color: #010817;
     height: 100%;
     width: 100%;
     overflow: hidden;

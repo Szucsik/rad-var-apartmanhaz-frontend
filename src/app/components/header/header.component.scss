@@ -3,15 +3,11 @@ div.header-container {
     top: 0px;
     width: 100%;
     height: 80px;
-    background-color: #1c1d2e;
     overflow: hidden;
 }
 
 div.logo-container {
-    font-size: 28px;
-    font-family: Cormorant-Light;
     text-align: center;
-    color: white;
     width: 300px;
     float: left;
 }
@@ -39,15 +35,8 @@ div.lang-item {
     display: table-cell;
     background-color: transparent;
     border-color: transparent;
-}
-
-.btns:hover {
-    background-color: #292B42;
-    border-color: #292B42;
-}
-
-.btns:focus {
-    border-color: #292B42;
+    font-family: inherit;
+    color: inherit;
 }
 
 /* Language icons */
@@ -57,7 +46,7 @@ div.lang-item {
         height: 50px;
         background-image: url('/assets/flag-hu.png');
     }
-    
+
     .lang-ger-icon {
         width: 50px;
         height: 50px;
