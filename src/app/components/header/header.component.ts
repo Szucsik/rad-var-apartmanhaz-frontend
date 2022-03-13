@@ -10,7 +10,9 @@ import { gsap } from 'gsap';
 
 export class HeaderComponent implements OnInit {
   @ViewChild('container', { static: true }) container: ElementRef<HTMLElement>;
+  @ViewChild('logo', { static: true }) logo: ElementRef<HTMLElement>;
   items: MenuItem[];
+  contextName: string = 'header';
   constructor(private primengConfig: PrimeNGConfig) { }
 
   ngOnInit(): void {
@@ -36,7 +38,7 @@ export class HeaderComponent implements OnInit {
               
           }
       }
-  ];
+    ];
   }
 
   startingAnimation(): void {

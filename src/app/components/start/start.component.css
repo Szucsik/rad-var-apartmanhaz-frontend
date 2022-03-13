@@ -1,30 +1,3 @@
-.castle-img {
-    width: 40px;
-}
-
-.title-member {
-    margin-left: 5px;
-    float: left;
-}
-
-div.titleTextFirst {
-    height: 150px;
-    width: 200px;
-    text-align: right;
-}
-
-div.castle-img {
-    height: 108px;
-    width: 50px;
-    padding-top: 42px;
-    text-align: center;
-}
-
-div.titleTextLast {
-    height: 150px;
-    width: 300px;
-}
-
 div.inner-box {
     height: 100%;
     width: 100%;

@@ -1,0 +1,9 @@
+<div class="title-member" [ngClass]="{'start-logo-details start-text-first': context === 'start','header-logo-details': context === 'header'}" #titleTextFirst>
+    <p>Rád Vár</p>
+  </div>
+  <div class="title-member" [ngClass]="{'start-logo-details': context === 'start','header-logo-details': context === 'header'}" #titleImg>
+    <div class="castle-img" [ngClass]="{'start-logo-img': context === 'start','header-logo-img': context === 'header'}" #titleImg></div>
+  </div>
+  <div class="title-member" [ngClass]="{'start-logo-details start-text-last': context === 'start','header-logo-details': context === 'header'}" #titleTextLast>
+    <p>Apartmanház</p>
+  </div>

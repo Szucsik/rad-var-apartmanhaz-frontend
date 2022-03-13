@@ -11,6 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 })
 
 export class AppComponent {
+  
 }
 
 

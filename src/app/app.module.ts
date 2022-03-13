@@ -8,12 +8,14 @@ import { HeaderComponent } from './components/header/header.component';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { SpeedDialModule } from 'primeng/speeddial';
+import { LogoComponent } from './components/logo/logo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StartComponent,
     HeaderComponent,
+    LogoComponent,
   ],
   imports: [
     BrowserModule,
