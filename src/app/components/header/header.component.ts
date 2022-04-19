@@ -42,7 +42,8 @@ export class HeaderComponent implements OnInit {
   }
 
   startingAnimation(): void {
-    gsap.fromTo(this.container.nativeElement.childNodes, {opacity: 0}, {opacity: 1, duration: 1.2, delay: 4.6});
+    gsap.fromTo(this.container.nativeElement, {opacity: 0}, {opacity: 0.9, duration: 1.2, delay: 4.6});
+    gsap.fromTo(this.container.nativeElement.childNodes, {opacity: 0}, {opacity: 1, duration: 1.2, delay: 4.8});
   }
 }
 

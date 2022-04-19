@@ -3,6 +3,16 @@
     src: url('/assets/Cormorant-Light.ttf');
 }
 
+@font-face {
+    font-family: SansitaSwashed-Regular;
+    src: url('/assets/SansitaSwashed-Regular.ttf');
+}
+
+@font-face {
+    font-family: SansitaSwashed-Medium;
+    src: url('/assets/SansitaSwashed-Medium.ttf');
+}
+
 .start-text-first {
     height: 150px;
     width: 200px;

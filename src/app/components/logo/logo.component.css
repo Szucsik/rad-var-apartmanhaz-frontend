@@ -7,14 +7,3 @@ div.castle-img {
     background-position: center;
     text-align: center;
 }
-
-div.titleTextFirst {
-    height: 150px;
-    width: 200px;
-    text-align: right;
-}
-
-div.titleTextLast {
-    height: 150px;
-    width: 300px;
-}
