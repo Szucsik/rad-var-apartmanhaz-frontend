@@ -1,36 +1,117 @@
-div.home-main-container {
-    top: 0px;
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background-image: url('/assets/background.png');
-    background-repeat: no-repeat;
-    /* background-position: center; */
-    background-size: contain;
-    padding-top: 150px;
-    padding-left: 400px;
-}
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #130d0a;
+    font-family: "Playfair Display", serif;
+    color: #fff;
+  }
 
-div.home-text-background {
-    width: 1200px;
-    position: absolute;
-    height: 500px;
-    opacity: 0.3;
-    background-color: black;
-}
+  .quote {
+    padding-left: 50px;
+    padding-top: 120px;
+    width: 750px;
+  }
+  .quote-start {
+    content: url("/assets/quote-start.png");
+    max-width: 50px;
+  }
 
-div.home-text-container {
-    position: absolute;
-}
+  .quote-end {
+    content: url("/assets/quote-end.png");
+    max-width: 50px;
+    float: right;
+  }
 
-div.home-main-title {
-    color: white;
-    font-size: 35px;
-    font-family: Cormorant-Light;
-}
-
-div.home-main-text {
-    color: white;
+  .quote-text {
     font-size: 20px;
-    font-family: Cormorant-Light;
-}
+  }
+
+  .quote-author {
+    font-size: 20px;
+    margin-right: 20px;
+    float: right;
+  }
+  
+  #hero {
+    height: 800px;
+    overflow: hidden;
+    position: relative;
+    max-width: 1920px;
+    margin: 0 auto;
+  }
+  
+  #content {
+    background-color: #130d0a;
+  }
+  
+  .layer {
+    background-position: bottom center;
+    background-size: auto;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 800px;
+    position: fixed;
+    z-index: -1;
+  }
+  
+  #hero-mobile {
+    display: none;
+    background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/272781/full_illustration.png") no-repeat center bottom/cover;
+    height: 320px;
+  }
+  
+  .first-section {
+    padding: 50px 0 20px 0;
+  }
+  
+  .text-header {
+    font-size: 50px;
+    text-align: center;
+  }
+  
+  h1 {
+    line-height: 120%;
+    margin-bottom: 30px;
+  }
+  
+  p {
+    color: #ede0d5;
+    font-size: 18px;
+    line-height: 150%;
+  }
+  
+  #hero, .layer {
+    min-height: 800px;
+  }
+  
+  .layer-bg {
+    background-image: url("/assets/wallpaperflare.com_wallpaper2.jpg");
+  }
+  
+  .layer-2 {
+    background-image: url("/assets/cliff.png");
+  }
+  
+  .layer-3 {
+    background-image: url("/assets/couple2.png");
+    background-size: 30%;
+    background-position: right bottom;
+  }
+  
+  .layer-4 {
+    background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/272781/ilu_01.png");
+  }
+  
+  .layer-overlay {
+    background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/272781/ilu_overlay.png");
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .layer-1 {
+      background-position: 26% bottom;
+    }
+  
+    .layer-3 {
+      background-position: 35% bottom;
+    }
+  }

@@ -1,9 +1,3 @@
-html, body {
-    height: 100%;
-    margin: 0px;
-    background-color: white;
-}
-
 /* Start screen color details */
 .start-inner-box-background-color {
     background-color: #bac2cb;
@@ -67,3 +61,6 @@ html, body {
     border-color: whitesmoke!important;
 }
 
+.home-quote-text {
+    font-family: SansitaSwashed-Medium;
+}
