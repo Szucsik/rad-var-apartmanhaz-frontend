@@ -2,16 +2,7 @@
 
 on:
   push:
-    branches: [ develop, staging ]
-  pull_request:
-    branches: [ main ]
-
-env:
-  ftp-server: wh24.rackhost.hu
-  ftp-user: c32709szucsik
-  ftp-password: ${{ secrets.FTP_PW  }}
-  deploy-dir: ./dist/rad-var-apartmanhaz/
-  server-dir: ./staging/
+    branches: [ staging ]
 
 jobs:
   build:
@@ -42,8 +33,8 @@ jobs:
     - name: Deploy
       uses: SamKirkland/FTP-Deploy-Action@4.3.0
       with:
-        server: ${{  ftp-server }}
-        username: ${{  ftp-user }}
-        password: ${{  ftp-password }}
-        local-dir: ${{ deploy-dir }}
-        server-dir: ${{ server-dir }}
+        server: wh24.rackhost.hu
+        username: c32709szucsik
+        password: ${{ secrets.FTP_PW  }}
+        local-dir: ./dist/rad-var-apartmanhaz/
+        server-dir: ./staging/
