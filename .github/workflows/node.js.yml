@@ -29,7 +29,6 @@ jobs:
       run: npm ci
     - name: List packages & versions
       run: npm list
-      run: npm run ng version
     - name: Angular Build
       run: npm run ng build
     - name: Deploy
