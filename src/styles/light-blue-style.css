@@ -1,0 +1,66 @@
+/* Start screen color details */
+.start-inner-box-background-color {
+    background-color: #bac2cb;
+}
+
+.start-outer-box-background-color {
+    background-color: #99B2B4;
+}
+
+.start-logo-details {
+    color: white;
+    font-size: 48px;
+    font-family: SansitaSwashed-Medium;
+}
+
+.start-logo-img {
+    height: 145px;
+    width: 50px;
+    background-size: 40px;
+    background-image: url('/assets/logo-castle-white.png');
+    background-repeat: no-repeat;
+}
+
+/* Menu header color details */
+
+.header-background-color {
+    background-color: white;
+}
+
+.header-logo-details {
+    background-color: #658285;
+    color: white;
+    font-size: 24px;
+    font-family: SansitaSwashed-Medium;
+}
+
+.header-logo-img {
+    height: 70px;
+    width: 25px;
+    background-size: 25px;
+    background-image: url('/assets/logo-castle-white.png');
+    background-repeat: no-repeat;
+}
+
+.header-menu-item-details {
+    color: black;
+    font-size: 25px;
+    font-family: SansitaSwashed-Regular;
+    background-color: white;
+    /* background-color: #bac2cb; */
+}
+
+.btns:hover {
+    background-color: lightgray!important;
+    border-color: lightgray!important;
+    /* background-color: #658285!important;
+    border-color: #658285!important; */
+}
+
+.btns:focus {
+    border-color: whitesmoke!important;
+}
+
+.home-quote-text {
+    font-family: SansitaSwashed-Medium;
+}
