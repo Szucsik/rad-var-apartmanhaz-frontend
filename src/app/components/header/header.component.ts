@@ -10,7 +10,9 @@ import { gsap } from 'gsap';
 
 export class HeaderComponent implements OnInit {
   @ViewChild('container', { static: true }) container: ElementRef<HTMLElement>;
+  @ViewChild('logo', { static: true }) logo: ElementRef<HTMLElement>;
   items: MenuItem[];
+  contextName: string = 'header';
   constructor(private primengConfig: PrimeNGConfig) { }
 
   ngOnInit(): void {
@@ -36,11 +38,12 @@ export class HeaderComponent implements OnInit {
               
           }
       }
-  ];
+    ];
   }
 
   startingAnimation(): void {
-    gsap.fromTo(this.container.nativeElement.childNodes, {opacity: 0}, {opacity: 1, duration: 1.2, delay: 4.6});
+    gsap.fromTo(this.container.nativeElement, {opacity: 0}, {opacity: 0.9, duration: 1.2, delay: 4.6});
+    gsap.fromTo(this.container.nativeElement.childNodes, {opacity: 0}, {opacity: 1, duration: 1.2, delay: 4.8});
   }
 }
 

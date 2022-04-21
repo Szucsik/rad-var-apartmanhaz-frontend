@@ -1,0 +1,64 @@
+html, body {
+    height: 100%;
+    margin: 0px;
+    background-color: white;
+}
+
+/* Start screen color details */
+.start-inner-box-background-color {
+    background-color: #EFEFEF;
+}
+
+.start-outer-box-background-color {
+    background-color: #DEDDDD;
+}
+
+.start-logo-details {
+    color: black;
+    font-size: 48px;
+    font-family: Cormorant-Light;
+}
+
+.start-logo-img {
+    height: 145px;
+    width: 50px;
+    background-size: 40px;
+    background-image: url('/assets/logo-castle-black.png');
+    background-repeat: no-repeat;
+}
+
+/* Menu header color details */
+
+.header-background-color {
+    background-color: #EFEFEF;
+}
+
+.header-logo-details {
+    color: black;
+    font-size: 28px;
+    font-family: Cormorant-Light;
+}
+
+.header-logo-img {
+    height: 87px;
+    width: 25px;
+    background-size: 25px;
+    background-image: url('/assets/logo-castle-black.png');
+    background-repeat: no-repeat;
+}
+
+.header-menu-item-details {
+    color: black;
+    font-size: 25px;
+    font-family: Cormorant-Light;
+    background-color: #EFEFEF;
+}
+
+.btns:hover {
+    background-color: #C5C2C2!important;
+    border-color: #C5C2C2!important;
+}
+
+.btns:focus {
+    border-color: #C5C2C2!important;
+}
