@@ -33,8 +33,9 @@ jobs:
     - name: Deploy
       uses: SamKirkland/FTP-Deploy-Action@4.3.0
       with:
-        server: wh24.rackhost.hu
-        username: c32709szucsik
+        server: files.000webhost.com
+        port: 21
+        username: rad-var-apartmanhaz-staging
         password: ${{ secrets.FTP_PW  }}
         local-dir: ./dist/rad-var-apartmanhaz/
-        server-dir: ./staging/
+        server-dir: ./public_html/
