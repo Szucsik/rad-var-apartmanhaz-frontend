@@ -39,9 +39,6 @@ jobs:
     - name: Angular Build
       run: npm run ng build
 
-    - name: Get all Files
-      run: ls
-
     - name: Deploy
       uses: SamKirkland/FTP-Deploy-Action@4.3.0
       with:
