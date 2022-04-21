@@ -1,16 +1,17 @@
-ftp-server: wh24.rackhost.hu
-ftp-user: c32709szucsik
-ftp-password: ${{ secrets.FTP_PW  }}
-deploy-dir: ./dist/rad-var-apartmanhaz/
-server-dir: ./staging/
-
-name: Staging deploy
+  name: Staging deploy
 
 on:
   push:
     branches: [ develop, staging ]
   pull_request:
     branches: [ main ]
+
+env:
+  ftp-server: wh24.rackhost.hu
+  ftp-user: c32709szucsik
+  ftp-password: ${{ secrets.FTP_PW  }}
+  deploy-dir: ./dist/rad-var-apartmanhaz/
+  server-dir: ./staging/
 
 jobs:
   build:
