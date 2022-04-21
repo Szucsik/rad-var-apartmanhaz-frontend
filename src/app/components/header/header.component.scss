@@ -1,33 +1,34 @@
 div.header-container {
-    position: absolute;
+    left: 50%;  
+    margin-left: -40%;
+    position: fixed;
     top: 0px;
-    width: 100%;
+    width: 80%;
     height: 80px;
-    background-color: #1c1d2e;
-    overflow: hidden;
+    z-index: 10;
 }
 
 div.logo-container {
-    font-size: 28px;
-    font-family: Cormorant-Light;
-    text-align: center;
-    color: white;
-    width: 300px;
+    padding-left: 5px;
+    padding-top: 12px;
+    width: 290px;
+    height: 100px;
     float: left;
 }
 
 div.menu-item {
-    width:200px;
+    width:180px;
     height: 80px;
     text-align: center;
     float: left;
     vertical-align: middle;
+    overflow: hidden;
 }
 
 div.lang-item {
     margin-top: 8px;
     width: 250px;
-    height: 80px;
+    height: 72px;
     text-align: center;
     float: right;
     vertical-align: middle;
@@ -39,25 +40,19 @@ div.lang-item {
     display: table-cell;
     background-color: transparent;
     border-color: transparent;
-}
-
-.btns:hover {
-    background-color: #292B42;
-    border-color: #292B42;
-}
-
-.btns:focus {
-    border-color: #292B42;
+    font-family: inherit;
+    color: inherit;
 }
 
 /* Language icons */
+
 :host ::ng-deep {
     .lang-hun-icon {
         width: 50px;
         height: 50px;
         background-image: url('/assets/flag-hu.png');
     }
-    
+
     .lang-ger-icon {
         width: 50px;
         height: 50px;
