@@ -1,12 +1,7 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
-name: Build, Deploy
+name: Production deploy
 
 on:
   push:
-    branches: [ develop, staging ]
-  pull_request:
     branches: [ main ]
 
 jobs:
@@ -25,9 +20,21 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+
     - name: NPM Install
-      run: npm i
+      run: npm ci
+
+    - name: List packages & versions
+      run: npm list
+
     - name: Angular Build
-      run: ng build
+      run: npm run ng build
+
     - name: Deploy
-      run: echo TBD.
+      uses: SamKirkland/FTP-Deploy-Action@4.3.0
+      with:
+        server: wh24.rackhost.hu
+        username: c32709szucsik
+        password: ${{ secrets.FTP_PW  }}
+        local-dir: ./dist/rad-var-apartmanhaz/
+        server-dir: ./

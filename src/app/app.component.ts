@@ -1,8 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import { Component, OnInit } from "@angular/core";
 
 @Component({
   selector: 'app-root',
@@ -10,7 +6,10 @@ gsap.registerPlugin(ScrollTrigger);
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit{
+  ngOnInit(): void {
+  }
 }
+
 
 
