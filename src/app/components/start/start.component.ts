@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { gsap } from 'gsap';
+import { Configuration } from 'src/app/shared/config';
 
 @Component({
   selector: 'app-start',
@@ -8,19 +9,22 @@ import { gsap } from 'gsap';
 })
 
 export class StartComponent implements OnInit {
-  contextName: string = 'start';
+  contextName: string = 'start';  
+  config: Configuration;
+  
   @ViewChild('outerBox', { static: true }) outerBox: ElementRef<HTMLDivElement>;
   @ViewChild('innerBox', { static: true }) innerBox: ElementRef<HTMLDivElement>;
   
-  constructor() { }
+  constructor(config: Configuration) { this.config = config;}
 
   ngOnInit(): void {
-    this.boxAnimations();
+    this.boxAnimations(this.config.getStartDelay());
   }
 
-  boxAnimations(): void {
-    gsap.fromTo(this.innerBox.nativeElement, {scale: 0.95 }, {scale: 1, duration: 5});
-    gsap.fromTo(this.innerBox.nativeElement, {}, {yPercent: -100, delay: 3.2, duration: 1.5});
-    gsap.fromTo(this.outerBox.nativeElement, {}, {yPercent: -100, delay: 3.3, duration: 1.5});
+  boxAnimations(delay: number): void {
+    let rollUpDuration: number = 1.5;
+    gsap.fromTo(this.innerBox.nativeElement, {scale: 0.95 }, {scale: 1, duration: delay + rollUpDuration});
+    gsap.fromTo(this.innerBox.nativeElement, {}, {yPercent: -100, delay: delay, duration: rollUpDuration});
+    gsap.fromTo(this.outerBox.nativeElement, {}, {yPercent: -100, delay: delay + 0.1, duration: rollUpDuration});
   }
 }

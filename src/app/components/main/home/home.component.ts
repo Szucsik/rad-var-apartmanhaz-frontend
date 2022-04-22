@@ -33,10 +33,10 @@ export class HomeComponent implements OnInit {
       tl.to(layer, {y: movement, ease: "none"}, 0)
     });
     
-    this.showContent(this.config.getContentShowDelay);
+    this.showContent(this.config.getContentDelay());
   }
 
   showContent(delay: number): void {
-    gsap.fromTo(this.content.nativeElement, {opacity: 0}, {opacity: 1, duration: 1, delay: delay});
+    gsap.fromTo(this.content.nativeElement, {opacity: 0}, {opacity: 1, duration: 1, delay: delay, onComplete: this.config.setStartAnimationsCompleted});
   }
 }

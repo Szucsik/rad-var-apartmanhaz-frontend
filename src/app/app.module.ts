@@ -11,7 +11,6 @@ import { SpeedDialModule } from 'primeng/speeddial';
 import { LogoComponent } from './components/logo/logo.component';
 import { PanelModule } from 'primeng/panel';
 import { HomeComponent } from './components/main/home/home.component';
-import { Configuration } from './shared/config';
 import { MainComponent } from './components/main/main.component';
 
 @NgModule({

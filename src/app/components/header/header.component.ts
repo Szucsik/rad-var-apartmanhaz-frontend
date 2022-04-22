@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MenuItem, PrimeNGConfig } from 'primeng/api';
 import { gsap } from 'gsap';
+import { Configuration } from 'src/app/shared/config';
 
 @Component({
   selector: 'app-header',
@@ -13,10 +14,11 @@ export class HeaderComponent implements OnInit {
   @ViewChild('logo', { static: true }) logo: ElementRef<HTMLElement>;
   items: MenuItem[];
   contextName: string = 'header';
-  constructor(private primengConfig: PrimeNGConfig) { }
+  config: Configuration;
+  constructor(private primengConfig: PrimeNGConfig, config: Configuration) { this.config = config; }
 
   ngOnInit(): void {
-    this.startingAnimation();
+    this.startingAnimation(this.config.getHeaderDelay());
     this.primengConfig.ripple = true;
 
     this.items = [
@@ -41,9 +43,9 @@ export class HeaderComponent implements OnInit {
     ];
   }
 
-  startingAnimation(): void {
-    gsap.fromTo(this.container.nativeElement, {opacity: 0}, {opacity: 0.9, duration: 1.2, delay: 4.6});
-    gsap.fromTo(this.container.nativeElement.childNodes, {opacity: 0}, {opacity: 1, duration: 1.2, delay: 4.8});
+  startingAnimation(delay: number): void {
+    gsap.fromTo(this.container.nativeElement, {opacity: 0}, {opacity: 0.9, duration: 1.2, delay: delay});
+    gsap.fromTo(this.container.nativeElement.childNodes, {opacity: 0}, {opacity: 1, duration: 1.2, delay: delay + 0.2});
   }
 }
 
