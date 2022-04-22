@@ -12,6 +12,7 @@ import { LogoComponent } from './components/logo/logo.component';
 import { PanelModule } from 'primeng/panel';
 import { HomeComponent } from './components/main/home/home.component';
 import { MainComponent } from './components/main/main.component';
+import { GalleryComponent } from './components/main/gallery/gallery.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MainComponent } from './components/main/main.component';
     HeaderComponent,
     LogoComponent,
     HomeComponent,
-    MainComponent
+    MainComponent,
+    GalleryComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,7 @@ import { MainComponent } from './components/main/main.component';
     RippleModule,
     SpeedDialModule,
     AppRoutingModule,
-    PanelModule
+    PanelModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

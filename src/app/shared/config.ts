@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 
+
 @Injectable({
     providedIn: 'root',
 })
@@ -9,7 +10,6 @@ export class Configuration {
     private sessionContent: string = "testval";
     private loadingContentNeeded: boolean;
     private startAnimationsCompelted: boolean = true;
-
     private baseContentDelay: number = 5.6;
     private baseHeaderDelay: number = 4.6;
     private baseStartDelay: number = 3.2;

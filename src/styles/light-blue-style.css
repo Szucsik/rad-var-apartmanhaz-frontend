@@ -75,3 +75,13 @@
 .quote-end {
     content: url("/assets/quote-end.png");
 }
+
+.layer-bottom {
+    background-color: #282828;
+}
+
+/* Main/Gallery page color details */
+
+.gallery-container {
+    background-color: #282828;
+}

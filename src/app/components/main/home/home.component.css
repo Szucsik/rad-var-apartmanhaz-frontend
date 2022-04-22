@@ -31,8 +31,9 @@
     margin: 0 auto;
   }
   
-  #content {
-    background-color: #130d0a;
+  .layer-bottom {
+    height: 100px;
+    width: 100%;
   }
   
   .layer {
@@ -60,10 +61,10 @@
   }
   
   .layer-4 {
-    background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/272781/ilu_01.png");
+    background-image: url("/assets/transition.png");
   }
   
   .layer-overlay {
-    background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/272781/ilu_overlay.png");
+    background-image: url("/assets/bg-overlay.png");
   }
   
