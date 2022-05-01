@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Galleria } from 'primeng/galleria';
-import { PhotoService } from 'src/app/shared/photoService';
+import { PhotoService } from 'src/app/shared/services/galleryPhoto.service';
 
 @Component({
   selector: 'app-gallery',

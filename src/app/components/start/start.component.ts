@@ -1,6 +1,5 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { gsap } from 'gsap';
-import { Configuration } from 'src/app/shared/config';
+import { AfterViewChecked, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { AnimationService } from 'src/app/shared/services/animation.service';
 
 @Component({
   selector: 'app-start',
@@ -8,23 +7,21 @@ import { Configuration } from 'src/app/shared/config';
   styleUrls: ['./start.component.css']
 })
 
-export class StartComponent implements OnInit {
-  contextName: string = 'start';  
-  config: Configuration;
+export class StartComponent implements OnInit, AfterViewChecked {
+  @Output() finishedLoading: EventEmitter<boolean> = new EventEmitter<boolean>();
   
   @ViewChild('outerBox', { static: true }) outerBox: ElementRef<HTMLDivElement>;
   @ViewChild('innerBox', { static: true }) innerBox: ElementRef<HTMLDivElement>;
+
+  contextName: string = 'start';  
   
-  constructor(config: Configuration) { this.config = config;}
+  constructor(private animationService: AnimationService) { }
 
   ngOnInit(): void {
-    this.boxAnimations(this.config.getStartDelay());
+    this.animationService.startAnimations(this.outerBox, this.innerBox);
   }
 
-  boxAnimations(delay: number): void {
-    let rollUpDuration: number = 1.5;
-    gsap.fromTo(this.innerBox.nativeElement, {scale: 0.95 }, {scale: 1, duration: delay + rollUpDuration});
-    gsap.fromTo(this.innerBox.nativeElement, {}, {yPercent: -100, delay: delay, duration: rollUpDuration});
-    gsap.fromTo(this.outerBox.nativeElement, {}, {yPercent: -100, delay: delay + 0.1, duration: rollUpDuration});
+  ngAfterViewChecked(): void {
+    this.finishedLoading.emit(true)
   }
 }

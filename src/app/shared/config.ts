@@ -41,7 +41,7 @@ export class Configuration {
     }
 
     // Setters
-    public setLoadingContentNeeded() {
+    public setStartComponentNeeded() {
         if (sessionStorage.getItem(this.loadedSessionName) == this.sessionContent) {
             this.loadingContentNeeded = false;
         } else {

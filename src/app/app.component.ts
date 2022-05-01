@@ -13,10 +13,15 @@ export class AppComponent implements OnInit{
   constructor(config: Configuration) { this.config = config;}
 
   ngOnInit(): void {
-    this.config.setLoadingContentNeeded();
+    this.config.setStartComponentNeeded();
     this.setLoadingContainer();
   }
 
+  childLoadingFinished(): void {
+
+  }
+
+  // Turns off the loading container after Start component animation finished
   async setLoadingContainer() {
       await delayExec(this.config.getContentDelay() * 1000);
       this.config.setStartAnimationsCompleted();

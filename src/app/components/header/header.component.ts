@@ -1,7 +1,6 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewChecked, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { MenuItem, PrimeNGConfig } from 'primeng/api';
-import { gsap } from 'gsap';
-import { Configuration } from 'src/app/shared/config';
+import { AnimationService } from 'src/app/shared/services/animation.service';
 
 @Component({
   selector: 'app-header',
@@ -9,16 +8,18 @@ import { Configuration } from 'src/app/shared/config';
   styleUrls: ['./header.component.scss']
 })
 
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, AfterViewChecked {
+  @Output() finishedLoading: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   @ViewChild('container', { static: true }) container: ElementRef<HTMLElement>;
-  @ViewChild('logo', { static: true }) logo: ElementRef<HTMLElement>;
+
   items: MenuItem[];
   contextName: string = 'header';
-  config: Configuration;
-  constructor(private primengConfig: PrimeNGConfig, config: Configuration) { this.config = config; }
+  
+  constructor(private primengConfig: PrimeNGConfig, private animationService: AnimationService) { }
 
   ngOnInit(): void {
-    this.startingAnimation(this.config.getHeaderDelay());
+    this.animationService.headerAnimations(this.container);
     this.primengConfig.ripple = true;
 
     this.items = [
@@ -43,9 +44,8 @@ export class HeaderComponent implements OnInit {
     ];
   }
 
-  startingAnimation(delay: number): void {
-    gsap.fromTo(this.container.nativeElement, {opacity: 0}, {opacity: 0.9, duration: 1.2, delay: delay});
-    gsap.fromTo(this.container.nativeElement.childNodes, {opacity: 0}, {opacity: 1, duration: 1.2, delay: delay + 0.2});
+  ngAfterViewChecked(): void {
+    this.finishedLoading.emit(true);
   }
 }
 
