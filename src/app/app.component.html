@@ -1,4 +1,4 @@
-<div [ngClass]="{'loading-container': enableLoadingContainer}">
+<div [ngClass]="{'loading-container': enableLoadingContainer}" #main>
     <app-header (finishedLoading)="childLoadingFinished()"></app-header>
     <app-start (finishedLoading)="childLoadingFinished()"*ngIf="this.config.getLoadingContentNeeded()"></app-start>
     <app-main (finishedLoading)="childLoadingFinished()"></app-main>>

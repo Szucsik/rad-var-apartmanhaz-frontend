@@ -19,7 +19,10 @@ export class HeaderComponent implements OnInit, AfterViewChecked {
   constructor(private primengConfig: PrimeNGConfig, private animationService: AnimationService) { }
 
   ngOnInit(): void {
-    this.animationService.headerAnimations(this.container);
+    this.animationService.contentLoaded.subscribe(result => {
+      this.animationService.headerAnimations(this.container);
+    });
+
     this.primengConfig.ripple = true;
 
     this.items = [

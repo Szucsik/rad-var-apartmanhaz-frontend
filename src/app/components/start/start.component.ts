@@ -18,7 +18,9 @@ export class StartComponent implements OnInit, AfterViewChecked {
   constructor(private animationService: AnimationService) { }
 
   ngOnInit(): void {
-    this.animationService.startAnimations(this.outerBox, this.innerBox);
+    this.animationService.contentLoaded.subscribe(result => {
+      this.animationService.startAnimations(this.outerBox, this.innerBox);
+    });
   }
 
   ngAfterViewChecked(): void {

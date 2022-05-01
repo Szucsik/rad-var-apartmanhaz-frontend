@@ -1,4 +1,4 @@
-import { ElementRef, Injectable } from "@angular/core";
+import { ElementRef, EventEmitter, Injectable } from "@angular/core";
 import { Configuration } from "../config";
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -9,9 +9,9 @@ gsap.registerPlugin(ScrollTrigger);
     providedIn: 'root',
 })
 export class AnimationService {
-    config: Configuration;
+    contentLoaded: EventEmitter<boolean> = new EventEmitter();
 
-    constructor(config: Configuration) { this.config = config;}
+    constructor(private config: Configuration) { }
 
     startAnimations(outerBox: ElementRef<HTMLDivElement>, innerBox: ElementRef<HTMLDivElement>): void {
         let delay: number = this.config.getStartDelay();
