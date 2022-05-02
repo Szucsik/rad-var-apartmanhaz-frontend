@@ -1,3 +1,4 @@
+import { DivDirective } from './shared/directives/div.directive';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -15,6 +16,7 @@ import { HomeComponent } from './components/main/home/home.component';
 import { MainComponent } from './components/main/main.component';
 import { GalleryComponent } from './components/main/gallery/gallery.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TestComponent } from './components/test/test.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { HttpClientModule } from '@angular/common/http';
     LogoComponent,
     HomeComponent,
     MainComponent,
-    GalleryComponent
+    GalleryComponent,
+    TestComponent,
+    DivDirective
   ],
   imports: [
     BrowserModule,

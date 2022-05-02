@@ -1,6 +1,8 @@
+import { ImageLazyLoadingService } from './shared/services/imageLazyLoading/imageLazyLoading.service';
 import { Component, ElementRef, EventEmitter, OnInit, ViewChild } from "@angular/core";
 import { Configuration } from "./shared/config";
 import { AnimationService } from "./shared/services/animation.service";
+import { ImageVars } from './shared/services/imageLazyLoading/imagevars';
 
 @Component({
   selector: 'app-root',
@@ -16,11 +18,15 @@ export class AppComponent implements OnInit{
   contentLoaded: EventEmitter<boolean> = new EventEmitter();
 
   config: Configuration;
-  constructor(config: Configuration, private animationService: AnimationService) { this.config = config;}
+  constructor(config: Configuration, private animationService: AnimationService, private imageLazyLoadingService: ImageLazyLoadingService) { this.config = config;}
 
   ngOnInit(): void {
     this.config.setStartComponentNeeded();
     this.setLoadingContainer();
+
+    ImageVars.loaded.subscribe(result => {
+      this.imageLazyLoadingService.loadAllImages();
+    });
   }
 
   childLoadingFinished(): void {
@@ -36,6 +42,7 @@ export class AppComponent implements OnInit{
       await delayExec(this.config.getContentDelay() * 1000);
       this.config.setStartAnimationsCompleted();
       this.enableLoadingContainer = !this.config.getStartAnimationsCompleted();
+      this.imageLazyLoadingService.preloadAll();
   }
 }
 

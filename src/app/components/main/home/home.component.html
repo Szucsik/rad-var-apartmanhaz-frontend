@@ -2,7 +2,7 @@
 
 <!-- partial:index.partial.html -->
 <div id='hero' #hero>
-    <div class='layer-bg layer parallax' data-depth='0.10'>
+    <div class='layer-bg layer parallax' id="{{ divBgs.HomeBg.id }}" data-depth='0.10'>
       <div class="quote">
           <img class="quote-start" alt="quote-start">
           <p class="home-quote-text quote-text">Eger az a város, ahová nem elég megérkezni. Hazaérkezni is lehet Egerbe.</p>
@@ -10,10 +10,10 @@
           <p class="home-quote-text quote-author">- Márai Sándor</p>
     </div>
     </div>
-    <div class='layer-2 layer parallax' data-depth='0.50'></div>
-    <div class='layer-3 layer parallax' data-depth='0.80'></div>
-    <div class='layer-overlay layer parallax' data-depth='0.85'></div>
-    <div class='layer-4 layer parallax' data-depth='1.00'></div>
+    <div class='layer-2 layer parallax' id="{{ divBgs.HomeLayer2.id }}" data-depth='0.50'></div>
+    <div class='layer-3 layer parallax' id="{{ divBgs.HomeLayer3.id }}" data-depth='0.80'></div>
+    <div class='layer-overlay layer parallax' id="{{ divBgs.HomeOverlay.id }}" data-depth='0.85'></div>
+    <div class='layer-4 layer parallax' id="{{ divBgs.HomeLayer4.id }}" data-depth='1.00'></div>
   </div>
   <div class='layer-bottom'>
   </div>  
