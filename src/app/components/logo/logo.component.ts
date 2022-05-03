@@ -18,7 +18,7 @@ export class LogoComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.startPageAnimation)
-      this.animationService.contentLoaded.subscribe(result => {
+      this.animationService.startContentLoaded.subscribe(result => {
         this.animationService.logoAnimations(this.titleTextFirst, this.titleImg, this.titleTextLast);
       });
   }

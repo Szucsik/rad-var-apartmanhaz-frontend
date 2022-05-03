@@ -9,6 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
     providedIn: 'root',
 })
 export class AnimationService {
+    startContentLoaded: EventEmitter<boolean> = new EventEmitter();
     contentLoaded: EventEmitter<boolean> = new EventEmitter();
 
     constructor(private config: Configuration) { }
