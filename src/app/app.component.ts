@@ -24,14 +24,10 @@ export class AppComponent implements OnInit{
   }
 
   preloadImages(): void {
-    this.preloadService.preloadStartImages();
-    this.preloadService.loadStartComplated.subscribe(result => {
-      this.loaded = result;
-      this.preloadService.preloadImages();
-      this.animationService.startContentLoaded.emit(result);
-    });
+    this.preloadService.preloadImages();
 
     this.preloadService.loadComplated.subscribe(result => {
+      this.loaded = result;
       this.animationService.contentLoaded.emit(result);
       this.setLoadingContainer();
     });
