@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AnimationService } from 'src/app/shared/services/animation.service';
 
 @Component({
@@ -7,9 +7,7 @@ import { AnimationService } from 'src/app/shared/services/animation.service';
   styleUrls: ['./start.component.css']
 })
 
-export class StartComponent implements OnInit, AfterViewChecked {
-  @Output() finishedLoading: EventEmitter<boolean> = new EventEmitter<boolean>();
-  
+export class StartComponent implements OnInit {
   @ViewChild('outerBox', { static: true }) outerBox: ElementRef<HTMLDivElement>;
   @ViewChild('innerBox', { static: true }) innerBox: ElementRef<HTMLDivElement>;
 
@@ -18,12 +16,8 @@ export class StartComponent implements OnInit, AfterViewChecked {
   constructor(private animationService: AnimationService) { }
 
   ngOnInit(): void {
-    this.animationService.contentLoaded.subscribe(result => {
+    this.animationService.contentLoaded.subscribe((result) => {
       this.animationService.startAnimations(this.outerBox, this.innerBox);
     });
-  }
-
-  ngAfterViewChecked(): void {
-    this.finishedLoading.emit(true)
   }
 }

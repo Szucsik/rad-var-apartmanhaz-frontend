@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MenuItem, PrimeNGConfig } from 'primeng/api';
 import { AnimationService } from 'src/app/shared/services/animation.service';
 
@@ -9,7 +9,7 @@ import { AnimationService } from 'src/app/shared/services/animation.service';
   encapsulation: ViewEncapsulation.None
 })
 
-export class HeaderComponent implements OnInit, AfterViewChecked {
+export class HeaderComponent implements OnInit {
   @Output() finishedLoading: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   @ViewChild('container', { static: true }) container: ElementRef<HTMLElement>;
@@ -46,10 +46,6 @@ export class HeaderComponent implements OnInit, AfterViewChecked {
           }
       }
     ];
-  }
-
-  ngAfterViewChecked(): void {
-    this.finishedLoading.emit(true);
   }
 }
 

@@ -1,6 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AnimationService } from 'src/app/shared/services/animation.service';
-import { DivBgs } from 'src/app/shared/services/imageLazyLoading/divBgs.collection';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +8,6 @@ import { DivBgs } from 'src/app/shared/services/imageLazyLoading/divBgs.collecti
 })
 
 export class HomeComponent implements OnInit {
-  divBgs = DivBgs;
   @ViewChild('content', { static: true }) content: ElementRef<HTMLElement>;
 
   constructor(private animationService: AnimationService) { }

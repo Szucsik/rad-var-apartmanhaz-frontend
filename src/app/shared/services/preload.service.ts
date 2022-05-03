@@ -15,9 +15,8 @@ export class PreloadService {
         this.imageList.forEach(image => {
             const base_image = new Image();
             base_image.src = "/assets/" + image;
-            base_image.onload = (tes)=> {
+            base_image.onload = ()=> {
                 this.loadedCounter++;
-                console.log(this.loadedCounter + 'A' + this.imageList.length);
                 if(this.loadedCounter == this.imageList.length) {
                     this.loadComplated.emit(true);
                 }
