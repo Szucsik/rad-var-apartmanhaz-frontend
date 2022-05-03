@@ -1,3 +1,4 @@
+import { ImageLazyLoadingService } from './shared/services/imageLazyLoading/imageLazyLoading.service';
 import { Component, ElementRef, EventEmitter, OnInit, ViewChild } from "@angular/core";
 import { Configuration } from "./shared/config";
 import { AnimationService } from "./shared/services/animation.service";
@@ -37,6 +38,7 @@ export class AppComponent implements OnInit{
       await delayExec(this.config.getContentDelay() * 1000);
       this.config.setStartAnimationsCompleted();
       this.enableLoadingContainer = !this.config.getStartAnimationsCompleted();
+      this.imageLazyLoadingService.preloadAll();
   }
 }
 

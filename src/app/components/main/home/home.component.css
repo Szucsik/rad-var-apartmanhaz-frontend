@@ -47,24 +47,24 @@
   }
 
   .layer-bg {
-    background-image: url("/assets/wallpaperflare.com_wallpaper2.jpg");
+    /* background-image: url("/assets/wallpaperflare.com_wallpaper2.jpg"); */
   }
   
   .layer-2 {
-    background-image: url("/assets/cliff.png");
+    /* background-image: url("/assets/cliff.png"); */
   }
   
   .layer-3 {
-    background-image: url("/assets/couple2.png");
+    /* background-image: url("/assets/couple2.png"); */
     background-size: 30%;
     background-position: right bottom;
   }
   
   .layer-4 {
-    background-image: url("/assets/transition.png");
+    /* background-image: url("/assets/transition.png"); */
   }
   
   .layer-overlay {
-    background-image: url("/assets/bg-overlay.png");
+    /* backgrongund-image: url("/assets/bg-overlay.png"); */
   }
   

@@ -1,11 +1,12 @@
-import { AfterViewChecked, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewChecked, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MenuItem, PrimeNGConfig } from 'primeng/api';
 import { AnimationService } from 'src/app/shared/services/animation.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 
 export class HeaderComponent implements OnInit, AfterViewChecked {
