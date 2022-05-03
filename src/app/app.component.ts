@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, OnInit, ViewChild } from "@angular/core";
+import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { Configuration } from "./shared/config";
 import { AnimationService } from "./shared/services/animation.service";
 import { PreloadService } from "./shared/services/preload.service";

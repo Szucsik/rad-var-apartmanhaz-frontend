@@ -1,4 +1,4 @@
-<div [ngClass]="{'loading-container': enableLoadingContainer, 'hidden': loaded}"  #main>
+<div [ngClass]="{'loading-container': enableLoadingContainer, 'hidden': !loaded}"  #main>
     <app-header></app-header>
     <app-start *ngIf="this.config.getLoadingContentNeeded()"></app-start>
     <app-main></app-main>>
