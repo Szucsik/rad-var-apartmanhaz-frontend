@@ -3,3 +3,7 @@ div.loading-container {
     max-height: 920px;
     overflow: hidden;
 }
+
+div.hidden {
+    visibility: hidden;
+}

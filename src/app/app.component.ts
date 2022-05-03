@@ -2,7 +2,7 @@ import { ImageLazyLoadingService } from './shared/services/imageLazyLoading/imag
 import { Component, ElementRef, EventEmitter, OnInit, ViewChild } from "@angular/core";
 import { Configuration } from "./shared/config";
 import { AnimationService } from "./shared/services/animation.service";
-import { ImageVars } from './shared/services/imageLazyLoading/imagevars';
+import { PreloadService } from "./shared/services/preload.service";
 
 @Component({
   selector: 'app-root',
@@ -14,27 +14,23 @@ export class AppComponent implements OnInit{
   @ViewChild('main', { static: true }) container: ElementRef<HTMLDivElement>;
   
   enableLoadingContainer: boolean = true;
-  containersLoaded: number = 0;
-  contentLoaded: EventEmitter<boolean> = new EventEmitter();
+  loaded: boolean = false;
 
   config: Configuration;
-  constructor(config: Configuration, private animationService: AnimationService, private imageLazyLoadingService: ImageLazyLoadingService) { this.config = config;}
+  constructor(config: Configuration, private animationService: AnimationService, private preloadService: PreloadService) { this.config = config;}
 
   ngOnInit(): void {
     this.config.setStartComponentNeeded();
-    this.setLoadingContainer();
-
-    ImageVars.loaded.subscribe(result => {
-      this.imageLazyLoadingService.loadAllImages();
-    });
+    this.preloadImages();
   }
 
-  childLoadingFinished(): void {
-    this.containersLoaded++;
-
-    if(this.containersLoaded == this.container.nativeElement.children.length) {
-      this.animationService.contentLoaded.emit(true);
-    }
+  preloadImages(): void {
+    this.preloadService.preloadImages();
+    this.preloadService.loadComplated.subscribe(result => {
+      this.loaded = result;
+      this.animationService.contentLoaded.emit(result);
+      this.setLoadingContainer();
+    });
   }
 
   // Turns off the loading container after Start component animation finished
