@@ -1,0 +1,58 @@
+{
+    "data":[
+        {
+            "previewImageSrc": "assets/photos/image-1.png",
+            "thumbnailImageSrc": "assets/flag-hu.png",
+            "alt": "Description for Image 13",
+            "title": "Title 13"
+        },
+        {
+            "previewImageSrc": "assets/photos/image-2.png",
+            "thumbnailImageSrc": "assets/flag-hu.png",
+            "alt": "Description for Image 14",
+            "title": "Title 14"
+        },
+        {
+            "previewImageSrc": "assets/photos/image-3.png",
+            "thumbnailImageSrc": "assets/flag-hu.png",
+            "alt": "Description for Image 15",
+            "title": "Title 15"
+        },
+        {
+            "previewImageSrc": "assets/photos/image-4.png",
+            "thumbnailImageSrc": "assets/flag-hu.png",
+            "alt": "Description for Image 15",
+            "title": "Title 15"
+        },
+        {
+            "previewImageSrc": "assets/photos/image-5.png",
+            "thumbnailImageSrc": "assets/flag-hu.png",
+            "alt": "Description for Image 15",
+            "title": "Title 15"
+        },
+        {
+            "previewImageSrc": "assets/photos/image-6.png",
+            "thumbnailImageSrc": "assets/flag-hu.png",
+            "alt": "Description for Image 15",
+            "title": "Title 15"
+        },
+        {
+            "previewImageSrc": "assets/photos/image-7.png",
+            "thumbnailImageSrc": "assets/flag-hu.png",
+            "alt": "Description for Image 15",
+            "title": "Title 15"
+        },
+        {
+            "previewImageSrc": "assets/photos/image-9.png",
+            "thumbnailImageSrc": "assets/flag-hu.png",
+            "alt": "Description for Image 15",
+            "title": "Title 15"
+        },
+        {
+            "previewImageSrc": "assets/photos/image-1.png",
+            "thumbnailImageSrc": "assets/flag-hu.png",
+            "alt": "Description for Image 15",
+            "title": "Title 15"
+        }
+    ]
+}

@@ -1,0 +1,17 @@
+div.loading-box {
+    margin: auto;
+    height: 97%;
+    width: 98%;
+}
+
+div.loading-outer-box {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.loading-image {
+    display: block;
+    margin: auto;
+    width: 50%;
+}

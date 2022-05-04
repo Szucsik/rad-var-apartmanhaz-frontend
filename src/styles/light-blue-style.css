@@ -21,7 +21,7 @@
     background-repeat: no-repeat;
 }
 
-/* Menu header color details */
+/* Header color details */
 
 .header-background-color {
     background-color: white;
@@ -61,6 +61,27 @@
     border-color: whitesmoke!important;
 }
 
+/* Main/Home page color/image details */
+
 .home-quote-text {
+    color: #ede0d5;
     font-family: SansitaSwashed-Medium;
+}
+
+.quote-start {
+    content: url("/assets/quote-start.png");
+}
+
+.quote-end {
+    content: url("/assets/quote-end.png");
+}
+
+.layer-bottom {
+    background-color: #282828;
+}
+
+/* Main/Gallery page color details */
+
+.gallery-container {
+    background-color: #282828;
 }
