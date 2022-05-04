@@ -14,12 +14,19 @@
   }
 
   .quote-text {
-    font-size: 20px;
+    font-size: 28px;
+  }
+
+  .home-wellcome-text {
+    font-size: 40px;
+    text-align: center;
+    margin-top: 10px;
   }
 
   .quote-author {
-    font-size: 20px;
-    margin-right: 20px;
+    font-size: 25px;
+    margin-right: 95px;
+    margin-top: -10px;
     float: right;
   }
   
@@ -32,7 +39,7 @@
   .layer-bottom {
     height: 150px;
     width: 100%;
-    margin-top: -50px;
+    margin-top: -16px;
   }
   
   .layer {
