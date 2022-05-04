@@ -65,7 +65,13 @@
 
 .home-quote-text {
     color: #ede0d5;
+    font-family: BeauRivage-Regular;
+}
+
+.home-wellcome-text {
+    color: #ede0d5;
     font-family: SansitaSwashed-Medium;
+
 }
 
 .quote-start {

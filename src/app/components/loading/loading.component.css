@@ -1,5 +1,5 @@
 div.loading-box {
-    position: absolute;
+    position: fixed;
     margin: auto;
     left: 1%;
     top: 1.5%;
@@ -8,7 +8,7 @@ div.loading-box {
 }
 
 div.loading-outer-box {
-    position: absolute;
+    position: fixed;
     left: 0px;
     top: 0px;
     height: 100%;
@@ -16,7 +16,7 @@ div.loading-outer-box {
 }
 
 .loading-image {
-    position: absolute;
+    position: fixed;
     left: 50%;
     top: 50%;
     margin-left: -150px;
