@@ -25,15 +25,14 @@
   
   #hero {
     height: 800px;
-    overflow: hidden;
     position: relative;
     max-width: 1920px;
-    margin: 0 auto;
   }
   
   .layer-bottom {
-    height: 100px;
+    height: 150px;
     width: 100%;
+    margin-top: -50px;
   }
   
   .layer {
