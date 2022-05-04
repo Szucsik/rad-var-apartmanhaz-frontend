@@ -15,7 +15,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.animationService.contentLoaded.subscribe(result => {
       this.animationService.homeScrollTrigger();
-      this.animationService.homeAnimations(this.content); 
     });
   }
 }
