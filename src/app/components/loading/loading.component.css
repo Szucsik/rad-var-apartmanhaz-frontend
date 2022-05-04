@@ -1,0 +1,11 @@
+div.loading-box {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.loading-image {
+    display: block;
+    margin: auto;
+    width: 50%;
+}

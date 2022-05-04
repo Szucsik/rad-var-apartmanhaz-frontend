@@ -15,6 +15,7 @@ import { HomeComponent } from './components/main/home/home.component';
 import { MainComponent } from './components/main/main.component';
 import { GalleryComponent } from './components/main/gallery/gallery.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
     LogoComponent,
     HomeComponent,
     MainComponent,
-    GalleryComponent
+    GalleryComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
