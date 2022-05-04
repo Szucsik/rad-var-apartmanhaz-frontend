@@ -22,7 +22,7 @@ export class PreloadService {
             PreloadService.loadedImages[index].src = "/assets/" + image;
             PreloadService.loadedImages[index].onload = ()=> {
                 this.loadedCounter++;
-                if(this.loadedCounter == this.imageList.length) {
+                if(this.loadedCounter == allImages.length) {
                     this.loadComplated.emit(true);
                 }
             }
