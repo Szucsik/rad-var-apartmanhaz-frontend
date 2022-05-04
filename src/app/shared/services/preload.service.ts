@@ -17,7 +17,7 @@ export class PreloadService {
         const allImages: Array<String> = this.imageList.concat(this.photoList);
         allImages.forEach(image => {
             PreloadService.loadedImages.push(new Image());
-            let index = this.preloadImages.length - 1;
+            let index = PreloadService.loadedImages.length - 1;
 
             PreloadService.loadedImages[index].src = "/assets/" + image;
             PreloadService.loadedImages[index].onload = ()=> {
