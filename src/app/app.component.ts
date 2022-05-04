@@ -27,7 +27,7 @@ export class AppComponent implements OnInit{
     this.preloadService.preloadImages();
 
     this.preloadService.loadComplated.subscribe(result => {
-      this.loaded = result;
+      this.waitLoadinScreen();
       this.animationService.contentLoaded.emit(result);
       this.setLoadingContainer();
     });
@@ -38,6 +38,11 @@ export class AppComponent implements OnInit{
       await delayExec(this.config.getContentDelay() * 1000);
       this.config.setStartAnimationsCompleted();
       this.enableLoadingContainer = !this.config.getStartAnimationsCompleted();
+  }
+
+  async waitLoadinScreen() {
+    await delayExec(1 * 1000);
+    this.loaded = true;
   }
 }
 
