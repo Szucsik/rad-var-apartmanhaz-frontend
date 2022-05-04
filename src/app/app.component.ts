@@ -28,8 +28,6 @@ export class AppComponent implements OnInit{
 
     this.preloadService.loadComplated.subscribe(result => {
       this.waitLoadinScreen();
-      this.animationService.contentLoaded.emit(result);
-      this.setLoadingContainer();
     });
   }
 
@@ -43,6 +41,8 @@ export class AppComponent implements OnInit{
   async waitLoadinScreen() {
     await delayExec(1 * 1000);
     this.loaded = true;
+    this.animationService.contentLoaded.emit(true);
+    this.setLoadingContainer();
   }
 }
 
