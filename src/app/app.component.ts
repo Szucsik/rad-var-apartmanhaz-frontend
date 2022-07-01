@@ -9,10 +9,7 @@ import { PreloadService } from "./shared/services/preload.service";
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent implements OnInit{
-  @ViewChild('main', { static: true }) container: ElementRef<HTMLDivElement>;
-  
-  enableLoadingContainer: boolean = true;
+export class AppComponent implements OnInit {
   loaded: boolean = false;
 
   config: Configuration;
@@ -23,26 +20,20 @@ export class AppComponent implements OnInit{
     this.preloadImages();
   }
 
+  
+
   preloadImages(): void {
     this.preloadService.preloadImages();
 
     this.preloadService.loadComplated.subscribe(result => {
       this.waitLoadinScreen();
-      this.animationService.contentLoaded.emit(result);
-      this.setLoadingContainer();
     });
-  }
-
-  // Turns off the loading container after Start component animation finished
-  async setLoadingContainer() {
-      await delayExec(this.config.getContentDelay() * 1000);
-      this.config.setStartAnimationsCompleted();
-      this.enableLoadingContainer = !this.config.getStartAnimationsCompleted();
   }
 
   async waitLoadinScreen() {
     await delayExec(1 * 1000);
     this.loaded = true;
+    this.animationService.contentLoaded.emit(true);
   }
 }
 
