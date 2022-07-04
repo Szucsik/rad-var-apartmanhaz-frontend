@@ -10,9 +10,12 @@ import { RippleModule } from 'primeng/ripple';
 import { SpeedDialModule } from 'primeng/speeddial';
 import { LogoComponent } from './components/logo/logo.component';
 import { PanelModule } from 'primeng/panel';
+import { GalleriaModule } from 'primeng/galleria';
 import { HomeComponent } from './components/main/home/home.component';
-import { Configuration } from './shared/config';
 import { MainComponent } from './components/main/main.component';
+import { GalleryComponent } from './components/main/gallery/gallery.component';
+import { HttpClientModule } from '@angular/common/http';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,9 @@ import { MainComponent } from './components/main/main.component';
     HeaderComponent,
     LogoComponent,
     HomeComponent,
-    MainComponent
+    MainComponent,
+    GalleryComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +34,9 @@ import { MainComponent } from './components/main/main.component';
     RippleModule,
     SpeedDialModule,
     AppRoutingModule,
-    PanelModule
+    PanelModule,
+    GalleriaModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

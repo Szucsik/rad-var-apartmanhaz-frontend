@@ -13,6 +13,11 @@
     src: url('/assets/SansitaSwashed-Medium.ttf');
 }
 
+@font-face {
+    font-family: BeauRivage-Regular;
+    src: url('/assets/BeauRivage-Regular.ttf');
+}
+
 .start-text-first {
     height: 150px;
     width: 200px;

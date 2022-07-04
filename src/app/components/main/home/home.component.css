@@ -1,9 +1,6 @@
-body {
-    padding: 0;
-    margin: 0;
-    background-color: #130d0a;
-    font-family: "Playfair Display", serif;
-    color: #fff;
+  .home-container {
+    position: relative;
+    height: 1094px;
   }
 
   .quote {
@@ -11,37 +8,44 @@ body {
     padding-top: 120px;
     width: 750px;
   }
+  
   .quote-start {
-    content: url("/assets/quote-start.png");
     max-width: 50px;
   }
 
   .quote-end {
-    content: url("/assets/quote-end.png");
     max-width: 50px;
     float: right;
+    margin-right: 95px;
   }
 
   .quote-text {
-    font-size: 20px;
+    font-size: 28px;
+  }
+
+  .home-wellcome-text {
+    font-size: 40px;
+    text-align: center;
+    margin-top: 10px;
   }
 
   .quote-author {
-    font-size: 20px;
-    margin-right: 20px;
+    font-size: 25px;
+    margin-right: 15px;
+    margin-top: -10px;
     float: right;
   }
   
   #hero {
     height: 800px;
-    overflow: hidden;
     position: relative;
     max-width: 1920px;
-    margin: 0 auto;
   }
   
-  #content {
-    background-color: #130d0a;
+  .layer-bottom {
+    height: 310px;
+    width: 100%;
+    margin-top: -16px;
   }
   
   .layer {
@@ -53,37 +57,7 @@ body {
     position: fixed;
     z-index: -1;
   }
-  
-  #hero-mobile {
-    display: none;
-    background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/272781/full_illustration.png") no-repeat center bottom/cover;
-    height: 320px;
-  }
-  
-  .first-section {
-    padding: 50px 0 20px 0;
-  }
-  
-  .text-header {
-    font-size: 50px;
-    text-align: center;
-  }
-  
-  h1 {
-    line-height: 120%;
-    margin-bottom: 30px;
-  }
-  
-  p {
-    color: #ede0d5;
-    font-size: 18px;
-    line-height: 150%;
-  }
-  
-  #hero, .layer {
-    min-height: 800px;
-  }
-  
+
   .layer-bg {
     background-image: url("/assets/wallpaperflare.com_wallpaper2.jpg");
   }
@@ -99,19 +73,10 @@ body {
   }
   
   .layer-4 {
-    background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/272781/ilu_01.png");
+    background-image: url("/assets/transition.png");
   }
   
   .layer-overlay {
-    background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/272781/ilu_overlay.png");
+    background-image: url("/assets/bg-overlay.png");
   }
   
-  @media only screen and (max-width: 768px) {
-    .layer-1 {
-      background-position: 26% bottom;
-    }
-  
-    .layer-3 {
-      background-position: 35% bottom;
-    }
-  }

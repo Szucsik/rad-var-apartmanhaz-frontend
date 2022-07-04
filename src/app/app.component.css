@@ -1,0 +1,10 @@
+div.loading-container {
+    max-width: 100%;
+    max-height: 920px;
+    overflow: hidden;
+    position: absolute;
+}
+
+div.hidden {
+    visibility: hidden;
+}

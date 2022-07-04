@@ -1,22 +1,29 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MenuItem, PrimeNGConfig } from 'primeng/api';
-import { gsap } from 'gsap';
+import { AnimationService } from 'src/app/shared/services/animation.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 
 export class HeaderComponent implements OnInit {
+  @Output() finishedLoading: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   @ViewChild('container', { static: true }) container: ElementRef<HTMLElement>;
-  @ViewChild('logo', { static: true }) logo: ElementRef<HTMLElement>;
+
   items: MenuItem[];
   contextName: string = 'header';
-  constructor(private primengConfig: PrimeNGConfig) { }
+  
+  constructor(private primengConfig: PrimeNGConfig, private animationService: AnimationService) { }
 
   ngOnInit(): void {
-    this.startingAnimation();
+    this.animationService.contentLoaded.subscribe(result => {
+      this.animationService.headerAnimations(this.container);
+    });
+
     this.primengConfig.ripple = true;
 
     this.items = [
@@ -39,11 +46,6 @@ export class HeaderComponent implements OnInit {
           }
       }
     ];
-  }
-
-  startingAnimation(): void {
-    gsap.fromTo(this.container.nativeElement, {opacity: 0}, {opacity: 0.9, duration: 1.2, delay: 4.6});
-    gsap.fromTo(this.container.nativeElement.childNodes, {opacity: 0}, {opacity: 1, duration: 1.2, delay: 4.8});
   }
 }
 

@@ -1,0 +1,13 @@
+<div class="gallery-container">
+    <div class="gallery-content">
+        <div class="gallery-title">
+            Galéria
+        </div>
+        <div class="image-container">
+            <div class="box-rectangle"></div>
+            <img class="arrow-left" src="/assets/arrow-left.png" alt="..." (click)="this.scroll('left')">
+            <img class="gallery" src="{{ currentImageSource }}" alt="..." #gallery>
+            <img class="arrow-right" src="/assets/arrow-right.png" alt="..." (click)="this.scroll('right')">
+        </div>
+    </div>
+</div>
