@@ -1,6 +1,7 @@
 import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MenuItem, PrimeNGConfig } from 'primeng/api';
 import { AnimationService } from 'src/app/shared/services/animation.service';
+import { ScrollAnimationService } from 'src/app/shared/services/scrollAnimation.service';
 
 @Component({
   selector: 'app-header',
@@ -11,13 +12,14 @@ import { AnimationService } from 'src/app/shared/services/animation.service';
 
 export class HeaderComponent implements OnInit {
   @Output() finishedLoading: EventEmitter<boolean> = new EventEmitter<boolean>();
-
   @ViewChild('container', { static: true }) container: ElementRef<HTMLElement>;
+
+  scrollAnimationService: ScrollAnimationService;
 
   items: MenuItem[];
   contextName: string = 'header';
   
-  constructor(private primengConfig: PrimeNGConfig, private animationService: AnimationService) { }
+  constructor(private primengConfig: PrimeNGConfig, private animationService: AnimationService, private _scrollAnimationService: ScrollAnimationService) { this.scrollAnimationService = _scrollAnimationService; }
 
   ngOnInit(): void {
     this.animationService.contentLoaded.subscribe(result => {
