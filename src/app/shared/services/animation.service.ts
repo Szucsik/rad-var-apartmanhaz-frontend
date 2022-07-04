@@ -1,9 +1,6 @@
 import { ElementRef, EventEmitter, Injectable } from "@angular/core";
 import { Configuration } from "../config";
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
 
 @Injectable({
     providedIn: 'root',
@@ -41,23 +38,6 @@ export class AnimationService {
         gsap.fromTo(titleTextFirst.nativeElement, {x: X + animationX}, {duration: 1, ease: 'back',x: X, delay: delay})
         gsap.fromTo(titleImg.nativeElement, {x: X + animationX}, {duration: 1, ease: 'back',x: X, delay: delay})
         gsap.fromTo(titleTextLast.nativeElement, {opacity: 0, y: Y, x: X - animationX}, {opacity: 1, duration: 1, ease: 'back', y: Y, x: X, delay: delay});
-      }
-
-      homeScrollTrigger(): void {
-        const tl = gsap.timeline({
-            scrollTrigger: {
-              trigger: "#hero",
-              start: "top top",
-              end: "bottom top",
-              scrub: true
-            }
-          });
-          
-          gsap.utils.toArray<HTMLElement>(".parallax").forEach(layer => {
-            let depth = Number(layer.dataset.depth);
-            let movement = -(layer.offsetHeight * depth)
-            tl.to(layer, {y: movement, ease: "none"}, 0)
-          });
       }
 
       homeAnimations(content: ElementRef<HTMLElement>): void {

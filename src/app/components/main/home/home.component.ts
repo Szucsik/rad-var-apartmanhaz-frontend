@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AnimationService } from 'src/app/shared/services/animation.service';
+import { ScrollAnimationService } from 'src/app/shared/services/scrollAnimation.service';
 
 @Component({
   selector: 'app-home',
@@ -8,13 +9,11 @@ import { AnimationService } from 'src/app/shared/services/animation.service';
 })
 
 export class HomeComponent implements OnInit {
-  @ViewChild('content', { static: true }) content: ElementRef<HTMLElement>;
-
-  constructor(private animationService: AnimationService) { }
+  constructor(private animationService: AnimationService, private scrollAnimationService: ScrollAnimationService) { }
 
   ngOnInit(): void {
     this.animationService.contentLoaded.subscribe(result => {
-      this.animationService.homeScrollTrigger();
+      this.scrollAnimationService.homeScrollTrigger();
     });
   }
 }
