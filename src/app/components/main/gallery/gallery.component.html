@@ -1,15 +1,5 @@
 <div class="gallery-container">
     <div class="gallery-content">
-        <p-galleria [value]="images" [responsiveOptions]="responsiveOptions" [containerStyle]="{'max-width': '640px'}" [numVisible]="5" [circular]="true"
-        [autoPlay]="true" [transitionInterval]="2000"> 
-        <ng-template pTemplate="item" let-item>
-            <img [src]="item.previewImageSrc" style="width: 100%; display: block;" />
-        </ng-template>
-        <ng-template pTemplate="thumbnail" let-item>
-            <div class="grid grid-nogutter justify-content-center">
-                <img [src]="item.thumbnailImageSrc" style="display: block;" />
-            </div>
-        </ng-template>
-        </p-galleria>
+        
     </div>
 </div>
