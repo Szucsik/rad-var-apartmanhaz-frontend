@@ -1,9 +1,8 @@
 import { Injectable } from "@angular/core";
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Draggable } from "gsap/Draggable";
-
-gsap.registerPlugin(ScrollTrigger, Draggable);
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 @Injectable({
     providedIn: 'root',
@@ -64,5 +63,28 @@ export class ScrollAnimationService {
         }
       });
       scrollArrovRight.from(document.querySelector('.arrow-right'), { x: 50, opacity: 0 });
+    }
+
+    navigate(destination: string) {
+      const scrollTo = gsap.timeline();
+      if(destination == 'home') {
+        scrollTo.to(window,
+          {
+            delay: 0.2,
+            duration: 3,
+            ease: 'back',
+            scrollTo: 0
+          }
+        );
+      } else if (destination == 'gallery') {
+        scrollTo.to(window,
+          {
+            delay: 0.2,
+            duration: 2,
+            ease: 'back',
+            scrollTo: 1100
+          }
+        );
+      }
     }
 }

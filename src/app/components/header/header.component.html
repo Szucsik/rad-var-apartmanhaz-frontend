@@ -3,10 +3,10 @@
         <app-logo [context]="contextName" #logo></app-logo>
     </div>
     <div class="header-menu-item-details menu-item">
-        <button pButton pRipple type="button" class="p-button-raised header-menu-button-details btns">Nyitólap</button>
+        <button pButton pRipple type="button" class="p-button-raised header-menu-button-details btns" (click)="this.scrollAnimationService.navigate('home')">Nyitólap</button>
     </div>
     <div class="header-menu-item-details menu-item">
-        <button pButton pRipple type="button" class="p-button-raised header-menu-button-details btns">Galéria</button>
+        <button pButton pRipple type="button" class="p-button-raised header-menu-button-details btns" (click)="this.scrollAnimationService.navigate('gallery')">Galéria</button>
     </div>
     <div class="header-menu-item-details menu-item">
         <button pButton pRipple type="button" class="p-button-raised header-menu-button-details btns">Elérhetőségek</button>
