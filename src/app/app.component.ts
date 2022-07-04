@@ -11,6 +11,7 @@ import { PreloadService } from "./shared/services/preload.service";
 
 export class AppComponent implements OnInit {
   loaded: boolean = false;
+  startAnimationFinished: boolean = false;
 
   config: Configuration;
   constructor(config: Configuration, private animationService: AnimationService, private preloadService: PreloadService) { this.config = config;}
@@ -31,12 +32,9 @@ export class AppComponent implements OnInit {
   }
 
   async waitLoadinScreen() {
-    await delayExec(1 * 1000);
     this.loaded = true;
     this.animationService.contentLoaded.emit(true);
+    if(this.config.getLoadingContentNeeded()) await this.animationService.delayExec(this.config.getStartDelay() * 1000);
+    this.startAnimationFinished = true;
   }
-}
-
-function delayExec(ms: number) {
-  return new Promise( resolve => setTimeout(resolve, ms) );
 }

@@ -89,5 +89,10 @@
 /* Main/Gallery page color details */
 
 .gallery-container {
-    background-color: #282828;
+    background-color: #ffffff;
+}
+
+.gallery-title {
+    color: #282828;
+    font-family: SansitaSwashed-Medium;
 }

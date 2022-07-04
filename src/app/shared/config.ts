@@ -13,6 +13,7 @@ export class Configuration {
     private baseContentDelay: number = 5.6;
     private baseHeaderDelay: number = 4.6;
     private baseStartDelay: number = 3.2;
+    private baseImageScrollDuration: number = 0.1;
 
     // Getters
     public getHeaderDelay(): number {
@@ -25,6 +26,10 @@ export class Configuration {
 
     public getStartDelay(): number {
         return this.baseStartDelay;
+    }
+
+    public getImageStartScrollDuration(): number {
+        return this.baseImageScrollDuration;
     }
 
     public getLoadingContentNeeded(): boolean {

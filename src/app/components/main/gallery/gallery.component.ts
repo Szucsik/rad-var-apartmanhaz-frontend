@@ -1,33 +1,32 @@
-import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { Galleria } from 'primeng/galleria';
-import { PhotoService } from 'src/app/shared/services/galleryPhoto.service';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { AnimationService } from 'src/app/shared/services/animation.service';
 
 @Component({
   selector: 'app-gallery',
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.scss']
 })
-export class GalleryComponent implements OnInit {
-    images: any[];
+export class GalleryComponent {
+  @ViewChild('gallery', { static: true }) gallery: ElementRef<HTMLImageElement>;
+  readonly imagesDirectory: string = 'assets/photos/';
+  readonly imageSources: string[] = ['image-1.png','image-2.png','image-3.png','image-4.png','image-5.png','image-6.png','image-7.png','image-9.png'];
 
-    responsiveOptions:any[] = [
-        {
-            breakpoint: '1024px',
-            numVisible: 5
-        },
-        {
-            breakpoint: '768px',
-            numVisible: 3
-        },
-        {
-            breakpoint: '560px',
-            numVisible: 1
-        }
-    ];
+  currentImageID: number = 0;
+  currentImageSource: string = this.imagesDirectory.concat(this.imageSources[this.currentImageID]);
 
-    constructor(private photoService: PhotoService) { }
+  constructor(private animationService: AnimationService) { }
 
-    ngOnInit() {
-        this.photoService.getImages().then(images => this.images = images)
-    }
+  scroll(direction: string) {
+    if(direction == 'right') {
+      if(this.currentImageID < this.imageSources.length - 1) {
+        this.currentImageID++;
+        this.animationService.galleryScrollAnimations(this.gallery, this.imagesDirectory.concat(this.imageSources[this.currentImageID]));
+      }
+    } else if (direction == 'left') {
+      if(this.currentImageID > 0) {
+        this.currentImageID--;
+        this.animationService.galleryScrollAnimations(this.gallery, this.imagesDirectory.concat(this.imageSources[this.currentImageID]));
+      }
+    } 
+  }
 }

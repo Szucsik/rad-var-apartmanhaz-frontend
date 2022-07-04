@@ -70,4 +70,16 @@ export class AnimationService {
         gsap.fromTo(content.nativeElement, {opacity: 0}, {opacity: 0.9, duration: 1.2, delay: delay});
         gsap.fromTo(content.nativeElement.childNodes, {opacity: 0}, {opacity: 1, duration: 1.2, delay: delay + 0.2});
       }
+
+      async galleryScrollAnimations(imgElement: ElementRef<HTMLImageElement>, newImgSource: string) {
+        let duration: number = this.config.getImageStartScrollDuration();
+        gsap.fromTo(imgElement.nativeElement, {opacity: 1}, {opacity: 0.0, duration: duration});
+        gsap.fromTo(imgElement.nativeElement, {opacity: 0}, {opacity: 1, duration: duration, delay: duration, src: newImgSource});
+        await this.delayExec(duration * 1000);
+        imgElement.nativeElement.src = newImgSource;
+      }
+
+      async delayExec(ms: number) {
+        return new Promise( resolve => setTimeout(resolve, ms) );
+      }
 }
