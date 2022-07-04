@@ -34,11 +34,7 @@ export class AppComponent implements OnInit {
   async waitLoadinScreen() {
     this.loaded = true;
     this.animationService.contentLoaded.emit(true);
-    if(this.config.getLoadingContentNeeded()) await delayExec(this.config.getStartDelay() * 1000);
+    if(this.config.getLoadingContentNeeded()) await this.animationService.delayExec(this.config.getStartDelay() * 1000);
     this.startAnimationFinished = true;
   }
-}
-
-function delayExec(ms: number) {
-  return new Promise( resolve => setTimeout(resolve, ms) );
 }
