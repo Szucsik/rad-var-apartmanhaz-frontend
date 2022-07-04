@@ -71,18 +71,16 @@ export class ScrollAnimationService {
         scrollTo.to(window,
           {
             delay: 0.2,
-            duration: 3,
-            ease: 'back',
-            scrollTo: 0
+            duration: 0.0,
+            scrollTo: 0,
           }
         );
       } else if (destination == 'gallery') {
         scrollTo.to(window,
           {
             delay: 0.2,
-            duration: 2,
-            ease: 'back',
-            scrollTo: 1100
+            duration: 0.5,
+            scrollTo: 1043
           }
         );
       }
