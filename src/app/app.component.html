@@ -2,7 +2,5 @@
 <div [ngClass]="{'hidden': !loaded}">
     <app-header></app-header>
     <app-start *ngIf="this.config.getLoadingContentNeeded()"></app-start>
-    <div [ngClass]="{'loading-container': !startAnimationFinished}">
-        <app-main></app-main>
-    </div>
+    <app-main></app-main>
 </div>
