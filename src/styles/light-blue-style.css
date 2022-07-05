@@ -107,7 +107,17 @@
     background-color: #282828;
 }
 
-.contacts-title {
+.contacts-main-title {
     color: #ffffff;
     font-family: SansitaSwashed-Medium;
+}
+
+.contacts-title {
+    color: #616161;
+    font-family: Cormorant-Light;
+}
+
+.contacts-text {
+    color: #ffffff;
+    font-family: Cormorant-Light;
 }

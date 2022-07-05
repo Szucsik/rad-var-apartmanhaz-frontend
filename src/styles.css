@@ -1,21 +1,21 @@
 @font-face {
     font-family: Cormorant-Light;
-    src: url('/assets/Cormorant-Light.ttf');
+    src: url('/assets/fonts/Cormorant-Light.ttf');
 }
 
 @font-face {
     font-family: SansitaSwashed-Regular;
-    src: url('/assets/SansitaSwashed-Regular.ttf');
+    src: url('/assets/fonts/SansitaSwashed-Regular.ttf');
 }
 
 @font-face {
     font-family: SansitaSwashed-Medium;
-    src: url('/assets/SansitaSwashed-Medium.ttf');
+    src: url('/assets/fonts/SansitaSwashed-Medium.ttf');
 }
 
 @font-face {
     font-family: BeauRivage-Regular;
-    src: url('/assets/BeauRivage-Regular.ttf');
+    src: url('/assets/fonts/BeauRivage-Regular.ttf');
 }
 
 .start-text-first {
