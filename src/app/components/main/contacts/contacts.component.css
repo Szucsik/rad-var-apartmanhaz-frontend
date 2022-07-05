@@ -1,5 +1,27 @@
 .contacts-container {
+    position: relative;
     width: 100%;
-    height: 900px;
+    height: 1000px;
     padding-top: 20px;
+}
+
+.contacts-map {
+    width: 100%;
+    height: 100%;
+    background-image: url('/assets/contacts-map.png');
+}
+
+.contacts-menu {
+    position: absolute;
+    top: 0px;
+    height: 100%;
+    width: 600px;
+}
+
+.contacts-title {
+    width: 100%;
+    height: 200px;
+    text-align: center;
+    padding: 70px 0;
+    font-size: 40px;
 }

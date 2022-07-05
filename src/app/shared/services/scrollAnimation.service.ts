@@ -79,8 +79,16 @@ export class ScrollAnimationService {
         scrollTo.to(window,
           {
             delay: 0.2,
-            duration: 0.5,
+            duration: 0.8,
             scrollTo: 1043
+          }
+        );
+      } else if (destination == 'contacts') {
+        scrollTo.to(window,
+          {
+            delay: 0.2,
+            duration: 0.8,
+            scrollTo: 1943
           }
         );
       }

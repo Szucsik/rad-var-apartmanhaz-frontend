@@ -102,3 +102,12 @@
 .contacts-container {
     background-color: #282828;
 }
+
+.contacts-menu {
+    background-color: #282828;
+}
+
+.contacts-title {
+    color: #ffffff;
+    font-family: SansitaSwashed-Medium;
+}

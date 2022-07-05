@@ -33,9 +33,9 @@ jobs:
     - name: Deploy
       uses: SamKirkland/FTP-Deploy-Action@4.3.0
       with:
-        server: files.000webhost.com
+        server: ftp.atw.hu
         port: 21
-        username: rad-var-apartmanhaz-develop
+        username:  rad-var-develop
         password: ${{ secrets.FTP_PW  }}
         local-dir: ./dist/rad-var-apartmanhaz/
         server-dir: ./public_html/
