@@ -65,6 +65,17 @@ export class ScrollAnimationService {
       scrollArrovRight.from(document.querySelector('.arrow-right'), { x: 50, opacity: 0 });
     }
 
+    contactsScrollTrigger(): void {
+      const scrollContactPanel = gsap.timeline({
+        scrollTrigger: {
+          trigger: document.querySelector('.contacts-menu'),
+          start: "30% center",
+          toggleActions: "play none none reverse",
+          markers: true
+        }
+      });
+      scrollContactPanel.from(document.querySelector('.contacts-menu'), { x: -50, opacity: 0 });
+    }
     navigate(destination: string) {
       const scrollTo = gsap.timeline();
       if(destination == 'home') {
@@ -79,8 +90,16 @@ export class ScrollAnimationService {
         scrollTo.to(window,
           {
             delay: 0.2,
-            duration: 0.5,
+            duration: 0.8,
             scrollTo: 1043
+          }
+        );
+      } else if (destination == 'contacts') {
+        scrollTo.to(window,
+          {
+            delay: 0.2,
+            duration: 0.8,
+            scrollTo: 1943
           }
         );
       }
