@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ScrollAnimationService } from 'src/app/shared/services/scrollAnimation.service';
 
 @Component({
   selector: 'app-contacts',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private scrollAnimationService: ScrollAnimationService) { }
 
   ngOnInit(): void {
+    this.scrollAnimationService.contactsScrollTrigger();
   }
 
 }
