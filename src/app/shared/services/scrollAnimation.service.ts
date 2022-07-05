@@ -102,6 +102,14 @@ export class ScrollAnimationService {
             scrollTo: 1943
           }
         );
+      } else if (destination == 'nearby') {
+        scrollTo.to(window,
+          {
+            delay: 0.2,
+            duration: 0.8,
+            scrollTo: 2950
+          }
+        );
       }
     }
 }
