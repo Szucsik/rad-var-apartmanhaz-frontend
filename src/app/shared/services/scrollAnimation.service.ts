@@ -70,12 +70,12 @@ export class ScrollAnimationService {
         scrollTrigger: {
           trigger: document.querySelector('.contacts-menu'),
           start: "30% center",
-          toggleActions: "play none none reverse",
-          markers: true
+          toggleActions: "play none none reverse"
         }
       });
       scrollContactPanel.from(document.querySelector('.contacts-menu'), { x: -50, opacity: 0 });
     }
+
     navigate(destination: string) {
       const scrollTo = gsap.timeline();
       if(destination == 'home') {
