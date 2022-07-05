@@ -17,7 +17,7 @@
     height: 145px;
     width: 50px;
     background-size: 40px;
-    background-image: url('/assets/logo-castle-white.png');
+    background-image: url('/assets/site-images/logo-castle-white.png');
     background-repeat: no-repeat;
 }
 
@@ -38,7 +38,7 @@
     height: 70px;
     width: 25px;
     background-size: 25px;
-    background-image: url('/assets/logo-castle-white.png');
+    background-image: url('/assets/site-images/logo-castle-white.png');
     background-repeat: no-repeat;
 }
 
@@ -75,11 +75,11 @@
 }
 
 .quote-start {
-    content: url("/assets/quote-start.png");
+    content: url("/assets/site-images/quote-start.png");
 }
 
 .quote-end {
-    content: url("/assets/quote-end.png");
+    content: url("/assets/site-images/quote-end.png");
 }
 
 .layer-bottom {
@@ -120,4 +120,10 @@
 .contacts-text {
     color: #ffffff;
     font-family: Cormorant-Light;
+}
+
+/* Nearby places page color details */
+
+.nearby-container {
+    background-color: #ffffff;
 }

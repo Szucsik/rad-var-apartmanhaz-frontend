@@ -7,8 +7,9 @@ import { EventEmitter, Injectable } from "@angular/core";
 export class PreloadService {
     public loadComplated: EventEmitter<boolean> = new EventEmitter<boolean>();
     private static loadedImages: Array<HTMLImageElement> = new Array<HTMLImageElement>();
-    private imageList: Array<String> = ["wallpaperflare.com_wallpaper2.jpg", "bg-overlay.png", "cliff.png", "couple2.png",
-                                        "flag-en.png", "flag-hu.png", "flag-gr.png", "flag-pl.png", "logo-castle-white.png", "quote-end.png", "transition.png"];
+    private imageList: Array<String> = ["site-images/wallpaperflare.com_wallpaper2.jpg", "site-images/bg-overlay.png", "site-images/cliff.png", "site-images/couple2.png",
+                                        "site-images/country-flags/flag-en.png", "site-images/country-flags/flag-hu.png", "site-images/country-flags/flag-gr.png", "site-images/country-flags/flag-pl.png",
+                                        "site-images/logo-castle-white.png", "site-images/quote-end.png", "site-images/transition.png"];
     private photoList: Array<String> = ["photos/image-1.png", "photos/image-2.png", "photos/image-3.png", "photos/image-4.png", "photos/image-5.png", "photos/image-6.png", 
                                         "photos/image-7.png", "photos/image-9.png" ];
     private loadedCounter: number = 0;

@@ -17,6 +17,7 @@ import { GalleryComponent } from './components/main/gallery/gallery.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoadingComponent } from './components/loading/loading.component';
 import { ContactsComponent } from './components/main/contacts/contacts.component';
+import { NearbyComponent } from './components/main/nearby/nearby.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ContactsComponent } from './components/main/contacts/contacts.component
     MainComponent,
     GalleryComponent,
     LoadingComponent,
-    ContactsComponent
+    ContactsComponent,
+    NearbyComponent
   ],
   imports: [
     BrowserModule,
