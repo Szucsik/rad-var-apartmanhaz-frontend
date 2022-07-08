@@ -47,35 +47,32 @@ div.lang-item {
 
 /* Language icons */
 
-:host ::ng-deep {
-    .lang-hun-icon {
-        width: 50px;
-        height: 50px;
-    }
 
-    .lang-ger-icon {
-        width: 50px;
-        height: 50px;
-        background-image: url('/assets/flag-gr.png');
-    }
+.lang-hun-icon {
+    width: 50px;
+    height: 50px;
+    background-image: url('/assets/site-images/country-flags/flag-gr.png');
+}
 
-    .lang-eng-icon {
-        width: 50px;
-        height: 50px;
-        background-image: url('/assets/flag-en.png');
-    }
+.lang-ger-icon {
+    width: 50px;
+    height: 50px;
+    background-image: url('/assets/site-images/country-flags/flag-gr.png');
+}
 
-    .p-speeddial-button {
-        background-image: url('/assets/flag-hu.png');
-        background-repeat: no-repeat;
-        color: transparent;
-        background-color: transparent;
-    }
+.lang-eng-icon {
+    width: 50px;
+    height: 50px;
+    background-image: url('/assets/site-images/country-flags/flag-en.png');
+}
 
-    .p-speeddial-button:hover {
-        background-image: url('/assets/flag-hu.png');
-        background-repeat: no-repeat;
-        color: transparent;
-        background-color: transparent;
-    }
+.p-speeddial-button {
+    // background-image: url('/assets/site-images/country-flags/flag-hu.png');
+    background-repeat: no-repeat;
+    background-color: red;
+    color: transparent;
+}
+
+.p-speeddial-button:hover {
+    background-color: red;
 }
