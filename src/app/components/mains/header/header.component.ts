@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
 
   scrollAnimationService: ScrollAnimationService;
 
+  mainLangClass: string;
   items: MenuItem[];
   contextName: string = 'header';
   
@@ -27,28 +28,40 @@ export class HeaderComponent implements OnInit {
     });
 
     this.primengConfig.ripple = true;
-
     this.items = [
       {
-          label: 'asd',
-          icon: 'lang-hun-icon',
+        icon: 'lang-hun-icon lang-icon',
+        command: () => {
+            
+        }
+      },
+      {
+          icon: 'lang-pol-icon lang-icon',
           command: () => {
               
           }
       },
       {
-          icon: 'lang-eng-icon',
+          icon: 'lang-eng-icon lang-icon',
           command: () => {
               
           }
       },
       {
-          icon: 'lang-ger-icon',
+          icon: 'lang-ger-icon lang-icon',
           command: () => {
               
           }
       }
     ];
+  }
+
+  getLanguageItems(): void {
+
+  }
+
+  setLanguage(): void {
+
   }
 }
 

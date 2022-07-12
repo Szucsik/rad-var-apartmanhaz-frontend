@@ -27,12 +27,12 @@ div.menu-item {
 }
 
 div.lang-item {
+    position: relative;
     margin-top: 8px;
     width: 250px;
     height: 72px;
-    text-align: center;
     float: right;
-    vertical-align: middle;
+    right: 45px;
 }
 
 .btns {
@@ -47,32 +47,38 @@ div.lang-item {
 
 /* Language icons */
 
-
-.lang-hun-icon {
+.lang-icon {
     width: 50px;
     height: 50px;
-    background-image: url('/assets/site-images/country-flags/flag-gr.png');
+}
+
+.lang-hun-icon {
+    background-image: url('/assets/site-images/country-flags/flag-hu.png');
+}
+
+.lang-pol-icon {
+    background-image: url('/assets/site-images/country-flags/flag-pl.png');
 }
 
 .lang-ger-icon {
-    width: 50px;
-    height: 50px;
     background-image: url('/assets/site-images/country-flags/flag-gr.png');
 }
 
 .lang-eng-icon {
-    width: 50px;
-    height: 50px;
     background-image: url('/assets/site-images/country-flags/flag-en.png');
 }
 
 .p-speeddial-button {
-    // background-image: url('/assets/site-images/country-flags/flag-hu.png');
+    background-image: url('/assets/site-images/country-flags/flag-hu.png');
     background-repeat: no-repeat;
-    background-color: red;
-    color: transparent;
+    color: transparent!important;
+    border-color: white!important;
 }
 
 .p-speeddial-button:hover {
-    background-color: red;
+    background-image: url('/assets/site-images/country-flags/flag-hu.png')!important;
+    background-repeat: no-repeat;
+    color: transparent!important;
+    opacity: 0.8;
+    border-color: transparent!important;
 }
