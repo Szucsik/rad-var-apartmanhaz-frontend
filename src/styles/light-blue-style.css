@@ -30,21 +30,16 @@
 .header-logo-details {
     background-color: #658285;
     color: white;
-    font-size: 24px;
     font-family: SansitaSwashed-Medium;
 }
 
 .header-logo-img {
-    height: 70px;
-    width: 35px;
-    background-size: 35px;
     background-image: url('/assets/site-images/logo-castle-white.png');
     background-repeat: no-repeat;
 }
 
 .header-menu-item-details {
     color: black;
-    font-size: 25px;
     font-family: SansitaSwashed-Regular;
     background-color: white;
     /* background-color: #bac2cb; */

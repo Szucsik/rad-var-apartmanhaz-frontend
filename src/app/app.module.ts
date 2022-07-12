@@ -3,21 +3,21 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { StartComponent } from './components/start/start.component';
-import { HeaderComponent } from './components/header/header.component';
+import { StartComponent } from './components/mains/start/start.component';
+import { HeaderComponent } from './components/mains/header/header.component';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { SpeedDialModule } from 'primeng/speeddial';
-import { LogoComponent } from './components/logo/logo.component';
+import { LogoComponent } from './components/mains/logo/logo.component';
 import { PanelModule } from 'primeng/panel';
 import { GalleriaModule } from 'primeng/galleria';
-import { HomeComponent } from './components/main/home/home.component';
-import { MainComponent } from './components/main/main.component';
-import { GalleryComponent } from './components/main/gallery/gallery.component';
+import { HomeComponent } from './components/pages/home/home.component';
+import { MainComponent } from './components/pages/main.component';
+import { GalleryComponent } from './components/pages/gallery/gallery.component';
 import { HttpClientModule } from '@angular/common/http';
-import { LoadingComponent } from './components/loading/loading.component';
-import { ContactsComponent } from './components/main/contacts/contacts.component';
-import { NearbyComponent } from './components/main/nearby/nearby.component';
+import { LoadingComponent } from './components/mains/loading/loading.component';
+import { ContactsComponent } from './components/pages/contacts/contacts.component';
+import { NearbyComponent } from './components/pages/nearby/nearby.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,7 @@ import { NearbyComponent } from './components/main/nearby/nearby.component';
     GalleryComponent,
     LoadingComponent,
     ContactsComponent,
-    NearbyComponent
+    NearbyComponent,
   ],
   imports: [
     BrowserModule,

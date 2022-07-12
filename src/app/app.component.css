@@ -3,7 +3,6 @@ div.loading-container {
     max-height: 920px;
     overflow: hidden;
     position: absolute;
-    background-color: red;
 }
 
 div.hidden {
