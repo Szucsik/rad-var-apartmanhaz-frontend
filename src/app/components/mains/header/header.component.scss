@@ -2,10 +2,10 @@
     position: fixed;
     display: inline-flex;
     flex-wrap: nowrap;
-    left: 50%;  
-    margin-left: -40%;
+    width: 100%;
+    left: 0%;
+    margin-left: 0%;
     top: 0px;
-    width: 80%;
     height: 80px;
     z-index: 10;
 }
@@ -20,7 +20,7 @@
 }
 
 .menu-item {
-    width:180px;
+    width:125px;
     height: 80px;
     text-align: center;
     float: left;
@@ -31,10 +31,10 @@
 .lang-item {
     position: relative;
     margin-top: 8px;
-    width: 250px;
     height: 72px;
     margin-left: auto;
-    right: 45px;
+    right: 0px;
+    width: 70px;
 }
 
 .btns {
@@ -85,7 +85,7 @@
     border-color: transparent!important;
 }
 
-@media only screen and (max-width: 1600px) {
+@media only screen and (min-width: 1300px) {
     .header-container {
         left: 50%;  
         margin-left: -45%;
@@ -95,23 +95,21 @@
     .menu-item {
         width:150px;
     }
+
+    .lang-item {
+        width: 250px;
+        right: 45px;
+    }
 }
 
-@media only screen and (max-width: 1300px) {
+@media only screen and (min-width: 1600px) {
     .header-container {
-        left: 0%;
-        margin-left: 0%;
-        width: 100%;
+        left: 50%;  
+        margin-left: -45%;
+        width: 90%;
     }
 
     .menu-item {
-        width: 125px;
-    }
-
-    .lang-item {
-        position: relative;
-        right: 0px;
-        width: 70px;
-        float: right;
+        width:180px;
     }
 }
