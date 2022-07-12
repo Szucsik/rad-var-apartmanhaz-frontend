@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MenuItem, PrimeNGConfig } from 'primeng/api';
 import { AnimationService } from 'src/app/shared/services/animation.service';
 import { ScrollAnimationService } from 'src/app/shared/services/scrollAnimation.service';
@@ -16,13 +16,17 @@ export class HeaderComponent implements OnInit {
 
   scrollAnimationService: ScrollAnimationService;
 
-  mainLangClass: string;
+  langDirection: string = "left";
   items: MenuItem[];
   contextName: string = 'header';
   
   constructor(private primengConfig: PrimeNGConfig, private animationService: AnimationService, private _scrollAnimationService: ScrollAnimationService) { this.scrollAnimationService = _scrollAnimationService; }
 
   ngOnInit(): void {
+    if(window.innerWidth < 1300) {
+      this.langDirection = 'down';
+    }
+
     this.animationService.contentLoaded.subscribe(result => {
       this.animationService.headerAnimations(this.container);
     });
@@ -54,6 +58,15 @@ export class HeaderComponent implements OnInit {
           }
       }
     ];
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    if(window.innerWidth < 1300) {
+      this.langDirection = 'down';
+    } else {
+      this.langDirection = 'left';
+    }
   }
 
   getLanguageItems(): void {

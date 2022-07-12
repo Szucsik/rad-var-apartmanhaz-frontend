@@ -1,14 +1,16 @@
-div.header-container {
+.header-container {
+    position: fixed;
+    display: inline-flex;
+    flex-wrap: nowrap;
     left: 50%;  
     margin-left: -40%;
-    position: fixed;
     top: 0px;
     width: 80%;
     height: 80px;
     z-index: 10;
 }
 
-div.logo-container {
+.logo-container {
     padding-left: 5px;
     padding-top: 12px;
     width: 295px;
@@ -17,7 +19,7 @@ div.logo-container {
     cursor: pointer;
 }
 
-div.menu-item {
+.menu-item {
     width:180px;
     height: 80px;
     text-align: center;
@@ -26,12 +28,12 @@ div.menu-item {
     overflow: hidden;
 }
 
-div.lang-item {
+.lang-item {
     position: relative;
     margin-top: 8px;
     width: 250px;
     height: 72px;
-    float: right;
+    margin-left: auto;
     right: 45px;
 }
 
@@ -81,4 +83,35 @@ div.lang-item {
     color: transparent!important;
     opacity: 0.8;
     border-color: transparent!important;
+}
+
+@media only screen and (max-width: 1600px) {
+    .header-container {
+        left: 50%;  
+        margin-left: -45%;
+        width: 90%;
+    }
+
+    .menu-item {
+        width:150px;
+    }
+}
+
+@media only screen and (max-width: 1300px) {
+    .header-container {
+        left: 0%;
+        margin-left: 0%;
+        width: 100%;
+    }
+
+    .menu-item {
+        width: 125px;
+    }
+
+    .lang-item {
+        position: relative;
+        right: 0px;
+        width: 70px;
+        float: right;
+    }
 }
