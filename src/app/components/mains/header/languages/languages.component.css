@@ -1,0 +1,21 @@
+#heart {
+    font-size: 40px;
+    color: #F27983;
+    position: relative;
+}
+
+#heart:after {
+    content:"HUN";
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    transition: 0s all ease;
+}
+
+#heart:hover:after {
+    transform: scale(2);
+    -webkit-transform: scale(2);
+    opacity:0;
+    transition: .8s all ease;
+}
