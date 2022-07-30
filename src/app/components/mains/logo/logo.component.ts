@@ -1,5 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { AnimationService } from 'src/app/shared/services/animation.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-logo',
@@ -7,19 +6,10 @@ import { AnimationService } from 'src/app/shared/services/animation.service';
   styleUrls: ['./logo.component.css']
 })
 export class LogoComponent implements OnInit {
-  @Input() context: string = '';
-  @Input() startPageAnimation: boolean = false;
 
-  @ViewChild('titleTextFirst', { static: true }) titleTextFirst: ElementRef<HTMLElement>;
-  @ViewChild('titleImg', { static: true }) titleImg: ElementRef<HTMLElement>;
-  @ViewChild('titleTextLast', { static: true }) titleTextLast: ElementRef<HTMLElement>;
-
-  constructor(private animationService: AnimationService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    if(this.startPageAnimation)
-      this.animationService.contentLoaded.subscribe(result => {
-        this.animationService.logoAnimations(this.titleTextFirst, this.titleImg, this.titleTextLast);
-      });
+
   }
 }

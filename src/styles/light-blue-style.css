@@ -6,18 +6,27 @@
 .start-outer-box-background-color {
     background-color: #99B2B4;
 }
-
-.start-logo-details {
-    color: white;
-    font-size: 48px;
-    font-family: SansitaSwashed-Medium;
+.start-castle-img {
+    height: 250px;
+    width: auto;
+    background-size: contain;
+    background-image: url('/assets/site-images/castle-logo.png');
+    background-repeat: no-repeat;
 }
 
-.start-logo-img {
-    height: 145px;
-    width: 50px;
-    background-size: 50px;
-    background-image: url('/assets/site-images/logo-castle-white.png');
+.start-text-first {
+    height: 70px;
+    width: auto;
+    background-size: contain;
+    background-image: url('/assets/site-images/castle-logo-rad-var-text.png');
+    background-repeat: no-repeat;
+}
+
+.start-text-last {
+    height: 35px;
+    width: auto;
+    background-size: contain;
+    background-image: url('/assets/site-images/castle-logo-apartman-text.png');
     background-repeat: no-repeat;
 }
 
@@ -27,15 +36,14 @@
     background-color: white;
 }
 
-.header-logo-details {
+.header-logo {
     background-color: #658285;
-    color: white;
-    font-family: SansitaSwashed-Medium;
-}
-
-.header-logo-img {
-    background-image: url('/assets/site-images/logo-castle-white.png');
+    width: 150px;
+    height: 110px;
+    background-size: contain;
+    background-position: center;
     background-repeat: no-repeat;
+    background-image: url('/assets/site-images/rad-var-logo-full.png');
 }
 
 .header-menu-item-details {

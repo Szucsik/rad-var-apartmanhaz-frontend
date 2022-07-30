@@ -24,20 +24,22 @@ export class AnimationService {
         let screenHeight: number = window.innerHeight;
     
         let animationX = 100;
-        let animationY = 50;
     
-        let X = screenWidth / 2 - 300;
-        let Y = screenHeight / 2 - 200;
+        let X = screenWidth / 2 - 250;
+        let Y = screenHeight / 2 - 250;
     
-        let delay = 1.2;
+        let delay = 1;
     
-        gsap.fromTo(titleTextFirst.nativeElement, {opacity: 0, y: Y + animationY, x: X + animationX}, {opacity: 1, duration: 1, ease: 'back', y: Y, x: X + animationX})
-        gsap.fromTo(titleImg.nativeElement, {opacity: 0, y: Y - animationY, x: X + animationX}, {opacity: 1, duration: 1, ease: 'back', y: Y, x: X + animationX, delay: delay})
+        gsap.fromTo(titleImg.nativeElement, {opacity: 0, y: Y, x: X}, {opacity: 1, duration: 1})
+        gsap.fromTo(titleTextFirst.nativeElement, {opacity: 0, y: Y - 15, x: X + animationX - 60}, {opacity: 1, duration: 1, delay: delay})
     
+        delay += 0.5;
+        gsap.fromTo(titleTextLast.nativeElement, {opacity: 0, y: Y, x: X - animationX}, {opacity: 1, duration: 1, ease: 'back', y: Y, x: X + animationX, delay: delay});
+
         delay++;
-        gsap.fromTo(titleTextFirst.nativeElement, {x: X + animationX}, {duration: 1, ease: 'back',x: X, delay: delay})
-        gsap.fromTo(titleImg.nativeElement, {x: X + animationX}, {duration: 1, ease: 'back',x: X, delay: delay})
-        gsap.fromTo(titleTextLast.nativeElement, {opacity: 0, y: Y, x: X - animationX}, {opacity: 1, duration: 1, ease: 'back', y: Y, x: X, delay: delay});
+        gsap.fromTo(titleImg.nativeElement, {}, {duration: 1, opacity: 0, delay: delay})
+        gsap.fromTo(titleTextFirst.nativeElement, {}, {duration: 1, opacity: 0, delay: delay})
+        gsap.fromTo(titleTextLast.nativeElement, {}, {duration: 1, opacity: 0, delay: delay})
       }
 
       homeAnimations(content: ElementRef<HTMLElement>): void {

@@ -36,6 +36,6 @@ jobs:
         server: files.000webhost.com
         port: 21
         username: rad-var-apartmanhaz-staging
-        password: ${{ secrets.FTP_PW  }}
+        password: Asdfghfg001
         local-dir: ./dist/rad-var-apartmanhaz/
         server-dir: ./public_html/
