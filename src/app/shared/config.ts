@@ -7,7 +7,7 @@ import { Injectable } from "@angular/core";
 
 export class Configuration {
     private expectedUrl: string = "https://www.rad-var-apartmanhaz.hu/";
-    private debugUrl: string = "http://localhost:4200/";
+    private debugUrl: string = "localhost";
     private loadedSessionName: string = "isLoaded";
     private sessionContent: string = "testval";
     private loadingContentNeeded: boolean;
@@ -57,7 +57,7 @@ export class Configuration {
 
     // Setters
     public setStartComponentNeeded() {
-        if (sessionStorage.getItem(this.loadedSessionName) == "this.sessionContent") {
+        if (sessionStorage.getItem(this.loadedSessionName) == this.sessionContent) {
             this.loadingContentNeeded = false;
         } else {
             sessionStorage.setItem(this.loadedSessionName, this.sessionContent);
