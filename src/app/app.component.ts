@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
   }
 
   correctURL(): void {
-    if(window.location.href.includes(this.config.getExpectedUrl()) || this.router.url.includes(this.config.getExpectedUrl())) {
+    if(!window.location.href.includes(this.config.getExpectedUrl()) && !this.router.url.includes(this.config.getExpectedUrl())) {
       window.location.href = this.config.getExpectedUrl();
     }
   }
