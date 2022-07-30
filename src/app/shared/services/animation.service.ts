@@ -34,7 +34,7 @@ export class AnimationService {
         gsap.fromTo(titleTextFirst.nativeElement, {opacity: 0, y: Y - 15, x: X + animationX - 60}, {opacity: 1, duration: 1, delay: delay})
     
         delay += 0.5;
-        gsap.fromTo(titleTextLast.nativeElement, {opacity: 0, y: Y, x: X - animationX}, {opacity: 1, duration: 1, ease: 'back', y: Y - 15, x: X + animationX, delay: delay});
+        gsap.fromTo(titleTextLast.nativeElement, {opacity: 0, y: Y - 15, x: X + animationX}, {opacity: 1, duration: 1, delay: delay});
 
         delay++;
         gsap.fromTo(titleImg.nativeElement, {}, {duration: 1, opacity: 0, delay: delay})
