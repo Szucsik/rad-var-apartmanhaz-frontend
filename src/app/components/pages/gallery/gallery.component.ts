@@ -1,5 +1,6 @@
 
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Configuration } from 'src/app/shared/config';
 import { AnimationService } from 'src/app/shared/services/animation.service';
 import { ScrollAnimationService } from 'src/app/shared/services/scrollAnimation.service';
 
@@ -11,13 +12,13 @@ import { ScrollAnimationService } from 'src/app/shared/services/scrollAnimation.
 export class GalleryComponent implements OnInit {
   @ViewChild('gallery', { static: true }) gallery: ElementRef<HTMLImageElement>;
 
-  readonly imagesDirectory: string = 'assets/photos/';
-  readonly imageSources: string[] = ['image-1.png','image-2.png','image-3.png','image-4.png','image-5.png','image-6.png','image-7.png','image-9.png'];
+  constructor(private animationService: AnimationService, private scrollAnimationService: ScrollAnimationService, private config: Configuration) { }
+
+
+  readonly imageSources: Array<string> = this.config.getPhotoList();
 
   currentImageID: number = 0;
-  currentImageSource: string = this.imagesDirectory.concat(this.imageSources[this.currentImageID]);
-
-  constructor(private animationService: AnimationService, private scrollAnimationService: ScrollAnimationService) { }
+  currentImageSource: string = this.imageSources[this.currentImageID];
 
   ngOnInit(): void {
     this.scrollAnimationService.galleryScrollTrigger();
@@ -27,12 +28,12 @@ export class GalleryComponent implements OnInit {
     if(direction == 'right') {
       if(this.currentImageID < this.imageSources.length - 1) {
         this.currentImageID++;
-        this.animationService.galleryScrollAnimations(this.gallery, this.imagesDirectory.concat(this.imageSources[this.currentImageID]));
+        this.animationService.galleryScrollAnimations(this.gallery, this.imageSources[this.currentImageID]);
       }
     } else if (direction == 'left') {
       if(this.currentImageID > 0) {
         this.currentImageID--;
-        this.animationService.galleryScrollAnimations(this.gallery, this.imagesDirectory.concat(this.imageSources[this.currentImageID]));
+        this.animationService.galleryScrollAnimations(this.gallery, this.imageSources[this.currentImageID]);
       }
     } 
   }

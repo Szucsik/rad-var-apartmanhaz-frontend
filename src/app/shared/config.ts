@@ -17,6 +17,11 @@ export class Configuration {
     private baseStartDelay: number = 3.2;
     private baseImageScrollDuration: number = 0.1;
 
+    private photoList: Array<string> = ["assets/photos//1.jpeg", "assets/photos//2.jpeg", "assets/photos//3.jpeg", "assets/photos//4.jpeg", "assets/photos//5.jpeg", "assets/photos//6.jpeg", "assets/photos//7.jpeg", "assets/photos//8.jpeg",
+    "assets/photos//11.jpeg", "assets/photos//12.jpeg", "assets/photos//13.jpeg", "assets/photos//14.jpeg", "assets/photos//15.jpeg", "assets/photos//16.jpeg", "assets/photos//17.jpeg", "assets/photos//18.jpeg", "assets/photos//19.jpeg",
+    "assets/photos//21.jpeg", "assets/photos//22.jpeg", "assets/photos//23.jpeg", "assets/photos//24.jpeg", "assets/photos//25.jpeg", "assets/photos//26.jpeg", "assets/photos//27.jpeg",
+    "assets/photos//31.jpeg", "assets/photos//32.jpeg"];
+
     // Getters
     public getExpectedUrl(): string {
         return this.expectedUrl;
@@ -53,6 +58,10 @@ export class Configuration {
 
     public getStartAnimationsCompleted(): boolean {
         return this.startAnimationsCompelted;
+    }
+
+    public getPhotoList(): Array<string> {
+        return this.photoList;
     }
 
     // Setters
