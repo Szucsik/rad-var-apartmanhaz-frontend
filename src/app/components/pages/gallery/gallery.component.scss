@@ -1,6 +1,7 @@
 .gallery-container {
+    position: relative;
     width: 100%;
-    height: 900px;
+    height: 600px;
     padding-top: 20px;
 }
 
@@ -30,13 +31,8 @@ img {
     cursor: pointer;
 }
 
-img.arrow-left {
-    margin-left: 350px;
-
-}
-
-img.arrow-right {
-    margin-right: 350px;
+img.arrow-right, img.arrow-left {
+    width: 40px;
 }
 
 img.gallery {
@@ -44,6 +40,27 @@ img.gallery {
     margin-left: auto;
     margin-right: auto;
     width: auto;
-    height: 700px;
-    background-color: blue;
+    max-width: 200px;
+}
+
+@media only screen and (min-width: 1300px) {
+    .gallery-container {
+        height: 900px;
+    }
+
+    img.gallery {
+        width: auto;
+        height: 500px;
+        max-width: 100%;
+    }
+
+    img.arrow-left {
+        margin-left: 350px;
+        width: auto;
+    }
+    
+    img.arrow-right {
+        margin-right: 350px;
+        width: auto;
+    }
 }
