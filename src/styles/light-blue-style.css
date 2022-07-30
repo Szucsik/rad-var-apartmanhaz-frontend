@@ -27,15 +27,14 @@
     background-color: white;
 }
 
-.header-logo-details {
+.header-logo {
     background-color: #658285;
-    color: white;
-    font-family: SansitaSwashed-Medium;
-}
-
-.header-logo-img {
-    background-image: url('/assets/site-images/logo-castle-white.png');
+    width: 150px;
+    height: 110px;
+    background-size: contain;
+    background-position: center;
     background-repeat: no-repeat;
+    background-image: url('/assets/site-images/rad-var-logo-full.png');
 }
 
 .header-menu-item-details {
