@@ -6,6 +6,8 @@ import { Injectable } from "@angular/core";
 })
 
 export class Configuration {
+    private expectedUrl: string = "https://www.rad-var-apartmanhaz.hu/";
+    private debugUrl: string = "http://localhost:4200/";
     private loadedSessionName: string = "isLoaded";
     private sessionContent: string = "testval";
     private loadingContentNeeded: boolean;
@@ -16,6 +18,14 @@ export class Configuration {
     private baseImageScrollDuration: number = 0.1;
 
     // Getters
+    public getExpectedUrl(): string {
+        return this.expectedUrl;
+    }
+
+    public getDebugUrl(): string {
+        return this.debugUrl;
+    }
+
     public getHeaderDelay(): number {
         return this.getLoadingContentNeeded() ? this.baseHeaderDelay : 0;
     }
