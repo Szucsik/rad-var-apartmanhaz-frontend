@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoadingComponent } from './components/mains/loading/loading.component';
 import { ContactsComponent } from './components/pages/contacts/contacts.component';
 import { NearbyComponent } from './components/pages/nearby/nearby.component';
+import { LogoStartComponent } from './components/mains/logo-start/logo-start.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { NearbyComponent } from './components/pages/nearby/nearby.component';
     LoadingComponent,
     ContactsComponent,
     NearbyComponent,
+    LogoStartComponent,
   ],
   imports: [
     BrowserModule,
