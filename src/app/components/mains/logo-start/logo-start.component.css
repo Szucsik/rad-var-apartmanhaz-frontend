@@ -1,14 +1,14 @@
 .start-castle-img {
-    width: 200px;
+    width: 300px;
+    height: 194px;
 }
 
 .start-text-first {
-    width: 200px;
+    width: 249px;
+    height: 54px;
 }
 
 .start-text-last {
-    width: 120px;
-}
-@media only screen and (min-width: 1300px) {
-
+    width: 185px;
+    height: 28px;
 }
