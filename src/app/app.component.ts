@@ -21,7 +21,6 @@ export class AppComponent implements OnInit {
     this.config.setStartComponentNeeded();
     this.preloadTasks();
   }
-
   
   preloadTasks(): void {
     this.correctURL();
