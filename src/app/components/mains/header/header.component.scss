@@ -1,6 +1,5 @@
 .header-container {
     position: fixed;
-    display: inline-flex;
     flex-wrap: nowrap;
     width: 100%;
     left: 0%;
@@ -15,7 +14,9 @@
 }
 
 .menu-item {
-    width:125px;
+    margin-top: -5px;
+    position: relative;
+    width: 150px;
     height: 50px;
     text-align: center;
     vertical-align: middle;
@@ -24,11 +25,8 @@
 
 .lang-item {
     position: relative;
-    margin-top: 8px;
     height: 40px;
-    margin-left: auto;
-    right: 0px;
-    width: 70px;
+    width: 150px;
 }
 
 .btns {
@@ -81,6 +79,7 @@
 }
 
 .p-speeddial-button {
+    margin-left: 50px;
     height: 40px!important;
     width: 40px!important;
     background-image: url('/assets/site-images/country-flags/flag-hu.png');
@@ -101,6 +100,23 @@
     color: transparent!important;
     opacity: 0.8;
     border-color: transparent!important;
+}
+
+.mobile-burger-button {
+    width: 150px;
+    height: 50px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('/assets/site-images/burger-button.png');
+}
+
+.mobile-menu {
+    display: inline-flex;
+}
+
+.mobile-hidden {
+    visibility: hidden;
 }
 
 
@@ -124,6 +140,7 @@
         margin-left: -45%;
         width: 90%;
         height: 80px;
+        display: inline-flex;
     }
 
     .logo-container {
@@ -133,12 +150,15 @@
     .menu-item {
         width:150px;
         height: 80px;
+        margin-top: 0px;
     }
 
     .lang-item {
         width: 250px;
         right: 45px;
         height: 72px;
+        margin-top: 8px;
+        margin-left: auto;
     }
 
     .header-logo-img {
@@ -148,6 +168,7 @@
     }
 
     .p-speeddial-button {
+        margin-left: 0px;
         height: 65px!important;
         width: 65px!important;
     }
@@ -155,6 +176,12 @@
     .p-speeddial-button:hover {
         height: 65px!important;
         width: 65px!important;
+    }
+
+    .mobile-burger-button {
+        visibility: hidden;
+        width: 0px;
+        height: 0px;
     }
 }
 

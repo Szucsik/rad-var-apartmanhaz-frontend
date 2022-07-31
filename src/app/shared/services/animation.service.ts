@@ -20,26 +20,40 @@ export class AnimationService {
     }
 
     logoAnimations(titleTextFirst: ElementRef<HTMLElement>, titleImg: ElementRef<HTMLElement>, titleTextLast: ElementRef<HTMLElement>): void {
+        let castleImg = titleImg.nativeElement;
+        let firstTxt = titleTextFirst.nativeElement;
+        let lastTxt = titleTextLast.nativeElement;
+
         let screenWidth: number = window.innerWidth;
         let screenHeight: number = window.innerHeight;
     
         let animationX = 100;
     
-        let X = screenWidth / 2 - 250;
-        let Y = screenHeight / 2 - 250;
-    
+        let X = screenWidth / 2;
+        let Y = screenHeight / 2;
+
+        let castleY = Y - castleImg.offsetHeight / 2;
+        let castleX = X - castleImg.offsetWidth / 2;
+
+        let firstY = castleY;
+        let firstX = X - firstTxt.offsetWidth / 2;
+
+        let lastY = castleY;
+        let lastX = X - lastTxt.offsetWidth / 2 + X / 15;
+
         let delay = 1;
+
     
-        gsap.fromTo(titleImg.nativeElement, {opacity: 0, y: Y, x: X}, {opacity: 1, duration: 1})
-        gsap.fromTo(titleTextFirst.nativeElement, {opacity: 0, y: Y - 15, x: X + animationX - 60}, {opacity: 1, duration: 1, delay: delay})
+        gsap.fromTo(castleImg, {opacity: 0, y: castleY, x: castleX}, {opacity: 1, duration: 1})
+        gsap.fromTo(firstTxt, {opacity: 0, y: firstY, x: firstX}, {opacity: 1, duration: 1, delay: delay})
     
         delay += 0.5;
-        gsap.fromTo(titleTextLast.nativeElement, {opacity: 0, y: Y - 15, x: X + animationX}, {opacity: 1, duration: 1, delay: delay});
+        gsap.fromTo(lastTxt, {opacity: 0, y:lastY, x: lastX}, {opacity: 1, duration: 1, delay: delay});
 
         delay++;
-        gsap.fromTo(titleImg.nativeElement, {}, {duration: 1, opacity: 0, delay: delay})
-        gsap.fromTo(titleTextFirst.nativeElement, {}, {duration: 1, opacity: 0, delay: delay})
-        gsap.fromTo(titleTextLast.nativeElement, {}, {duration: 1, opacity: 0, delay: delay})
+        gsap.fromTo(castleImg, {}, {duration: 1, opacity: 0, delay: delay})
+        gsap.fromTo(firstTxt, {}, {duration: 1, opacity: 0, delay: delay})
+        gsap.fromTo(lastTxt, {}, {duration: 1, opacity: 0, delay: delay})
       }
 
       homeAnimations(content: ElementRef<HTMLElement>): void {

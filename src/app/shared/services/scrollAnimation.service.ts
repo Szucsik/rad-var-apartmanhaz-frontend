@@ -30,12 +30,13 @@ export class ScrollAnimationService {
     galleryScrollTrigger(): void {
       const scrollTitle = gsap.timeline({
         scrollTrigger: {
-          trigger: document.querySelector('.gallery-title'),
-          start: "300% center",
-          toggleActions: "play none none reverse"
+          trigger: document.querySelector('.gallery-header'),
+          start: "100% center",
+          toggleActions: "play none none reverse",
+          markers: false
         }
       });
-      scrollTitle.from(document.querySelector('.gallery-title'), { y: -50, opacity: 0 });
+      scrollTitle.from(document.querySelector('.gallery-header'), { y: -50, opacity: 0 });
 
       const scrollGallery = gsap.timeline({
         scrollTrigger: {
@@ -49,20 +50,20 @@ export class ScrollAnimationService {
       const scrollArrovLeft = gsap.timeline({
         scrollTrigger: {
           trigger: document.querySelector('.arrow-left'),
-          start: "-50% center",
+          start: "-100% center",
           toggleActions: "play none none reverse"
         }
       });
-      scrollArrovLeft.from(document.querySelector('.arrow-left'), { x: -50, opacity: 0 });
+      scrollArrovLeft.from(document.querySelector('.arrow-left'), { x: 0, opacity: 0 });
 
       const scrollArrovRight = gsap.timeline({
         scrollTrigger: {
           trigger: document.querySelector('.arrow-right'),
-          start: "-50% center",
+          start: "-150% center",
           toggleActions: "play none none reverse"
         }
       });
-      scrollArrovRight.from(document.querySelector('.arrow-right'), { x: 50, opacity: 0 });
+      scrollArrovRight.from(document.querySelector('.arrow-right'), { x: 0, opacity: 0 });
     }
 
     contactsScrollTrigger(): void {

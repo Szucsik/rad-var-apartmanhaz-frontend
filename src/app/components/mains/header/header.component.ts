@@ -19,12 +19,16 @@ export class HeaderComponent implements OnInit {
   langDirection: string = "left";
   items: MenuItem[];
   contextName: string = 'header';
-  
+
+  isMobileResolution: boolean = false;
+  isMobileMenuActive: boolean = false;
+
   constructor(private primengConfig: PrimeNGConfig, private animationService: AnimationService, private _scrollAnimationService: ScrollAnimationService) { this.scrollAnimationService = _scrollAnimationService; }
 
   ngOnInit(): void {
     if(window.innerWidth < 1300) {
-      this.langDirection = 'down';
+      this.langDirection = 'right';
+      this.isMobileResolution = true;
     }
 
     this.animationService.contentLoaded.subscribe(result => {
@@ -63,10 +67,16 @@ export class HeaderComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     if(window.innerWidth < 1300) {
-      this.langDirection = 'down';
+      this.langDirection = 'right';
+      this.isMobileResolution = true;
     } else {
       this.langDirection = 'left';
+      this.isMobileResolution = false;
     }
+  }
+
+  showMobileMenu(): void {
+    this.isMobileMenuActive  = !this.isMobileMenuActive;
   }
 
   getLanguageItems(): void {
