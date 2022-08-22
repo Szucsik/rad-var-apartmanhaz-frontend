@@ -8,3 +8,7 @@ div.loading-container {
 div.hidden {
     visibility: hidden;
 }
+
+div.blur {
+    filter: blur(8px);
+}

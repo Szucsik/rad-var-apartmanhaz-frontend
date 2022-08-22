@@ -11,7 +11,7 @@
         <div class="image-container">
             <img class="arrow-left" src="/assets/site-images/arrow-left.png" alt="..." (click)="this.galleryService.NextImage('left')">
             <div class="image">
-                <img class="gallery" src="{{ this.galleryService.GetCurrentImageSource() }}" alt="..." #gallery>
+                <img class="gallery" src="{{ this.galleryService.GetCurrentImageSource() }}" alt="..." #gallery (click)="this.galleryService.FullScreen(true)">
             </div>
             <img class="arrow-right" src="/assets/site-images/arrow-right.png" alt="..." (click)="this.galleryService.NextImage('right')">
         </div>
