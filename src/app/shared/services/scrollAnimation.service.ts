@@ -50,8 +50,9 @@ export class ScrollAnimationService {
       const scrollArrovLeft = gsap.timeline({
         scrollTrigger: {
           trigger: document.querySelector('.arrow-left'),
-          start: "-100% center",
-          toggleActions: "play none none reverse"
+          start: "-150% center",
+          toggleActions: "play none none reverse",
+          markers: false
         }
       });
       scrollArrovLeft.from(document.querySelector('.arrow-left'), { x: 0, opacity: 0 });

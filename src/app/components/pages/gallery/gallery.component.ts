@@ -2,6 +2,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Configuration } from 'src/app/shared/config';
 import { AnimationService } from 'src/app/shared/services/animation.service';
+import { GalleryService } from 'src/app/shared/services/gallery.service';
 import { ScrollAnimationService } from 'src/app/shared/services/scrollAnimation.service';
 
 @Component({
@@ -11,30 +12,13 @@ import { ScrollAnimationService } from 'src/app/shared/services/scrollAnimation.
 })
 export class GalleryComponent implements OnInit {
   @ViewChild('gallery', { static: true }) gallery: ElementRef<HTMLImageElement>;
-
-  constructor(private animationService: AnimationService, private scrollAnimationService: ScrollAnimationService, private config: Configuration) { }
-
-
-  readonly imageSources: Array<string> = this.config.getPhotoList();
-
-  currentImageID: number = 0;
-  currentImageSource: string = this.imageSources[this.currentImageID];
+  galleryService: GalleryService;
+  constructor(galleryService: GalleryService, private scrollAnimationService: ScrollAnimationService, private config: Configuration) {
+    this.galleryService = galleryService; 
+  }
 
   ngOnInit(): void {
+    this.galleryService.RegisterGalleryComponent(this.gallery);
     this.scrollAnimationService.galleryScrollTrigger();
-  }
-  
-  scroll(direction: string) {
-    if(direction == 'right') {
-      if(this.currentImageID < this.imageSources.length - 1) {
-        this.currentImageID++;
-        this.animationService.galleryScrollAnimations(this.gallery, this.imageSources[this.currentImageID]);
-      }
-    } else if (direction == 'left') {
-      if(this.currentImageID > 0) {
-        this.currentImageID--;
-        this.animationService.galleryScrollAnimations(this.gallery, this.imageSources[this.currentImageID]);
-      }
-    } 
   }
 }

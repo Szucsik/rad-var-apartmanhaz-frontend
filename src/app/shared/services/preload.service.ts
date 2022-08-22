@@ -12,12 +12,12 @@ export class PreloadService {
     private static loadedImages: Array<HTMLImageElement> = new Array<HTMLImageElement>();
     private imageList: Array<string> = ["assets/site-images/wallpaperflare.com_wallpaper2.jpg", "assets/site-images/bg-overlay.png", "assets/site-images/cliff.png", "assets/site-images/couple2.png",
                                         "assets/site-images/country-flags/flag-en.png", "assets/site-images/country-flags/flag-hu.png", "assets/site-images/country-flags/flag-gr.png", "assets/site-images/country-flags/flag-pl.png",
-                                        "assets/site-images/logo-castle-white.png", "assets/site-images/quote-end.png", "assets/site-images/transition.png"];
+                                        "assets/site-images/logo-castle-white.png", "assets/site-images/quote-end.png", "assets/site-images/transition.png", "assets/site-images/close-icon.png" ];
 
     private loadedCounter: number = 0;
 
     public preloadImages(): void {
-        const allImages: Array<string> = this.imageList.concat(this.config.getPhotoList());
+        const allImages: Array<string> = this.imageList;
         allImages.forEach(image => {
             PreloadService.loadedImages.push(new Image());
             let index = PreloadService.loadedImages.length - 1;

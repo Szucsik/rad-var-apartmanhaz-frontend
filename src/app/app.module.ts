@@ -19,6 +19,7 @@ import { LoadingComponent } from './components/mains/loading/loading.component';
 import { ContactsComponent } from './components/pages/contacts/contacts.component';
 import { NearbyComponent } from './components/pages/nearby/nearby.component';
 import { LogoStartComponent } from './components/mains/logo-start/logo-start.component';
+import { FullscreenComponent } from './components/pages/gallery/fullscreen/fullscreen.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { LogoStartComponent } from './components/mains/logo-start/logo-start.com
     ContactsComponent,
     NearbyComponent,
     LogoStartComponent,
+    FullscreenComponent,
   ],
   imports: [
     BrowserModule,

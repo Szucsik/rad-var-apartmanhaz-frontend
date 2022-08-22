@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { Router } from "@angular/router";
 import { Configuration } from "./shared/config";
 import { AnimationService } from "./shared/services/animation.service";
+import { GalleryService } from "./shared/services/gallery.service";
 import { PreloadService } from "./shared/services/preload.service";
 
 @Component({
@@ -12,10 +13,12 @@ import { PreloadService } from "./shared/services/preload.service";
 
 export class AppComponent implements OnInit {
   loaded: boolean = false;
+  fullscreen: boolean = false;
   startAnimationFinished: boolean = false;
-
   config: Configuration;
-  constructor(config: Configuration, private animationService: AnimationService, private preloadService: PreloadService, private router: Router) { this.config = config;}
+
+
+  constructor(config: Configuration, private galleryService: GalleryService, private animationService: AnimationService, private preloadService: PreloadService, private router: Router) { this.config = config;}
 
   ngOnInit(): void {
     this.config.setStartComponentNeeded();
@@ -23,14 +26,14 @@ export class AppComponent implements OnInit {
   }
   
   preloadTasks(): void {
-    this.correctURL();
     this.preloadImages();
+    this.getFullscreenState();
   }
 
-  correctURL(): void {
-    if(!window.location.href.includes(this.config.getExpectedUrl()) && !window.location.href.includes(this.config.getDebugUrl())) {
-      window.location.href = this.config.getExpectedUrl();
-    }
+  getFullscreenState(): void {
+    this.galleryService.fullscreenEvent.subscribe(result => {
+      this.fullscreen = result;
+    });
   }
 
   preloadImages(): void {
