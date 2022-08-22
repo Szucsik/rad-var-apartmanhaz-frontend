@@ -76,3 +76,19 @@
     background-size: cover;
     cursor: pointer;
 }
+
+@media only screen and (min-width: 1300px) {
+    .gallery-fullscreen-left-scroll {
+        top: 50%;
+        transform: translate(0, -50%);
+        width: 200px;
+        height: 200px;
+    }
+
+    .gallery-fullscreen-right-scroll {
+        top: 50%;
+        transform: translate(0, -50%);
+        width: 200px;
+        height: 200px;
+    }
+}
