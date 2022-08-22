@@ -5,14 +5,15 @@
                 Galéria
             </div>
             <div class="gallery-counter">
-                {{ this.currentImageID + 1}}/{{ this.imageSources.length }}
+                {{ this.galleryService.GetCurrentImageID() + 1}}/{{ this.galleryService.GetImagesNumber() }}
             </div>
         </div>
         <div class="image-container">
-            <div class="box-rectangle"></div>
-            <img class="arrow-left" src="/assets/site-images/arrow-left.png" alt="..." (click)="this.scroll('left')">
-            <img class="gallery" src="{{ currentImageSource }}" alt="..." #gallery>
-            <img class="arrow-right" src="/assets/site-images/arrow-right.png" alt="..." (click)="this.scroll('right')">
+            <img class="arrow-left" src="/assets/site-images/arrow-left.png" alt="..." (click)="this.galleryService.NextImage('left')">
+            <div class="image">
+                <img class="gallery" src="{{ this.galleryService.GetCurrentImageSource() }}" alt="..." #gallery>
+            </div>
+            <img class="arrow-right" src="/assets/site-images/arrow-right.png" alt="..." (click)="this.galleryService.NextImage('right')">
         </div>
     </div>
 </div>
