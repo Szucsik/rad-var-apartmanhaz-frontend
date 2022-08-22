@@ -34,11 +34,12 @@ img {
 .image {
     display: inline-block;
     text-align:center;
-    width: 60%;
+    width: 80%;
     background-color: black;
 }
 
 img.arrow-right, img.arrow-left {
+    margin: 5px;
     width: 40px;
 }
 
@@ -47,8 +48,8 @@ img.gallery {
     margin-left: auto;
     margin-right: auto;
     width: auto;
-    max-width: 200px;
-    max-height: 150px;
+    max-width: 280px;
+    max-height: 212px;
 }
 
 @media only screen and (min-width: 1300px) {

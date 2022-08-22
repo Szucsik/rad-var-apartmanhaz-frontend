@@ -20,16 +20,18 @@ export class GalleryService {
         this.galleryComponent = gallery;
     }
 
-    NextImage(direction: string): void {
+    NextImage(direction: string, disableAnimation?: boolean): void {
         if(direction == 'right') {
           if(this.currentImageID < this.imageSources.length - 1) {
             this.currentImageID++;
-            this.animationService.galleryScrollAnimations(this.galleryComponent, this.imageSources[this.currentImageID]);
+            if(disableAnimation != true)
+              this.animationService.galleryScrollAnimations(this.galleryComponent, this.imageSources[this.currentImageID]);
           }
         } else if (direction == 'left') {
           if(this.currentImageID > 0) {
             this.currentImageID--;
-            this.animationService.galleryScrollAnimations(this.galleryComponent, this.imageSources[this.currentImageID]);
+            if(disableAnimation != true)
+              this.animationService.galleryScrollAnimations(this.galleryComponent, this.imageSources[this.currentImageID]);
           }
         } 
       }
