@@ -17,7 +17,7 @@ export class PreloadService {
     private loadedCounter: number = 0;
 
     public preloadImages(): void {
-        const allImages: Array<string> = this.imageList.concat(this.config.getPhotoList());
+        const allImages: Array<string> = this.imageList;
         allImages.forEach(image => {
             PreloadService.loadedImages.push(new Image());
             let index = PreloadService.loadedImages.length - 1;
