@@ -7,11 +7,13 @@ import { ScrollAnimationService } from 'src/app/shared/services/scrollAnimation.
   styleUrls: ['./contacts.component.css']
 })
 export class ContactsComponent implements OnInit {
-
   constructor(private scrollAnimationService: ScrollAnimationService) { }
 
   ngOnInit(): void {
     this.scrollAnimationService.contactsScrollTrigger();
   }
 
+  openLink(url: string): void {
+    window.open(url, "_blank");
+  }
 }
