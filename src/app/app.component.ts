@@ -23,15 +23,9 @@ export class AppComponent implements OnInit {
   }
   
   preloadTasks(): void {
-    this.correctURL();
     this.preloadImages();
   }
 
-  correctURL(): void {
-    if(!window.location.href.includes(this.config.getExpectedUrl()) && !window.location.href.includes(this.config.getDebugUrl())) {
-      window.location.href = this.config.getExpectedUrl();
-    }
-  }
 
   preloadImages(): void {
     this.preloadService.preloadImages();
