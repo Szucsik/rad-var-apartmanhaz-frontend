@@ -50,7 +50,7 @@ export class GalleryService {
       }
 
       GetCurrentImageSource(): string {
-        return this.imageSources[this.currentImageID];
+        return this.imageSources[2];
       }
 
       GetFullScreenState(): Boolean {

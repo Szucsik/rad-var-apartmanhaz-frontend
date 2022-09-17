@@ -11,7 +11,7 @@ import { ScrollAnimationService } from 'src/app/shared/services/scrollAnimation.
   styleUrls: ['./gallery.component.scss']
 })
 export class GalleryComponent implements OnInit {
-  @ViewChild('gallery', { static: true }) gallery: ElementRef<HTMLImageElement>;
+  @ViewChild('gallery-main-image', { static: true }) gallery: ElementRef<HTMLImageElement>;
   galleryService: GalleryService;
   constructor(galleryService: GalleryService, private scrollAnimationService: ScrollAnimationService, private config: Configuration) {
     this.galleryService = galleryService; 

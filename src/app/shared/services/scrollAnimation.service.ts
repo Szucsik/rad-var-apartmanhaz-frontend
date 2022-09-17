@@ -50,7 +50,7 @@ export class ScrollAnimationService {
       const scrollArrovLeft = gsap.timeline({
         scrollTrigger: {
           trigger: document.querySelector('.arrow-left'),
-          start: "-150% center",
+          start: "700% bottom",
           toggleActions: "play none none reverse",
           markers: false
         }
@@ -60,7 +60,7 @@ export class ScrollAnimationService {
       const scrollArrovRight = gsap.timeline({
         scrollTrigger: {
           trigger: document.querySelector('.arrow-right'),
-          start: "-150% center",
+          start: "700% bottom",
           toggleActions: "play none none reverse"
         }
       });
