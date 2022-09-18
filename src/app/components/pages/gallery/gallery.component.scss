@@ -59,6 +59,7 @@ img {
     width: 100%;
     margin: auto;
     display: inline-flex;
+    overflow: hidden;
 }
 
 img.arrow-right, img.arrow-left {
@@ -69,11 +70,16 @@ img.arrow-right, img.arrow-left {
     margin-top: 20px;
 }
 
-img.gallery-main-image, img.gallery-previous-image, img.gallery-next-image {
+img.gallery-main-image {
     z-index: 1;
     margin-left: auto;
     margin-right: auto;
     width: auto;
+}
+
+img.gallery-previous-image-hidden, img.gallery-next-image-hidden {
+    width: 0px;
+    height: 0px;
 }
 
 img.gallery-main-image {
@@ -81,20 +87,11 @@ img.gallery-main-image {
     max-height: 212px;
 }
 
-img.gallery-previous-image, img.gallery-next-image {
+img.gallery-sub-image {
     max-width: 200px;
     max-height: 151px;
 }
 
-img.gallery-previous-image {
-    max-width: 200px;
-    max-height: 151px;
-}
-
-img.gallery-next-image {
-    max-width: 200px;
-    max-height: 151px;
-}
 
 @media only screen and (min-width: 1300px) {
     .gallery-container {
@@ -108,7 +105,7 @@ img.gallery-next-image {
         max-height: 100%;
     }
 
-    img.gallery-previous-image, img.gallery-next-image {
+    img.gallery-sub-image {
         width: auto;
         height: 300px;
         max-width: 70%;
