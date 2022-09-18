@@ -72,8 +72,7 @@ export class AnimationService {
       }
 
       async galleryScrollAnimations(imgs: GalleryImageComponents, directon: string) {
-        // let duration: number = this.config.getImageStartScrollDuration();
-        let duration: number = 2;
+        let duration: number = this.config.getImageStartScrollDuration();
         // get original positions
 
         let previousHiddenPos: Position = {x: imgs.previousHidden.nativeElement.offsetWidth,y: imgs.previousHidden.nativeElement.offsetTop};
@@ -118,7 +117,7 @@ export class AnimationService {
             let tweenNextHid = gsap.fromTo(imgs.nextHidden.nativeElement, {x: startX}, {width: subSize.x, height: subSize.y, y: newNextHiddenPos.y, x: newNextHiddenPos.x, duration: duration});
 
             // after animation
-            await this.delayExec(2000);
+            await this.delayExec(duration * 1000);
 
             tweenPrevVis.progress(0).pause();
             tweenMainVis.progress(0).pause();

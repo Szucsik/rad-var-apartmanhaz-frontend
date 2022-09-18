@@ -40,31 +40,31 @@ export class ScrollAnimationService {
 
       const scrollGallery = gsap.timeline({
         scrollTrigger: {
-          trigger: document.querySelector('.gallery'),
+          trigger: document.querySelector('.images'),
           start: "-10% center",
           toggleActions: "play none none reverse"
         }
       });
-      scrollGallery.from(document.querySelector('.gallery'), { y: 50, opacity: 0 });
+      scrollGallery.from(document.querySelector('.images'), { y: 50, opacity: 0 });
 
       const scrollArrovLeft = gsap.timeline({
         scrollTrigger: {
-          trigger: document.querySelector('.arrow-left'),
-          start: "700% bottom",
+          trigger: document.querySelector('.gallery-next-button'),
+          start: "150% bottom",
           toggleActions: "play none none reverse",
           markers: false
         }
       });
-      scrollArrovLeft.from(document.querySelector('.arrow-left'), { x: 0, opacity: 0 });
+      scrollArrovLeft.from(document.querySelector('.gallery-next-button'), { x: 200, opacity: 0 });
 
       const scrollArrovRight = gsap.timeline({
         scrollTrigger: {
-          trigger: document.querySelector('.arrow-right'),
-          start: "700% bottom",
+          trigger: document.querySelector('.gallery-previous-button'),
+          start: "150% bottom",
           toggleActions: "play none none reverse"
         }
       });
-      scrollArrovRight.from(document.querySelector('.arrow-right'), { x: 0, opacity: 0 });
+      scrollArrovRight.from(document.querySelector('.gallery-previous-button'), { x: -200, opacity: 0 });
     }
 
     contactsScrollTrigger(): void {

@@ -1,6 +1,7 @@
 
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Configuration } from 'src/app/shared/config';
+import { AnimationService } from 'src/app/shared/services/animation.service';
 import { GalleryService } from 'src/app/shared/services/gallery.service';
 import { ScrollAnimationService } from 'src/app/shared/services/scrollAnimation.service';
 import { GalleryImageComponents } from 'src/app/shared/types/gallery.type';
@@ -18,7 +19,8 @@ export class GalleryComponent implements OnInit {
   @ViewChild('galleryNextHid', { static: true }) galleryImageNextHidden: ElementRef<HTMLImageElement>;
 
   galleryService: GalleryService;
-  constructor(galleryService: GalleryService, private scrollAnimationService: ScrollAnimationService, private config: Configuration) {
+  isAnimationOngoing: boolean = false;
+  constructor(galleryService: GalleryService, private scrollAnimationService: ScrollAnimationService, private animationService: AnimationService) {
     this.galleryService = galleryService; 
   }
 
@@ -33,5 +35,16 @@ export class GalleryComponent implements OnInit {
 
     this.galleryService.RegisterGalleryComponents(galleryImageComponents);
     this.scrollAnimationService.galleryScrollTrigger();
+
+    this.animationService.galleryAnimationCompleted.subscribe(result => {
+      this.isAnimationOngoing = false;
+    });
+  }
+
+  NextImage(): void {
+    if(!this.isAnimationOngoing) {
+      this.galleryService.NextImage('right');
+      this.isAnimationOngoing = true;
+    }
   }
 }

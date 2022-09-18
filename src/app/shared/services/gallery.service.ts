@@ -1,8 +1,7 @@
-import { ElementRef, EventEmitter, Injectable, OnInit } from "@angular/core";
+import { EventEmitter, Injectable } from "@angular/core";
 import { Configuration } from "../config";
 import { AnimationService } from "./animation.service";
-import { GalleryImageComponents } from "../types/gallery.type"
-import { Subscription } from "rxjs";
+import { GalleryImageComponents } from "../types/gallery.type";
 
 @Injectable({
     providedIn: 'root',
@@ -12,14 +11,17 @@ export class GalleryService{
     fullscreenEvent: EventEmitter<boolean> = new EventEmitter();
 
     private currentImageID: number = 0;
-    private readonly imageSources: Array<string> = this.config.getPhotoList();
+    private readonly imageSources: Array<string> = this.config.getPhotoPreviewList();
     private galleryImageComponents: GalleryImageComponents;
     private fullscreenState: boolean = false;
 
     constructor(private animationService: AnimationService, private config: Configuration) {       
-      this.animationService.galleryAnimationCompleted.subscribe(result => {
-        if (result)
-          this.currentImageID++;
+      this.animationService.galleryAnimationCompleted.subscribe(increaseOrDecrease => {
+        if(increaseOrDecrease) {
+          this.IncreaseCurrentImageID();
+        } else {
+          this.DecreaseCurrentImageID();
+        }
       });
     }
 
@@ -28,13 +30,15 @@ export class GalleryService{
     }
 
     NextImage(direction: string): void {
-          this.animationService.galleryScrollAnimations(this. galleryImageComponents, direction);
+      this.animationService.galleryScrollAnimations(this. galleryImageComponents, direction);
     }
 
     FullScreen(state: boolean): void {
       this.fullscreenState = state;
       this.fullscreenEvent.emit(state);
     }
+
+    // Getters
 
     GetCurrentImageID(): number {
       return this.currentImageID;
@@ -78,5 +82,23 @@ export class GalleryService{
 
     GetFullScreenState(): Boolean {
       return this.fullscreenState;
+    }
+
+    // Setters
+
+    IncreaseCurrentImageID(): void {
+      if(this.currentImageID + 1 == this.imageSources.length) {
+        this.currentImageID = 0;
+      } else {
+        this.currentImageID++;
+      }
+    }
+
+    DecreaseCurrentImageID(): void {
+      if(this.currentImageID - 1 < 0) {
+        this.currentImageID = this.imageSources.length - 1;
+      } else {
+        this.currentImageID--;
+      }
     }
 }
