@@ -87,34 +87,40 @@ export class AnimationService {
         
         switch(directon) {
           case 'right': {
+            // Correction for main (due css transform. look at css) = future width (after transform / 2)
+            let mainCorrection = subSize.x / 2;
+            // subsize.x/2 -> to make the little sized center; mainsize-subsize / 2 -> due to grow only in the left side
+            let nextCorrection = - subSize.x / 2 + (mainSize.x - subSize.x) / 2;
+
+            let previousRatio = previousPos.x / window.innerWidth;
+            let nextRatio = (nextPos.x + subSize.x) / window.innerWidth;
+
+            let hiddenNextStartX: number = window.innerWidth +  nextHiddenPos.x;
             let newPrevPos: Position  = {
               x: - previousPos.x - subSize.x,
               y: 0
             };
 
             let newMainPos: Position  = {
-              x: previousPos.x - mainPos.x + subSize.x/3,
+              x: window.innerWidth * previousRatio - mainPos.x + mainCorrection,
               y: previousPos.y - mainPos.y
             };
 
             let newNextPos: Position  = {
-              x: mainPos.x - nextPos.x - subSize.x + mainSize.x + 2 * subSize.x / 3,
-              // x: - nextPos.x + (mainSize.x - subSize.x),
+              x: window.innerWidth / 2 - nextPos.x + nextCorrection,
               y: mainPos.y - nextPos.y
             };
 
             let newNextHiddenPos: Position  = {
-              x: nextPos.x - nextHiddenPos.x + 2 * subSize.x / 3,
+              x: window.innerWidth * nextRatio - subSize.x, 
               y: nextPos.y - nextHiddenPos.y
             };
 
-            let startX: number = window.innerWidth - nextHiddenPos.x;
-
             //animation 
-            let tweenPrevVis = gsap.fromTo(imgs.previousVisible.nativeElement, {}, {x: newPrevPos.x, duration: duration});
+            let tweenPrevVis = gsap.fromTo(imgs.previousVisible.nativeElement, {}, {width: 0, height: 0, x: newPrevPos.x, duration: duration});
             let tweenMainVis = gsap.fromTo(imgs.mainVisible.nativeElement, {}, {width: subSize.x, height: subSize.y, x: newMainPos.x, y: newMainPos.y, duration: duration});
-            let tweenNextVis = gsap.fromTo(imgs.nextVisible.nativeElement, {}, {width: mainSize.x, height: mainSize.y,x: newNextPos.x, y: newNextPos.y, duration: duration});
-            let tweenNextHid = gsap.fromTo(imgs.nextHidden.nativeElement, {x: startX}, {width: subSize.x, height: subSize.y, y: newNextHiddenPos.y, x: newNextHiddenPos.x, duration: duration});
+            let tweenNextVis = gsap.fromTo(imgs.nextVisible.nativeElement, {}, {width: mainSize.x, height: mainSize.y, x: newNextPos.x, y: newNextPos.y, duration: duration});
+            let tweenNextHid = gsap.fromTo(imgs.nextHidden.nativeElement, {x: hiddenNextStartX, width: subSize.x, height: subSize.y}, {x: newNextHiddenPos.x, y: newNextHiddenPos.y, duration: duration});
 
             // after animation
             await this.delayExec(duration * 1000);

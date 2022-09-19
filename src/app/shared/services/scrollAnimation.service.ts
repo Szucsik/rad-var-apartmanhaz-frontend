@@ -38,14 +38,14 @@ export class ScrollAnimationService {
       });
       scrollTitle.from(document.querySelector('.gallery-header'), { y: -50, opacity: 0 });
 
-      const scrollGallery = gsap.timeline({
-        scrollTrigger: {
-          trigger: document.querySelector('.images'),
-          start: "-10% center",
-          toggleActions: "play none none reverse"
-        }
-      });
-      scrollGallery.from(document.querySelector('.images'), { y: 50, opacity: 0 });
+      // const scrollGallery = gsap.timeline({
+      //   scrollTrigger: {
+      //     trigger: document.querySelector('.images'),
+      //     start: "-10% center",
+      //     toggleActions: "play none none reverse"
+      //   }
+      // });
+      // scrollGallery.from(document.querySelector('.images'), { y: 50, opacity: 0 });
 
       const scrollArrovLeft = gsap.timeline({
         scrollTrigger: {
