@@ -127,6 +127,47 @@ export class AnimationService {
             this.galleryAnimationCompleted.emit(true);
             break;
           }
+          case 'left': {
+            let newPrevPos: Position  = {
+              x: mainPos.x - previousPos.x  + subSize.x - mainSize.x - subSize.x/3,
+              y: mainPos.y - previousPos.y 
+            };
+
+            let newMainPos: Position  = {
+              x: nextPos.x - mainPos.x + subSize.x - mainSize.x - subSize.x/2,
+              y: nextPos.y - mainPos.y
+            };
+
+            let newNextPos: Position  = {
+              x: subSize.x + subSize.x/2,
+              // x: - nextPos.x + (mainSize.x - subSize.x),
+              y: 0
+            };
+
+            let newPrevHiddenPos: Position  = {
+              x: previousPos.x,
+              y: nextPos.y - nextHiddenPos.y
+            };
+
+            let startX: number = - subSize.x;
+
+            //animation 
+            let tweenNextVis = gsap.fromTo(imgs.nextVisible.nativeElement, {}, {x: newNextPos.x, duration: duration});
+            let tweenMainVis = gsap.fromTo(imgs.mainVisible.nativeElement, {}, {width: subSize.x, height: subSize.y, x: newMainPos.x, y: newMainPos.y, duration: duration});
+            let tweenPrevVis = gsap.fromTo(imgs.previousVisible.nativeElement, {}, {width: mainSize.x, height: mainSize.y,x: newPrevPos.x, y: newPrevPos.y, duration: duration});
+            let tweenPrevHid = gsap.fromTo(imgs.previousHidden.nativeElement, {x: startX}, {width: subSize.x, height: subSize.y, y: newPrevHiddenPos.y, x: newPrevHiddenPos.x, duration: duration});
+
+            // after animation
+            await this.delayExec(duration * 1000);
+
+            tweenNextVis.progress(0).pause();
+            tweenMainVis.progress(0).pause();
+            tweenPrevVis.progress(0).pause();
+            tweenPrevHid.progress(0).pause();
+
+            this.galleryAnimationCompleted.emit(false);
+            break;
+          }
         }
       }
 
