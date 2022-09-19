@@ -1,3 +1,26 @@
+a:link, a:visited {
+    position: relative;
+    display: inline-block;
+    font-family: Cormorant-Light;
+    color:white;
+    overflow: hidden;
+    background: linear-gradient(to right, lime, lime 50%, white 50%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 100%;
+    background-position: 100%;
+    transition: background-position 275ms ease;
+    text-decoration: none; // text decorations are clipped in WebKit browsers
+    &:hover {
+        background-position: 0 100%;
+    }
+}
+
+a:link:hover, a:visited:hover {
+    color: #f4f3f3;
+}
+
 /* Start screen color details */
 .start-inner-box-background-color {
     background-color: #bac2cb;
@@ -38,8 +61,6 @@
 
 .header-logo {
     background-color: #658285;
-    width: 150px;
-    height: 110px;
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -95,9 +116,32 @@
     background-color: #ffffff;
 }
 
-.gallery-title {
+.gallery-text {
     color: #282828;
-    font-family: SansitaSwashed-Medium;
+    font-family: BeauRivage-Regular;
+}
+
+.gallery-left-button-text, .gallery-right-button-text {
+    position: relative;
+    display: inline-block;
+    font-family: BeauRivage-Regular;
+   color: #282828;
+    overflow: hidden;
+    background: linear-gradient(to right, #ff5733, #ff5733 50%, #282828 50%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 100%;
+    background-position: 100%;
+    transition: background-position 275ms ease;
+    text-decoration: none; // text decorations are clipped in WebKit browsers
+    &:hover {
+        background-position: 0 100%;
+    }
+}
+
+.gallery-left-button-text:hover, .gallery-right-button-text:hover {
+    color: #282828;
 }
 
 /* Contacts page color details */
@@ -124,6 +168,13 @@
     color: #ffffff;
     font-family: Cormorant-Light;
 }
+
+/* Gallery page color details */
+
+.gallery-fullscreen-counter {
+    font-family: Cormorant-Light;
+}
+
 
 /* Nearby places page color details */
 

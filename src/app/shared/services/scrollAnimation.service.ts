@@ -30,39 +30,41 @@ export class ScrollAnimationService {
     galleryScrollTrigger(): void {
       const scrollTitle = gsap.timeline({
         scrollTrigger: {
-          trigger: document.querySelector('.gallery-title'),
-          start: "300% center",
-          toggleActions: "play none none reverse"
+          trigger: document.querySelector('.gallery-header'),
+          start: "100% center",
+          toggleActions: "play none none reverse",
+          markers: false
         }
       });
-      scrollTitle.from(document.querySelector('.gallery-title'), { y: -50, opacity: 0 });
+      scrollTitle.from(document.querySelector('.gallery-header'), { y: -50, opacity: 0 });
 
       const scrollGallery = gsap.timeline({
         scrollTrigger: {
-          trigger: document.querySelector('.gallery'),
+          trigger: document.querySelector('.images'),
           start: "-10% center",
           toggleActions: "play none none reverse"
         }
       });
-      scrollGallery.from(document.querySelector('.gallery'), { y: 50, opacity: 0 });
+      scrollGallery.from(document.querySelector('.images'), { y: 50, opacity: 0 });
 
       const scrollArrovLeft = gsap.timeline({
         scrollTrigger: {
-          trigger: document.querySelector('.arrow-left'),
-          start: "-50% center",
-          toggleActions: "play none none reverse"
+          trigger: document.querySelector('.gallery-next-button'),
+          start: "150% bottom",
+          toggleActions: "play none none reverse",
+          markers: false
         }
       });
-      scrollArrovLeft.from(document.querySelector('.arrow-left'), { x: -50, opacity: 0 });
+      scrollArrovLeft.from(document.querySelector('.gallery-next-button'), { x: 200, opacity: 0 });
 
       const scrollArrovRight = gsap.timeline({
         scrollTrigger: {
-          trigger: document.querySelector('.arrow-right'),
-          start: "-50% center",
+          trigger: document.querySelector('.gallery-previous-button'),
+          start: "150% bottom",
           toggleActions: "play none none reverse"
         }
       });
-      scrollArrovRight.from(document.querySelector('.arrow-right'), { x: 50, opacity: 0 });
+      scrollArrovRight.from(document.querySelector('.gallery-previous-button'), { x: -200, opacity: 0 });
     }
 
     contactsScrollTrigger(): void {
