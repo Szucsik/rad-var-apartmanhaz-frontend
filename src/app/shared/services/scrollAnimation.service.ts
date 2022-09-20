@@ -68,7 +68,7 @@ export class ScrollAnimationService {
       const scrollArrovLeft = gsap.timeline({
         scrollTrigger: {
           trigger: document.querySelector('.gallery-next-button'),
-          start: "150% bottom",
+          start: "100% bottom",
           toggleActions: "play none none reverse",
           markers: false
         }
@@ -78,7 +78,7 @@ export class ScrollAnimationService {
       const scrollArrovRight = gsap.timeline({
         scrollTrigger: {
           trigger: document.querySelector('.gallery-previous-button'),
-          start: "150% bottom",
+          start: "100% bottom",
           toggleActions: "play none none reverse",
         }
       });
