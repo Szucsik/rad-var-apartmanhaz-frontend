@@ -75,15 +75,14 @@ export class ScrollAnimationService {
       });
       scrollArrovLeft.from(document.querySelector('.gallery-next-button'), { x: 200, opacity: 0 });
 
-      // const scrollArrovRight = gsap.timeline({
-      //   scrollTrigger: {
-      //     trigger: document.querySelector('.gallery-previous-button'),
-      //     start: "150% bottom",
-      //     toggleActions: "play none none reverse",
-      //     markers: true
-      //   }
-      // });
-      // scrollArrovRight.from(document.querySelector('.gallery-previous-button'), { x: -200, opacity: 0 });
+      const scrollArrovRight = gsap.timeline({
+        scrollTrigger: {
+          trigger: document.querySelector('.gallery-previous-button'),
+          start: "150% bottom",
+          toggleActions: "play none none reverse",
+        }
+      });
+      scrollArrovRight.from(document.querySelector('.gallery-previous-button'), { x: -200, opacity: 0 });
     }
 
     contactsScrollTrigger(): void {
