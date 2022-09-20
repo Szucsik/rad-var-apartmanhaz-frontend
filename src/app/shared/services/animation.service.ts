@@ -1,13 +1,17 @@
 import { ElementRef, EventEmitter, Injectable } from "@angular/core";
 import { Configuration } from "../config";
 import { gsap } from 'gsap';
+import { GalleryImageComponents } from "../types/gallery.type";
+import { Position } from "../types/position.type";
+
 
 @Injectable({
     providedIn: 'root',
 })
 export class AnimationService {
     contentLoaded: EventEmitter<boolean> = new EventEmitter();
-
+    galleryAnimationCompleted: EventEmitter<boolean> = new EventEmitter();
+    
     constructor(private config: Configuration) { }
 
     startAnimations(outerBox: ElementRef<HTMLDivElement>, innerBox: ElementRef<HTMLDivElement>): void {
@@ -67,12 +71,112 @@ export class AnimationService {
         gsap.fromTo(content.nativeElement.childNodes, {opacity: 0}, {opacity: 1, duration: 1.2, delay: delay + 0.2});
       }
 
-      async galleryScrollAnimations(imgElement: ElementRef<HTMLImageElement>, newImgSource: string) {
+      async galleryScrollAnimations(imgs: GalleryImageComponents, directon: string) {
         let duration: number = this.config.getImageStartScrollDuration();
-        gsap.fromTo(imgElement.nativeElement, {opacity: 1}, {opacity: 0.0, duration: duration});
-        gsap.fromTo(imgElement.nativeElement, {opacity: 0}, {opacity: 1, duration: duration, delay: duration, src: newImgSource});
-        await this.delayExec(duration * 1000);
-        imgElement.nativeElement.src = newImgSource;
+        let subOpacity: number =  0.3;
+        // get original positions
+
+        let previousHiddenPos: Position = {x: imgs.previousHidden.nativeElement.offsetWidth,y: imgs.previousHidden.nativeElement.offsetTop};
+        let previousPos: Position = {x: imgs.previousVisible.nativeElement.x,y: imgs.previousVisible.nativeElement.y};
+        let mainPos: Position = {x: imgs.mainVisible.nativeElement.x,y: imgs.mainVisible.nativeElement.y};
+        let nextPos: Position = {x: imgs.nextVisible.nativeElement.x,y: imgs.nextVisible.nativeElement.y};
+        let nextHiddenPos: Position = {x: imgs.nextHidden.nativeElement.x,y: imgs.nextHidden.nativeElement.y};
+
+        //  get original sizes
+        let mainSize: Position = {x: imgs.mainVisible.nativeElement.clientWidth,y: imgs.mainVisible.nativeElement.clientHeight};
+        let subSize: Position = {x: imgs.nextVisible.nativeElement.clientWidth,y: imgs.nextVisible.nativeElement.clientHeight};
+        
+        switch(directon) {
+          case 'right': {
+            // Correction for main (due css transform. look at css) = future width (after transform / 2)
+            let mainCorrection = subSize.x / 2;
+            // mainsize-subsize -> due to grow only in the left side
+            let nextCorrection =  mainSize.x - subSize.x;
+
+            let newPrevPos: Position  = {
+              x: - previousPos.x - subSize.x,
+              y: 0
+            };
+
+            let newMainPos: Position  = {
+              x: previousPos.x - mainPos.x + mainCorrection,
+              y: previousPos.y - mainPos.y
+            };
+
+            let newNextPos: Position  =   {
+              // mainpos - mainsize.x / 2 -> /2 azért kell mert a css-ben transformot használtunk!
+              x: mainPos.x - mainSize.x / 2 - nextPos.x + nextCorrection,
+              y: mainPos.y - nextPos.y
+            };
+
+            let newNextHiddenPos: Position  = {
+              x: nextPos.x, 
+              y: nextPos.y - nextHiddenPos.y
+            };
+
+            //animation 
+            let tweenPrevVis = gsap.fromTo(imgs.previousVisible.nativeElement, {}, {opacity: 0, width: 0, height: 0, x: newPrevPos.x, duration: duration});
+            let tweenMainVis = gsap.fromTo(imgs.mainVisible.nativeElement, {}, {opacity: subOpacity, width: subSize.x, height: subSize.y, x: newMainPos.x, y: newMainPos.y, duration: duration});
+            let tweenNextVis = gsap.fromTo(imgs.nextVisible.nativeElement, {}, {opacity: 1, width: mainSize.x, height: mainSize.y, x: newNextPos.x, y: newNextPos.y, duration: duration});
+            let tweenNextHid = gsap.fromTo(imgs.nextHidden.nativeElement, {opacity: 0, x: window.innerWidth, width: 0, height: 0}, {opacity: subOpacity, width: subSize.x, height: subSize.y, x: newNextHiddenPos.x, y: newNextHiddenPos.y, duration: duration});
+
+            // after animation
+            await this.delayExec(duration * 1000);
+
+            tweenPrevVis.progress(0).pause();
+            tweenMainVis.progress(0).pause();
+            tweenNextVis.progress(0).pause();
+            tweenNextHid.progress(0).pause();
+
+            this.galleryAnimationCompleted.emit(true);
+            break;
+          }
+          case 'left': {
+            // Correction for main (due css transform. look at css) = future width (after transform / 2)
+            let mainCorrection =  + mainSize.x / 2 - (mainSize.x - subSize.x) / 2;
+
+            let newPrevPos: Position  = {
+              // Ha nem használunk transform-ot a kicsinyites/növeles a bal oldalon történik lefelé
+              // Ha használunk akkor közepen
+              x: mainPos.x - mainSize.x / 2 - previousPos.x,
+              y: mainPos.y - previousPos.y
+            };
+
+            let newMainPos: Position  = {
+              x: nextPos.x - mainPos.x + mainCorrection,
+              y: nextPos.y - mainPos.y
+            };
+
+            let newNextPos: Position  = {
+              x: subSize.x + subSize.x/2,
+              y: 0
+            };
+
+            let newPrevHiddenPos: Position  = {
+              x: previousPos.x,
+              y: nextPos.y - nextHiddenPos.y
+            };
+
+            let startX: number = - subSize.x;
+
+            //animation 
+            let tweenNextVis = gsap.fromTo(imgs.nextVisible.nativeElement, {}, {opacity: 0, width: 0, height: 0, x: newNextPos.x, duration: duration});
+            let tweenMainVis = gsap.fromTo(imgs.mainVisible.nativeElement, {}, {opacity: subOpacity, width: subSize.x, height: subSize.y, x: newMainPos.x, y: newMainPos.y, duration: duration});
+            let tweenPrevVis = gsap.fromTo(imgs.previousVisible.nativeElement, {}, {opacity: 1, width: mainSize.x, height: mainSize.y,x: newPrevPos.x, y: newPrevPos.y, duration: duration});
+            let tweenPrevHid = gsap.fromTo(imgs.previousHidden.nativeElement, {opacity: 0, x: startX}, {opacity: subOpacity, width: subSize.x, height: subSize.y, y: newPrevHiddenPos.y, x: newPrevHiddenPos.x, duration: duration});
+
+            // after animation
+            await this.delayExec(duration * 1000);
+
+            tweenNextVis.progress(0).pause();
+            tweenMainVis.progress(0).pause();
+            tweenPrevVis.progress(0).pause();
+            tweenPrevHid.progress(0).pause();
+
+            this.galleryAnimationCompleted.emit(false);
+            break;
+          }
+        }
       }
 
       async delayExec(ms: number) {
