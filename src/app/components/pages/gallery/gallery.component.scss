@@ -39,7 +39,7 @@
 }
 
 .image-container {
-    height: 700px;
+    height: 400px;
     align-items: center;
     justify-content: center;
 }
@@ -47,7 +47,6 @@
 
 img {
     position: absolute;
-    top: 200px;
     margin: 0%;
 }
 
@@ -62,7 +61,7 @@ img.arrow-right, img.arrow-left {
     margin: 5px;
     width: 60px;
     height: 25px;
-    margin-top: 20px;
+    margin: 21px;
 }
 
 img.gallery-previous-image {
@@ -96,6 +95,26 @@ img.gallery-sub-image {
 
 
 @media only screen and (min-width: 1300px) {
+    .gallery-container {
+        height: 700px;
+    }
+
+    img.gallery-main-image {
+        width: auto;
+        height: 300px;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    img.gallery-sub-image {
+        width: auto;
+        height: 200px;
+        max-width: 70%;
+        max-height: 70%;
+    }
+}
+
+@media only screen and (min-width: 1500px) {
     .gallery-container {
         height: 900px;
     }

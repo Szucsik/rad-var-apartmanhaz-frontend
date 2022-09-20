@@ -38,14 +38,32 @@ export class ScrollAnimationService {
       });
       scrollTitle.from(document.querySelector('.gallery-header'), { y: -50, opacity: 0 });
 
-      // const scrollGallery = gsap.timeline({
-      //   scrollTrigger: {
-      //     trigger: document.querySelector('.images'),
-      //     start: "-10% center",
-      //     toggleActions: "play none none reverse"
-      //   }
-      // });
-      // scrollGallery.from(document.querySelector('.images'), { y: 50, opacity: 0 });
+      const scrollGalleryPrevious = gsap.timeline({
+        scrollTrigger: {
+          trigger: document.querySelector('.gallery-previous-image'),
+          start: "-20% center",
+          toggleActions: "play none none reverse",
+        }
+      });
+      scrollGalleryPrevious.from(document.querySelector('.gallery-previous-image'), { x: -50, opacity: 0 });
+
+      const scrollGalleryNext = gsap.timeline({
+        scrollTrigger: {
+          trigger: document.querySelector('.gallery-next-image'),
+          start: "-20% center",
+          toggleActions: "play none none reverse",
+        }
+      });
+      scrollGalleryNext.from(document.querySelector('.gallery-next-image'), { x: 50, opacity: 0 });
+
+      const scrollGalleryMain = gsap.timeline({
+        scrollTrigger: {
+          trigger: document.querySelector('.gallery-main-image'),
+          start: "8% center",
+          toggleActions: "play none none reverse"
+        }
+      });
+      scrollGalleryMain.from(document.querySelector('.gallery-main-image'), {opacity: 0 });
 
       const scrollArrovLeft = gsap.timeline({
         scrollTrigger: {
@@ -57,14 +75,15 @@ export class ScrollAnimationService {
       });
       scrollArrovLeft.from(document.querySelector('.gallery-next-button'), { x: 200, opacity: 0 });
 
-      const scrollArrovRight = gsap.timeline({
-        scrollTrigger: {
-          trigger: document.querySelector('.gallery-previous-button'),
-          start: "150% bottom",
-          toggleActions: "play none none reverse"
-        }
-      });
-      scrollArrovRight.from(document.querySelector('.gallery-previous-button'), { x: -200, opacity: 0 });
+      // const scrollArrovRight = gsap.timeline({
+      //   scrollTrigger: {
+      //     trigger: document.querySelector('.gallery-previous-button'),
+      //     start: "150% bottom",
+      //     toggleActions: "play none none reverse",
+      //     markers: true
+      //   }
+      // });
+      // scrollArrovRight.from(document.querySelector('.gallery-previous-button'), { x: -200, opacity: 0 });
     }
 
     contactsScrollTrigger(): void {
