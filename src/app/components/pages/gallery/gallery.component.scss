@@ -38,13 +38,6 @@
     right: 20%;
 }
 
-.gallery-counter {
-    margin-top: 20px;
-    height: 80px;
-    font-size: 20px;
-    text-align: center;
-}
-
 .image-container {
     height: 700px;
     align-items: center;
@@ -54,9 +47,8 @@
 
 img {
     position: absolute;
-    vertical-align: middle;
-    margin:0 1em;
     top: 200px;
+    margin: 0%;
 }
 
 .images {

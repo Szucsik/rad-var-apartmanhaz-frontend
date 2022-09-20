@@ -76,10 +76,10 @@ export class AnimationService {
         // get original positions
 
         let previousHiddenPos: Position = {x: imgs.previousHidden.nativeElement.offsetWidth,y: imgs.previousHidden.nativeElement.offsetTop};
-        let previousPos: Position = {x: imgs.previousVisible.nativeElement.offsetLeft,y: imgs.previousVisible.nativeElement.offsetTop};
-        let mainPos: Position = {x: imgs.mainVisible.nativeElement.offsetLeft,y: imgs.mainVisible.nativeElement.offsetTop};
-        let nextPos: Position = {x: imgs.nextVisible.nativeElement.offsetLeft,y: imgs.nextVisible.nativeElement.offsetTop};
-        let nextHiddenPos: Position = {x: imgs.nextHidden.nativeElement.offsetLeft,y: imgs.nextHidden.nativeElement.offsetTop};
+        let previousPos: Position = {x: imgs.previousVisible.nativeElement.x,y: imgs.previousVisible.nativeElement.y};
+        let mainPos: Position = {x: imgs.mainVisible.nativeElement.x,y: imgs.mainVisible.nativeElement.y};
+        let nextPos: Position = {x: imgs.nextVisible.nativeElement.x,y: imgs.nextVisible.nativeElement.y};
+        let nextHiddenPos: Position = {x: imgs.nextHidden.nativeElement.x,y: imgs.nextHidden.nativeElement.y};
 
         //  get original sizes
         let mainSize: Position = {x: imgs.mainVisible.nativeElement.clientWidth,y: imgs.mainVisible.nativeElement.clientHeight};
@@ -89,30 +89,27 @@ export class AnimationService {
           case 'right': {
             // Correction for main (due css transform. look at css) = future width (after transform / 2)
             let mainCorrection = subSize.x / 2;
-            // subsize.x/2 -> to make the little sized center; mainsize-subsize / 2 -> due to grow only in the left side
-            let nextCorrection = - subSize.x / 2 + (mainSize.x - subSize.x) / 2;
+            // mainsize-subsize -> due to grow only in the left side
+            let nextCorrection =  mainSize.x - subSize.x;
 
-            let previousRatio = previousPos.x / window.innerWidth;
-            let nextRatio = (nextPos.x + subSize.x) / window.innerWidth;
-
-            let hiddenNextStartX: number = window.innerWidth +  nextHiddenPos.x;
             let newPrevPos: Position  = {
               x: - previousPos.x - subSize.x,
               y: 0
             };
 
             let newMainPos: Position  = {
-              x: window.innerWidth * previousRatio - mainPos.x + mainCorrection,
+              x: previousPos.x - mainPos.x + mainCorrection,
               y: previousPos.y - mainPos.y
             };
 
-            let newNextPos: Position  = {
-              x: window.innerWidth / 2 - nextPos.x + nextCorrection,
+            let newNextPos: Position  =   {
+              // mainpos - mainsize.x / 2 -> /2 azért kell mert a css-ben transformot használtunk!
+              x: mainPos.x - mainSize.x / 2 - nextPos.x + nextCorrection,
               y: mainPos.y - nextPos.y
             };
 
             let newNextHiddenPos: Position  = {
-              x: window.innerWidth * nextRatio - subSize.x, 
+              x: nextPos.x, 
               y: nextPos.y - nextHiddenPos.y
             };
 
@@ -120,7 +117,7 @@ export class AnimationService {
             let tweenPrevVis = gsap.fromTo(imgs.previousVisible.nativeElement, {}, {width: 0, height: 0, x: newPrevPos.x, duration: duration});
             let tweenMainVis = gsap.fromTo(imgs.mainVisible.nativeElement, {}, {width: subSize.x, height: subSize.y, x: newMainPos.x, y: newMainPos.y, duration: duration});
             let tweenNextVis = gsap.fromTo(imgs.nextVisible.nativeElement, {}, {width: mainSize.x, height: mainSize.y, x: newNextPos.x, y: newNextPos.y, duration: duration});
-            let tweenNextHid = gsap.fromTo(imgs.nextHidden.nativeElement, {x: hiddenNextStartX, width: subSize.x, height: subSize.y}, {x: newNextHiddenPos.x, y: newNextHiddenPos.y, duration: duration});
+            let tweenNextHid = gsap.fromTo(imgs.nextHidden.nativeElement, {x: window.innerWidth, width: 0, height: 0}, {width: subSize.x, height: subSize.y, x: newNextHiddenPos.x, y: newNextHiddenPos.y, duration: duration});
 
             // after animation
             await this.delayExec(duration * 1000);
@@ -134,19 +131,23 @@ export class AnimationService {
             break;
           }
           case 'left': {
+            // Correction for main (due css transform. look at css) = future width (after transform / 2)
+            let mainCorrection =  + mainSize.x / 2 - (mainSize.x - subSize.x) / 2;
+
             let newPrevPos: Position  = {
-              x: mainPos.x - previousPos.x  + subSize.x - mainSize.x - subSize.x/3,
-              y: mainPos.y - previousPos.y 
+              // Ha nem használunk transform-ot a kicsinyites/növeles a bal oldalon történik lefelé
+              // Ha használunk akkor közepen
+              x: mainPos.x - mainSize.x / 2 - previousPos.x,
+              y: mainPos.y - previousPos.y
             };
 
             let newMainPos: Position  = {
-              x: nextPos.x - mainPos.x + subSize.x - mainSize.x - subSize.x/2,
+              x: nextPos.x - mainPos.x + mainCorrection,
               y: nextPos.y - mainPos.y
             };
 
             let newNextPos: Position  = {
               x: subSize.x + subSize.x/2,
-              // x: - nextPos.x + (mainSize.x - subSize.x),
               y: 0
             };
 
