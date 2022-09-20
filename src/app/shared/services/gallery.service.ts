@@ -12,6 +12,7 @@ export class GalleryService{
 
     private currentImageID: number = 0;
     private readonly imageSources: Array<string> = this.config.getPhotoPreviewList();
+    private readonly HDImageSources: Array<string> = this.config.getPhotoList();
     private galleryImageComponents: GalleryImageComponents;
     private fullscreenState: boolean = false;
 
@@ -62,6 +63,10 @@ export class GalleryService{
 
     GetCurrentImageSource(): string {
       return this.imageSources[this.currentImageID];
+    }
+
+    GetCurrentHDImageSource(): string {
+      return this.HDImageSources[this.currentImageID];
     }
 
     GetNextImageSource(): string {

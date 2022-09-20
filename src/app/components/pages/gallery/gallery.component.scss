@@ -73,6 +73,10 @@ img.gallery-main-image {
     transform: translate(-50%, 0);
 }
 
+img.gallery-link {
+    cursor: pointer;
+}
+
 img.gallery-next-image {
     right: 5%;
 }
@@ -91,6 +95,7 @@ img.gallery-sub-image {
     top: 300px;
     max-width: 280px;
     max-height: 212px;
+    opacity: 0.3;
 }
 
 

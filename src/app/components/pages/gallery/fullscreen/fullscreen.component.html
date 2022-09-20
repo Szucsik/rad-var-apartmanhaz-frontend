@@ -1,12 +1,7 @@
 <div class="gallery-fullscreen-container">
     <div class="gallery-fullscreen-background"></div>
     <div class="gallery-fullscreen-close-button" (click)="this.galleryService.FullScreen(false)"></div>
-    <div class="gallery-fullscreen-counter"> 
-        {{ this.galleryService.GetCurrentImageID() + 1}}/{{ this.galleryService.GetImagesNumber() }}
-    </div>
     <div class="gallery-fullscreen-image-container">
-        <img class="image-viewer" src="{{ this.galleryService.GetCurrentImageSource() }}" alt="...">
+        <img class="image-viewer" src="{{ this.galleryService.GetCurrentHDImageSource() }}" alt="...">
     </div>
-    <div class="gallery-fullscreen-left-scroll" (click)="this.galleryService.NextImage('left')"></div>
-    <div class="gallery-fullscreen-right-scroll" (click)="this.galleryService.NextImage('right')"></div>
 </div>

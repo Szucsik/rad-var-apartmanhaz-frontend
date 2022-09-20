@@ -11,11 +11,11 @@
         </div>
         <div class="image-container">
             <div class="images">
-                <img class="gallery-previous-image-hidden" src="{{ this.galleryService.GetPreviousHiddenImageSource() }}" alt="..." #galleryPrevHid (click)="this.galleryService.FullScreen(true)">
-                <img class="gallery-previous-image gallery-sub-image" src="{{ this.galleryService.GetPreviousImageSource() }}" alt="..." #galleryPrev (click)="this.galleryService.FullScreen(true)">
-                <img class="gallery-main-image" src="{{ this.galleryService.GetCurrentImageSource() }}" alt="..." #galleryMain (click)="this.galleryService.FullScreen(true)">
-                <img class="gallery-next-image gallery-sub-image" src="{{ this.galleryService.GetNextImageSource() }}" alt="..." #galleryNext (click)="this.galleryService.FullScreen(true)">
-                <img class="gallery-next-image-hidden" src="{{ this.galleryService.GetNextHiddenImageSource() }}" alt="..." #galleryNextHid (click)="this.galleryService.FullScreen(true)">
+                <img class="gallery-previous-image-hidden" src="{{ this.galleryService.GetPreviousHiddenImageSource() }}" alt="..." #galleryPrevHid>
+                <img class="gallery-previous-image gallery-sub-image" src="{{ this.galleryService.GetPreviousImageSource() }}" alt="..." #galleryPrev>
+                <img class="gallery-main-image" src="{{ this.galleryService.GetCurrentImageSource() }}" alt="..." #galleryMain (click)="this.TurnFullscreen(true)" [ngClass]="{'gallery-link': !isAnimationOngoing}">
+                <img class="gallery-next-image gallery-sub-image" src="{{ this.galleryService.GetNextImageSource() }}" alt="..." #galleryNext>
+                <img class="gallery-next-image-hidden" src="{{ this.galleryService.GetNextHiddenImageSource() }}" alt="..." #galleryNextHid>
             </div>
             <div class="image-container-controllers">
                 <div class="gallery-previous-button" (click)="this.galleryService.NextImage('left')">

@@ -73,6 +73,7 @@ export class AnimationService {
 
       async galleryScrollAnimations(imgs: GalleryImageComponents, directon: string) {
         let duration: number = this.config.getImageStartScrollDuration();
+        let subOpacity: number =  0.3;
         // get original positions
 
         let previousHiddenPos: Position = {x: imgs.previousHidden.nativeElement.offsetWidth,y: imgs.previousHidden.nativeElement.offsetTop};
@@ -114,10 +115,10 @@ export class AnimationService {
             };
 
             //animation 
-            let tweenPrevVis = gsap.fromTo(imgs.previousVisible.nativeElement, {}, {width: 0, height: 0, x: newPrevPos.x, duration: duration});
-            let tweenMainVis = gsap.fromTo(imgs.mainVisible.nativeElement, {}, {width: subSize.x, height: subSize.y, x: newMainPos.x, y: newMainPos.y, duration: duration});
-            let tweenNextVis = gsap.fromTo(imgs.nextVisible.nativeElement, {}, {width: mainSize.x, height: mainSize.y, x: newNextPos.x, y: newNextPos.y, duration: duration});
-            let tweenNextHid = gsap.fromTo(imgs.nextHidden.nativeElement, {x: window.innerWidth, width: 0, height: 0}, {width: subSize.x, height: subSize.y, x: newNextHiddenPos.x, y: newNextHiddenPos.y, duration: duration});
+            let tweenPrevVis = gsap.fromTo(imgs.previousVisible.nativeElement, {}, {opacity: 0, width: 0, height: 0, x: newPrevPos.x, duration: duration});
+            let tweenMainVis = gsap.fromTo(imgs.mainVisible.nativeElement, {}, {opacity: subOpacity, width: subSize.x, height: subSize.y, x: newMainPos.x, y: newMainPos.y, duration: duration});
+            let tweenNextVis = gsap.fromTo(imgs.nextVisible.nativeElement, {}, {opacity: 1, width: mainSize.x, height: mainSize.y, x: newNextPos.x, y: newNextPos.y, duration: duration});
+            let tweenNextHid = gsap.fromTo(imgs.nextHidden.nativeElement, {opacity: 0, x: window.innerWidth, width: 0, height: 0}, {opacity: subOpacity, width: subSize.x, height: subSize.y, x: newNextHiddenPos.x, y: newNextHiddenPos.y, duration: duration});
 
             // after animation
             await this.delayExec(duration * 1000);
@@ -159,10 +160,10 @@ export class AnimationService {
             let startX: number = - subSize.x;
 
             //animation 
-            let tweenNextVis = gsap.fromTo(imgs.nextVisible.nativeElement, {}, {width: 0, height: 0, x: newNextPos.x, duration: duration});
-            let tweenMainVis = gsap.fromTo(imgs.mainVisible.nativeElement, {}, {width: subSize.x, height: subSize.y, x: newMainPos.x, y: newMainPos.y, duration: duration});
-            let tweenPrevVis = gsap.fromTo(imgs.previousVisible.nativeElement, {}, {width: mainSize.x, height: mainSize.y,x: newPrevPos.x, y: newPrevPos.y, duration: duration});
-            let tweenPrevHid = gsap.fromTo(imgs.previousHidden.nativeElement, {x: startX}, {width: subSize.x, height: subSize.y, y: newPrevHiddenPos.y, x: newPrevHiddenPos.x, duration: duration});
+            let tweenNextVis = gsap.fromTo(imgs.nextVisible.nativeElement, {}, {opacity: 0, width: 0, height: 0, x: newNextPos.x, duration: duration});
+            let tweenMainVis = gsap.fromTo(imgs.mainVisible.nativeElement, {}, {opacity: subOpacity, width: subSize.x, height: subSize.y, x: newMainPos.x, y: newMainPos.y, duration: duration});
+            let tweenPrevVis = gsap.fromTo(imgs.previousVisible.nativeElement, {}, {opacity: 1, width: mainSize.x, height: mainSize.y,x: newPrevPos.x, y: newPrevPos.y, duration: duration});
+            let tweenPrevHid = gsap.fromTo(imgs.previousHidden.nativeElement, {opacity: 0, x: startX}, {opacity: subOpacity, width: subSize.x, height: subSize.y, y: newPrevHiddenPos.y, x: newPrevHiddenPos.x, duration: duration});
 
             // after animation
             await this.delayExec(duration * 1000);

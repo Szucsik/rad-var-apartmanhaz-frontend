@@ -47,4 +47,10 @@ export class GalleryComponent implements OnInit {
       this.isAnimationOngoing = true;
     }
   }
+
+  TurnFullscreen(state: boolean): void {
+    if(!this.isAnimationOngoing) {
+      this.galleryService.FullScreen(true);
+    }
+  }
 }
