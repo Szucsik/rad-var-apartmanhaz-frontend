@@ -159,7 +159,7 @@ export class AnimationService {
             let startX: number = - subSize.x;
 
             //animation 
-            let tweenNextVis = gsap.fromTo(imgs.nextVisible.nativeElement, {}, {x: newNextPos.x, duration: duration});
+            let tweenNextVis = gsap.fromTo(imgs.nextVisible.nativeElement, {}, {width: 0, height: 0, x: newNextPos.x, duration: duration});
             let tweenMainVis = gsap.fromTo(imgs.mainVisible.nativeElement, {}, {width: subSize.x, height: subSize.y, x: newMainPos.x, y: newMainPos.y, duration: duration});
             let tweenPrevVis = gsap.fromTo(imgs.previousVisible.nativeElement, {}, {width: mainSize.x, height: mainSize.y,x: newPrevPos.x, y: newPrevPos.y, duration: duration});
             let tweenPrevHid = gsap.fromTo(imgs.previousHidden.nativeElement, {x: startX}, {width: subSize.x, height: subSize.y, y: newPrevHiddenPos.y, x: newPrevHiddenPos.x, duration: duration});

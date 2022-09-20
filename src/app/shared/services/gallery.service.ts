@@ -10,7 +10,7 @@ import { GalleryImageComponents } from "../types/gallery.type";
 export class GalleryService{
     fullscreenEvent: EventEmitter<boolean> = new EventEmitter();
 
-    private currentImageID: number =1;
+    private currentImageID: number = 0;
     private readonly imageSources: Array<string> = this.config.getPhotoPreviewList();
     private galleryImageComponents: GalleryImageComponents;
     private fullscreenState: boolean = false;

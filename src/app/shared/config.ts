@@ -13,7 +13,7 @@ export class Configuration {
     private baseContentDelay: number = 5.6;
     private baseHeaderDelay: number = 4.6;
     private baseStartDelay: number = 3.2;
-    private baseImageScrollDuration: number = 1.5;
+    private baseImageScrollDuration: number = 1;
 
     private photoList: Array<string> = ["assets/photos//2.jpeg", "assets/photos//2.jpeg", "assets/photos//3.jpeg", "assets/photos//4.jpeg", "assets/photos//5.jpeg", "assets/photos//6.jpeg", "assets/photos//8.jpeg",
     "assets/photos//11.jpeg", "assets/photos//12.jpeg", "assets/photos//13.jpeg", "assets/photos//14.jpeg", "assets/photos//16.jpeg", "assets/photos//17.jpeg", "assets/photos//18.jpeg", "assets/photos//19.jpeg",
