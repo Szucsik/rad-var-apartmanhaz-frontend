@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { GalleryService } from 'src/app/shared/services/gallery.service';
 
 @Component({
@@ -6,14 +6,16 @@ import { GalleryService } from 'src/app/shared/services/gallery.service';
   templateUrl: './fullscreen.component.html',
   styleUrls: ['./fullscreen.component.css']
 })
-export class FullscreenComponent implements OnInit {
-  
+
+
+export class FullscreenComponent {
+  @HostListener('document:keydown.escape', ['$event']) onKeydownHandler(event: KeyboardEvent) {
+    this.galleryService.FullScreen(false);
+  }
+
   galleryService: GalleryService;
+
   constructor(galleryService: GalleryService) {
     this.galleryService = galleryService; 
   }
-
-  ngOnInit(): void {
-  }
-
 }
