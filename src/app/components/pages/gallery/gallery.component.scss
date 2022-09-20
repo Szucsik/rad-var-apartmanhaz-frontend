@@ -6,36 +6,36 @@
 }
 
 .gallery-title {
-    font-size: 60px;
+    font-size: 40px;
     text-align: center;
     margin-top: 10px;
 }
 
 .gallery-subtitle {
-    font-size: 30px;
+    font-size: 20px;
     text-align: center;
     margin-top: 10px;
 }
 
 .gallery-title-line {
     border-top: 1px solid black;
-    width: 500px
+    width: 200px
 }
 
 .gallery-previous-button, .gallery-next-button {
     position: absolute;
     cursor: pointer;
     display: inline-flex;
-    font-size: 22px;
-    bottom: 100px;
+    font-size: 12px;
+    bottom: 30px;
 }
 
 .gallery-previous-button {
-    left: 20%;
+    left: 5%;
 }
 
 .gallery-next-button {
-    right: 20%;
+    right: 5%;
 }
 
 .image-container {
@@ -61,11 +61,11 @@ img.arrow-right, img.arrow-left {
     margin: 5px;
     width: 60px;
     height: 25px;
-    margin: 21px;
+    margin: 10px;
 }
 
 img.gallery-previous-image {
-    left: 5%;
+    left: 2%;
 }
 
 img.gallery-main-image {
@@ -77,8 +77,12 @@ img.gallery-link {
     cursor: pointer;
 }
 
+img.gallery-previous-image {
+    left: 2%;
+}
+
 img.gallery-next-image {
-    right: 5%;
+    right: 2%;
 }
 
 img.gallery-previous-image-hidden, img.gallery-next-image-hidden {
@@ -87,21 +91,39 @@ img.gallery-previous-image-hidden, img.gallery-next-image-hidden {
 }
 
 img.gallery-main-image {
-    max-width: 280px;
-    max-height: 212px;
+    top: 200px;
+    width: 150px;
+    height: 112px;
 }
 
 img.gallery-sub-image {
-    top: 300px;
-    max-width: 280px;
-    max-height: 212px;
+    top: 250px;
+    width: 100px;
+    height: 75px;
     opacity: 0.3;
 }
 
 
 @media only screen and (min-width: 1300px) {
+    .gallery-title {
+        font-size: 60px;
+    }
+    
+    .gallery-subtitle {
+        font-size: 30px;
+    }
+
+    .gallery-title-line {
+        width: 500px
+    }
+
     .gallery-container {
         height: 700px;
+    }
+
+    .gallery-previous-button, .gallery-next-button {
+        font-size: 22px;
+        bottom: 100px;
     }
 
     img.gallery-main-image {
@@ -117,6 +139,27 @@ img.gallery-sub-image {
         max-width: 70%;
         max-height: 70%;
     }
+
+    .gallery-previous-button {
+        left: 20%;
+    }
+    
+    .gallery-next-button {
+        right: 20%;
+    }
+
+    img.gallery-previous-image {
+        left: 5%;
+    }
+    
+    img.gallery-next-image {
+        right: 5%;
+    }
+
+    img.arrow-right, img.arrow-left {
+        margin: 21px;
+    }
+    
 }
 
 @media only screen and (min-width: 1500px) {
