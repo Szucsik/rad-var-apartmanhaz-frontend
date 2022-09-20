@@ -98,38 +98,44 @@ export class ScrollAnimationService {
 
     navigate(destination: string) {
       const scrollTo = gsap.timeline();
-      if(destination == 'home') {
-        scrollTo.to(window,
-          {
-            delay: 0.2,
-            duration: 0.0,
-            scrollTo: 0,
+      switch(destination) {
+        case 'home': {
+          scrollTo.to(window,
+            {
+              delay: 0.2,
+              duration: 0.0,
+              scrollTo: 0,
+            }
+          );
+        break;
+        } case 'gallery': {
+          scrollTo.to(window,
+            {
+              delay: 0.2,
+              duration: 0.8,
+              scrollTo: window.innerHeight * 1
+            }
+          );
+          break;
+          } case 'contacts': {
+            scrollTo.to(window,
+              {
+                delay: 0.2,
+                duration: 0.8,
+                scrollTo: window.innerHeight  * 2
+              }
+            );
+            break;
+          } case 'nearby': {
+            scrollTo.to(window,
+              {
+                delay: 0.2,
+                duration: 0.8,
+                scrollTo: 2950
+              }
+            );
+            break;
           }
-        );
-      } else if (destination == 'gallery') {
-        scrollTo.to(window,
-          {
-            delay: 0.2,
-            duration: 0.8,
-            scrollTo: 1043
-          }
-        );
-      } else if (destination == 'contacts') {
-        scrollTo.to(window,
-          {
-            delay: 0.2,
-            duration: 0.8,
-            scrollTo: 1943
-          }
-        );
-      } else if (destination == 'nearby') {
-        scrollTo.to(window,
-          {
-            delay: 0.2,
-            duration: 0.8,
-            scrollTo: 2950
-          }
-        );
+        }
       }
-    }
 }
