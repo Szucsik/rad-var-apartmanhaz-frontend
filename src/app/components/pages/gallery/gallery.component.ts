@@ -41,9 +41,9 @@ export class GalleryComponent implements OnInit {
     });
   }
 
-  NextImage(): void {
+  NextImage(state: string): void {
     if(!this.isAnimationOngoing) {
-      this.galleryService.NextImage('right');
+      this.galleryService.NextImage(state);
       this.isAnimationOngoing = true;
     }
   }

@@ -23,7 +23,7 @@ export class Configuration {
     private photoPreviewList: Array<string> = ["assets/photos/preview/1.png", "assets/photos/preview/2.png", "assets/photos/preview/3.png", "assets/photos/preview/4.png", "assets/photos/preview/5.png", 
     "assets/photos/preview/6.png", "assets/photos/preview/7.png", "assets/photos/preview/8.png", "assets/photos/preview/9.png", "assets/photos/preview/10.png", "assets/photos/preview/11.png", "assets/photos/preview/12.png", 
     "assets/photos/preview/13.png", "assets/photos/preview/14.png", "assets/photos/preview/15.png", "assets/photos/preview/16.png", "assets/photos/preview/17.png", "assets/photos/preview/18.png", "assets/photos/preview/19.png", 
-    "assets/photos/preview/20.png", "assets/photos/preview/21.png", "assets/photos/preview/22.png", "assets/photos/preview/23.png", "assets/photos/preview/25.png", "assets/photos/preview/25.png", ];
+    "assets/photos/preview/20.png", "assets/photos/preview/21.png", "assets/photos/preview/22.png", "assets/photos/preview/23.png", "assets/photos/preview/24.png", "assets/photos/preview/25.png", ];
 
     public getHeaderDelay(): number {
         return this.getLoadingContentNeeded() ? this.baseHeaderDelay : 0;
