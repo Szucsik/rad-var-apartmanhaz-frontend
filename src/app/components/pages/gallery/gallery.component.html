@@ -17,6 +17,11 @@
                 <img class="gallery-next-image gallery-sub-image" src="{{ this.galleryService.GetNextImageSource() }}" alt="..." #galleryNext>
                 <img class="gallery-next-image-hidden" src="{{ this.galleryService.GetNextHiddenImageSource() }}" alt="..." #galleryNextHid>
             </div>
+            <div class="gallery-counter-dots-container">
+                <div class="gallery-counter-dot-div" *ngFor="let item of this.galleryService.GetAllPrevievImageSources(); index as i">
+                    <span class="gallery-counter-dot" [ngClass]="{'gallery-counter-dot-active': i == this.galleryService.GetCurrentImageID()}"></span>
+                </div>
+            </div>
             <div class="image-container-controllers">
                 <div class="gallery-previous-button" (click)="this.NextImage('left')">
                     <img class="arrow-left" src="/assets/site-images/arrow-left.png" alt="..." >
