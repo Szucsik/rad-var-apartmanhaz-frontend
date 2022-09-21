@@ -6,6 +6,7 @@
   .quote {
     padding-left: 50px;
     padding-top: 120px;
+    width: 280px
   }
   
   .quote-start {
@@ -58,7 +59,7 @@
   }
 
   .layer-bg {
-    background-image: url("/assets/site-images/wallpaperflare.com_wallpaper2.jpg");
+    background-image: url("/assets/site-images/background.jpg");
   }
   
   .layer-2 {
@@ -79,6 +80,35 @@
     background-image: url("/assets/site-images/bg-overlay.png");
   }
   
+  @media only screen and (min-width: 1000px) { 
+    #hero {
+      height: 500px;
+    }
+
+    .quote {
+      width: 650px
+    }
+
+    .layer {
+      height: 500px;
+    }
+
+    .quote-text {
+      font-size: 28px;
+    }
+  
+    .home-wellcome-text {
+      font-size: 40px;
+      margin-top: 10px;
+    }
+
+    .quote-author {
+      font-size: 25px;
+      margin-right: 15px;
+      margin-top: -10px;
+    }
+  }
+
   @media only screen and (min-width: 1300px) {
     #hero {
       height: 500px;
