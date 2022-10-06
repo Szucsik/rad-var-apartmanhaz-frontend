@@ -117,7 +117,7 @@ export class ScrollAnimationService {
             }
           );
           break;
-          } case 'contacts': {
+          } case 'booking': {
             scrollTo.to(window,
               {
                 delay: 0.2,
@@ -126,12 +126,12 @@ export class ScrollAnimationService {
               }
             );
             break;
-          } case 'nearby': {
+          } case 'contacts': {
             scrollTo.to(window,
               {
                 delay: 0.2,
                 duration: 0.8,
-                scrollTo: 2950
+                scrollTo: window.innerHeight  * 3
               }
             );
             break;
