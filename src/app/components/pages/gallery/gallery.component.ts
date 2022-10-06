@@ -1,5 +1,5 @@
 
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { Configuration } from 'src/app/shared/config';
 import { AnimationService } from 'src/app/shared/services/animation.service';
 import { GalleryService } from 'src/app/shared/services/gallery.service';
@@ -20,8 +20,15 @@ export class GalleryComponent implements OnInit {
 
   galleryService: GalleryService;
   isAnimationOngoing: boolean = false;
+  isAnimationAllowed: boolean = true;
+
   constructor(galleryService: GalleryService, private scrollAnimationService: ScrollAnimationService, private animationService: AnimationService) {
     this.galleryService = galleryService; 
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.CheckResolutionForAnimation();
   }
 
   ngOnInit(): void {
@@ -39,12 +46,14 @@ export class GalleryComponent implements OnInit {
     this.animationService.galleryAnimationCompleted.subscribe(result => {
       this.isAnimationOngoing = false;
     });
+
+    this.CheckResolutionForAnimation();
   }
 
   NextImage(state: string): void {
     if(!this.isAnimationOngoing) {
-      this.galleryService.NextImage(state);
-      this.isAnimationOngoing = true;
+      this.galleryService.NextImage(state, this.isAnimationAllowed);
+      this.isAnimationOngoing = this.isAnimationAllowed;
     }
   }
 
@@ -52,5 +61,12 @@ export class GalleryComponent implements OnInit {
     if(!this.isAnimationOngoing) {
       this.galleryService.FullScreen(true);
     }
+  }
+
+  CheckResolutionForAnimation(): void {
+    if(window.innerWidth < 1000)
+      this.isAnimationAllowed = false;
+    else 
+      this.isAnimationAllowed = true;
   }
 }

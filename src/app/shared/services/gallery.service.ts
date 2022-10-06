@@ -18,11 +18,7 @@ export class GalleryService{
 
     constructor(private animationService: AnimationService, private config: Configuration) {       
       this.animationService.galleryAnimationCompleted.subscribe(increaseOrDecrease => {
-        if(increaseOrDecrease) {
-          this.IncreaseCurrentImageID();
-        } else {
-          this.DecreaseCurrentImageID();
-        }
+        this.ChangeCurrentImageID(increaseOrDecrease);
       });
     }
 
@@ -30,8 +26,11 @@ export class GalleryService{
       this.galleryImageComponents = gallery;
     }
 
-    NextImage(direction: string): void {
-      this.animationService.galleryScrollAnimations(this. galleryImageComponents, direction);
+    NextImage(direction: string, animation: boolean): void {
+      if(animation)
+        this.animationService.galleryScrollAnimations(this. galleryImageComponents, direction);
+      else 
+        this.ChangeCurrentImageID(direction == 'right');
     }
 
     FullScreen(state: boolean): void {
@@ -87,6 +86,20 @@ export class GalleryService{
 
     GetFullScreenState(): Boolean {
       return this.fullscreenState;
+    }
+
+    GetAllPrevievImageSources(): Array<string> {
+      return this.HDImageSources;
+    }
+
+    // private
+
+    private ChangeCurrentImageID(increaseOrDecrease: boolean): void {
+      if(increaseOrDecrease) {
+        this.IncreaseCurrentImageID();
+      } else {
+        this.DecreaseCurrentImageID();
+      }
     }
 
     // Setters

@@ -8,8 +8,9 @@
 .contacts-map {
     width: 100%;
     height: 100%;
-    background-position: center;
+    background-position: right;
     background-image: url('/assets/site-images/contacts-map.png');
+    background-size: cover;
 }
 
 .contacts-menu {
@@ -21,7 +22,7 @@
 
 .contacts-main-title {
     width: 100%;
-    height: 200px;
+    height: 100px;
     text-align: left;
     padding: 70px 0;
     font-size: 20px;
@@ -67,7 +68,34 @@
 
 @media only screen and (min-width: 1300px) {
     .contacts-container {
-        height: 1000px;
+        height: 768px;
+    }
+    
+    .contacts-menu {
+        width: 600px;
+        padding-left: 100px;
+    }
+    
+    .contacts-main-title {
+        height: 130px;
+        padding: 70px 0;
+        font-size: 40px;
+    }
+    
+    .contacts-title {
+        font-size: 30px;
+        height: 40px;
+    }
+    
+    .contacts-text {
+        font-size: 20px;
+        margin-bottom: 50px;
+    }
+}
+
+@media only screen and (min-width: 1500px) {
+    .contacts-container {
+        height: 900px;
     }
     
     .contacts-menu {
@@ -83,11 +111,11 @@
     
     .contacts-title {
         font-size: 30px;
-        height: 80px;
+        height: 70px;
     }
     
     .contacts-text {
         font-size: 20px;
-        margin-bottom: 50px;
+        margin-bottom: 40px;
     }
 }

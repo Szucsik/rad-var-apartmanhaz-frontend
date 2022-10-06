@@ -4,7 +4,7 @@ a:link, a:visited {
     font-family: Cormorant-Light;
     color:white;
     overflow: hidden;
-    background: linear-gradient(to right, lime, lime 50%, white 50%);
+    background: linear-gradient(to right, #ffd800, #ffd800 50%, white 50%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -121,15 +121,15 @@ a:link:hover, a:visited:hover {
     font-family: BeauRivage-Regular;
 }
 
-.gallery-left-button-text, .gallery-right-button-text {
+.gallery-previous-button, .gallery-next-button {
     position: relative;
     display: inline-block;
     font-family: BeauRivage-Regular;
    color: #282828;
     overflow: hidden;
-    background: linear-gradient(to right, #ff5733, #ff5733 50%, #282828 50%);
-    background-clip: text;
+    background: linear-gradient(to right, #658285, #658285 50%, #282828 50%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     background-size: 200% 100%;
     background-position: 100%;
@@ -140,7 +140,7 @@ a:link:hover, a:visited:hover {
     }
 }
 
-.gallery-left-button-text:hover, .gallery-right-button-text:hover {
+.gallery-previous-button, .gallery-next-button {
     color: #282828;
 }
 
@@ -176,6 +176,74 @@ a:link:hover, a:visited:hover {
 }
 
 
+/* Booking text */
+
+.booking-text-1 {
+    font-family: MerriweatherSans-Bold;
+    color: #4cc3cf;
+}
+
+.booking-text-2, .booking-text-3 {
+    font-family: MerriweatherSans-ExtraBoldRegular;
+    color: #658285;
+}
+
+.booking-text-4 {
+    font-family: MerriweatherSans-Regular;
+    color: #658285;
+}
+
+.booking-option-title-text {
+    font-family: MerriweatherSans-Bold;
+    color: white!important;
+}
+
+.booking-options-click-text {
+    font-family: MerriweatherSans-Regular;
+    color: lightblue!important;
+}
+
+.booking-options-background-container {
+    background-color: #658285;
+}
+
+.booking-options {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 20px auto;
+    width: 250px;
+    height: 250px;
+    background: #658285;
+    border-radius: 75px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: lighter;
+    letter-spacing: 2px;
+    transition: 1s box-shadow;
+  }
+  
+  .booking-options:hover {
+    background-color: #5d7679;
+    box-shadow: 0 5px 35px 0px rgba(0,0,0,.1);
+  }
+  
+  .booking-options:hover::before, .booking-options:hover::after {
+    display: block;
+    content: '';
+    position: absolute;
+    background:#4cc3cf;
+    border-radius: 75px;
+    z-index: -1;
+    animation: 1s clockwise infinite;
+  }
+  
+  .booking-options:hover:after {
+    background: lime;
+    animation: 2s counterclockwise infinite;
+  }
+
 /* Nearby places page color details */
 
 .nearby-container {
@@ -186,3 +254,81 @@ a:link:hover, a:visited:hover {
     color: #282828;
     font-family: SansitaSwashed-Medium;
 }
+
+@keyframes clockwise {
+    0% {
+      top: -5px;
+      left: 0;
+    }
+    12% {
+      top: -2px;
+      left: 2px;
+    }
+    25% {
+      top: 0;
+      left: 5px;    
+    }
+    37% {
+      top: 2px;
+      left: 2px;
+    }
+    50% {
+      top: 5px;
+      left: 0;    
+    }
+    62% {
+      top: 2px;
+      left: -2px;
+    }
+    75% {
+      top: 0;
+      left: -5px;
+    }
+    87% {
+      top: -2px;
+      left: -2px;
+    }
+    100% {
+      top: -5px;
+      left: 0;    
+    }
+  }
+  
+  @keyframes counterclockwise {
+    0% {
+      top: -5px;
+      right: 0;
+    }
+    12% {
+      top: -2px;
+      right: 2px;
+    }
+    25% {
+      top: 0;
+      right: 5px;    
+    }
+    37% {
+      top: 2px;
+      right: 2px;
+    }
+    50% {
+      top: 5px;
+      right: 0;    
+    }
+    62% {
+      top: 2px;
+      right: -2px;
+    }
+    75% {
+      top: 0;
+      right: -5px;
+    }
+    87% {
+      top: -2px;
+      right: -2px;
+    }
+    100% {
+      top: -5px;
+      right: 0;    
+    }
+  }

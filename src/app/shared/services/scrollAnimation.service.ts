@@ -68,7 +68,7 @@ export class ScrollAnimationService {
       const scrollArrovLeft = gsap.timeline({
         scrollTrigger: {
           trigger: document.querySelector('.gallery-next-button'),
-          start: "100% bottom",
+          start: "80% bottom",
           toggleActions: "play none none reverse",
           markers: false
         }
@@ -78,7 +78,7 @@ export class ScrollAnimationService {
       const scrollArrovRight = gsap.timeline({
         scrollTrigger: {
           trigger: document.querySelector('.gallery-previous-button'),
-          start: "100% bottom",
+          start: "80% bottom",
           toggleActions: "play none none reverse",
         }
       });
@@ -96,40 +96,71 @@ export class ScrollAnimationService {
       scrollContactPanel.from(document.querySelector('.contacts-menu'), { x: -50, opacity: 0 });
     }
 
+    bookingScrollTrigger(): void {
+      const scrollTexts= gsap.timeline({
+        scrollTrigger: {
+          trigger: document.querySelector(".booking-text-1"),
+          start: "-400% center",
+          toggleActions: "play none none reverse",
+        }
+      });
+      
+      scrollTexts.from(document.querySelector(".booking-text-1"), { x: -50, opacity: 0 });
+      scrollTexts.from(document.querySelector(".booking-text-2"), { x: -50, opacity: 0 });
+      scrollTexts.from(document.querySelector(".booking-text-3"), { x: -50, opacity: 0 });
+      scrollTexts.from(document.querySelector(".booking-text-4"), { x: -50, opacity: 0 });
+
+      const scrollPanels= gsap.timeline({
+        scrollTrigger: {
+          trigger: document.querySelector(".booking-text-1"),
+          start: "-400% center",
+          toggleActions: "play none none reverse",
+         }
+      });
+      
+      scrollPanels.from(document.querySelector(".booking-options-background-container"), { opacity: 0, duration: 2.5 });
+    }
+
     navigate(destination: string) {
       const scrollTo = gsap.timeline();
-      if(destination == 'home') {
-        scrollTo.to(window,
-          {
-            delay: 0.2,
-            duration: 0.0,
-            scrollTo: 0,
+      switch(destination) {
+        case 'home': {
+          scrollTo.to(window,
+            {
+              delay: 0.2,
+              duration: 0.0,
+              scrollTo: 0,
+            }
+          );
+        break;
+        } case 'gallery': {
+          scrollTo.to(window,
+            {
+              delay: 0.2,
+              duration: 0.8,
+              scrollTo: window.innerHeight * 1
+            }
+          );
+          break;
+          } case 'booking': {
+            scrollTo.to(window,
+              {
+                delay: 0.2,
+                duration: 0.8,
+                scrollTo: window.innerHeight  * 2
+              }
+            );
+            break;
+          } case 'contacts': {
+            scrollTo.to(window,
+              {
+                delay: 0.2,
+                duration: 0.8,
+                scrollTo: window.innerHeight  * 3
+              }
+            );
+            break;
           }
-        );
-      } else if (destination == 'gallery') {
-        scrollTo.to(window,
-          {
-            delay: 0.2,
-            duration: 0.8,
-            scrollTo: 1043
-          }
-        );
-      } else if (destination == 'contacts') {
-        scrollTo.to(window,
-          {
-            delay: 0.2,
-            duration: 0.8,
-            scrollTo: 1943
-          }
-        );
-      } else if (destination == 'nearby') {
-        scrollTo.to(window,
-          {
-            delay: 0.2,
-            duration: 0.8,
-            scrollTo: 2950
-          }
-        );
+        }
       }
-    }
 }

@@ -18,6 +18,21 @@
     src: url('/assets/fonts/BeauRivage-Regular.ttf');
 }
 
+@font-face {
+    font-family: MerriweatherSans-ExtraBoldRegular;
+    src: url('/assets/fonts/MerriweatherSans-ExtraBold.ttf');
+}
+
+@font-face {
+    font-family: MerriweatherSans-Bold;
+    src: url('/assets/fonts/MerriweatherSans-Bold.ttf');
+}
+
+@font-face {
+    font-family: MerriweatherSans-Regular;
+    src: url('/assets/fonts/MerriweatherSans-Regular.ttf');
+}
+
 .start-text-first {
     height: 150px;
     width: 200px;
