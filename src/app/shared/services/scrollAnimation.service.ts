@@ -102,7 +102,7 @@ export class ScrollAnimationService {
           trigger: document.querySelector(".booking-text-1"),
           start: "-400% center",
           toggleActions: "play none none reverse",
-          markers: true        }
+        }
       });
       
       scrollTexts.from(document.querySelector(".booking-text-1"), { x: -50, opacity: 0 });
