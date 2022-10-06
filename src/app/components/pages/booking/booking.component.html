@@ -4,24 +4,24 @@
         <div class="booking-text-content-container">
             <p class="booking-text-1">Foglalási lehetőségek</p>
             <p class="booking-text-2">Megtetszett az egyik szoba?</p>
-            <p class="booking-text-2">Nézd meg a hol tudsz foglalni!</p>
-            <p class="booking-text-3">Ha szeretnél Eger központjában egy kényelmes családias szállást akkor jó helyen jársz.</p>
+            <p class="booking-text-3">Nézd meg a hol tudsz foglalni!</p>
+            <p class="booking-text-4">Ha szeretnél Eger központjában egy kényelmes családias szállást akkor jó helyen jársz.</p>
         </div>
     </div>
     <div class="booking-options-container">
         <div class="booking-options-background-container">
             <div class="booking-options-contents">
-                <div class="booking-options booking-options-option-1">
+                <div class="booking-options" (click)="RedirectLink('booking')">
                     <img class="booking-options-img" src="assets/site-images/booking-bookingcom-icon.png" alt="">
                     <p class="booking-option-title-text">Booking</p>
                     <p class="booking-options-click-text">Kattints ide a megnyitáshoz</p>
                 </div>
-                <div class="booking-options booking-options-option-1">
+                <div class="booking-options" (click)="RedirectLink('szallas')">
                     <img class="booking-options-img" src="assets/site-images/booking-szallashu-icon.png" alt="">
                     <p class="booking-option-title-text">Szállás.hu</p>
                     <p class="booking-options-click-text">Kattints ide a megnyitáshoz</p>
                 </div>
-                <div class="booking-options booking-options-option-1">
+                <div class="booking-options" (click)="RedirectLink('facebook')">
                     <img class="booking-options-img" src="assets/site-images/booking-faebookcom-icon.png" alt="">    
                     <p class="booking-option-title-text">Facebook & telefon</p>
                     <p class="booking-options-click-text">Kattints ide a megnyitáshoz</p>
