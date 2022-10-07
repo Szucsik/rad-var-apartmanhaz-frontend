@@ -1,0 +1,229 @@
+.booking-container {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    display: inline-flex;
+}
+
+.booking-line {
+    border-top: 1px solid black;
+    width: 100%;
+}
+
+.booking-text-container {
+    position: absolute;
+    height: 100%;
+    width: 35%;
+    left: 0px;
+}
+
+.booking-options-container {
+    position: absolute;
+    right: 0px;
+    height: 100%;
+    width: 65%;
+}
+
+.booking-text-content-container {
+    position: absolute;
+    top: 50%;
+    -ms-transform: translate(0%, -50%);
+    transform: translate(0%, -50%);
+    margin-left: 10px;
+}
+
+.booking-text-1 {
+    font-size: 15px;
+    margin: 0%;
+    margin-bottom: 15px;
+}
+
+.booking-text-2, .booking-text-3 {
+    margin: 0%;
+    margin-top: 5px;
+    font-size: 18px;
+}
+
+.booking-text-4 {
+    margin-top: 5px;
+    font-size: 8px;
+}
+
+.booking-options-background-container {
+    position: absolute;
+    height: 220px;
+    width: 220px;
+    left: 50%;
+    top: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border-radius: 15%;
+    overflow: hidden;
+}
+
+.booking-options-contents {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.booking-options {
+    border-radius: 25%;
+    display: inline-flex;
+    margin-left: 0px;
+    cursor: pointer;
+}
+
+.booking-options, .booking-options:hover::before, .booking-options:hover::after {
+    width: 220px;
+    height: 220px;
+}
+
+.booking-options-img {
+    position: absolute;
+    top: 20px;
+    width: 65px;
+    height: 65px;
+}
+
+.booking-option-title-text {
+    position: absolute;
+    top: 100px;
+    font-size: 15px;
+}
+
+.booking-options-click-text {
+    position: absolute;
+    font-size: 10px;
+    top: 150px;
+}
+
+.booking-option-hidden {
+    display: none;
+}
+
+.booking-option-swap-backward {
+    background-image: url('/assets/site-images/arrow-left.png');
+    left: 0px;
+}
+
+.booking-option-swap-forward {
+    background-image: url('/assets/site-images/arrow-right.png');
+    right: 10px;
+}
+
+.booking-option-swap {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    bottom: 140px;
+}
+
+@media only screen and (min-width: 1024px) {
+    .booking-text-content-container {
+        margin-left: 100px;
+    }
+
+    .booking-options-background-container {
+        height: 50%;
+        width: 90%;
+    }
+
+    .booking-option-title-text {
+        top: 160px;
+    }
+
+    .booking-options-click-text {
+        font-size: 15px;
+        top: 210px;
+    }
+    
+    .booking-text-1 {
+        font-size: 20px;
+        margin: 0%;
+        margin-bottom: 25px;
+    }
+    
+    .booking-text-2, .booking-text-3 {
+        margin: 0%;
+        margin-top: 5px;
+        font-size: 32px;
+    }
+    
+    .booking-text-4 {
+        margin-top: 5px;
+        font-size:16px;
+    }
+
+    .booking-options {
+        margin-left: 5px;
+    }
+    
+    .booking-options, .booking-options:hover::before, .booking-options:hover::after {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .booking-option-swap {
+        display: none;
+    }
+
+    .booking-options-img {
+        top: 30px;
+        width: auto;
+        height: auto;
+    }
+}
+
+@media only screen and (min-width: 1300px) {
+    .booking-options {
+        margin-left: 20px;
+    }
+    
+    .booking-options, .booking-options:hover::before, .booking-options:hover::after {
+        width: 220px;
+        height: 220px;
+    }
+    
+    .booking-option-swap {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 1500px) {
+    .booking-options {
+        margin-left: 10px;
+      }
+    
+    .booking-options, .booking-options:hover::before, .booking-options:hover::after {
+        width: 280px;
+        height: 280px;
+    }
+}
+
+@media only screen and (min-width: 1600px) {
+    .booking-options {
+        margin-left: 20px;
+      }
+    
+    .booking-options, .booking-options:hover::before, .booking-options:hover::after {
+        width: 280px;
+        height: 280px;
+    }
+}
+
+@media only screen and (min-width: 1800px) {
+    .booking-options {
+        margin-left: 50px;
+      }
+    
+    .booking-options, .booking-options:hover::before, .booking-options:hover::after {
+        width: 300px;
+        height: 300px;
+    }
+}

@@ -96,6 +96,31 @@ export class ScrollAnimationService {
       scrollContactPanel.from(document.querySelector('.contacts-menu'), { x: -50, opacity: 0 });
     }
 
+    bookingScrollTrigger(): void {
+      const scrollTexts= gsap.timeline({
+        scrollTrigger: {
+          trigger: document.querySelector(".booking-container"),
+          start: "30% center",
+          toggleActions: "play none none reverse",
+        }
+      });
+      
+      scrollTexts.from(document.querySelector(".booking-text-1"), { x: -50, opacity: 0 });
+      scrollTexts.from(document.querySelector(".booking-text-2"), { x: -50, opacity: 0 });
+      scrollTexts.from(document.querySelector(".booking-text-3"), { x: -50, opacity: 0 });
+      scrollTexts.from(document.querySelector(".booking-text-4"), { x: -50, opacity: 0 });
+
+      const scrollPanels= gsap.timeline({
+        scrollTrigger: {
+          trigger: document.querySelector(".booking-text-1"),
+          start: "-400% center",
+          toggleActions: "play none none reverse",
+         }
+      });
+      
+      scrollPanels.from(document.querySelector(".booking-options-background-container"), { opacity: 0, duration: 2.5 });
+    }
+
     navigate(destination: string) {
       const scrollTo = gsap.timeline();
       switch(destination) {
@@ -117,7 +142,7 @@ export class ScrollAnimationService {
             }
           );
           break;
-          } case 'contacts': {
+          } case 'booking': {
             scrollTo.to(window,
               {
                 delay: 0.2,
@@ -126,12 +151,12 @@ export class ScrollAnimationService {
               }
             );
             break;
-          } case 'nearby': {
+          } case 'contacts': {
             scrollTo.to(window,
               {
                 delay: 0.2,
                 duration: 0.8,
-                scrollTo: 2950
+                scrollTo: window.innerHeight  * 3
               }
             );
             break;

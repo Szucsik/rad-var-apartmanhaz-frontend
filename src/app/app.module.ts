@@ -20,6 +20,7 @@ import { ContactsComponent } from './components/pages/contacts/contacts.componen
 import { NearbyComponent } from './components/pages/nearby/nearby.component';
 import { LogoStartComponent } from './components/mains/logo-start/logo-start.component';
 import { FullscreenComponent } from './components/pages/gallery/fullscreen/fullscreen.component';
+import { BookingComponent } from './components/pages/booking/booking.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { FullscreenComponent } from './components/pages/gallery/fullscreen/fulls
     NearbyComponent,
     LogoStartComponent,
     FullscreenComponent,
+    BookingComponent,
   ],
   imports: [
     BrowserModule,
