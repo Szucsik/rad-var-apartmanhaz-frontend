@@ -29,30 +29,30 @@
     top: 50%;
     -ms-transform: translate(0%, -50%);
     transform: translate(0%, -50%);
-    margin-left: 100px;
+    margin-left: 10px;
 }
 
 .booking-text-1 {
-    font-size: 20px;
+    font-size: 15px;
     margin: 0%;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 
 .booking-text-2, .booking-text-3 {
     margin: 0%;
     margin-top: 5px;
-    font-size: 32px;
+    font-size: 18px;
 }
 
 .booking-text-4 {
     margin-top: 5px;
-    font-size:16px;
+    font-size: 8px;
 }
 
 .booking-options-background-container {
     position: absolute;
-    height: 50%;
-    width: 90%;
+    height: 220px;
+    width: 220px;
     left: 50%;
     top: 50%;
     -ms-transform: translate(-50%, -50%);
@@ -63,37 +63,156 @@
 
   .booking-options-contents {
     position: absolute;
+    width: 100%;
     top: 50%;
-    -ms-transform: translate(0%, -50%);
-    transform: translate(0%, -50%);
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
   }
 
   .booking-options {
-    width: 300px;
-    height: 300px;
+    position: absolute;
+    height: 220px;
+    width: 220px;
     border-radius: 25%;
     display: inline-flex;
-    margin-left: 50px;
     cursor: pointer;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
   }
 
   .booking-options:hover::before, .booking-options:hover::after {
-    width: 300px;
-    height: 300px;
+    width: 220px;
+    height: 220px;
   }
 
 .booking-options-img {
     position: absolute;
-    top: 30px;
+    top: 20px;
+    width: 65px;
+    height: 65px;
 }
 
 .booking-option-title-text {
     position: absolute;
-    top: 160px;
+    top: 100px;
+    font-size: 15px;
 }
 
 .booking-options-click-text {
     position: absolute;
-    font-size: 15px;
-    top: 210px;
+    font-size: 10px;
+    top: 150px;
+}
+
+.booking-option-hidden {
+    visibility: hidden;
+}
+
+.booking-option-swap-backward {
+    background-image: url('/assets/site-images/arrow-left.png');
+    left: 0px;
+}
+
+.booking-option-swap-forward {
+    background-image: url('/assets/site-images/arrow-right.png');
+    right: 10px;
+}
+
+.booking-option-swap {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    bottom: 140px;
+}
+
+@media only screen and (min-width: 1024px) {
+    .booking-text-content-container {
+        margin-left: 100px;
+    }
+
+    .booking-options-background-container {
+        height: 50%;
+        width: 90%;
+    }
+
+    .booking-option-title-text {
+        top: 160px;
+    }
+
+    .booking-options-click-text {
+        font-size: 15px;
+        top: 210px;
+    }
+    
+    .booking-text-1 {
+        font-size: 20px;
+        margin: 0%;
+        margin-bottom: 25px;
+    }
+    
+    .booking-text-2, .booking-text-3 {
+        margin: 0%;
+        margin-top: 5px;
+        font-size: 32px;
+    }
+    
+    .booking-text-4 {
+        margin-top: 5px;
+        font-size:16px;
+    }
+
+    .booking-options {
+        width: 300px;
+        height: 300px;
+      }
+    
+    .booking-options:hover::before, .booking-options:hover::after {
+        width: 300px;
+        height: 300px;
+    }
+
+    .booking-options-img {
+        top: 30px;
+        width: auto;
+        height: auto;
+    }
+}
+
+@media only screen and (min-width: 1300px) {
+    .booking-options {
+        margin-left: 50px;
+        position: relative;
+        width: 200px;
+        height: 200px;
+        top: 0%;
+        left: 0%;
+        -ms-transform: translate(0%, 0%);
+        transform: translate(0%, 0%);
+    }
+
+    .booking-options:hover::before, .booking-options:hover::after {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .booking-option-swap {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 1500px) {
+    .booking-options {
+        width: 300px;
+        height: 300px;
+      }
+    
+    .booking-options:hover::before, .booking-options:hover::after {
+        width: 300px;
+        height: 300px;
+    }
 }

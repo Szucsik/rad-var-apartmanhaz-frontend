@@ -7,11 +7,18 @@ import { ScrollAnimationService } from 'src/app/shared/services/scrollAnimation.
   styleUrls: ['./booking.component.css']
 })
 export class BookingComponent implements OnInit {
-
+  maxFocus: number = 3;
+  focus: number = 0;
+  mobileMod: boolean = false;
   constructor(private scrollAnimationService: ScrollAnimationService) { }
+
+  onResize() {
+    this.CheckResolutionForAnimation();
+  }
 
   ngOnInit(): void {
     this.scrollAnimationService.bookingScrollTrigger();
+    this.CheckResolutionForAnimation();
   }
 
   RedirectLink(target: string): void {
@@ -29,5 +36,33 @@ export class BookingComponent implements OnInit {
         break;
       }
     }
+  }
+
+  SwapFocus(target: string): void {
+    switch(target) {
+      case 'left': {
+        if(this.focus < this.maxFocus - 1) {
+          this.focus++;
+        } else {
+          this.focus = 0;
+        }
+        break;
+      }
+      case 'right': {
+        if(this.focus > 0) {
+          this.focus--;
+        } else {
+          this.focus = this.maxFocus - 1;
+        }
+        break;
+      }
+    }
+  }
+
+  CheckResolutionForAnimation(): void {
+    if(window.innerWidth <= 1024)
+      this.mobileMod = true;
+    else 
+      this.mobileMod = false;
   }
 }
