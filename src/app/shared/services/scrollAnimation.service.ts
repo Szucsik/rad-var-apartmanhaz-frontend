@@ -99,8 +99,8 @@ export class ScrollAnimationService {
     bookingScrollTrigger(): void {
       const scrollTexts= gsap.timeline({
         scrollTrigger: {
-          trigger: document.querySelector(".booking-text-1"),
-          start: "-400% center",
+          trigger: document.querySelector(".booking-container"),
+          start: "30% center",
           toggleActions: "play none none reverse",
         }
       });

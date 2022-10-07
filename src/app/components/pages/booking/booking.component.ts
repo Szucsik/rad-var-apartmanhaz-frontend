@@ -15,7 +15,6 @@ export class BookingComponent implements OnInit {
   }
 
   RedirectLink(target: string): void {
-
     switch(target) {
       case 'booking': {
         window.open("https://www.booking.com/hotel/hu/rad-var-apartmanhaz.hu.html", "_blank");
