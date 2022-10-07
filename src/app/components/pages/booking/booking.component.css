@@ -59,34 +59,28 @@
     transform: translate(-50%, -50%);
     border-radius: 15%;
     overflow: hidden;
-  }
+}
 
-  .booking-options-contents {
+.booking-options-contents {
     position: absolute;
     width: 100%;
     top: 50%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-  }
+}
 
-  .booking-options {
-    position: absolute;
-    height: 220px;
-    width: 220px;
+.booking-options {
     border-radius: 25%;
     display: inline-flex;
+    margin-left: 0px;
     cursor: pointer;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-  }
+}
 
-  .booking-options:hover::before, .booking-options:hover::after {
+.booking-options, .booking-options:hover::before, .booking-options:hover::after {
     width: 220px;
     height: 220px;
-  }
+}
 
 .booking-options-img {
     position: absolute;
@@ -108,7 +102,7 @@
 }
 
 .booking-option-hidden {
-    visibility: hidden;
+    display: none;
 }
 
 .booking-option-swap-backward {
@@ -167,13 +161,16 @@
     }
 
     .booking-options {
-        width: 300px;
-        height: 300px;
-      }
+        margin-left: 5px;
+    }
     
-    .booking-options:hover::before, .booking-options:hover::after {
-        width: 300px;
-        height: 300px;
+    .booking-options, .booking-options:hover::before, .booking-options:hover::after {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .booking-option-swap {
+        display: none;
     }
 
     .booking-options-img {
@@ -185,19 +182,12 @@
 
 @media only screen and (min-width: 1300px) {
     .booking-options {
-        margin-left: 50px;
-        position: relative;
-        width: 200px;
-        height: 200px;
-        top: 0%;
-        left: 0%;
-        -ms-transform: translate(0%, 0%);
-        transform: translate(0%, 0%);
+        margin-left: 20px;
     }
-
-    .booking-options:hover::before, .booking-options:hover::after {
-        width: 200px;
-        height: 200px;
+    
+    .booking-options, .booking-options:hover::before, .booking-options:hover::after {
+        width: 220px;
+        height: 220px;
     }
     
     .booking-option-swap {
@@ -207,11 +197,32 @@
 
 @media only screen and (min-width: 1500px) {
     .booking-options {
-        width: 300px;
-        height: 300px;
+        margin-left: 10px;
       }
     
-    .booking-options:hover::before, .booking-options:hover::after {
+    .booking-options, .booking-options:hover::before, .booking-options:hover::after {
+        width: 280px;
+        height: 280px;
+    }
+}
+
+@media only screen and (min-width: 1600px) {
+    .booking-options {
+        margin-left: 20px;
+      }
+    
+    .booking-options, .booking-options:hover::before, .booking-options:hover::after {
+        width: 280px;
+        height: 280px;
+    }
+}
+
+@media only screen and (min-width: 1800px) {
+    .booking-options {
+        margin-left: 50px;
+      }
+    
+    .booking-options, .booking-options:hover::before, .booking-options:hover::after {
         width: 300px;
         height: 300px;
     }
