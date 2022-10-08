@@ -112,13 +112,13 @@ export class ScrollAnimationService {
 
       const scrollPanels= gsap.timeline({
         scrollTrigger: {
-          trigger: document.querySelector(".booking-text-1"),
-          start: "-400% center",
+          trigger: document.querySelector(".booking-container"),
+          start: "30% center",
           toggleActions: "play none none reverse",
          }
       });
       
-      scrollPanels.from(document.querySelector(".booking-options-background-container"), { opacity: 0, duration: 2.5 });
+      scrollPanels.from(document.querySelector(".booking-options-background-container"), { opacity: 0, duration: 2 });
     }
 
     navigate(destination: string) {

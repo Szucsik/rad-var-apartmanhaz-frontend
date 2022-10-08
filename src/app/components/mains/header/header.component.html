@@ -14,9 +14,6 @@
     <div class="header-menu-item-details menu-item" [ngClass]="{'mobile-hidden': isMobileResolution && !isMobileMenuActive}">
         <button pButton pRipple type="button" class="p-button-raised header-menu-button-details btns" (click)="this.scrollAnimationService.navigate('contacts')">Elérhetőségek</button>
     </div>
-    <div class="header-menu-item-details menu-item" [ngClass]="{'mobile-hidden': isMobileResolution && !isMobileMenuActive}">
-        <button pButton pRipple type="button" class="p-button-raised header-menu-button-details btns" (click)="this.scrollAnimationService.navigate('book')">Foglalás</button>
-    </div>
     <div class="header-menu-item-details lang-item" [ngClass]="{'mobile-hidden': isMobileResolution && !isMobileMenuActive}">
         <p-speedDial [model]="items" direction="{{ langDirection }}"></p-speedDial>
     </div>
