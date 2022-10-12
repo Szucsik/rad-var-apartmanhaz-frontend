@@ -1,9 +1,7 @@
 
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
-import { Configuration } from 'src/app/shared/config';
 import { AnimationService } from 'src/app/shared/services/animation.service';
 import { GalleryService } from 'src/app/shared/services/gallery.service';
-import { ScrollAnimationService } from 'src/app/shared/services/scrollAnimation.service';
 import { GalleryImageComponents } from 'src/app/shared/types/gallery.type';
 
 @Component({
@@ -22,7 +20,7 @@ export class GalleryComponent implements OnInit {
   isAnimationOngoing: boolean = false;
   isAnimationAllowed: boolean = true;
 
-  constructor(galleryService: GalleryService, private scrollAnimationService: ScrollAnimationService, private animationService: AnimationService) {
+  constructor(galleryService: GalleryService, private animationService: AnimationService) {
     this.galleryService = galleryService; 
   }
 
@@ -41,8 +39,6 @@ export class GalleryComponent implements OnInit {
     }
 
     this.galleryService.RegisterGalleryComponents(galleryImageComponents);
-    this.scrollAnimationService.galleryScrollTrigger();
-
     this.animationService.galleryAnimationCompleted.subscribe(result => {
       this.isAnimationOngoing = false;
     });
