@@ -89,7 +89,7 @@ export class GalleryService{
     }
 
     GetAllPrevievImageSources(): Array<string> {
-      return this.HDImageSources;
+      return this.imageSources;
     }
 
     // private

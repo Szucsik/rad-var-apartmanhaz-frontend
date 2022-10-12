@@ -39,7 +39,6 @@
 }
 
 .image-container {
-    height: 400px;
     align-items: center;
     justify-content: center;
 }
@@ -52,8 +51,15 @@ img {
 
 .images {
     width: 100%;
-    display: inline-flex;
+    height: 100%;
     overflow: hidden;
+}
+
+.swiper {
+    position: absolute;
+    left: 50%;
+    -ms-transform: translate(0%, -50%);
+    transform: translate(0%, -50%);
 }
 
 img.arrow-right, img.arrow-left {
