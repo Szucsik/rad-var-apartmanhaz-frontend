@@ -1,9 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
-import { Router } from "@angular/router";
 import { Configuration } from "./shared/config";
 import { AnimationService } from "./shared/services/animation.service";
 import { GalleryService } from "./shared/services/gallery.service";
 import { PreloadService } from "./shared/services/preload.service";
+import { ScrollAnimationService } from "./shared/services/scrollAnimation.service";
 
 @Component({
   selector: 'app-root',
@@ -18,11 +18,16 @@ export class AppComponent implements OnInit {
   config: Configuration;
 
 
-  constructor(config: Configuration, private galleryService: GalleryService, private animationService: AnimationService, private preloadService: PreloadService, private router: Router) { this.config = config;}
+  constructor(config: Configuration, private galleryService: GalleryService, private animationService: AnimationService, private preloadService: PreloadService, private scrollAnimationService: ScrollAnimationService) { this.config = config;}
 
   ngOnInit(): void {
     this.config.setStartComponentNeeded();
     this.preloadTasks();
+
+    this.animationService.contentLoaded.subscribe(result => {
+      this.scrollAnimationService.ActivateScrollService();
+      this.scrollAnimationService.RegisterScrollServices();
+    });
   }
   
   preloadTasks(): void {

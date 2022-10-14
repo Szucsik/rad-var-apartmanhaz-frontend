@@ -1,0 +1,12 @@
+<swiper #swiperGallery
+    [pagination]="{
+        dynamicBullets: true
+    }"
+    [autoHeight]="true"
+    [grabCursor]="true"
+    class="gallery-swiper"
+>
+    <ng-template swiperSlide *ngFor="let image of images; index as i">
+        <img class="swiper-image" src="{{ image }}" alt="">
+    </ng-template>
+</swiper>

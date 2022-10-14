@@ -233,14 +233,14 @@ a:link:hover, a:visited:hover {
     display: block;
     content: '';
     position: absolute;
-    background:#4cc3cf;
+    background:lightgray;
     border-radius: 75px;
     z-index: -1;
     animation: 1s clockwise infinite;
   }
   
   .booking-options:hover:after {
-    background: lime;
+    background: white;
     animation: 2s counterclockwise infinite;
   }
 

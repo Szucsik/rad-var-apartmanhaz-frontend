@@ -21,6 +21,8 @@ import { NearbyComponent } from './components/pages/nearby/nearby.component';
 import { LogoStartComponent } from './components/mains/logo-start/logo-start.component';
 import { FullscreenComponent } from './components/pages/gallery/fullscreen/fullscreen.component';
 import { BookingComponent } from './components/pages/booking/booking.component';
+import { SwiperModule } from "swiper/angular";
+import { GallerySwiperComponent } from './components/pages/gallery/swiper/swiper.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { BookingComponent } from './components/pages/booking/booking.component';
     LogoStartComponent,
     FullscreenComponent,
     BookingComponent,
+    GallerySwiperComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,8 @@ import { BookingComponent } from './components/pages/booking/booking.component';
     AppRoutingModule,
     PanelModule,
     GalleriaModule,
-    HttpClientModule
+    HttpClientModule,
+    SwiperModule
   ],
   providers: [],
   bootstrap: [AppComponent]
