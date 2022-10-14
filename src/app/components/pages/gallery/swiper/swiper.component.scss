@@ -36,6 +36,12 @@
 
 @media only screen and (min-width: 867px) {
   .swiper {
+    width: 667px;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .swiper {
     width: 867px;
   }
 }
