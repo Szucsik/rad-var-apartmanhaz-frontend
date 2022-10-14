@@ -11,14 +11,14 @@
         </div>
         <div class="image-container">
             <div class="images">
-                <gallery-swiper></gallery-swiper>
+                <gallery-swiper #swiper></gallery-swiper>
             </div>
             <div class="image-container-controllers">
-                <div class="gallery-previous-button" (click)="this.NextImage('left')">
+                <div class="gallery-previous-button" (click)="this.swiper.PrevImage();">
                     <img class="arrow-left" src="/assets/site-images/arrow-left.png" alt="..." >
                     <p class="gallery-left-button-text" href="#">Előző kép</p>
                 </div>
-                <div class="gallery-next-button" (click)="this.NextImage('right')">
+                <div class="gallery-next-button" (click)="this.swiper.NextImage();">
                     <p class="gallery-right-button-text">Következő kép</p>
                     <img class="arrow-right" src="/assets/site-images/arrow-right.png" alt="...">
                 </div>

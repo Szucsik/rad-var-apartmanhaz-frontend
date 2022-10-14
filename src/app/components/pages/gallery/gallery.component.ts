@@ -2,6 +2,7 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { AnimationService } from 'src/app/shared/services/animation.service';
 import { GalleryService } from 'src/app/shared/services/gallery.service';
+import { GallerySwiperComponent } from './swiper/swiper.component';
 
 @Component({
   selector: 'app-gallery',
@@ -10,6 +11,7 @@ import { GalleryService } from 'src/app/shared/services/gallery.service';
 })
 
 export class GalleryComponent implements OnInit {
+  @ViewChild('swiper', { static: false }) swiper: GallerySwiperComponent;
   galleryService: GalleryService;
 
   constructor(galleryService: GalleryService, private animationService: AnimationService) {
@@ -17,10 +19,6 @@ export class GalleryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  }
-
-  NextImage(state: string): void {
-
   }
 
   TurnFullscreen(state: boolean): void {

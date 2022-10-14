@@ -21,6 +21,12 @@ export class GallerySwiperComponent implements OnInit{
 
   ngOnInit(): void {
     this.images =  this.galleryService.GetAllPrevievImageSources();
+    this.AdjustSwiperSize();
+  }
+
+  private AdjustSwiperSize(): void {
+    // Swiper cant calculate percentage size when you use it in the CSS, thats why we need this method.
+    
   }
 
   public NextImage(): void {

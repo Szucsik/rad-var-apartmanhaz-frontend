@@ -3,8 +3,7 @@
 @import "~swiper/css/pagination";
 
 .swiper {
-  width: 1200px;
-  height: 600px;
+  width: 100%;
 }
 
 .swiper-slide {
@@ -32,4 +31,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+
+@media only screen and (min-width: 867px) {
+  .swiper {
+    width: 867px;
+  }
 }
