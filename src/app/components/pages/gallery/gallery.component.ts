@@ -14,14 +14,14 @@ export class GalleryComponent implements OnInit {
   @ViewChild('swiper', { static: false }) swiper: GallerySwiperComponent;
   galleryService: GalleryService;
 
-  constructor(galleryService: GalleryService, private animationService: AnimationService) {
+  constructor(galleryService: GalleryService) {
     this.galleryService = galleryService; 
   }
 
   ngOnInit(): void {
+    let f = this.galleryService.getPhotoDescriptions();
   }
 
   TurnFullscreen(state: boolean): void {
-
   }
 }

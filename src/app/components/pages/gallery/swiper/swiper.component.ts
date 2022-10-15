@@ -2,10 +2,10 @@ import { Component, ViewEncapsulation, ViewChild, OnInit } from "@angular/core";
 import { GalleryService } from "src/app/shared/services/gallery.service";
 import { SwiperComponent } from "swiper/angular";
 // import Swiper core and required modules
-import SwiperCore, { Pagination } from "swiper";
+import SwiperCore, { EffectCards } from "swiper";
 
 // install Swiper modules
-SwiperCore.use([Pagination]);
+SwiperCore.use([EffectCards]);
 
 
 @Component({
@@ -35,5 +35,9 @@ export class GallerySwiperComponent implements OnInit{
 
   public PrevImage(): void {
     this.gallery.swiperRef.slidePrev();
+  }
+
+  onSlideChange() {
+    this.galleryService.SetCurrentImageID(this.gallery.swiperRef.snapIndex);
   }
 }

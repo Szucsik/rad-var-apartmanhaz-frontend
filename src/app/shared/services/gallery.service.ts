@@ -1,5 +1,6 @@
 import { EventEmitter, Injectable } from "@angular/core";
 import { Configuration } from "../config";
+import { GalleryImageDescriptions } from "../texts/hun/gallery.image.descriptions";
 import { AnimationService } from "./animation.service";
 
 @Injectable({
@@ -14,7 +15,7 @@ export class GalleryService{
     private readonly HDImageSources: Array<string> = this.config.getPhotoList();
     private fullscreenState: boolean = false;
 
-    constructor(private animationService: AnimationService, private config: Configuration) {       
+    constructor(private animationService: AnimationService, private config: Configuration, private galleryImageDescriptions: GalleryImageDescriptions) {       
       this.animationService.galleryAnimationCompleted.subscribe(increaseOrDecrease => {
         this.ChangeCurrentImageID(increaseOrDecrease);
       });
@@ -79,6 +80,10 @@ export class GalleryService{
       return this.imageSources;
     }
 
+    getPhotoDescriptions(): Array<string> {
+      return this.galleryImageDescriptions.text;
+    }
+
     // private
 
     private ChangeCurrentImageID(increaseOrDecrease: boolean): void {
@@ -97,6 +102,10 @@ export class GalleryService{
       } else {
         this.currentImageID++;
       }
+    }
+
+    SetCurrentImageID(id: number): void {
+      this.currentImageID = id;
     }
 
     DecreaseCurrentImageID(): void {

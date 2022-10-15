@@ -18,7 +18,7 @@
                     <img class="arrow-left" src="/assets/site-images/arrow-left.png" alt="..." >
                 </div>
                 <div class="gallery-image-descriptor-container">
-                    <p class="gallery-image-descriptor-text">Stúdió apartman - háló szoba</p>
+                    <p class="gallery-image-descriptor-text">{{ this.galleryService.getPhotoDescriptions()[this.galleryService.GetCurrentImageID()] }}</p>
                 </div>
                 <div class="gallery-next-button" (click)="this.swiper.NextImage();">
                     <img class="arrow-right" src="/assets/site-images/arrow-right.png" alt="...">

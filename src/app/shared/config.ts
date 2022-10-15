@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-
+import { GalleryImageDescriptions } from "./texts/hun/gallery.image.descriptions";
 
 @Injectable({
     providedIn: 'root',
@@ -57,7 +57,6 @@ export class Configuration {
     public getPhotoPreviewList(): Array<string> {
         return this.photoPreviewList;
     }
-
 
     // Setters
     public setStartComponentNeeded() {
