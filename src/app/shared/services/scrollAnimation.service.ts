@@ -90,32 +90,14 @@ export class ScrollAnimationService {
       });
       scrollTitle.from(document.querySelector('.gallery-header'), { y: -50, opacity: 0 });
 
-      const scrollGalleryPrevious = gsap.timeline({
-        scrollTrigger: {
-          trigger: document.querySelector('.gallery-previous-image'),
-          start: "-20% center",
-          toggleActions: "play none none reverse",
-        }
-      });
-      scrollGalleryPrevious.from(document.querySelector('.gallery-previous-image'), { x: -50, opacity: 0 });
-
-      const scrollGalleryNext = gsap.timeline({
-        scrollTrigger: {
-          trigger: document.querySelector('.gallery-next-image'),
-          start: "-20% center",
-          toggleActions: "play none none reverse",
-        }
-      });
-      scrollGalleryNext.from(document.querySelector('.gallery-next-image'), { x: 50, opacity: 0 });
-
       const scrollGalleryMain = gsap.timeline({
         scrollTrigger: {
-          trigger: document.querySelector('.gallery-main-image'),
+          trigger: document.querySelector('.images'),
           start: "8% center",
           toggleActions: "play none none reverse"
         }
       });
-      scrollGalleryMain.from(document.querySelector('.gallery-main-image'), {opacity: 0 });
+      scrollGalleryMain.from(document.querySelector('.images'), {opacity: 0 });
 
       const scrollArrovLeft = gsap.timeline({
         scrollTrigger: {
