@@ -35,6 +35,26 @@ export class HeaderComponent implements OnInit {
       this.animationService.headerAnimations(this.container);
     });
 
+    this.languageCompSetUp();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    if(window.innerWidth < 1300) {
+      this.langDirection = 'right';
+      this.isMobileResolution = true;
+    } else {
+      this.langDirection = 'left';
+      this.isMobileResolution = false;
+    }
+  }
+
+  @HostListener('window:scroll', ['$event']) // for window scroll events
+  onScroll(event) {
+    this.isMobileMenuActive = false;
+  }
+
+  languageCompSetUp(): void {
     this.primengConfig.ripple = true;
     this.items = [
       {
@@ -62,17 +82,6 @@ export class HeaderComponent implements OnInit {
           }
       }
     ];
-  }
-
-  @HostListener('window:resize', ['$event'])
-  onResize(event) {
-    if(window.innerWidth < 1300) {
-      this.langDirection = 'right';
-      this.isMobileResolution = true;
-    } else {
-      this.langDirection = 'left';
-      this.isMobileResolution = false;
-    }
   }
 
   showMobileMenu(): void {
