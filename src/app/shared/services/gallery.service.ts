@@ -1,7 +1,7 @@
 import { EventEmitter, Injectable } from "@angular/core";
 import { Configuration } from "../config";
+import { GalleryImageDescriptions } from "../texts/hun/gallery.image.descriptions";
 import { AnimationService } from "./animation.service";
-import { GalleryImageComponents } from "../types/gallery.type";
 
 @Injectable({
     providedIn: 'root',
@@ -13,17 +13,12 @@ export class GalleryService{
     private currentImageID: number = 0;
     private readonly imageSources: Array<string> = this.config.getPhotoPreviewList();
     private readonly HDImageSources: Array<string> = this.config.getPhotoList();
-    private galleryImageComponents: GalleryImageComponents;
     private fullscreenState: boolean = false;
 
-    constructor(private animationService: AnimationService, private config: Configuration) {       
+    constructor(private animationService: AnimationService, private config: Configuration, private galleryImageDescriptions: GalleryImageDescriptions) {       
       this.animationService.galleryAnimationCompleted.subscribe(increaseOrDecrease => {
         this.ChangeCurrentImageID(increaseOrDecrease);
       });
-    }
-
-    RegisterGalleryComponents(gallery: GalleryImageComponents): void {
-      this.galleryImageComponents = gallery;
     }
 
     FullScreen(state: boolean): void {
@@ -85,6 +80,10 @@ export class GalleryService{
       return this.imageSources;
     }
 
+    getPhotoDescriptions(): Array<string> {
+      return this.galleryImageDescriptions.text;
+    }
+
     // private
 
     private ChangeCurrentImageID(increaseOrDecrease: boolean): void {
@@ -103,6 +102,10 @@ export class GalleryService{
       } else {
         this.currentImageID++;
       }
+    }
+
+    SetCurrentImageID(id: number): void {
+      this.currentImageID = id;
     }
 
     DecreaseCurrentImageID(): void {

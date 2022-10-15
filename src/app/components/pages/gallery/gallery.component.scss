@@ -22,16 +22,23 @@
     width: 200px
 }
 
-.gallery-previous-button, .gallery-next-button {
+.gallery-previous-button, .gallery-next-button, .gallery-image-descriptor-container {
     position: absolute;
     cursor: pointer;
     display: inline-flex;
-    font-size: 12px;
+    font-size: 20px;
     bottom: 20%;
 }
 
 .gallery-previous-button {
     left: 5%;
+}
+
+.gallery-image-descriptor-container{
+    position: absolute;
+    left: 50%;
+    -ms-transform: translate(-50%, 0%);
+    transform: translate(-50%, 0%);
 }
 
 .gallery-next-button {
@@ -57,7 +64,7 @@ img.gallery-main-image {
     max-width: 100%;
 }
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 700px) {
     .gallery-title {
         font-size: 50px;
     }
@@ -81,6 +88,10 @@ img.gallery-main-image {
     img.arrow-right, img.arrow-left {
         margin: 21px;
     }
+
+    .gallery-image-descriptor-container {
+        font-size: 25px;
+    }
 }
 
 @media only screen and (min-width: 1300px) {
@@ -95,23 +106,26 @@ img.gallery-main-image {
     img.arrow-right, img.arrow-left {
         margin: 21px;
     }
+
+    .gallery-image-descriptor-container {
+        font-size: 25px;
+    }
 }
 
 @media only screen and (min-height: 768px) and (min-width: 1024px) {
-    .gallery-previous-button, .gallery-next-button {
-        font-size: 20px;
+    .gallery-previous-button, .gallery-next-button, .gallery-image-descriptor-container {
         bottom: 20px;
     }
 }
 
 @media only screen and (min-height: 800px) and (min-width: 1024px) {
-    .gallery-previous-button, .gallery-next-button {
+    .gallery-previous-button, .gallery-next-button, .gallery-image-descriptor-container {
         bottom: 0px;
     }
 }
 
 @media only screen and (min-height: 950px) and (min-width: 1024px) {
-    .gallery-previous-button, .gallery-next-button {
+    .gallery-previous-button, .gallery-next-button, .gallery-image-descriptor-container {
         bottom: 50px;
     }
 }

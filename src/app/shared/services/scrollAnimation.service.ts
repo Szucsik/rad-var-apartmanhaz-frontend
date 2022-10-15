@@ -117,6 +117,16 @@ export class ScrollAnimationService {
         }
       });
       scrollArrovRight.from(document.querySelector('.gallery-previous-button'), { y: -50, opacity: 0 });
+
+      const imageDescriptionText = gsap.timeline({
+        scrollTrigger: {
+          trigger: document.querySelector('.gallery-image-descriptor-container'),
+          start: "80% bottom",
+          toggleActions: "play none none reverse",
+          markers: false
+        }
+      });
+      imageDescriptionText.from(document.querySelector('.gallery-image-descriptor-container'), { y: -50, opacity: 0 });
     }
 
     private contactsScrollTrigger(): void {
