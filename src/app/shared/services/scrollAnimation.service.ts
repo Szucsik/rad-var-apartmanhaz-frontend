@@ -125,7 +125,7 @@ export class ScrollAnimationService {
           markers: false
         }
       });
-      scrollArrovLeft.from(document.querySelector('.gallery-next-button'), { x: 200, opacity: 0 });
+      scrollArrovLeft.from(document.querySelector('.gallery-next-button'), { y: -50, opacity: 0 });
 
       const scrollArrovRight = gsap.timeline({
         scrollTrigger: {
@@ -134,7 +134,7 @@ export class ScrollAnimationService {
           toggleActions: "play none none reverse",
         }
       });
-      scrollArrovRight.from(document.querySelector('.gallery-previous-button'), { x: -200, opacity: 0 });
+      scrollArrovRight.from(document.querySelector('.gallery-previous-button'), { y: -50, opacity: 0 });
     }
 
     private contactsScrollTrigger(): void {

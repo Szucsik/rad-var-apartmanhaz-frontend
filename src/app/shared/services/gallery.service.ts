@@ -26,13 +26,6 @@ export class GalleryService{
       this.galleryImageComponents = gallery;
     }
 
-    NextImage(direction: string, animation: boolean): void {
-      if(animation)
-        this.animationService.galleryScrollAnimations(this. galleryImageComponents, direction);
-      else 
-        this.ChangeCurrentImageID(direction == 'right');
-    }
-
     FullScreen(state: boolean): void {
       this.fullscreenState = state;
       this.fullscreenEvent.emit(state);

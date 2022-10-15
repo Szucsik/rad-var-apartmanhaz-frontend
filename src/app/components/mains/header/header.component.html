@@ -1,4 +1,4 @@
-<div class="header-background-color header-container" #container>
+<div class="header-background-color header-container" #container [ngClass]="{'mobile-blur': isMobileResolution && !isMobileMenuActive}">
     <div class="mobile-menu">
         <div class="logo-container" (click)="this.scrollAnimationService.navigate('home')">
             <app-logo #logo></app-logo>
