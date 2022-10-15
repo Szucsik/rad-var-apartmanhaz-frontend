@@ -2,15 +2,67 @@ import { Injectable } from "@angular/core";
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 @Injectable({
     providedIn: 'root',
 })
 
 export class ScrollAnimationService {
+  navigate(destination: string) {
+    const scrollTo = gsap.timeline();
+    switch(destination) {
+      case 'home': {
+        scrollTo.to(window,
+          {
+            delay: 0.2,
+            duration: 0.0,
+            scrollTo: 0,
+          }
+        );
+      break;
+      } case 'gallery': {
+        scrollTo.to(window,
+          {
+            delay: 0.2,
+            duration: 0.8,
+            scrollTo: window.innerHeight * 1
+          }
+        );
+        break;
+        } case 'booking': {
+          scrollTo.to(window,
+            {
+              delay: 0.2,
+              duration: 0.8,
+              scrollTo: window.innerHeight  * 2
+            }
+          );
+          break;
+        } case 'contacts': {
+          scrollTo.to(window,
+            {
+              delay: 0.2,
+              duration: 0.8,
+              scrollTo: window.innerHeight  * 3
+            }
+          );
+          break;
+        }
+      }
+    }
 
-    homeScrollTrigger(): void {
+    public RegisterScrollServices(): void {
+      this.homeScrollTrigger();
+      this.galleryScrollTrigger();
+      this.contactsScrollTrigger();
+      this.bookingScrollTrigger();
+    }
+
+    public ActivateScrollService(): void {
+      gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+    }
+
+    private homeScrollTrigger(): void {
       const tl = gsap.timeline({
           scrollTrigger: {
             trigger: "#hero",
@@ -27,7 +79,7 @@ export class ScrollAnimationService {
         });
     }
 
-    galleryScrollTrigger(): void {
+    private galleryScrollTrigger(): void {
       const scrollTitle = gsap.timeline({
         scrollTrigger: {
           trigger: document.querySelector('.gallery-header'),
@@ -38,32 +90,14 @@ export class ScrollAnimationService {
       });
       scrollTitle.from(document.querySelector('.gallery-header'), { y: -50, opacity: 0 });
 
-      const scrollGalleryPrevious = gsap.timeline({
-        scrollTrigger: {
-          trigger: document.querySelector('.gallery-previous-image'),
-          start: "-20% center",
-          toggleActions: "play none none reverse",
-        }
-      });
-      scrollGalleryPrevious.from(document.querySelector('.gallery-previous-image'), { x: -50, opacity: 0 });
-
-      const scrollGalleryNext = gsap.timeline({
-        scrollTrigger: {
-          trigger: document.querySelector('.gallery-next-image'),
-          start: "-20% center",
-          toggleActions: "play none none reverse",
-        }
-      });
-      scrollGalleryNext.from(document.querySelector('.gallery-next-image'), { x: 50, opacity: 0 });
-
       const scrollGalleryMain = gsap.timeline({
         scrollTrigger: {
-          trigger: document.querySelector('.gallery-main-image'),
+          trigger: document.querySelector('.images'),
           start: "8% center",
           toggleActions: "play none none reverse"
         }
       });
-      scrollGalleryMain.from(document.querySelector('.gallery-main-image'), {opacity: 0 });
+      scrollGalleryMain.from(document.querySelector('.images'), {opacity: 0 });
 
       const scrollArrovLeft = gsap.timeline({
         scrollTrigger: {
@@ -73,7 +107,7 @@ export class ScrollAnimationService {
           markers: false
         }
       });
-      scrollArrovLeft.from(document.querySelector('.gallery-next-button'), { x: 200, opacity: 0 });
+      scrollArrovLeft.from(document.querySelector('.gallery-next-button'), { y: -50, opacity: 0 });
 
       const scrollArrovRight = gsap.timeline({
         scrollTrigger: {
@@ -82,10 +116,10 @@ export class ScrollAnimationService {
           toggleActions: "play none none reverse",
         }
       });
-      scrollArrovRight.from(document.querySelector('.gallery-previous-button'), { x: -200, opacity: 0 });
+      scrollArrovRight.from(document.querySelector('.gallery-previous-button'), { y: -50, opacity: 0 });
     }
 
-    contactsScrollTrigger(): void {
+    private contactsScrollTrigger(): void {
       const scrollContactPanel = gsap.timeline({
         scrollTrigger: {
           trigger: document.querySelector('.contacts-menu'),
@@ -96,7 +130,7 @@ export class ScrollAnimationService {
       scrollContactPanel.from(document.querySelector('.contacts-menu'), { x: -50, opacity: 0 });
     }
 
-    bookingScrollTrigger(): void {
+    private bookingScrollTrigger(): void {
       const scrollTexts= gsap.timeline({
         scrollTrigger: {
           trigger: document.querySelector(".booking-container"),
@@ -115,52 +149,9 @@ export class ScrollAnimationService {
           trigger: document.querySelector(".booking-container"),
           start: "30% center",
           toggleActions: "play none none reverse",
-         }
+          }
       });
       
       scrollPanels.from(document.querySelector(".booking-options-background-container"), { opacity: 0, duration: 2 });
-    }
-
-    navigate(destination: string) {
-      const scrollTo = gsap.timeline();
-      switch(destination) {
-        case 'home': {
-          scrollTo.to(window,
-            {
-              delay: 0.2,
-              duration: 0.0,
-              scrollTo: 0,
-            }
-          );
-        break;
-        } case 'gallery': {
-          scrollTo.to(window,
-            {
-              delay: 0.2,
-              duration: 0.8,
-              scrollTo: window.innerHeight * 1
-            }
-          );
-          break;
-          } case 'booking': {
-            scrollTo.to(window,
-              {
-                delay: 0.2,
-                duration: 0.8,
-                scrollTo: window.innerHeight  * 2
-              }
-            );
-            break;
-          } case 'contacts': {
-            scrollTo.to(window,
-              {
-                delay: 0.2,
-                duration: 0.8,
-                scrollTo: window.innerHeight  * 3
-              }
-            );
-            break;
-          }
-        }
-      }
+    }  
 }

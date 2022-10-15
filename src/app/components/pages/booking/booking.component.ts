@@ -17,7 +17,7 @@ export class BookingComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.scrollAnimationService.bookingScrollTrigger();
+    // this.scrollAnimationService.bookingScrollTrigger();
     this.CheckResolutionForAnimation();
   }
 

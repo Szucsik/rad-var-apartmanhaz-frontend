@@ -11,23 +11,14 @@
         </div>
         <div class="image-container">
             <div class="images">
-                <img class="gallery-previous-image-hidden" src="{{ this.galleryService.GetPreviousHiddenImageSource() }}" alt="..." #galleryPrevHid>
-                <img class="gallery-previous-image gallery-sub-image" src="{{ this.galleryService.GetPreviousImageSource() }}" alt="..." #galleryPrev>
-                <img class="gallery-main-image" src="{{ this.galleryService.GetCurrentImageSource() }}" alt="..." #galleryMain (click)="this.TurnFullscreen(true)" [ngClass]="{'gallery-link': !isAnimationOngoing}">
-                <img class="gallery-next-image gallery-sub-image" src="{{ this.galleryService.GetNextImageSource() }}" alt="..." #galleryNext>
-                <img class="gallery-next-image-hidden" src="{{ this.galleryService.GetNextHiddenImageSource() }}" alt="..." #galleryNextHid>
-            </div>
-            <div class="gallery-counter-dots-container">
-                <div class="gallery-counter-dot-div" *ngFor="let item of this.galleryService.GetAllPrevievImageSources(); index as i">
-                    <span class="gallery-counter-dot" [ngClass]="{'gallery-counter-dot-active': i == this.galleryService.GetCurrentImageID()}"></span>
-                </div>
+                <gallery-swiper #swiper></gallery-swiper>
             </div>
             <div class="image-container-controllers">
-                <div class="gallery-previous-button" (click)="this.NextImage('left')">
+                <div class="gallery-previous-button" (click)="this.swiper.PrevImage();">
                     <img class="arrow-left" src="/assets/site-images/arrow-left.png" alt="..." >
                     <p class="gallery-left-button-text" href="#">Előző kép</p>
                 </div>
-                <div class="gallery-next-button" (click)="this.NextImage('right')">
+                <div class="gallery-next-button" (click)="this.swiper.NextImage();">
                     <p class="gallery-right-button-text">Következő kép</p>
                     <img class="arrow-right" src="/assets/site-images/arrow-right.png" alt="...">
                 </div>
