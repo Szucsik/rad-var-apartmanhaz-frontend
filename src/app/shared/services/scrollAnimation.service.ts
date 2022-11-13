@@ -10,7 +10,7 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 export class ScrollAnimationService {
   navigate(destination: string) {
     const scrollTo = gsap.timeline();
-    const headerHeight = window.innerHeight > window.innerWidth ? 50 : 80;
+    const headerHeight = 50;
     switch(destination) {
       case 'home': {
         scrollTo.to(window,
