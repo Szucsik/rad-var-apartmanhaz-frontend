@@ -52,7 +52,7 @@ export class ScrollAnimationService {
     }
 
     public RegisterScrollServices(): void {
-      this.homeScrollTrigger();
+      // this.homeScrollTrigger();
       this.galleryScrollTrigger();
       this.contactsScrollTrigger();
       this.bookingScrollTrigger();
