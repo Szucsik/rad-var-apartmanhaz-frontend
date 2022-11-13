@@ -23,6 +23,7 @@ import { FullscreenComponent } from './components/pages/gallery/fullscreen/fulls
 import { BookingComponent } from './components/pages/booking/booking.component';
 import { SwiperModule } from "swiper/angular";
 import { GallerySwiperComponent } from './components/pages/gallery/swiper/swiper.component';
+import { HistoryComponent } from './components/pages/history/history.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { GallerySwiperComponent } from './components/pages/gallery/swiper/swiper
     FullscreenComponent,
     BookingComponent,
     GallerySwiperComponent,
+    HistoryComponent,
   ],
   imports: [
     BrowserModule,

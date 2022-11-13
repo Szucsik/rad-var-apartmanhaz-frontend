@@ -1,0 +1,77 @@
+$timeline-dot-color: gray;
+$timeline-dot-size: 15px;
+$timeline-dot-margin: 25px;
+
+$timeline-left: 50px;
+$timeline-top: 150px;
+
+::selection {
+    background: yellow;
+}
+
+.history-container {
+    height: 100%;
+    width: 100%;
+    background-color: white;
+}
+
+.timeline-container {
+    position: sticky;
+    top: 0px;
+    left: 0px;
+    float: left;
+    padding-top: $timeline-top;
+    padding-left: $timeline-left;
+    margin-bottom: $timeline-top;
+}
+
+.timeline-dot, .timeline-dot-active {
+    width: $timeline-dot-size;
+    height: $timeline-dot-size;
+    border-color: $timeline-dot-color;
+    background-color: transparent;
+    border-style: solid;
+    border-width: thin;
+    rotate: 45deg;
+    margin-bottom: $timeline-dot-margin;
+}
+
+.timeline-dot-active {
+    background-color: $timeline-dot-color;
+}
+
+.timeline-active-highlight {
+    position: relative;
+    top: calc(-1 * ($timeline-dot-size + $timeline-dot-margin + 7px));
+    left: calc(-1 * $timeline-dot-size);
+    width: 200px;
+    height: 30px;
+    opacity: 0.5;
+    background-color: $timeline-dot-color;
+    border-radius: 25px;
+}
+
+.timeline-hidden-highlight {
+    display: none;
+}
+
+.timeline-line {
+    height: 40px;
+    width: 40px;
+}
+
+.history-topic-1-container {
+    padding-top: 50px;
+    text-align: center;
+}
+
+.history-topic-1-title {
+    font-weight: bold;
+    font-size: 2vw;
+    color: #CBC467;
+}
+
+.history-topic-1-title-part-2 {
+    font-size: 2vw;
+}
+
