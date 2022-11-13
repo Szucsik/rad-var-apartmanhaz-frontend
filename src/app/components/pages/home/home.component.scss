@@ -1,4 +1,8 @@
 $layer-bottom-height: 180px;
+$quote-width: 2vw;
+
+$quote-fontsize: 1.5vw;
+$home-fontsize: 3vw;
 
 ::selection {
   background: darkkhaki;
@@ -12,31 +16,29 @@ $layer-bottom-height: 180px;
 
 .quote {
   float: right;
-  margin-top: 200px;
-  margin-right: 200px;
-  max-width: fit-content;
+  margin-top: 150px;
+  margin-right: 10%;
+  width: fit-content;
 }
 
-.quote-start {
-  max-width: 2vw;
+.quote-start, .quote-end {
+  max-width: $quote-width;
 }
 
-.quote-end {
-  max-width: 2vw;
-  float: right;
-}
-
-.quote-text {
-  font-size: 1.5vw;
+.quote-text, .quote-author {
+  font-size: $quote-fontsize;
 }
 
 .quote-author {
-  font-size: 1.5vw;
   text-align: right;
 }
 
+.quote-end {
+  float: right;
+}
+
 .home-wellcome-text {
-  font-size: 3vw;
+  font-size: $home-fontsize;
   padding-top: 20px;
   text-align: center;
   height: 100%;
@@ -76,4 +78,18 @@ $layer-bottom-height: 180px;
 
 .layer-bg {
   background-image: url("/assets/site-images/background.jpg");
+}
+
+@media only screen and (orientation: portrait) {  
+  .quote-start, .quote-end {
+    max-width: calc($quote-width * 2);
+  }
+  
+  .quote-text, .quote-author {
+    font-size: calc($quote-fontsize * 2);
+  }
+  
+  .home-wellcome-text {
+    font-size: calc($home-fontsize * 2);
+  }  
 }

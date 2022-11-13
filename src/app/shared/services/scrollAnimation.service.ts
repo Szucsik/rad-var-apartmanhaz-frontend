@@ -10,12 +10,13 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 export class ScrollAnimationService {
   navigate(destination: string) {
     const scrollTo = gsap.timeline();
+    const headerHeight = window.innerHeight > window.innerWidth ? 50 : 80;
     switch(destination) {
       case 'home': {
         scrollTo.to(window,
           {
             delay: 0.2,
-            duration: 0.0,
+            duration: 0.8,
             scrollTo: 0,
           }
         );
@@ -25,7 +26,7 @@ export class ScrollAnimationService {
           {
             delay: 0.2,
             duration: 0.8,
-            scrollTo: window.innerHeight * 1
+            scrollTo: window.innerHeight * 1 - headerHeight
           }
         );
         break;
@@ -34,7 +35,7 @@ export class ScrollAnimationService {
             {
               delay: 0.2,
               duration: 0.8,
-              scrollTo: window.innerHeight  * 2
+              scrollTo: window.innerHeight  * 2 - headerHeight
             }
           );
           break;
@@ -43,7 +44,7 @@ export class ScrollAnimationService {
             {
               delay: 0.2,
               duration: 0.8,
-              scrollTo: window.innerHeight  * 3
+              scrollTo: window.innerHeight  * 3 - headerHeight
             }
           );
           break;

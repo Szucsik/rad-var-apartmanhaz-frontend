@@ -40,7 +40,7 @@ export class HeaderComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
-    if(window.innerWidth < 1300) {
+    if(window.innerHeight > window.innerWidth) {
       this.langDirection = 'right';
       this.isMobileResolution = true;
     } else {

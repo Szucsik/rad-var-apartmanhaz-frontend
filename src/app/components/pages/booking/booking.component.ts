@@ -4,12 +4,13 @@ import { ScrollAnimationService } from 'src/app/shared/services/scrollAnimation.
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
-  styleUrls: ['./booking.component.css']
+  styleUrls: ['./booking.component.scss']
 })
 export class BookingComponent implements OnInit {
   maxFocus: number = 3;
   focus: number = 0;
   mobileMod: boolean = false;
+  
   constructor(private scrollAnimationService: ScrollAnimationService) { }
 
   onResize() {
@@ -60,7 +61,7 @@ export class BookingComponent implements OnInit {
   }
 
   CheckResolutionForAnimation(): void {
-    if(window.innerWidth <= 1024)
+    if(window.innerHeight > window.innerWidth)
       this.mobileMod = true;
     else 
       this.mobileMod = false;

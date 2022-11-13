@@ -1,6 +1,5 @@
 
-import { Component, ElementRef, HostListener, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { AnimationService } from 'src/app/shared/services/animation.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { GalleryService } from 'src/app/shared/services/gallery.service';
 import { GallerySwiperComponent } from './swiper/swiper.component';
 
@@ -19,7 +18,6 @@ export class GalleryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let f = this.galleryService.getPhotoDescriptions();
   }
 
   TurnFullscreen(state: boolean): void {
