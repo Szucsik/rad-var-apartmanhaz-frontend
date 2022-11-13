@@ -42,7 +42,6 @@ $layer-bottom-height: 180px;
 .background-container {
   height: calc(100% - $layer-bottom-height);
   position: relative;
-  max-width: 1920px;
 }
 
 .layer-bottom {
