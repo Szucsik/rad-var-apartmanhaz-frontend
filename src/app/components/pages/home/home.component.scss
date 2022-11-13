@@ -1,5 +1,9 @@
 $layer-bottom-height: 180px;
 
+::selection {
+  background: darkkhaki;
+}
+
 .home-container {
   position: relative;
   width: 100%;

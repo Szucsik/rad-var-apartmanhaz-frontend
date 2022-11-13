@@ -1,3 +1,7 @@
+::selection {
+    background: darkkhaki;
+}
+
 .contacts-container {
     position: relative;
     width: 100%;
