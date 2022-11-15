@@ -25,7 +25,7 @@ export class PageThreeComponent implements OnInit {
                         // run your animation code here
                         if(this.observeStart) 
                             this.onPage.emit(this.pagePos);
-                        observer.disconnect(); // disconnect if you want to stop observing else it will rerun every time its back in view. Just make sure you disconnect in ngOnDestroy instead
+                        // observer.disconnect(); // disconnect if you want to stop observing else it will rerun every time its back in view. Just make sure you disconnect in ngOnDestroy instead
                     }
                 });
             },
