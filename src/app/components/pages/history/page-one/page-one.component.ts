@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-history-page-one',
@@ -7,6 +7,7 @@ import { Component, ElementRef, EventEmitter, HostListener, OnInit, Output, View
 })
 export class PageOneComponent implements OnInit {
   pagePos: number = 0;
+  @Input() observeStart: boolean = true;
   @Output() onPage: EventEmitter<number> = new EventEmitter<number>();
   constructor() { }
 
@@ -22,7 +23,8 @@ export class PageOneComponent implements OnInit {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
                         // run your animation code here
-                        this.onPage.emit(this.pagePos);
+                        if(this.observeStart)
+                            this.onPage.emit(this.pagePos);
                     }
                 });
             },
