@@ -1,9 +1,9 @@
-$timeline-dot-color: beige;
+$timeline-dot-color: white;
 $timeline-dot-size: 0.8vw;
 $timeline-dot-margin: 2vw;
 
 $timeline-left: 4vw;
-$timeline-top: 10vw;
+$timeline-top: 7vw;
 
 ::selection {
     background: darkgoldenrod;
@@ -21,6 +21,7 @@ $timeline-top: 10vw;
     left: 0px;
     float: left;
     padding-top: $timeline-top;
+    margin-bottom: $timeline-top;
     left: $timeline-left;
 }
 
@@ -45,7 +46,7 @@ $timeline-top: 10vw;
     left: calc(-1 * $timeline-dot-size);
     width: 12vw;
     height: calc($timeline-dot-size + $timeline-dot-margin/2);
-    opacity: 0.5;
+    opacity: 0.8;
     background-color: $timeline-dot-color;
     border-radius: 25px;
 }
@@ -120,13 +121,7 @@ $timeline-top: 10vw;
     -ms-transform: translate(50%, 0%);
     transform: translate(50%, 0%);
     margin-top: 2vw;
-}
+    backdrop-filter: blur(1px);
+    background-color:rgba(40, 40, 40, 0.5);
 
-.history-background-page-1 {
-    float: right;
-    z-index: -1;
-    margin-right: 1vw;
-    margin-top: -25vw;
-    width: 25vw;
-    opacity: 0.6;
 }
