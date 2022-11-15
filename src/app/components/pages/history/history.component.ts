@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./history.component.scss']
 })
 export class HistoryComponent implements OnInit {
-  topics: Array<string> = [ "Bevezetés: kezdetek", "", "", "", ""]
+  topics: Array<string> = [ "Bevezetés: kezdetek", "Híres lakók", "1944-től mostanáig"]
   focus: number = 0;
   constructor() { }
 

@@ -25,6 +25,8 @@ import { SwiperModule } from "swiper/angular";
 import { GallerySwiperComponent } from './components/pages/gallery/swiper/swiper.component';
 import { HistoryComponent } from './components/pages/history/history.component';
 import { PageOneComponent } from './components/pages/history/page-one/page-one.component';
+import { PageTwoComponent } from './components/pages/history/page-two/page-two.component';
+import { PageThreeComponent } from './components/pages/history/page-three/page-three.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { PageOneComponent } from './components/pages/history/page-one/page-one.c
     GallerySwiperComponent,
     HistoryComponent,
     PageOneComponent,
+    PageTwoComponent,
+    PageThreeComponent,
   ],
   imports: [
     BrowserModule,
