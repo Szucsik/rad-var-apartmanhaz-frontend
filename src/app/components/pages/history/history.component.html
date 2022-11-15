@@ -2,7 +2,9 @@
     <div class="timeline-container">
         <div class="timeline-line" *ngFor="let topic of topics; index as i">
             <div class="timeline-dot" [ngClass]="{'timeline-dot-active': i == focus}"></div>
-            <div class="timeline-active-highlight" [ngClass]="{'timeline-hidden-highlight': i != focus}"></div>
+            <div class="timeline-active-highlight" [ngClass]="{'timeline-hidden-highlight': i != focus}">
+                <p>{{ focus }}</p>
+            </div>
         </div>
     </div>
     <div class="history-topic-1-container">

@@ -33,6 +33,27 @@
     src: url('/assets/fonts/MerriweatherSans-Regular.ttf');
 }
 
+@font-face {
+    font-family: Amiri-BoldItalic;
+    src: url('/assets/fonts/Amiri-BoldItalic.ttf');
+}
+
+@font-face {
+    font-family: Amiri-Italic;
+    src: url('/assets/fonts/Amiri-Bold.ttf');
+}
+
+@font-face {
+    font-family: Amiri-Bold;
+    src: url('/assets/fonts/Amiri-Bold.ttf');
+}
+
+@font-face {
+    font-family: Amiri-Regular;
+    src: url('/assets/fonts/Amiri-Regular.ttf');
+}
+
+
 .start-text-first {
     height: 150px;
     width: 200px;
