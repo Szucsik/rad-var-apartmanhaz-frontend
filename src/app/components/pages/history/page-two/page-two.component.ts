@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-history-page-two',
@@ -7,6 +7,7 @@ import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '
 })
 export class PageTwoComponent implements OnInit {
   pagePos: number = 1;
+  @Input() observeStart: boolean = true;
   @Output() onPage: EventEmitter<number> = new EventEmitter<number>();
   constructor() { }
 
@@ -22,7 +23,8 @@ export class PageTwoComponent implements OnInit {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
                         // run your animation code here
-                        this.onPage.emit(this.pagePos);
+                        if(this.observeStart)
+                            this.onPage.emit(this.pagePos);
                         // observer.disconnect(); // disconnect if you want to stop observing else it will rerun every time its back in view. Just make sure you disconnect in ngOnDestroy instead
                     }
                 });

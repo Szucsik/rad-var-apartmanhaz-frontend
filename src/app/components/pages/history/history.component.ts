@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistoryComponent implements OnInit {
   topics: Array<string> = [ "Bevezetés: kezdetek", "Híres lakók", "1944-től mostanáig"]
+  inactivePages: Array<boolean> = [ true, true, true]
   focus: number = 0;
   constructor() { }
 
@@ -15,5 +16,11 @@ export class HistoryComponent implements OnInit {
 
   changeFocus(id: number): void {
     this.focus = id;
+    this.inactivePages[id] = false;
+    for(let i = 0; i < this.inactivePages.length; i++) {
+      if(i != id) {
+        this.inactivePages[i] = true;
+      }
+    }
   }
 }
