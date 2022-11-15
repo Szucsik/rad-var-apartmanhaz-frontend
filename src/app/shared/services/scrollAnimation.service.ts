@@ -57,6 +57,7 @@ export class ScrollAnimationService {
       this.galleryScrollTrigger();
       this.contactsScrollTrigger();
       this.bookingScrollTrigger();
+      this.historyScrollTrigger();
     }
 
     public ActivateScrollService(): void {
@@ -164,5 +165,46 @@ export class ScrollAnimationService {
       });
       
       scrollPanels.from(document.querySelector(".booking-options-background-container"), { opacity: 0, duration: 2 });
-    }  
+    }
+
+    private historyScrollTrigger(): void {
+      const scrollTimline= gsap.timeline({
+        scrollTrigger: {
+          trigger: document.querySelector(".topic-1"),
+          start: "-10% center",
+          toggleActions: "play none none reverse",
+        }
+      });
+
+      const scrollPageOne= gsap.timeline({
+        scrollTrigger: {
+          trigger: document.querySelector(".topic-1"),
+          start: "-10% center",
+          toggleActions: "play none none reverse",
+        }
+      });
+
+      scrollTimline.from(document.querySelector(".timeline-container"), {opacity: 0 });
+      scrollPageOne.from(document.querySelector(".topic-1"), {opacity: 0 });
+
+      const scrollPageTwo= gsap.timeline({
+        scrollTrigger: {
+          trigger: document.querySelector(".topic-2"),
+          start: "-10% center",
+          toggleActions: "play none none reverse",
+        }
+      });
+
+      scrollPageTwo.from(document.querySelector(".topic-2"), {opacity: 0 });
+      
+      const scrollPageThree= gsap.timeline({
+        scrollTrigger: {
+          trigger: document.querySelector(".topic-3"),
+          start: "-10% center",
+          toggleActions: "play none none reverse",
+        }
+      });
+
+      scrollPageThree.from(document.querySelector(".topic-3"), {opacity: 0 });
+    }
 }

@@ -13,4 +13,7 @@ export class HistoryComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  changeFocus(id: number): void {
+    this.focus = id;
+  }
 }

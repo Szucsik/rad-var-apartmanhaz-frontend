@@ -7,7 +7,7 @@
             </div>
         </div>
     </div>
-    <app-history-page-one></app-history-page-one>
-    <app-history-page-two></app-history-page-two>
-    <app-history-page-three></app-history-page-three>
+    <app-history-page-one (onPage)="changeFocus($event)"></app-history-page-one>
+    <app-history-page-two (onPage)="changeFocus($event)"></app-history-page-two>
+    <app-history-page-three (onPage)="changeFocus($event)"></app-history-page-three>
 </div>
