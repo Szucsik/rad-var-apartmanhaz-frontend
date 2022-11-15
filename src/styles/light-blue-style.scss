@@ -237,7 +237,7 @@ a:link:hover, a:visited:hover {
     display: block;
     content: '';
     position: absolute;
-    background:lightgray;
+    background: lightgray;
     border-radius: 75px;
     z-index: -1;
     animation: 1s clockwise infinite;
@@ -258,6 +258,21 @@ a:link:hover, a:visited:hover {
     color: #282828;
     font-family: SansitaSwashed-Medium;
 }
+
+// History page
+
+.history-title {
+  font-family: PlayfairDisplay-VariableFont_wght;
+}
+
+.history-subtitle {
+  font-family: PlayfairDisplay-VariableFont_wght;
+}
+
+.history-text {
+  font-family: MerriweatherSans-Regular;
+}
+
 
 @keyframes clockwise {
     0% {

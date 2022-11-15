@@ -1,0 +1,13 @@
+<div class="history-container">
+    <div class="timeline-container">
+        <div class="timeline-line" *ngFor="let topic of topics; index as i">
+            <div class="timeline-dot" [ngClass]="{'timeline-dot-active': i == focus}"></div>
+            <div class="timeline-active-highlight" [ngClass]="{'timeline-hidden-highlight': i != focus}">
+                <p class="timeline-highlight-text history-text">{{ topic }}</p>
+            </div>
+        </div>
+    </div>
+    <app-history-page-one (onPage)="changeFocus($event)"></app-history-page-one>
+    <app-history-page-two (onPage)="changeFocus($event)"></app-history-page-two>
+    <app-history-page-three (onPage)="changeFocus($event)"></app-history-page-three>
+</div>

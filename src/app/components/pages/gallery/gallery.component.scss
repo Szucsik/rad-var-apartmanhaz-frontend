@@ -1,3 +1,9 @@
+$gallery-title-fontsize: 3vw;
+$gallery-subtitle-fontsize: 2vw;
+$gallery-image-descriptor-container-fontsize: 2vw;
+$arrow-image-width: 4vw;
+$arrow-image-height: 1.66vw;
+
 ::selection {
     background: yellow;
 }
@@ -6,17 +12,17 @@
     position: relative;
     width: 100%;
     height: 100%;
-    padding-top: 50px; 
+    padding-top: 20px; 
 }
   
 .gallery-title {
-    font-size: 3vw;
+    font-size: $gallery-title-fontsize;
     text-align: center;
     margin-top: 10px;
 }
 
 .gallery-subtitle {
-    font-size: 2vw;
+    font-size: $gallery-subtitle-fontsize;
     text-align: center;
     margin-top: 10px;
 }
@@ -38,10 +44,11 @@
 
 .gallery-image-descriptor-container{  
     position: absolute;
-    font-size: 2vw;
+    font-size: $gallery-image-descriptor-container-fontsize;
     left: 50%;
     -ms-transform: translate(-50%, 0%);
     transform: translate(-50%, 0%);
+    margin-top: -20px;
 }
 
 .gallery-next-button {
@@ -57,8 +64,8 @@
 img.arrow-right, img.arrow-left {
     position: relative;
     margin: 5px;
-    width: 4vw;
-    height: 1.66vw;
+    width: $arrow-image-width;
+    height: $arrow-image-height;
     margin: 10px;
 }
 
@@ -67,3 +74,24 @@ img.gallery-main-image {
     height: auto;
     max-width: 100%;
 }
+
+@media only screen and (orientation: portrait) {
+    .gallery-title {
+        font-size: calc($gallery-title-fontsize * 2);
+    }
+    
+    .gallery-subtitle {
+        font-size: calc($gallery-subtitle-fontsize * 2);
+    }
+
+    .gallery-image-descriptor-container{  
+        font-size: calc($gallery-image-descriptor-container-fontsize * 2);
+        margin-top: -10px;
+    }
+    
+    img.arrow-right, img.arrow-left {
+        width: calc($arrow-image-width * 2);
+        height: calc($arrow-image-height * 2);
+    }
+  }
+  

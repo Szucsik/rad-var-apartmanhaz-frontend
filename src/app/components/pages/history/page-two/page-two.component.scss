@@ -1,0 +1,19 @@
+@import '../history.component.scss';
+
+.history-image-1-page-2 {
+    float: right;
+    z-index: -1;
+    margin-right: 2vw;
+    margin-top: -26vw;
+    width: 30vw;
+    opacity: 1;
+}
+
+.history-image-2-page-2 {
+    float: left;
+    z-index: -1;
+    margin-left: 2vw;
+    margin-top: -26vw;
+    width: 30vw;
+    opacity: 1;
+}
