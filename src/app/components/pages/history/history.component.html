@@ -3,12 +3,9 @@
         <div class="timeline-line" *ngFor="let topic of topics; index as i">
             <div class="timeline-dot" [ngClass]="{'timeline-dot-active': i == focus}"></div>
             <div class="timeline-active-highlight" [ngClass]="{'timeline-hidden-highlight': i != focus}">
-                <p>{{ focus }}</p>
+                <p class="timeline-highlight-text history-text">{{ topic }}</p>
             </div>
         </div>
     </div>
-    <div class="history-topic-1-container">
-        <p class="history-topic-1-title history-title">Rövid történelme</p>
-        <p class="history-topic-1-title-part-2 history-title">A Rád-Vár-Apartmanháznak</p>
-    </div>
+    <app-history-page-one></app-history-page-one>
 </div>

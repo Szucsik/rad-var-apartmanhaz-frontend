@@ -24,6 +24,7 @@ import { BookingComponent } from './components/pages/booking/booking.component';
 import { SwiperModule } from "swiper/angular";
 import { GallerySwiperComponent } from './components/pages/gallery/swiper/swiper.component';
 import { HistoryComponent } from './components/pages/history/history.component';
+import { PageOneComponent } from './components/pages/history/page-one/page-one.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { HistoryComponent } from './components/pages/history/history.component';
     BookingComponent,
     GallerySwiperComponent,
     HistoryComponent,
+    PageOneComponent,
   ],
   imports: [
     BrowserModule,
