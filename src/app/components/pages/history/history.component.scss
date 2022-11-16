@@ -5,6 +5,16 @@ $timeline-dot-margin: 2vw;
 $timeline-left: 4vw;
 $timeline-top: 7vw;
 
+$history-topic-font-size: 1.5vw;
+$history-topic-title-font-size: 1.5vw;
+$history-topic-title-part-2-font-size: 2vw;
+$history-title-dot-font-size: 3vw;
+$history-topic-text-font-size: 1vw;
+
+$history-title-line-width: 20%;
+$history-topic-text-line-height: 2vw;
+$mobile-multiplier: 3;
+
 ::selection {
     background: darkgoldenrod;
 }
@@ -75,27 +85,27 @@ $timeline-top: 7vw;
 }
 
 .history-topic-title {
-    font-size: 1.5vw;
+    font-size: $history-topic-title-font-size;
     color: gold;
     padding: 0px;
     margin: 0px;
 }
 
 .history-topic {
-    font-size: 1.5vw;
+    font-size: $history-topic-font-size;
     color: white;
     display: inline;
 }
 
 .history-title-dot {
-    font-size: 3vw;
+    font-size: $history-title-dot-font-size;
     color: gold;
 }
 
 .history-title-line {
     margin-top: 2vw;
     margin-bottom: 2vw;
-    width: 20%;
+    width: $history-title-line-width;
     border-top: 1px solid gold;
 }
 
@@ -107,15 +117,15 @@ $timeline-top: 7vw;
 }
 
 .history-topic-title-part-2 {
-    font-size: 2vw;
+    font-size: $history-topic-title-part-2-font-size;
     color: white;
     padding: 0px;
     margin: 0px;
 }
 
 .history-topic-text {
-    font-size: 1vw;
-    line-height: 2vw;
+    font-size: $history-topic-text-font-size;
+    line-height: $history-topic-text-line-height;
     color: white;
     max-width: 50%;
     -ms-transform: translate(50%, 0%);
@@ -123,5 +133,34 @@ $timeline-top: 7vw;
     margin-top: 2vw;
     backdrop-filter: blur(1px);
     background-color:rgba(40, 40, 40, 0.5);
+}
 
+@media only screen and (orientation: portrait) {  
+    .history-topic-title {
+        font-size: calc($history-topic-title-font-size * $mobile-multiplier);
+    }
+    
+    .history-topic {
+        font-size: calc($history-topic-font-size * $mobile-multiplier);
+    }
+
+    .history-topic-title-part-2 {
+        font-size: calc($history-topic-title-part-2-font-size * $mobile-multiplier);
+    }
+
+    .history-title-dot {
+        font-size: calc($history-title-dot-font-size * $mobile-multiplier);
+    }
+    
+    .history-title-line {
+        width: calc($history-title-line-width * $mobile-multiplier);
+    }
+
+    .history-topic-text {
+        font-size: calc($history-topic-text-font-size * $mobile-multiplier);
+        line-height: calc($history-topic-text-line-height * $mobile-multiplier);
+        max-width: 100%;
+        -ms-transform: translate(0%, 0%);
+        transform: translate(0%, 0%);
+    }
 }
