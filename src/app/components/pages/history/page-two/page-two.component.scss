@@ -1,0 +1,33 @@
+@import '../history.component.scss';
+
+.history-image-1-page-2 {
+    float: left;
+    z-index: -1;
+    margin-left: 2vw;
+    margin-top: -10vw;
+    width: 20vw;
+    opacity: 1;
+}
+
+.history-image-2-page-2 {
+    float: right;
+    z-index: -1;
+    margin-right: 2vw;
+    margin-top: -10vw;
+    width: 25vw;
+    opacity: 1;
+}
+
+@media only screen and (orientation: portrait) {
+    .history-image-1-page-2 {
+        margin-right: 0vw;
+        margin-top: 0vw;
+        width: 45%;
+    }
+    
+    .history-image-2-page-2 {
+        margin-left: 0vw;
+        margin-top: 0vw;
+        width: 45%;
+    }    
+}
