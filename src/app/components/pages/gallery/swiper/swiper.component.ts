@@ -2,10 +2,10 @@ import { Component, ViewEncapsulation, ViewChild, OnInit } from "@angular/core";
 import { GalleryService } from "src/app/shared/services/gallery.service";
 import { SwiperComponent } from "swiper/angular";
 // import Swiper core and required modules
-import SwiperCore, { EffectCards } from "swiper";
+import SwiperCore, { Autoplay, EffectCards } from "swiper";
 
 // install Swiper modules
-SwiperCore.use([EffectCards]);
+SwiperCore.use([Autoplay, EffectCards]);
 
 
 @Component({
