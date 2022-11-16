@@ -12,6 +12,9 @@
         <button pButton pRipple type="button" class="p-button-raised header-menu-button-details btns" (click)="this.scrollAnimationService.navigate('booking')">Foglalás</button>
     </div>
     <div class="header-menu-item-details menu-item" [ngClass]="{'mobile-hidden': isMobileResolution && !isMobileMenuActive}">
+        <button pButton pRipple type="button" class="p-button-raised header-menu-button-details btns" (click)="this.scrollAnimationService.navigate('history')">Történet</button>
+    </div>
+    <div class="header-menu-item-details menu-item" [ngClass]="{'mobile-hidden': isMobileResolution && !isMobileMenuActive}">
         <button pButton pRipple type="button" class="p-button-raised header-menu-button-details btns" (click)="this.scrollAnimationService.navigate('contacts')">Elérhetőségek</button>
     </div>
     <div class="header-menu-item-details lang-item" [ngClass]="{'mobile-hidden': isMobileResolution && !isMobileMenuActive}">
