@@ -8,6 +8,10 @@ $home-fontsize: 3vw;
   background: darkkhaki;
 }
 
+::selection {
+  background: darkkhaki;
+}
+
 .home-container {
   position: relative;
   width: 100%;
