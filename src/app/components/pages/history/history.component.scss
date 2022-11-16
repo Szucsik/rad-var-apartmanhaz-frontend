@@ -5,8 +5,24 @@ $timeline-dot-margin: 2vw;
 $timeline-left: 4vw;
 $timeline-top: 7vw;
 
+$history-topic-font-size: 1.5vw;
+$history-topic-title-font-size: 1.5vw;
+$history-topic-title-part-2-font-size: 2vw;
+$history-title-dot-font-size: 3vw;
+$history-topic-text-font-size: 1vw;
+
+$history-title-line-width: 20%;
+$history-topic-text-line-height: 2vw;
+$timeline-active-highlight-width: 12vw;
+
+$mobile-multiplier: 1;
+
 ::selection {
     background: darkgoldenrod;
+}
+
+@media only screen and (orientation: portrait) {
+    $mobile-multiplier: 3 !global;
 }
 
 .history-container {
@@ -26,8 +42,8 @@ $timeline-top: 7vw;
 }
 
 .timeline-dot, .timeline-dot-active {
-    width: $timeline-dot-size;
-    height: $timeline-dot-size;
+    width: calc($timeline-dot-size * $mobile-multiplier);
+    height: calc($timeline-dot-size * $mobile-multiplier);
     border-color: $timeline-dot-color;
     background-color: transparent;
     border-style: solid;
@@ -44,7 +60,7 @@ $timeline-top: 7vw;
     position: relative;
     top: calc(-1 * ($timeline-dot-size + $timeline-dot-margin + $timeline-dot-size / 2 + 2px));
     left: calc(-1 * $timeline-dot-size);
-    width: 12vw;
+    width: $timeline-active-highlight-width;
     height: calc($timeline-dot-size + $timeline-dot-margin/2);
     opacity: 0.8;
     background-color: $timeline-dot-color;
@@ -75,27 +91,27 @@ $timeline-top: 7vw;
 }
 
 .history-topic-title {
-    font-size: 1.5vw;
+    font-size: calc($history-topic-title-font-size * $mobile-multiplier);
     color: gold;
     padding: 0px;
     margin: 0px;
 }
 
 .history-topic {
-    font-size: 1.5vw;
+    font-size: calc($history-topic-font-size * $mobile-multiplier);
     color: white;
     display: inline;
 }
 
 .history-title-dot {
-    font-size: 3vw;
+    font-size: calc($history-title-dot-font-size * $mobile-multiplier);
     color: gold;
 }
 
 .history-title-line {
     margin-top: 2vw;
     margin-bottom: 2vw;
-    width: 20%;
+    width: calc($history-title-line-width * $mobile-multiplier);
     border-top: 1px solid gold;
 }
 
@@ -107,15 +123,15 @@ $timeline-top: 7vw;
 }
 
 .history-topic-title-part-2 {
-    font-size: 2vw;
+    font-size: calc($history-topic-title-part-2-font-size * $mobile-multiplier);
     color: white;
     padding: 0px;
     margin: 0px;
 }
 
 .history-topic-text {
-    font-size: 1vw;
-    line-height: 2vw;
+    font-size: calc($history-topic-text-font-size * $mobile-multiplier);
+    line-height: calc($history-topic-text-line-height * $mobile-multiplier);
     color: white;
     max-width: 50%;
     -ms-transform: translate(50%, 0%);
@@ -123,5 +139,16 @@ $timeline-top: 7vw;
     margin-top: 2vw;
     backdrop-filter: blur(1px);
     background-color:rgba(40, 40, 40, 0.5);
+}
 
+@media only screen and (orientation: portrait) {
+    .timeline-container {
+        display: none;
+    }
+    
+    .history-topic-text {
+        max-width: 100%;
+        -ms-transform: translate(0%, 0%);
+        transform: translate(0%, 0%);
+    }
 }
