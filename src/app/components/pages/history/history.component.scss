@@ -13,10 +13,16 @@ $history-topic-text-font-size: 1vw;
 
 $history-title-line-width: 20%;
 $history-topic-text-line-height: 2vw;
-$mobile-multiplier: 3;
+$timeline-active-highlight-width: 12vw;
+
+$mobile-multiplier: 1;
 
 ::selection {
     background: darkgoldenrod;
+}
+
+@media only screen and (orientation: portrait) {
+    $mobile-multiplier: 3 !global;
 }
 
 .history-container {
@@ -36,8 +42,8 @@ $mobile-multiplier: 3;
 }
 
 .timeline-dot, .timeline-dot-active {
-    width: $timeline-dot-size;
-    height: $timeline-dot-size;
+    width: calc($timeline-dot-size * $mobile-multiplier);
+    height: calc($timeline-dot-size * $mobile-multiplier);
     border-color: $timeline-dot-color;
     background-color: transparent;
     border-style: solid;
@@ -54,7 +60,7 @@ $mobile-multiplier: 3;
     position: relative;
     top: calc(-1 * ($timeline-dot-size + $timeline-dot-margin + $timeline-dot-size / 2 + 2px));
     left: calc(-1 * $timeline-dot-size);
-    width: 12vw;
+    width: $timeline-active-highlight-width;
     height: calc($timeline-dot-size + $timeline-dot-margin/2);
     opacity: 0.8;
     background-color: $timeline-dot-color;
@@ -85,27 +91,27 @@ $mobile-multiplier: 3;
 }
 
 .history-topic-title {
-    font-size: $history-topic-title-font-size;
+    font-size: calc($history-topic-title-font-size * $mobile-multiplier);
     color: gold;
     padding: 0px;
     margin: 0px;
 }
 
 .history-topic {
-    font-size: $history-topic-font-size;
+    font-size: calc($history-topic-font-size * $mobile-multiplier);
     color: white;
     display: inline;
 }
 
 .history-title-dot {
-    font-size: $history-title-dot-font-size;
+    font-size: calc($history-title-dot-font-size * $mobile-multiplier);
     color: gold;
 }
 
 .history-title-line {
     margin-top: 2vw;
     margin-bottom: 2vw;
-    width: $history-title-line-width;
+    width: calc($history-title-line-width * $mobile-multiplier);
     border-top: 1px solid gold;
 }
 
@@ -117,15 +123,15 @@ $mobile-multiplier: 3;
 }
 
 .history-topic-title-part-2 {
-    font-size: $history-topic-title-part-2-font-size;
+    font-size: calc($history-topic-title-part-2-font-size * $mobile-multiplier);
     color: white;
     padding: 0px;
     margin: 0px;
 }
 
 .history-topic-text {
-    font-size: $history-topic-text-font-size;
-    line-height: $history-topic-text-line-height;
+    font-size: calc($history-topic-text-font-size * $mobile-multiplier);
+    line-height: calc($history-topic-text-line-height * $mobile-multiplier);
     color: white;
     max-width: 50%;
     -ms-transform: translate(50%, 0%);
@@ -135,30 +141,12 @@ $mobile-multiplier: 3;
     background-color:rgba(40, 40, 40, 0.5);
 }
 
-@media only screen and (orientation: portrait) {  
-    .history-topic-title {
-        font-size: calc($history-topic-title-font-size * $mobile-multiplier);
+@media only screen and (orientation: portrait) {
+    .timeline-container {
+        display: none;
     }
     
-    .history-topic {
-        font-size: calc($history-topic-font-size * $mobile-multiplier);
-    }
-
-    .history-topic-title-part-2 {
-        font-size: calc($history-topic-title-part-2-font-size * $mobile-multiplier);
-    }
-
-    .history-title-dot {
-        font-size: calc($history-title-dot-font-size * $mobile-multiplier);
-    }
-    
-    .history-title-line {
-        width: calc($history-title-line-width * $mobile-multiplier);
-    }
-
     .history-topic-text {
-        font-size: calc($history-topic-text-font-size * $mobile-multiplier);
-        line-height: calc($history-topic-text-line-height * $mobile-multiplier);
         max-width: 100%;
         -ms-transform: translate(0%, 0%);
         transform: translate(0%, 0%);

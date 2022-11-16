@@ -17,3 +17,17 @@
     width: 25vw;
     opacity: 1;
 }
+
+@media only screen and (orientation: portrait) {
+    .history-image-1-page-2 {
+        margin-right: 0vw;
+        margin-top: 0vw;
+        width: 45%;
+    }
+    
+    .history-image-2-page-2 {
+        margin-left: 0vw;
+        margin-top: 0vw;
+        width: 45%;
+    }    
+}
