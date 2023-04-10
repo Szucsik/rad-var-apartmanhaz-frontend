@@ -1,0 +1,40 @@
+name: Production deploy etst 1
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+
+    - name: NPM Install
+      run: npm ci
+
+    - name: List packages & versions
+      run: npm list
+
+    - name: Angular Build
+      run: npm run ng build
+
+    - name: Deploy
+      uses: SamKirkland/FTP-Deploy-Action@4.3.0
+      with:
+        server: wh24.rackhost.hu
+        username: c32709szucsik
+        password: ${{ secrets.FTP_PW  }}
+        local-dir: ./dist/rad-var-apartmanhaz/
+        server-dir: ./
