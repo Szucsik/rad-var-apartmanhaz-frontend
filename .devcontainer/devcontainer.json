@@ -1,0 +1,12 @@
+{
+  "name": "Angular Devcontainer",
+  "context": "..",
+  "dockerFile": "Dockerfile",
+  "extensions": [
+    "ms-vscode.vscode-typescript-tslint-plugin"
+  ],
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash",
+    "typescript.tsdk": "/usr/local/lib/node_modules/typescript"
+  }
+}
