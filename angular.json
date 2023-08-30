@@ -20,6 +20,11 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "./node_modules"
+              ]
+            },
             "outputPath": "dist/rad-var-apartmanhaz",
             "index": "src/index.html",
             "main": "src/main.ts",
