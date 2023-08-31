@@ -8,7 +8,7 @@ WORKDIR /workspace
 COPY package*.json ./
 
 # Install Node packages
-RUN npm install
+RUN npm install --legacy-peer-deps
 
 # Install Angular CLI globally
 RUN npm install -g @angular/cli@13.2.5

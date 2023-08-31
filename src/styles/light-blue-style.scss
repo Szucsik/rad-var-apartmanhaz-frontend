@@ -273,7 +273,8 @@ a:link:hover, a:visited:hover {
   font-family: MerriweatherSans-Regular;
 }
 
-
+// Angular 15 update issue
+// https://angular.io/guide/update-to-version-15#v15-bc-03
 @keyframes clockwise {
     0% {
       top: -5px;

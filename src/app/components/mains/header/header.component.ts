@@ -3,6 +3,13 @@ import { MenuItem, PrimeNGConfig } from 'primeng/api';
 import { AnimationService } from 'src/app/shared/services/animation.service';
 import { ScrollAnimationService } from 'src/app/shared/services/scrollAnimation.service';
 
+// Since update we need to define a type for speed dial (primeng)
+export type Direction = "up" | "down" | "left" | "right" | "up-left" | "up-right" | "down-left" | "down-right";
+
+enum directions {
+  "up", "down", "left", "right", "up-left", "up-right", "down-left", "down-right"
+}
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -16,7 +23,7 @@ export class HeaderComponent implements OnInit {
 
   scrollAnimationService: ScrollAnimationService;
 
-  langDirection: string = "left";
+  langDirection: 'up' | 'down' | 'left' | 'right' = 'left';
   items: MenuItem[];
   contextName: string = 'header';
 
