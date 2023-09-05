@@ -25,7 +25,7 @@
                 "./node_modules"
               ]
             },
-            "outputPath": "dist/rad-var-apartmanhaz",
+            "outputPath": "dist/rad-var-apartmanhaz/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -110,6 +110,71 @@
             ],
             "scripts": []
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/rad-var-apartmanhaz/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json",
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "./node_modules"
+              ]
+            }
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false,
+              "vendorChunk": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "rad-var-apartmanhaz:build:development",
+              "serverTarget": "rad-var-apartmanhaz:server:development"
+            },
+            "production": {
+              "browserTarget": "rad-var-apartmanhaz:build:production",
+              "serverTarget": "rad-var-apartmanhaz:server:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "rad-var-apartmanhaz:build:production",
+              "serverTarget": "rad-var-apartmanhaz:server:production"
+            },
+            "development": {
+              "browserTarget": "rad-var-apartmanhaz:build:development",
+              "serverTarget": "rad-var-apartmanhaz:server:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

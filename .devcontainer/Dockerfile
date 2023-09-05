@@ -1,5 +1,5 @@
 # Use the official Node.js 14 image as the base image
-FROM node:16
+FROM node:18
 
 # Set the working directory
 WORKDIR /workspace
@@ -8,7 +8,7 @@ WORKDIR /workspace
 COPY package*.json ./
 
 # Install Node packages
-RUN npm install --legacy-peer-deps
+RUN npm install 
 
 # Install Angular CLI globally
 RUN npm install -g @angular/cli@13.2.5

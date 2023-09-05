@@ -1,12 +1,5 @@
 import { Component, ViewEncapsulation, ViewChild, OnInit } from "@angular/core";
 import { GalleryService } from "src/app/shared/services/gallery.service";
-import { SwiperComponent } from "swiper/angular";
-// import Swiper core and required modules
-import SwiperCore, { Autoplay, EffectCards } from "swiper";
-
-// install Swiper modules
-SwiperCore.use([Autoplay, EffectCards]);
-
 
 @Component({
   selector: 'gallery-swiper',
@@ -15,7 +8,7 @@ SwiperCore.use([Autoplay, EffectCards]);
   encapsulation: ViewEncapsulation.None,
 })
 export class GallerySwiperComponent implements OnInit{
-  @ViewChild('swiperGallery', { static: false }) gallery: SwiperComponent;
+  // @ViewChild('swiperGallery', { static: false }) gallery: SwiperComponent;
   images: String[];
   constructor(private galleryService: GalleryService) {  }
 
@@ -30,14 +23,14 @@ export class GallerySwiperComponent implements OnInit{
   }
 
   public NextImage(): void {
-    this.gallery.swiperRef.slideNext();
+    // this.gallery.swiperRef.slideNext();
   }
 
   public PrevImage(): void {
-    this.gallery.swiperRef.slidePrev();
+    // this.gallery.swiperRef.slidePrev();
   }
 
   onSlideChange() {
-    this.galleryService.SetCurrentImageID(this.gallery.swiperRef.snapIndex);
+    // this.galleryService.SetCurrentImageID(this.gallery.swiperRef.snapIndex);
   }
 }

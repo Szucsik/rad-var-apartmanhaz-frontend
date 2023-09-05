@@ -1,29 +1,32 @@
-# Use the official Node.js image as the base image
-FROM node:16 AS build
+# Use an official Node.js runtime as the base image
+FROM node:18 AS build
 
-# Set the working directory
+# Set the working directory in the container
 WORKDIR /app
 
-# Copy package.json and package-lock.json
+# Copy package.json and package-lock.json to the container
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install --legacy-peer-deps
+RUN npm install
 
-# Copy the rest of the app's source code
-COPY . . 
+# Copy the rest of your application source code to the container
+COPY . .
 
-# Build the Angular app
-RUN npm run build
+# Build your Angular application
+RUN npm run build:ssr
 
-# Use a lightweight nginx image for serving the app
-FROM nginx:alpine
+# Create a production-ready image with a smaller base image
+FROM node:18-slim
 
-# Copy the built app from the previous stage into the nginx container
-COPY --from=build /app/dist/rad-var-apartmanhaz /usr/share/nginx/html
+# Set the working directory in the container
+WORKDIR /app
 
-# Expose port 80
-EXPOSE 80
+# Copy the built Angular application from the previous build stage
+COPY --from=build /app/dist /app/dist
 
-# Start nginx when the container starts
-CMD ["nginx", "-g", "daemon off;"]
+# Expose the port your SSR application is running on (e.g., 4000)
+EXPOSE 4000
+
+# Start your SSR application
+CMD ["node", "dist/rad-var-apartmanhaz/server/main.js"]

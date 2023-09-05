@@ -1,13 +1,13 @@
-<swiper #swiperGallery
-    [autoHeight]="true"
-    [effect]="'cards'"
-    [grabCursor]="true"
-    [pagination]="true"
-    [autoplay]="{ delay: 1000, disableOnInteraction: true }"
+<swiper-container #swiperGallery
+    autoHeight="true"
+    effect="cards"
+    grabCursor="true"
+    pagination="true"
+    autoplay="{ delay: 1000, disableOnInteraction: true }"
     (slideChange)="onSlideChange()"
     class="gallery-swiper"
 >
-    <ng-template data-swiper-autoplay="6000" swiperSlide *ngFor="let image of images; index as i">
+    <swiper-slide class="swiper-slide" *ngFor="let image of images; index as i">
         <img class="swiper-image" src="{{ image }}" alt="">
-    </ng-template>
-</swiper>
+    </swiper-slide>
+</swiper-container>

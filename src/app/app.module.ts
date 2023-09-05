@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,12 +21,16 @@ import { NearbyComponent } from './components/pages/nearby/nearby.component';
 import { LogoStartComponent } from './components/mains/logo-start/logo-start.component';
 import { FullscreenComponent } from './components/pages/gallery/fullscreen/fullscreen.component';
 import { BookingComponent } from './components/pages/booking/booking.component';
-import { SwiperModule } from "swiper/angular";
 import { GallerySwiperComponent } from './components/pages/gallery/swiper/swiper.component';
 import { HistoryComponent } from './components/pages/history/history.component';
 import { PageOneComponent } from './components/pages/history/page-one/page-one.component';
 import { PageTwoComponent } from './components/pages/history/page-two/page-two.component';
 import { PageThreeComponent } from './components/pages/history/page-three/page-three.component';
+// import function to register Swiper custom elements
+import { register } from 'swiper/element/bundle';
+
+// register Swiper custom elements
+register();
 
 @NgModule({
   declarations: [
@@ -57,10 +61,10 @@ import { PageThreeComponent } from './components/pages/history/page-three/page-t
     AppRoutingModule,
     PanelModule,
     GalleriaModule,
-    HttpClientModule,
-    SwiperModule
+    HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
