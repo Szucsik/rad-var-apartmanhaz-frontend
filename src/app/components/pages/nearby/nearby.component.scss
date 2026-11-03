@@ -1,0 +1,100 @@
+@use 'src/app/shared/scss/sizes' as *;
+
+:host {
+    display: block;
+}
+
+.nearby-container {
+    @include full-screen-height;
+    width: 100%;
+    background-color: white;
+    color: #658285;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto auto;
+    align-items: center;
+    gap: 30px;
+    padding-bottom: 40px;
+
+    @include desktop {
+        grid-template-columns: 55% 45%;
+        grid-template-rows: auto 1fr;
+        gap: 0;
+        padding-bottom: 0;
+    }
+}
+
+.nearby-line {
+    grid-column: 1 / -1;
+    align-self: start;
+    border-top: 1px solid black;
+    width: 100%;
+    margin: 0;
+}
+
+.nearby-content {
+    padding: $header-clearance-mobile 6vw 0;
+    font-family: MerriweatherSans-Regular;
+    font-size: clamp(14px, 1.1vw, 20px);
+    line-height: 1.5;
+
+    @include desktop {
+        padding: $header-clearance 40px 40px clamp(20px, 6vw, 100px);
+    }
+}
+
+.nearby-main-title {
+    font-family: MerriweatherSans-ExtraBoldRegular;
+    font-size: clamp(20px, 2.2vw, 40px);
+    line-height: 1.2;
+    margin-bottom: 15px;
+}
+
+.nearby-text {
+    margin: 15px 0 0;
+}
+
+.nearby-lists {
+    display: grid;
+    grid-template-columns: 100%;
+    gap: 10px 40px;
+    margin-top: 20px;
+
+    @media only screen and (min-width: 600px) {
+        grid-template-columns: auto auto;
+        justify-content: start;
+    }
+}
+
+.nearby-list-title {
+    font-family: MerriweatherSans-Bold;
+    color: #4cc3cf;
+}
+
+.nearby-list {
+    margin: 8px 0 0;
+    padding-left: 1.2em;
+}
+
+.nearby-note {
+    margin: 6px 0 0;
+    font-size: 0.8em;
+    opacity: 0.8;
+}
+
+.nearby-image {
+    display: block;
+    width: 88%;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 24px;
+    box-shadow: 0 5px 35px rgba(0, 0, 0, 0.15);
+
+    @include desktop {
+        width: 85%;
+        max-height: 70svh;
+        object-fit: cover;
+        margin: $header-clearance auto 40px;
+        align-self: center;
+    }
+}

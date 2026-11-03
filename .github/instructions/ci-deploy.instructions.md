@@ -1,6 +1,6 @@
 ---
 description: "Use when editing GitHub Actions workflows, deployment, FTP/Azure Static Web Apps configuration, Node versions in CI, or anything about branches that deploy (develop, staging, main)."
-applyTo: ".github/workflows/**, src/staticwebapp.config.json, build.sh, run.sh"
+applyTo: ".github/workflows/**, src/staticwebapp.config.json, src/.htaccess, build.sh, run.sh"
 ---
 # CI and deployment
 
@@ -25,6 +25,7 @@ Every deploy branch publishes the site **on push**:
   - The FTP actions upload `./dist/rad-var-apartmanhaz/`.
   - The Azure workflow uses `output_location: "dist/rad-var-apartmanhaz"`.
   - If you change `outputPath`, update all of them.
-- **Azure MIME types:** `src/staticwebapp.config.json` is copied to the build root so Azure Static Web Apps serves the `.yaml` translation files. Keep it in the `assets` list of `angular.json`.
+- **Azure MIME types and routes:** `src/staticwebapp.config.json` is copied to the build root so Azure Static Web Apps serves the `.yaml` translation files and rewrites the language URLs (`/hu`, `/pl`, `/en`, `/de`) to `index.html`. Keep it in the `assets` list of `angular.json`.
+- **FTP hosts (Apache/LiteSpeed):** `src/.htaccess` is copied to the build root and does the same rewrites, plus the `https`/non-`www` redirect on the production domain only. `robots.txt` and `sitemap.xml` are copied to the root too. If a host ignores `.htaccess`, the language URLs return 404.
 - **Local scripts:** `build.sh` and `run.sh` run `npm ci` when `node_modules` is missing, then `ng build` / `ng serve` with any extra arguments. Keep them POSIX-bash compatible and executable (`chmod +x`).
 - **Verify before changing a workflow:** run `./build.sh` and `npx ng test --watch=false` locally. The workflows don't run tests today; consider adding `npx ng test --watch=false` before the build step when touching them.

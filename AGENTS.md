@@ -12,7 +12,7 @@ Marketing website of **Rád-Vár Apartmanház**, a guesthouse in Eger, Hungary (
 - Unit tests: Vitest + jsdom through `@angular/build:unit-test`
 - No UI library: PrimeNG was removed (its v22 needs a paid/registered license key). Do not add a UI library without asking the owner.
 
-Details: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+Details: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md), SEO: [docs/SEO.md](docs/SEO.md).
 
 ## Commands
 
@@ -49,7 +49,8 @@ Before you report a task as finished:
 6. **Header navigation** scrolls to the section element `app-<name>` (`ScrollAnimationService.navigate('gallery')` → `<app-gallery>`). Keep section components named and ordered accordingly.
 7. **GSAP targets must be elements.** Use `element.children`, never `childNodes`: Angular control flow (`@for`, `@if`) inserts comment nodes, and GSAP throws on them every frame.
 8. **Tests import `AppModule`** instead of declaring single components; jsdom lacks `IntersectionObserver` and `matchMedia`, which are stubbed in `src/test-setup.ts`. See [testing instructions](.github/instructions/testing.instructions.md).
-9. **Assets are huge** (`src/assets` ≈ 170 MB, incl. 83 MB of `.psd` source files that are copied into every build). Do not add large binaries; prefer compressed web formats.
+9. **SEO: every language has its own URL** (`/hu`, `/pl`, `/en`, `/de`; `/` redirects by saved/browser language). The URL wins over `localStorage`. `SeoService` sets title, description, canonical, hreflang, Open Graph and JSON-LD per language. Keep `src/index.html` (Hungarian defaults, checked by `seo.service.spec.ts`), `src/sitemap.xml`, `src/.htaccess` and `src/staticwebapp.config.json` in sync when you change languages, texts in `meta`, or business data in `shared/seo.ts`. Use real headings (`h1` only in home, `h2` per section, `h3` below); a global reset in `styles.css` keeps them looking like the old `div`/`p`. See [docs/SEO.md](docs/SEO.md).
+10. **Assets are huge** (`src/assets` ≈ 170 MB, incl. 83 MB of `.psd` source files that are copied into every build). Do not add large binaries; prefer compressed web formats.
 
 ## Working in parallel with other agents
 
@@ -73,13 +74,16 @@ src/app/
   app.component.*             loading screen → intro → main content orchestration
   components/mains/           header (menu, language picker), loading, start (intro), logo, logo-start
   components/pages/           main (section list), home, gallery (+swiper, fullscreen), booking,
-                              history (+page-one/two/three), contacts, nearby (disabled)
+                              nearby (location, amenities, sights), history (+page-one/two/three), contacts
   shared/config.ts            timing constants, photo lists, "intro once per session" flag
-  shared/services/            i18n, animation (GSAP intro), scrollAnimation (ScrollTrigger + navigation),
-                              gallery, preload
+  shared/seo.ts               site URL, business data (address, geo, phones, email) for meta tags/JSON-LD
+  shared/services/            i18n (+ language URLs), seo (head tags, JSON-LD), animation (GSAP intro),
+                              scrollAnimation (ScrollTrigger + navigation), gallery, preload
   shared/directives/          ripple.directive.ts (appRipple)
   shared/scss/sizes.scss      breakpoints, header sizes, mixins
-src/assets/i18n/*.yaml        all page texts, one file per language
+src/assets/i18n/*.yaml        all page texts, one file per language (incl. meta.title/description)
+src/index.html                static Hungarian SEO defaults (meta, hreflang, OG, JSON-LD, noscript)
+src/robots.txt, sitemap.xml   crawler files; src/.htaccess + staticwebapp.config.json serve /hu /pl /en /de
 src/styles.css                fonts (@font-face), global reset, ripple styles
 src/styles/light-blue-style.scss  site colours and fonts (theme)
 ```

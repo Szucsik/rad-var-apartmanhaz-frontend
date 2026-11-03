@@ -34,7 +34,7 @@
               "src/assets/site-images/castle-logo.ico",
               "src/assets",
               {
-                "glob": "staticwebapp.config.json",
+                "glob": "{staticwebapp.config.json,robots.txt,sitemap.xml,.htaccess}",
                 "input": "src",
                 "output": "/"
               }

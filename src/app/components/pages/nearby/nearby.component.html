@@ -1,8 +1,28 @@
-<div class="nearby-container">
-    <div class="nearby-image"></div>
+<section class="nearby-container">
+    <hr class="nearby-line">
     <div class="nearby-content">
-        <div class="nearby-main-title">
-            {{ t('nearby.title') }}
+        <h2 class="nearby-main-title">{{ t('nearby.title') }}</h2>
+        <p class="nearby-text">{{ t('nearby.intro') }}</p>
+        <div class="nearby-lists">
+            <div>
+                <h3 class="nearby-list-title">{{ t('nearby.amenitiesTitle') }}</h3>
+                <ul class="nearby-list">
+                    @for (amenity of tList('nearby.amenities'); track $index) {
+                        <li>{{ amenity }}</li>
+                    }
+                </ul>
+            </div>
+            <div>
+                <h3 class="nearby-list-title">{{ t('nearby.sightsTitle') }}</h3>
+                <ul class="nearby-list">
+                    @for (sight of tList('nearby.sights'); track $index) {
+                        <li>{{ sight }}</li>
+                    }
+                </ul>
+                <p class="nearby-note">{{ t('nearby.sightsNote') }}</p>
+            </div>
         </div>
+        <p class="nearby-text">{{ t('nearby.outro') }}</p>
     </div>
-</div>
+    <img class="nearby-image" src="assets/site-images/eger-old-town.jpg" width="1000" height="666" loading="lazy" [alt]="t('nearby.imageAlt')">
+</section>

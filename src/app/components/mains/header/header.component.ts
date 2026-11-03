@@ -77,7 +77,9 @@ export class HeaderComponent implements OnInit {
     this.isLangMenuOpen = !this.isLangMenuOpen;
   }
 
-  async onLanguageClick(language: Language): Promise<void> {
+  // The items are real links (/hu, /en, …) so search engines find every language; clicks switch in place.
+  async onLanguageClick(language: Language, event?: Event): Promise<void> {
+    event?.preventDefault();
     this.isLangMenuOpen = false;
     await this.i18n.setLanguage(language.code);
     // Texts have different lengths in every language, so the scroll animation positions must be recalculated.

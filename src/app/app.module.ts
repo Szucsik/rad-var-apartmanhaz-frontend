@@ -22,6 +22,7 @@ import { PageTwoComponent } from './components/pages/history/page-two/page-two.c
 import { PageThreeComponent } from './components/pages/history/page-three/page-three.component';
 import { RippleDirective } from './shared/directives/ripple.directive';
 import { I18nService } from './shared/services/i18n.service';
+import { SeoService } from './shared/services/seo.service';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,9 @@ import { I18nService } from './shared/services/i18n.service';
   ],
   providers: [
     // Load the texts of the selected language before the first render.
-    provideAppInitializer(() => inject(I18nService).init())
+    provideAppInitializer(() => inject(I18nService).init()),
+    // Keep the title, meta tags and structured data in sync with the language.
+    provideAppInitializer(() => { inject(SeoService); }),
   ],
   bootstrap: [AppComponent]
 })

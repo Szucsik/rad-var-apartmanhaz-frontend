@@ -4,7 +4,7 @@ Reference for how the Rád-Vár Apartmanház site is put together. Start with [.
 
 ## Overview
 
-A single Angular 22 page with five stacked sections. There is no router (the routes list in `app-routing.module.ts` is empty) and no backend. The header menu scrolls the window to a section. All translatable texts come from YAML files at runtime, and the visuals rely heavily on GSAP animations. Only language-independent data stays in templates: the email address, phone numbers and the Facebook/Instagram labels in `contacts.component.html`.
+A single Angular 22 page with six stacked sections and no backend. The router only has a wildcard route: the first path segment selects the language (`/hu`, `/pl`, `/en`, `/de`, see [SEO](#seo)). The header menu scrolls the window to a section. All translatable texts come from YAML files at runtime, and the visuals rely heavily on GSAP animations. Only language-independent data stays in templates: the email address, phone numbers and the Facebook/Instagram labels in `contacts.component.html`.
 
 ```
 <app-root>                         AppComponent
@@ -16,10 +16,10 @@ A single Angular 22 page with five stacked sections. There is no router (the rou
     <app-gallery>                  Swiper "cards" carousel + caption + arrows
       <gallery-swiper>
     <app-booking>                  intro text + 3 booking cards (booking.com, Szallas.hu, Facebook → contacts)
+    <app-nearby>                   SEO text: the apartments, amenities, sights with distances + Eger photo (not in the menu)
     <app-history>                  sticky timeline + 3 pages
       <app-history-page-one|two|three>
     <app-contacts>                 address, email, phones, social links over a map image
-    <!-- <app-nearby> -->          built but commented out in main.component.html
   <app-fullscreen>                 HD photo viewer (see Known issues: nothing opens it)
 ```
 
@@ -56,7 +56,8 @@ All components are declared in `AppModule` with `standalone: false` and `changeD
 
 | File | Responsibility |
 |------|----------------|
-| `services/i18n.service.ts` | `LANGUAGES` (hu, pl, en, de + flag class), `t(key)`, `tList(key)` and `setLanguage(code)`. Fetches `assets/i18n/<code>.yaml` and parses it with a lazily imported `js-yaml`. Falls back to Hungarian, then to the key. Remembers the choice in `localStorage['language']`, otherwise uses the browser language, otherwise Hungarian. Updates `<html lang>` and `document.title`. Texts are held in signals. |
+| `services/i18n.service.ts` | `LANGUAGES` (hu, pl, en, de + flag class), `t(key)`, `tList(key)` and `setLanguage(code)`. Fetches `assets/i18n/<code>.yaml` and parses it with a lazily imported `js-yaml`. Falls back to Hungarian, then to the key. The language comes from the URL (`/en`); on `/` or an unknown path it uses `localStorage['language']`, then the browser language, then Hungarian, and replaces the URL with `/<code>` (query and hash are kept). A language switch pushes `/<code>` with Angular's `Location`; back/forward switch the language back. Updates `<html lang>` and remembers the choice. Texts are held in signals. |
+| `services/seo.service.ts` | Effect on the language: sets `<title>`, meta description, canonical, hreflang alternates (+ `x-default` → `/`), Open Graph/Twitter tags and the schema.org JSON-LD (`LodgingBusiness`, `WebSite`, `WebPage`) in `script#structured-data`. Uses only `Meta`, `Title` and `DOCUMENT`, so it works under SSR. Business data comes from `shared/seo.ts`. |
 | `services/animation.service.ts` | GSAP intro tweens (`startAnimations`, `logoAnimations`, `homeAnimations`, `headerAnimations`) and the `contentLoaded` event. |
 | `services/scrollAnimation.service.ts` | Registers the `ScrollTrigger`/`ScrollToPlugin` plugins. `navigate(section)` scrolls to `<app-section>`; `refresh()` recalculates trigger positions. The ScrollTriggers select elements **by CSS class**: `.gallery-header`, `.images`, `.gallery-next-button`, `.gallery-previous-button`, `.gallery-image-descriptor-container`, `.contacts-menu`, `.booking-container`, `.booking-text-1`…`4`, `.booking-options-background-container`, `.timeline-container`, `.topic-1`…`3`. |
 | `services/gallery.service.ts` | Current photo index, preview/HD photo lists (from `Configuration`), captions (`tList('gallery.images')`) and the fullscreen state (`fullscreenEvent`). |
@@ -89,7 +90,7 @@ Components communicate through `EventEmitter`s on root services, and through sig
 ## Build, tests and deployment
 
 - **Builder:** `@angular/build:application` (esbuild). Output goes to `dist/rad-var-apartmanhaz/` (the `browser: ""` setting means no `browser/` subfolder).
-  - Assets: `src/assets/**` (including `.psd` sources), `castle-logo.ico` and `staticwebapp.config.json`.
+  - Assets: `src/assets/**` (including `.psd` sources), `castle-logo.ico`, and `staticwebapp.config.json`, `robots.txt`, `sitemap.xml`, `.htaccess` at the root.
   - Budgets: initial bundle warning at 550 kB, error at 1 MB; the current size is about 575 kB, so a warning is expected.
 - **Tests:** `@angular/build:unit-test` with Vitest and jsdom. The setup file is `src/test-setup.ts`; specs import `AppModule`.
 - **Deployment:** GitHub Actions in `.github/workflows/`:
@@ -104,6 +105,18 @@ Components communicate through `EventEmitter`s on root services, and through sig
 
   The FTP workflows run `npm ci` and `npm run ng build` on Node 24.x.
 - **Branch flow:** feature branches → `develop` → `staging` → `main`.
+
+## SEO
+
+Full details, the texts and the post-deployment checklist: [SEO.md](SEO.md).
+
+- **One URL per language** (`https://rad-var-apartmanhaz.hu/hu`, `/pl`, `/en`, `/de`), so search engines index every language. `/` is the `x-default`: it redirects to the saved or browser language. Header language items are real links (`href="/de"`); clicks switch without reloading.
+- **Hosting must serve `index.html` for the language paths:** `src/.htaccess` (Apache/LiteSpeed FTP hosts; it also redirects `/en/` → `/en`, and `http`/`www` → `https://rad-var-apartmanhaz.hu` on the production host only) and the `routes` of `src/staticwebapp.config.json` (Azure). Other paths return 404 on purpose (no soft 404s).
+- **Head tags:** `src/index.html` holds static Hungarian defaults (title, description, hreflang, Open Graph, JSON-LD, a `<noscript>` summary) for crawlers that don't run JavaScript. `SeoService` replaces them per language at runtime. `seo.service.spec.ts` fails if the static defaults drift from `hu.yaml` or from the generated JSON-LD. There is no static `canonical` on purpose: the same file is served for every language.
+- **Texts:** `meta.title` (≤ 60 chars) and `meta.description` (≤ 155 chars) in every YAML file, `meta.imageAlt` for the share image (`assets/seo/og-image.jpg`, 1200×630). `home.tagline` is part of the `h1`. The `nearby` section carries the keyword-rich text (accommodation, amenities, sights). Its distances are straight-line distances from OpenStreetMap coordinates.
+- **Crawlers:** `src/robots.txt` points to `src/sitemap.xml`, which lists the four language URLs with `xhtml:link` alternates and the photos. Update `<lastmod>` when texts change.
+- **SSR later:** keep `SeoService` free of `window`/`localStorage`. With SSR the same tags will be rendered on the server, and the per-language routes can replace the wildcard route.
+- **After deployment:** add the domain to Google Search Console and Bing Webmaster Tools, submit `sitemap.xml`, and keep the Google Business Profile name, address and phone identical to `shared/seo.ts`.
 
 ## Known issues and technical debt
 

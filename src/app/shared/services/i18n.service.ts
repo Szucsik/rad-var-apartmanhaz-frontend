@@ -1,4 +1,5 @@
-import { Injectable, signal } from '@angular/core';
+import { Location } from '@angular/common';
+import { Injectable, inject, signal } from '@angular/core';
 
 export type LanguageCode = 'hu' | 'pl' | 'en' | 'de';
 
@@ -30,6 +31,9 @@ interface Translations {
 /**
  * Loads the page texts from `src/assets/i18n/<language>.yaml` and resolves them by dotted key,
  * e.g. `t('header.gallery')`. Keys missing from the selected language fall back to Hungarian.
+ *
+ * Every language has its own URL (`/hu`, `/pl`, `/en`, `/de`) so search engines can index each one.
+ * The URL decides the language; `/` (and unknown paths) is redirected to the saved or browser language.
  */
 @Injectable({
   providedIn: 'root',
@@ -41,7 +45,18 @@ export class I18nService {
   private readonly translations = signal<Translations>({});
   private readonly fallbackTranslations = signal<Translations>({});
   private readonly cache = new Map<LanguageCode, Promise<Translations | null>>();
+  private readonly location = inject(Location);
   private latestRequest = 0;
+
+  constructor() {
+    // Browser back/forward between the language URLs.
+    this.location.onUrlChange(url => {
+      const code = languageFromPath(url);
+      if (code && code !== this.language()) {
+        void this.setLanguage(code);
+      }
+    });
+  }
 
   /** Returns the text for `key` in the current language (the key itself if it does not exist). */
   readonly t = (key: string): string => {
@@ -58,7 +73,9 @@ export class I18nService {
   /** Loads the fallback and the initial language; runs once before the app renders. */
   async init(): Promise<void> {
     this.fallbackTranslations.set((await this.load(DEFAULT_LANGUAGE)) ?? {});
-    await this.setLanguage(this.detectInitialLanguage());
+    await this.setLanguage(languageFromPath(this.location.path()) ?? this.detectInitialLanguage());
+    // If that language could not be loaded, the URL still has to name the language that is shown.
+    this.syncUrl(this.language());
   }
 
   async setLanguage(code: LanguageCode): Promise<void> {
@@ -73,7 +90,22 @@ export class I18nService {
     this.language.set(code);
     this.persist(code);
     document.documentElement.lang = code;
-    document.title = this.t('meta.title');
+    this.syncUrl(code);
+  }
+
+  /** Puts the language into the URL: `/` is replaced (a redirect), a language switch adds a history entry. */
+  private syncUrl(code: LanguageCode): void {
+    const current = this.location.path(true);
+    if (languageFromPath(current) === code) {
+      return;
+    }
+    const [, suffix = ''] = /^[^?#]*(.*)$/.exec(current) ?? [];
+    const target = `/${code}${suffix}`;
+    if (languageFromPath(current)) {
+      this.location.go(target);
+    } else {
+      this.location.replaceState(target);
+    }
   }
 
   private lookup(key: string): TranslationValue | undefined {
@@ -142,6 +174,12 @@ export class I18nService {
 
 function findLanguage(code: string | null | undefined): LanguageCode | undefined {
   return LANGUAGES.find(language => language.code === code)?.code;
+}
+
+/** The language of a path like `/en`, `/en/` or `/en?x=1#y`; `undefined` for `/` and unknown paths. */
+export function languageFromPath(path: string): LanguageCode | undefined {
+  const firstSegment = path.split(/[?#]/)[0].split('/').find(segment => segment.length > 0);
+  return findLanguage(firstSegment?.toLowerCase());
 }
 
 function isTranslations(value: unknown): value is Translations {

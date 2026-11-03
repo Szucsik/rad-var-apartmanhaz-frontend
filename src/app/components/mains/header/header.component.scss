@@ -194,7 +194,9 @@
     will-change: transform;
 }
 
-.lang-dial-action {
+// The items are links with href (for SEO); `.lang-dial` raises the specificity above the global
+// `a:link, a:visited` text effect in light-blue-style.scss, whose settings are reset here.
+.lang-dial .lang-dial-action {
     position: relative;
     overflow: hidden;
     display: flex;
@@ -203,9 +205,13 @@
     width: 3rem;
     height: 3rem;
     background: #495057;
+    background-clip: border-box;
+    -webkit-background-clip: border-box;
+    -webkit-text-fill-color: currentColor;
     color: #fff;
     border-radius: 50%;
     cursor: pointer;
+    text-decoration: none;
 
     &:hover {
         background: #343a40;

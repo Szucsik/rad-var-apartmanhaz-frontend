@@ -4,14 +4,14 @@
     <p class="history-topic-title-part-2 history-subtitle">{{ t('history.subtitleLine1') }}</p>
     <p class="history-topic-title-part-2 history-subtitle">{{ t('history.subtitleLine2') }}<span class="history-title-dot">.</span></p>
     <hr class="history-title-line">
-    <p class="history-topic history-subtitle">{{ t('history.pages.recent.title') }}</p>
+    <h3 class="history-topic history-subtitle">{{ t('history.pages.recent.title') }}</h3>
     <div class="history-topic-body">
-        <img class="history-image history-image-left history-image-2-page-3" src="assets/site-images/history-images/almagyar-6.jpg" alt="">
+        <img class="history-image history-image-left history-image-2-page-3" src="assets/site-images/history-images/almagyar-6.jpg" [alt]="tList('history.pages.recent.imageAlts')[0]">
         <div class="history-topic-texts">
             @for (paragraph of tList('history.pages.recent.paragraphs'); track $index) {
                 <p class="history-topic-text history-text">{{ paragraph }}</p>
             }
         </div>
-        <img class="history-image history-image-right history-image-1-page-3" src="assets/site-images/history-images/almagyar.jpg" alt="">
+        <img class="history-image history-image-right history-image-1-page-3" src="assets/site-images/history-images/almagyar.jpg" [alt]="tList('history.pages.recent.imageAlts')[1]">
     </div>
 </div>

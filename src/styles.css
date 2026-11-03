@@ -1,65 +1,78 @@
 @font-face {
     font-family: Cormorant-Light;
+    font-display: swap;
     src: url('/assets/fonts/Cormorant-Light.ttf');
 }
 
 @font-face {
     font-family: SansitaSwashed-Regular;
+    font-display: swap;
     src: url('/assets/fonts/SansitaSwashed-Regular.ttf');
 }
 
 @font-face {
     font-family: SansitaSwashed-Medium;
+    font-display: swap;
     src: url('/assets/fonts/SansitaSwashed-Medium.ttf');
 }
 
 @font-face {
     font-family: BeauRivage-Regular;
+    font-display: swap;
     src: url('/assets/fonts/BeauRivage-Regular.ttf');
 }
 
 @font-face {
     font-family: MerriweatherSans-ExtraBoldRegular;
+    font-display: swap;
     src: url('/assets/fonts/MerriweatherSans-ExtraBold.ttf');
 }
 
 @font-face {
     font-family: MerriweatherSans-Bold;
+    font-display: swap;
     src: url('/assets/fonts/MerriweatherSans-Bold.ttf');
 }
 
 @font-face {
     font-family: MerriweatherSans-Regular;
+    font-display: swap;
     src: url('/assets/fonts/MerriweatherSans-Regular.ttf');
 }
 
 @font-face {
     font-family: Amiri-BoldItalic;
+    font-display: swap;
     src: url('/assets/fonts/Amiri-BoldItalic.ttf');
 }
 
 @font-face {
     font-family: Amiri-Italic;
+    font-display: swap;
     src: url('/assets/fonts/Amiri-Bold.ttf');
 }
 
 @font-face {
     font-family: Amiri-Bold;
+    font-display: swap;
     src: url('/assets/fonts/Amiri-Bold.ttf');
 }
 
 @font-face {
     font-family: Amiri-Regular;
+    font-display: swap;
     src: url('/assets/fonts/Amiri-Regular.ttf');
 }
 
 @font-face {
     font-family: PlayfairDisplay-Italic-VariableFont_wght;
+    font-display: swap;
     src: url('/assets/fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf');
 }
 
 @font-face {
     font-family: PlayfairDisplay-VariableFont_wght;
+    font-display: swap;
     src: url('/assets/fonts/PlayfairDisplay-VariableFont_wght.ttf');
 }
 
@@ -75,6 +88,13 @@
     height: 150px;
     width: 300px;
 }
+/* Headings are used for SEO and accessibility only; their look comes from the component classes. */
+h1, h2, h3 {
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
 /* Global reset previously provided by the PrimeNG saga-blue theme; the layout relies on it. */
 * {
   box-sizing: border-box;

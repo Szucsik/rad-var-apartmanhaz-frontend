@@ -1,7 +1,9 @@
 # English texts of the site. Keep the same keys as hu.yaml.
 
 meta:
-  title: Rád-Vár Apartment House
+  title: "Rád-Vár Apartmanház – Apartments in Eger, Hungary"
+  description: "Family-run apartments in the heart of Eger, Hungary, next to Eger Castle. Wi-Fi, parking, air conditioning and a fully equipped kitchen. Book your stay!"
+  imageAlt: "View of Eger's old town from Eger Castle"
 
 header:
   gallery: Gallery
@@ -15,6 +17,7 @@ home:
   quote: Eger is a city where arriving is not enough. In Eger, you can also come home.
   quoteAuthor: "- Sándor Márai"
   welcome: Welcome to the Rád-Vár Apartment House!
+  tagline: "Apartments in the heart of Eger, right next to the castle"
 
 gallery:
   title: Gallery
@@ -62,6 +65,9 @@ history:
     intro:
       timeline: "Introduction: the beginnings"
       title: Introduction
+      imageAlts:
+        - "Old newspaper article about the road works on Almagyar and Maklári streets"
+        - "Old postcard of Eger"
       paragraphs:
         - >-
           As early as the Middle Ages, the main road leading through Maklár, along the Eger valley, towards
@@ -77,6 +83,9 @@ history:
     residents:
       timeline: Famous residents
       title: Famous residents
+      imageAlts:
+        - "Archive photo from around Almagyar Street"
+        - "Archive street view of Eger"
       paragraphs:
         - >-
           József Francz, a master mason of Eger who worked as murariorum magister on the building of the
@@ -93,6 +102,9 @@ history:
     recent:
       timeline: From 1939 to the present
       title: From 1939 to the present
+      imageAlts:
+        - "Archive photo of a corner building in Eger"
+        - "Archive photo in front of a gateway in Eger"
       paragraphs:
         - >-
           Between the autumn of 1939 and the spring of 1944, Polish civilian refugees lived in the
@@ -117,4 +129,23 @@ contacts:
   socialTitle: Social media
 
 nearby:
-  title: Places nearby
+  title: "Apartments in the heart of Eger"
+  intro: "Looking for accommodation in Eger, Hungary? Rád-Vár Apartmanház is in the historic town centre, right next to Eger Castle, at Almagyar u. 7. Our apartment and studio apartment are ideal for couples and families who want to explore the city on foot."
+  amenitiesTitle: "Amenities"
+  amenities:
+    - "Wi-Fi"
+    - "Parking"
+    - "Air conditioning"
+    - "Fully equipped kitchen"
+  sightsTitle: "Sights nearby"
+  sights:
+    - "Eger Castle – approx. 300 m"
+    - "Dobó István Square – approx. 350 m"
+    - "Minaret of Eger – approx. 500 m"
+    - "Eger Thermal Bath – approx. 550 m"
+    - "Lyceum and Eger Basilica – approx. 700 m"
+    - "Eger railway station – approx. 1.1 km"
+    - "Wine cellars of the Valley of the Beautiful Women – approx. 2 km"
+  sightsNote: "Distances as the crow flies."
+  outro: "Eger is famous for its castle, its thermal baths and the Egri Bikavér (Bull's Blood) red wine. Lying between the Bükk and Mátra hills, it is a great base for day trips, and it is about two hours from Budapest by car or train."
+  imageAlt: "Cobbled street in the old town of Eger"
