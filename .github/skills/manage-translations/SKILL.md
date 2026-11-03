@@ -41,12 +41,14 @@ Page texts live in `src/assets/i18n/{hu,pl,en,de}.yaml`. `hu.yaml` is the refere
        background-image: url('/assets/site-images/country-flags/flag-xx.png');
    }
    ```
-4. Run the check script and the unit tests. Then switch to the language in the browser through the flag button: the flag should change, all texts should change, and `<html lang>` and the tab title should update.
-5. Update the language lists in `AGENTS.md`, `docs/ARCHITECTURE.md` and `.github/instructions/translations.instructions.md`.
+4. SEO: add the language to `OG_LOCALES` in `src/app/shared/seo.ts`, to the hreflang links in `src/index.html`, to `src/sitemap.xml` (a `<url>` plus an `xhtml:link` in every entry), to the language rewrite in `src/.htaccess` and to the `routes` in `src/staticwebapp.config.json`. Fill `meta.title` (≤ 60 chars) and `meta.description` (≤ 155 chars) with the search terms of that language.
+5. Run the check script and the unit tests. Then switch to the language in the browser through the flag button: the flag, all texts, the URL (`/<code>`), `<html lang>` and the tab title should change.
+6. Update the language lists in `AGENTS.md`, `docs/ARCHITECTURE.md` and `.github/instructions/translations.instructions.md`.
 
 ## Behaviour to keep in mind
 
 - **Missing keys:** a key missing from a language falls back to Hungarian; a key missing everywhere renders as the key itself (for example `booking.title`).
-- **Initial language:** the language from `localStorage['language']`, otherwise the browser language if supported, otherwise `hu`.
+- **Initial language:** the language in the URL (`/en`); on `/` the one from `localStorage['language']`, otherwise the browser language if supported, otherwise `hu`.
+- **SEO texts:** `meta.*` feeds the tab title, search snippet and social previews. If you change the Hungarian `meta` texts, update the static copy in `src/index.html` too (a unit test checks it).
 - **Editing without a rebuild:** the YAML files are fetched at runtime, so editing them on a deployed server works without a rebuild. Browsers may cache them.
 - **Untranslatable text:** text inside images (logo, map) can't be translated.

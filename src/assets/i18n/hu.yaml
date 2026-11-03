@@ -2,7 +2,9 @@
 # Missing keys fall back to this (Hungarian) file.
 
 meta:
-  title: Rád-Vár Apartmanház
+  title: "Rád-Vár Apartmanház – Apartmanok, szállás Eger belvárosában"
+  description: "Családias apartmanok Eger belvárosában, a vár szomszédságában. Wifi, parkolás, klíma és felszerelt konyha. Foglald le egri szállásodat most!"
+  imageAlt: "Kilátás a várból Eger belvárosára"
 
 header:
   gallery: Galéria
@@ -16,6 +18,7 @@ home:
   quote: Eger az a város, ahová nem elég megérkezni. Hazaérkezni is lehet Egerbe.
   quoteAuthor: "- Márai Sándor"
   welcome: Üdvözlünk a Rád-Vár Apartmanház oldalán!
+  tagline: "Apartmanok Eger szívében, a vár szomszédságában"
 
 gallery:
   title: Galéria
@@ -64,6 +67,9 @@ history:
     intro:
       timeline: "Bevezetés: kezdetek"
       title: Bevezetés
+      imageAlts:
+        - "Korabeli újságcikk az Almagyar és a Maklári utca útépítéséről"
+        - "Régi egri képeslap"
       paragraphs:
         - >-
           Már a középkorban is itt volt a Makláron át, az Eger völgye mentén az ország déli és keleti részei
@@ -78,6 +84,9 @@ history:
     residents:
       timeline: Híres lakók
       title: Híres lakók
+      imageAlts:
+        - "Archív fénykép az Almagyar utca környékéről"
+        - "Archív utcakép Egerből"
       paragraphs:
         - >-
           A Líceum építésénél murariorum magisterként dolgozó Francz József egri kőművesmester 1779-ben
@@ -94,6 +103,9 @@ history:
     recent:
       timeline: 1939-től mostanáig
       title: 1939-től mostanáig
+      imageAlts:
+        - "Archív fénykép egy egri saroképületről"
+        - "Archív fénykép egy egri kapualj előtt"
       paragraphs:
         - >-
           Az épületben 1939 ősze és 1944 tavasza között lengyel polgári menekültek laktak. Ezzel azonban
@@ -119,4 +131,23 @@ contacts:
   socialTitle: Közösségi média
 
 nearby:
-  title: Közeli helyek
+  title: "Apartmanok Eger szívében"
+  intro: "Ha szállást keresel Egerben, a Rád-Vár Apartmanház a történelmi belvárosban, közvetlenül a vár szomszédságában, az Almagyar utca 7. szám alatt vár. Apartmanunk és stúdióapartmanunk ideális választás pároknak és családoknak, akik gyalog szeretnék felfedezni a várost."
+  amenitiesTitle: "Felszereltség"
+  amenities:
+    - "Wifi"
+    - "Parkolási lehetőség"
+    - "Légkondicionálás"
+    - "Teljesen felszerelt konyha"
+  sightsTitle: "Látnivalók a közelben"
+  sights:
+    - "Egri vár – kb. 300 m"
+    - "Dobó István tér – kb. 350 m"
+    - "Egri minaret – kb. 500 m"
+    - "Egri Termálfürdő – kb. 550 m"
+    - "Líceum és Egri Bazilika – kb. 700 m"
+    - "Eger vasútállomás – kb. 1,1 km"
+    - "Szépasszony-völgy borospincéi – kb. 2 km"
+  sightsNote: "Légvonalbeli távolságok."
+  outro: "Eger a vár, a termálfürdők és az egri bikavér városa. A Bükk és a Mátra között fekvő város kirándulásokhoz is kiváló kiindulópont, Budapestről autóval vagy vonattal nagyjából két óra alatt elérhető."
+  imageAlt: "Macskaköves utca Eger óvárosában"

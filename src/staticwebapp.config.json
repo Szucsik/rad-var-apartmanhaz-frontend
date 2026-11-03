@@ -1,4 +1,10 @@
 {
+  "routes": [
+    { "route": "/hu", "rewrite": "/index.html" },
+    { "route": "/pl", "rewrite": "/index.html" },
+    { "route": "/en", "rewrite": "/index.html" },
+    { "route": "/de", "rewrite": "/index.html" }
+  ],
   "mimeTypes": {
     ".yaml": "text/yaml; charset=utf-8"
   }

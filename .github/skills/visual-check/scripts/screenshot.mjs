@@ -41,7 +41,7 @@ const launchOptions = process.env.CHROME_PATH ? { executablePath: process.env.CH
 const browser = await chromium.launch(launchOptions);
 fs.mkdirSync(out, { recursive: true });
 
-const SECTIONS = ['app-home', 'app-gallery', 'app-booking', 'app-history', 'app-contacts'];
+const SECTIONS = ['app-home', 'app-gallery', 'app-booking', 'app-nearby', 'app-history', 'app-contacts'];
 let problems = 0;
 
 for (const [name, width, height] of sizes) {

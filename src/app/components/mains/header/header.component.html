@@ -16,7 +16,7 @@
             <ul role="menu" class="lang-dial-list" [attr.aria-label]="t('header.languageMenu')">
                 @for (language of languages; track language.code; let i = $index) {
                     <li class="lang-dial-item" [style.transition-delay.ms]="getLangItemDelay(i)">
-                        <a appRipple role="menuitemradio" tabindex="0" class="lang-dial-action" [class.lang-dial-action-active]="language.code === i18n.language()" [attr.aria-checked]="language.code === i18n.language()" [attr.aria-label]="language.name" [attr.title]="language.name" [attr.lang]="language.code" (click)="onLanguageClick(language)" (keydown.enter)="onLanguageClick(language)">
+                        <a appRipple role="menuitemradio" class="lang-dial-action" [attr.href]="'/' + language.code" [attr.hreflang]="language.code" [class.lang-dial-action-active]="language.code === i18n.language()" [attr.aria-checked]="language.code === i18n.language()" [attr.aria-label]="language.name" [attr.title]="language.name" [attr.lang]="language.code" (click)="onLanguageClick(language, $event)">
                             <span class="lang-dial-action-icon lang-icon {{ language.flagClass }}"></span>
                         </a>
                     </li>

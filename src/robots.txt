@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /assets/photoshop-files/
+Disallow: /assets/*.xlsx$
+
+Sitemap: https://rad-var-apartmanhaz.hu/sitemap.xml

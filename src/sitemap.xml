@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- One URL per language. Update <lastmod> when the texts change (see src/app/shared/seo.ts). -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://rad-var-apartmanhaz.hu/hu</loc>
+    <lastmod>2026-11-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://rad-var-apartmanhaz.hu/hu"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://rad-var-apartmanhaz.hu/pl"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rad-var-apartmanhaz.hu/en"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://rad-var-apartmanhaz.hu/de"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rad-var-apartmanhaz.hu/"/>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/1.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/2.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/3.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/4.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/5.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/6.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/7.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/8.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/9.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/21.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/22.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/23.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/24.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/25.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/26.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/site-images/eger-old-town.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://rad-var-apartmanhaz.hu/pl</loc>
+    <lastmod>2026-11-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://rad-var-apartmanhaz.hu/hu"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://rad-var-apartmanhaz.hu/pl"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rad-var-apartmanhaz.hu/en"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://rad-var-apartmanhaz.hu/de"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rad-var-apartmanhaz.hu/"/>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/1.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/2.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/3.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/4.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/5.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/6.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/7.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/8.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/9.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/21.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/22.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/23.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/24.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/25.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/26.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/site-images/eger-old-town.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://rad-var-apartmanhaz.hu/en</loc>
+    <lastmod>2026-11-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://rad-var-apartmanhaz.hu/hu"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://rad-var-apartmanhaz.hu/pl"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rad-var-apartmanhaz.hu/en"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://rad-var-apartmanhaz.hu/de"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rad-var-apartmanhaz.hu/"/>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/1.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/2.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/3.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/4.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/5.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/6.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/7.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/8.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/9.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/21.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/22.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/23.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/24.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/25.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/26.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/site-images/eger-old-town.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://rad-var-apartmanhaz.hu/de</loc>
+    <lastmod>2026-11-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://rad-var-apartmanhaz.hu/hu"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://rad-var-apartmanhaz.hu/pl"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rad-var-apartmanhaz.hu/en"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://rad-var-apartmanhaz.hu/de"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rad-var-apartmanhaz.hu/"/>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/1.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/2.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/3.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/4.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/5.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/6.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/7.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/8.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/9.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/21.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/22.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/23.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/24.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/25.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/photos/26.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://rad-var-apartmanhaz.hu/assets/site-images/eger-old-town.jpg</image:loc></image:image>
+  </url>
+</urlset>

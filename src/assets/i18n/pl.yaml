@@ -1,7 +1,9 @@
 # Polish texts of the site. Keep the same keys as hu.yaml.
 
 meta:
-  title: Apartamenty Rád-Vár
+  title: "Rád-Vár Apartmanház – Apartamenty i noclegi w Egerze"
+  description: "Rodzinne apartamenty w centrum Egeru na Węgrzech, tuż obok zamku. Wi-Fi, parking, klimatyzacja i w pełni wyposażona kuchnia. Zarezerwuj nocleg!"
+  imageAlt: "Widok z zamku na stare miasto w Egerze"
 
 header:
   gallery: Galeria
@@ -15,6 +17,7 @@ home:
   quote: Eger to miasto, do którego nie wystarczy przyjechać. Do Egeru można też wrócić jak do domu.
   quoteAuthor: "- Sándor Márai"
   welcome: Witamy na stronie Apartamentów Rád-Vár!
+  tagline: "Apartamenty w sercu Egeru, tuż obok zamku"
 
 gallery:
   title: Galeria
@@ -62,6 +65,9 @@ history:
     intro:
       timeline: "Wstęp: początki"
       title: Wstęp
+      imageAlts:
+        - "Dawny artykuł prasowy o budowie drogi na ulicach Almagyar i Maklári"
+        - "Stara pocztówka z Egeru"
       paragraphs:
         - >-
           Już w średniowieczu przebiegał tu gościniec prowadzący przez Maklár, wzdłuż doliny Egeru, ku
@@ -76,6 +82,9 @@ history:
     residents:
       timeline: Znani mieszkańcy
       title: Znani mieszkańcy
+      imageAlts:
+        - "Archiwalne zdjęcie okolic ulicy Almagyar"
+        - "Archiwalne zdjęcie ulicy w Egerze"
       paragraphs:
         - >-
           József Francz, egerski mistrz murarski, który przy budowie Liceum pracował jako murariorum
@@ -92,6 +101,9 @@ history:
     recent:
       timeline: Od 1939 roku do dziś
       title: Od 1939 roku do dziś
+      imageAlts:
+        - "Archiwalne zdjęcie narożnej kamienicy w Egerze"
+        - "Archiwalne zdjęcie przed bramą w Egerze"
       paragraphs:
         - >-
           Od jesieni 1939 do wiosny 1944 roku w budynku mieszkali polscy uchodźcy cywilni. To jednak nie
@@ -116,4 +128,23 @@ contacts:
   socialTitle: Media społecznościowe
 
 nearby:
-  title: W pobliżu
+  title: "Apartamenty w samym sercu Egeru"
+  intro: "Szukasz noclegu w Egerze na Węgrzech? Rád-Vár Apartmanház znajduje się w zabytkowym centrum miasta, tuż obok zamku w Egerze, przy ulicy Almagyar u. 7. Nasz apartament i studio to idealny wybór dla par i rodzin, które chcą zwiedzać miasto pieszo."
+  amenitiesTitle: "Wyposażenie"
+  amenities:
+    - "Wi-Fi"
+    - "Parking"
+    - "Klimatyzacja"
+    - "W pełni wyposażona kuchnia"
+  sightsTitle: "Atrakcje w pobliżu"
+  sights:
+    - "Zamek w Egerze – ok. 300 m"
+    - "Plac Dobó Istvána – ok. 350 m"
+    - "Minaret w Egerze – ok. 500 m"
+    - "Kąpielisko termalne w Egerze – ok. 550 m"
+    - "Liceum i Bazylika w Egerze – ok. 700 m"
+    - "Dworzec kolejowy w Egerze – ok. 1,1 km"
+    - "Piwnice winne w Dolinie Pięknych Pań – ok. 2 km"
+  sightsNote: "Odległości w linii prostej."
+  outro: "Eger słynie z zamku, kąpielisk termalnych i czerwonego wina Egri Bikavér (Bycza Krew). Miasto leży między górami Bükk i Mátra, jest świetną bazą wypadową na wycieczki, a z Budapesztu można tu dojechać samochodem lub pociągiem w około dwie godziny."
+  imageAlt: "Brukowana uliczka na starym mieście w Egerze"

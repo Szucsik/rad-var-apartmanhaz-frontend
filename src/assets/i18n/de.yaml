@@ -1,7 +1,9 @@
 # German texts of the site. Keep the same keys as hu.yaml.
 
 meta:
-  title: Rád-Vár Apartmenthaus
+  title: "Rád-Vár Apartmanház – Ferienwohnungen in Eger, Ungarn"
+  description: "Familiäre Ferienwohnungen im Zentrum von Eger (Erlau), direkt neben der Burg. WLAN, Parkplatz, Klimaanlage und voll ausgestattete Küche. Jetzt buchen!"
+  imageAlt: "Blick von der Burg auf die Altstadt von Eger"
 
 header:
   gallery: Galerie
@@ -15,6 +17,7 @@ home:
   quote: Eger ist eine Stadt, in der es nicht genügt anzukommen. Nach Eger kann man auch heimkehren.
   quoteAuthor: "- Sándor Márai"
   welcome: Willkommen beim Rád-Vár Apartmenthaus!
+  tagline: "Ferienwohnungen im Herzen von Eger, direkt neben der Burg"
 
 gallery:
   title: Galerie
@@ -62,6 +65,9 @@ history:
     intro:
       timeline: "Einleitung: die Anfänge"
       title: Einleitung
+      imageAlts:
+        - "Alter Zeitungsartikel über den Straßenbau in der Almagyar- und der Maklári-Straße"
+        - "Alte Postkarte von Eger"
       paragraphs:
         - >-
           Schon im Mittelalter verlief hier die Landstraße, die über Maklár entlang des Eger-Tals in die
@@ -77,6 +83,9 @@ history:
     residents:
       timeline: Berühmte Bewohner
       title: Berühmte Bewohner
+      imageAlts:
+        - "Archivfoto aus der Umgebung der Almagyar-Straße"
+        - "Archivfoto einer Straße in Eger"
       paragraphs:
         - >-
           József Francz, ein Egerer Maurermeister, der beim Bau des Lyzeums als murariorum magister
@@ -93,6 +102,9 @@ history:
     recent:
       timeline: Von 1939 bis heute
       title: Von 1939 bis heute
+      imageAlts:
+        - "Archivfoto eines Eckhauses in Eger"
+        - "Archivfoto vor einer Toreinfahrt in Eger"
       paragraphs:
         - >-
           Zwischen Herbst 1939 und Frühjahr 1944 wohnten polnische Zivilflüchtlinge in dem Gebäude. Damit
@@ -119,4 +131,23 @@ contacts:
   socialTitle: Soziale Medien
 
 nearby:
-  title: In der Nähe
+  title: "Ferienwohnungen im Herzen von Eger"
+  intro: "Sie suchen eine Unterkunft in Eger (Erlau), Ungarn? Das Rád-Vár Apartmanház liegt in der historischen Altstadt, direkt neben der Burg von Eger, in der Almagyar u. 7. Unsere Ferienwohnung und unser Studio-Apartment sind ideal für Paare und Familien, die die Stadt zu Fuß entdecken möchten."
+  amenitiesTitle: "Ausstattung"
+  amenities:
+    - "WLAN"
+    - "Parkplatz"
+    - "Klimaanlage"
+    - "Voll ausgestattete Küche"
+  sightsTitle: "Sehenswürdigkeiten in der Nähe"
+  sights:
+    - "Burg von Eger – ca. 300 m"
+    - "Dobó-István-Platz – ca. 350 m"
+    - "Minarett von Eger – ca. 500 m"
+    - "Thermalbad Eger – ca. 550 m"
+    - "Lyzeum und Basilika von Eger – ca. 700 m"
+    - "Bahnhof Eger – ca. 1,1 km"
+    - "Weinkeller im Tal der schönen Frauen – ca. 2 km"
+  sightsNote: "Entfernungen in Luftlinie."
+  outro: "Eger ist berühmt für seine Burg, seine Thermalbäder und den Rotwein Erlauer Stierblut (Egri Bikavér). Die Stadt liegt zwischen dem Bükk- und dem Mátra-Gebirge, ist ein idealer Ausgangspunkt für Ausflüge und von Budapest mit dem Auto oder dem Zug in etwa zwei Stunden erreichbar."
+  imageAlt: "Gasse mit Kopfsteinpflaster in der Altstadt von Eger"
