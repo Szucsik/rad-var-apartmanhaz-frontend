@@ -1,8 +1,10 @@
-import { Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
 import { AnimationService } from 'src/app/shared/services/animation.service';
 import { ScrollAnimationService } from 'src/app/shared/services/scrollAnimation.service';
 
 type LanguageMenuDirection = 'left' | 'right';
+
+const MOBILE_MEDIA_QUERY = '(max-width: 1023.98px)';
 
 interface LanguageMenuItem {
   icon: string;
@@ -11,6 +13,7 @@ interface LanguageMenuItem {
 
 @Component({
   standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager,
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
@@ -35,10 +38,7 @@ export class HeaderComponent implements OnInit {
   constructor(private animationService: AnimationService, private _scrollAnimationService: ScrollAnimationService) { this.scrollAnimationService = _scrollAnimationService; }
 
   ngOnInit(): void {
-    if(window.innerWidth < 1300) {
-      this.langDirection = 'right';
-      this.isMobileResolution = true;
-    }
+    this.updateResolution();
 
     this.animationService.contentLoaded.subscribe(result => {
       this.animationService.headerAnimations(this.container);
@@ -49,12 +49,14 @@ export class HeaderComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
-    if(window.innerHeight > window.innerWidth) {
-      this.langDirection = 'right';
-      this.isMobileResolution = true;
-    } else {
-      this.langDirection = 'left';
-      this.isMobileResolution = false;
+    this.updateResolution();
+  }
+
+  // Keep in sync with $desktop-breakpoint in shared/scss/sizes.scss.
+  private updateResolution(): void {
+    this.isMobileResolution = window.matchMedia(MOBILE_MEDIA_QUERY).matches;
+    if (!this.isMobileResolution) {
+      this.isMobileMenuActive = false;
     }
   }
 

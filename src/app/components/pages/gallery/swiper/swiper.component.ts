@@ -1,10 +1,11 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from "@angular/core";
+import { ChangeDetectionStrategy, AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from "@angular/core";
 import { GalleryService } from "src/app/shared/services/gallery.service";
 import Swiper from "swiper";
 import { Autoplay, EffectCards } from "swiper/modules";
 
 @Component({
   standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager,
   selector: 'gallery-swiper',
   templateUrl: './swiper.component.html',
   styleUrls: ['./swiper.component.scss'],

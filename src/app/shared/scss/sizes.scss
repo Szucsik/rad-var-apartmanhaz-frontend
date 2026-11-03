@@ -1,2 +1,34 @@
 $header-height: 80px;
 $header-height-mobile: 50px;
+
+// Desktop layout (full header menu, side-by-side sections) starts at this width.
+$desktop-breakpoint: 1024px;
+// Wide desktop layout (history images beside the text, timeline visible).
+$wide-breakpoint: 1280px;
+
+// Space kept free at the top of each section so the fixed header and its hanging logo never cover content.
+$header-clearance-mobile: 96px;
+$header-clearance: 130px;
+
+@mixin desktop {
+    @media only screen and (min-width: $desktop-breakpoint) {
+        @content;
+    }
+}
+
+@mixin wide {
+    @media only screen and (min-width: $wide-breakpoint) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media only screen and (max-width: $desktop-breakpoint - 0.02px) {
+        @content;
+    }
+}
+
+@mixin full-screen-height {
+    min-height: 100vh;
+    min-height: 100svh;
+}

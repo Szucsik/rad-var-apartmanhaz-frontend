@@ -8,58 +8,18 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 })
 
 export class ScrollAnimationService {
+  // Scrolls to the top of the section component (e.g. 'gallery' -> <app-gallery>), so it keeps working
+  // whatever height the sections have on the current screen.
   navigate(destination: string) {
-    const scrollTo = gsap.timeline();
-    const headerHeight = 20;
-    switch(destination) {
-      case 'home': {
-        scrollTo.to(window,
-          {
-            delay: 0.2,
-            duration: 0.8,
-            scrollTo: 0,
-          }
-        );
-      break;
-      } case 'gallery': {
-        scrollTo.to(window,
-          {
-            delay: 0.2,
-            duration: 0.8,
-            scrollTo: window.innerHeight * 1 - headerHeight
-          }
-        );
-        break;
-        } case 'booking': {
-          scrollTo.to(window,
-            {
-              delay: 0.2,
-              duration: 0.8,
-              scrollTo: window.innerHeight  * 2 - headerHeight
-            }
-          );
-          break;
-        } case 'history': {
-          scrollTo.to(window,
-            {
-              delay: 0.2,
-              duration: 0.8,
-              scrollTo: window.innerHeight  * 3 - headerHeight
-            }
-          );
-          break;
-        } case 'contacts': {
-          scrollTo.to(window,
-            {
-              delay: 0.2,
-              duration: 0.8,
-              scrollTo: window.innerHeight  * 6 - headerHeight
-            }
-          );
-          break;
-        }
-      }
-    }
+    const section = destination === 'home' ? null : document.querySelector<HTMLElement>(`app-${destination}`);
+    const target = section ? section.getBoundingClientRect().top + window.scrollY : 0;
+
+    gsap.timeline().to(window, {
+      delay: 0.2,
+      duration: 0.8,
+      scrollTo: target
+    });
+  }
 
     public RegisterScrollServices(): void {
       // this.homeScrollTrigger();

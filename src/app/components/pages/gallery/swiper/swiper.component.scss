@@ -4,31 +4,24 @@
 @use "swiper/css/pagination";
 @use "swiper/css/navigation";
 
-.swiper {
-  width: 100%;
-}
-
-.swiper-slide {
-  background-position: center;
-  background-size: cover;
-  width: 300px;
-  height: 300px;
-}
-
-.swiper-slide img {
+gallery-swiper {
   display: block;
   width: 100%;
 }
 
-
-@media only screen and (min-width: 867px) {
-  .swiper {
-    width: 667px;
-  }
+.gallery-swiper.swiper {
+  width: 100%;
 }
 
-@media only screen and (min-width: 1400px) {
-  .swiper {
-    width: 867px;
-  }
+.gallery-swiper .swiper-slide {
+  background-position: center;
+  background-size: cover;
+}
+
+.gallery-swiper .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 887 / 665;
+  object-fit: cover;
 }

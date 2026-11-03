@@ -1,7 +1,8 @@
-import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, ViewChild } from '@angular/core';
 
 @Component({
   standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager,
   selector: 'app-history-page-one',
   templateUrl: './page-one.component.html',
   styleUrls: ['./page-one.component.scss']
@@ -18,7 +19,6 @@ export class PageOneComponent implements OnInit {
     @ViewChild('topic1') yourElement: ElementRef;
 
     ngAfterViewInit() {
-        const threshold = 0.5; // how much % of the element is in view
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
@@ -29,7 +29,8 @@ export class PageOneComponent implements OnInit {
                     }
                 });
             },
-            { threshold }
+            // Fires when the page crosses the middle of the viewport, whatever its height.
+            { rootMargin: '-50% 0px -50% 0px' }
         );
         observer.observe(this.yourElement.nativeElement);
     }

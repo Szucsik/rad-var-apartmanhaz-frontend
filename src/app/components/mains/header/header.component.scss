@@ -35,12 +35,9 @@
 
 .header-container {
     position: fixed;
-    flex-wrap: nowrap;
+    top: 0;
+    left: 0;
     width: 100%;
-    left: 0%;
-    margin-left: 0%;
-    top: 0px;
-    height: $header-height-mobile;
     z-index: 10;
 }
 
@@ -48,30 +45,54 @@
     cursor: pointer;
 }
 
-.menu-item {
-    margin-top: -5px;
+.mobile-menu {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    height: $header-height-mobile;
+}
+
+.mobile-burger-button {
+    flex: 0 0 auto;
+    width: 64px;
+    height: $header-height-mobile;
+    background-size: 32px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('/assets/site-images/burger-button.png');
+    cursor: pointer;
+}
+
+/* Mobile drop-down: the menu items open under the burger button, right aligned */
+.menu-item, .lang-item {
     position: relative;
-    width: 150px;
+    margin-left: auto;
+    width: min(240px, 70vw);
     height: $header-height-mobile;
     text-align: center;
-    vertical-align: middle;
+}
+
+.menu-item {
     overflow: hidden;
 }
 
 .lang-item {
-    position: relative;
-    height: calc($header-height-mobile - 10px);
-    width: 150px;
+    overflow: visible;
 }
 
 .btns {
     height: 100%;
     width: 100%;
-    display: table-cell;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
     background-color: transparent;
     border-color: transparent;
     font-family: inherit;
     color: inherit;
+    white-space: nowrap;
 }
 
 .header-logo-details {
@@ -85,7 +106,7 @@
 }
 
 .header-menu-item-details {
-    font-size: 15px;
+    font-size: 18px;
 }
 
 /* Language speed dial (ported from the PrimeNG 13 SpeedDial component) */
@@ -255,88 +276,68 @@
     border-color: transparent!important;
 }
 
-.mobile-burger-button {
-    width: 150px;
-    height: $header-height-mobile;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-image: url('/assets/site-images/burger-button.png');
-}
-
-.mobile-menu {
-    display: inline-flex;
-}
-
 .mobile-hidden {
-    visibility: hidden;
+    display: none;
 }
 
 .mobile-blur {
     opacity: 0.5!important;
 }
 
-@media only screen and (orientation: landscape) {
-    .header-logo-details {
-        font-size: 24px;
-    }
-    
-    .header-logo-img {
-        height: 70px;
-        width: 35px;
-        background-size: 35px;
-    }
-    
-    .header-menu-item-details {
-        font-size: 25px;
-    }
+.lang-item .lang-dial {
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+}
 
+.lang-dial-button {
+    margin-left: 0;
+}
+
+@include desktop {
     .header-container {
-        left: 50%;  
-        margin-left: -45%;
+        left: 50%;
+        transform: translateX(-50%);
         width: 90%;
-        height: 80px;
-        display: inline-flex;
+        max-width: 1800px;
+        height: $header-height;
+        display: flex;
+        align-items: flex-start;
     }
 
-    .logo-container {
-        height: 100px;
-    }
-
-    .menu-item {
-        width: 150px;
-        height: 80px;
-        margin-top: 0px;
-    }
-
-    .lang-item {
-        width: 250px;
-        right: 45px;
-        height: 72px;
-        margin-top: 8px;
-        margin-left: auto;
-    }
-
-    .header-logo-img {
-        height: 70px;
-        width: 35px;
-        background-size: 25px;
-    }
-
-    .lang-dial-button {
-        margin-left: 0px;
-        height: 65px!important;
-        width: 65px!important;
-    }
-
-    .lang-dial-button:hover {
-        height: 65px!important;
-        width: 65px!important;
+    .mobile-menu {
+        width: auto;
+        height: auto;
     }
 
     .mobile-burger-button {
-        visibility: hidden;
-        width: 0px;
-        height: 0px;
+        display: none;
+    }
+
+    .header-menu-item-details {
+        font-size: clamp(18px, 1.5vw, 25px);
+    }
+
+    .menu-item {
+        margin-left: 0;
+        width: auto;
+        min-width: clamp(110px, 9vw, 160px);
+        height: $header-height;
+    }
+
+    .lang-item {
+        margin-left: auto;
+        margin-right: clamp(16px, 2.5vw, 45px);
+        width: 65px;
+        height: $header-height;
+    }
+
+    .lang-item .lang-dial {
+        right: 0;
+    }
+
+    .lang-dial-button, .lang-dial-button:hover {
+        height: 65px!important;
+        width: 65px!important;
     }
 }

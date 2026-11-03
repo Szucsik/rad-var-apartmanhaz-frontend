@@ -1,20 +1,38 @@
-$gallery-title-fontsize: 3vw;
-$gallery-subtitle-fontsize: 2vw;
-$gallery-image-descriptor-container-fontsize: 2vw;
-$arrow-image-width: 4vw;
-$arrow-image-height: 1.66vw;
+@use 'src/app/shared/scss/sizes' as *;
+
+$gallery-title-fontsize: clamp(32px, 3vw, 64px);
+$gallery-subtitle-fontsize: clamp(20px, 2vw, 40px);
+$gallery-image-descriptor-container-fontsize: clamp(18px, 2vw, 36px);
+$arrow-image-width: clamp(40px, 4vw, 80px);
+
+// Vertical space used by everything except the photo (header clearance, titles, controls).
+$gallery-chrome-height: 360px;
+$gallery-chrome-height-short: 230px;
+// Gallery photos are 887x665 (4:3).
+$photo-aspect-ratio: calc(887 / 665);
 
 ::selection {
     background: yellow;
 }
 
+:host {
+    display: block;
+}
+
 .gallery-container {
+    @include full-screen-height;
     position: relative;
     width: 100%;
-    height: 100%;
-    padding-top: 20px; 
+    padding: $header-clearance-mobile 0 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include desktop {
+        padding-top: $header-clearance;
+    }
 }
-  
+
 .gallery-title {
     font-size: $gallery-title-fontsize;
     text-align: center;
@@ -32,66 +50,72 @@ $arrow-image-height: 1.66vw;
     width: 30%;
 }
 
-.gallery-previous-button, .gallery-next-button, .gallery-image-descriptor-container {
-    position: absolute;
-    display: inline-flex;
+.image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: min(867px, 92vw, (100vh - $gallery-chrome-height) * $photo-aspect-ratio);
+    width: min(867px, 92vw, (100svh - $gallery-chrome-height) * $photo-aspect-ratio);
+    min-width: min(280px, 92vw);
+    margin: 0 auto;
 }
 
-.gallery-previous-button {
-    left: 10%;
-    cursor: pointer;
-}
-
-.gallery-image-descriptor-container{  
-    position: absolute;
-    font-size: $gallery-image-descriptor-container-fontsize;
-    left: 50%;
-    -ms-transform: translate(-50%, 0%);
-    transform: translate(-50%, 0%);
-    margin-top: -20px;
-}
-
-.gallery-next-button {
-    right: 10%;
-    cursor: pointer;
+.images {
+    width: 100%;
 }
 
 .image-container-controllers {
-    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
     width: 100%;
+    margin-top: 10px;
+}
+
+.gallery-previous-button, .gallery-next-button {
+    flex: 0 0 auto;
+    display: inline-flex;
+    cursor: pointer;
+}
+
+.gallery-image-descriptor-container {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: $gallery-image-descriptor-container-fontsize;
+}
+
+.gallery-image-descriptor-text {
+    margin: 0;
 }
 
 img.arrow-right, img.arrow-left {
     position: relative;
-    margin: 5px;
     width: $arrow-image-width;
-    height: $arrow-image-height;
+    height: auto;
     margin: 10px;
 }
 
-img.gallery-main-image {
-    top: 200px;
-    height: auto;
-    max-width: 100%;
-}
+@media only screen and (max-height: 500px) {
+    .gallery-container {
+        padding-top: 70px;
+    }
 
-@media only screen and (orientation: portrait) {
     .gallery-title {
-        font-size: calc($gallery-title-fontsize * 2);
-    }
-    
-    .gallery-subtitle {
-        font-size: calc($gallery-subtitle-fontsize * 2);
+        font-size: 28px;
+        margin-top: 0;
     }
 
-    .gallery-image-descriptor-container{  
-        font-size: calc($gallery-image-descriptor-container-fontsize * 2);
-        margin-top: -10px;
+    .gallery-subtitle {
+        font-size: 18px;
+        margin-top: 4px;
     }
-    
-    img.arrow-right, img.arrow-left {
-        width: calc($arrow-image-width * 2);
-        height: calc($arrow-image-height * 2);
+
+    .image-container {
+        min-width: 0;
+        width: min(867px, 92vw, (100vh - $gallery-chrome-height-short) * $photo-aspect-ratio);
+        width: min(867px, 92vw, (100svh - $gallery-chrome-height-short) * $photo-aspect-ratio);
     }
-  }
-  
+}

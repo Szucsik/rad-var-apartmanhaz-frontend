@@ -1,9 +1,10 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Configuration } from 'src/app/shared/config';
 import { AnimationService } from 'src/app/shared/services/animation.service';
 
 @Component({
   standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager,
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']

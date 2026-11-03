@@ -11,3 +11,17 @@ if (!('IntersectionObserver' in globalThis)) {
   }
   (globalThis as any).IntersectionObserver = IntersectionObserverStub;
 }
+
+// jsdom does not implement matchMedia either; components use it to pick the mobile/desktop layout.
+if (typeof window.matchMedia !== 'function') {
+  window.matchMedia = (query: string): MediaQueryList => ({
+    matches: false,
+    media: query,
+    onchange: null,
+    addListener: () => { },
+    removeListener: () => { },
+    addEventListener: () => { },
+    removeEventListener: () => { },
+    dispatchEvent: () => false,
+  });
+}

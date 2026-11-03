@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, OnInit } from '@angular/core';
 import { ScrollAnimationService } from 'src/app/shared/services/scrollAnimation.service';
 
 @Component({
   standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager,
   selector: 'app-booking',
   templateUrl: './booking.component.html',
   styleUrls: ['./booking.component.scss']
@@ -14,6 +15,7 @@ export class BookingComponent implements OnInit {
   
   constructor(private scrollAnimationService: ScrollAnimationService) { }
 
+  @HostListener('window:resize')
   onResize() {
     this.CheckResolutionForAnimation();
   }
@@ -61,10 +63,8 @@ export class BookingComponent implements OnInit {
     }
   }
 
+  // One card at a time (with the swap arrows) below the desktop breakpoint; keep in sync with $desktop-breakpoint.
   CheckResolutionForAnimation(): void {
-    if(window.innerHeight > window.innerWidth)
-      this.mobileMod = true;
-    else 
-      this.mobileMod = false;
+    this.mobileMod = window.matchMedia('(max-width: 1023.98px)').matches;
   }
 }
