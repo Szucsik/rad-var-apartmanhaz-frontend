@@ -158,6 +158,7 @@ These were also checked manually in headless Chrome: redirects from `/` for Germ
 - **Changing `meta` texts:** edit every YAML file; for Hungarian also update the static copy in `src/index.html` (the unit test tells you).
 - **Changing business data** (phone, email, address, social links): edit `src/app/shared/seo.ts` and the JSON-LD in `src/index.html`, and the contacts template if it is visible there.
 - **Adding a language:** follow the [manage-translations skill](../.github/skills/manage-translations/SKILL.md). Besides the usual steps, add it to `OG_LOCALES` in `seo.ts`, the hreflang links in `index.html`, `sitemap.xml`, the rewrite in `.htaccess` and the `routes` in `staticwebapp.config.json`.
+- **Links:** the global `a:link, a:visited` style in `src/styles/light-blue-style.scss` (gold text sweep, `display: inline-block`, background clipped to text) applies to every `<a>` with an `href`. When you turn a clickable element into a real link for SEO, override it with a more specific selector, as `.lang-dial .lang-dial-action` does in `header.component.scss`.
 - **Adding a section:** use one `h2` for its title, translated `alt` texts and real text (not text inside images).
 - **SSR (planned):** keep `SeoService` free of `window`/`localStorage`. With SSR the tags are rendered on the server and the per-language routes can replace the wildcard route. `I18nService` and `Configuration` still use `document`, `localStorage`, `sessionStorage` and `navigator` directly and will need platform checks.
 
