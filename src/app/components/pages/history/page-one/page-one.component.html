@@ -1,15 +1,16 @@
 <div #topic1 class="history-topic-container topic-1">
-    <p class="history-topic-title history-title">Rövid történelme</p>
-    <p class="history-topic-title-part-2 history-subtitle">Eger, Almagyar utcájának</p>
-    <p class="history-topic-title-part-2 history-subtitle">és a Rád-Vár Apartmanháznak<span class="history-title-dot">.</span></p>
+    <p class="history-topic-title history-title">{{ t('history.title') }}</p>
+    <p class="history-topic-title-part-2 history-subtitle">{{ t('history.subtitleLine1') }}</p>
+    <p class="history-topic-title-part-2 history-subtitle">{{ t('history.subtitleLine2') }}<span class="history-title-dot">.</span></p>
     <hr class="history-title-line">
-    <p class="history-topic history-subtitle">Bevezetés</p>
-    <p class="history-topic-text history-text">
-        Már a középkorban is itt volt a Makláron át, az Eger völgye mentén az ország déli és keleti részei felé vezető országút, mely nevét az Almagyar nevű településről nyerte. 
-    </p>
-    <p class="history-topic-text history-text">
-        A török uralom után az egész várost szinte a nulláról kellett újjáépíteni. Az utcák jelentős részben továbbra is ugyanott kanyarogtak, ahol a középkorban. A Heves megye műemlékei című monográfia írja, hogy „a XVIII. század elején, de még az 1788-as utcaösszeírás szerint is – az ide települő német bevándorlók – Német utcának vagy Tímárok utcájának nevezik. Az Eger-patak szabályozásáig ugyanis annak egyik ága a fundusok (telkek) hátsó határa mentén haladt s így a hely rendkívül alkalmas volt a mesterség gyakorlásához.”
-    </p>
-    <img class="history-image-1-page-1" src="assets/site-images/history-images/almagyar-2.jpg" alt="">
-    <img class="history-image-2-page-1" src="assets/site-images/history-images/almagyar-7.jpg" alt="">
+    <p class="history-topic history-subtitle">{{ t('history.pages.intro.title') }}</p>
+    <div class="history-topic-body">
+        <img class="history-image history-image-left history-image-2-page-1" src="assets/site-images/history-images/almagyar-7.jpg" alt="">
+        <div class="history-topic-texts">
+            @for (paragraph of tList('history.pages.intro.paragraphs'); track $index) {
+                <p class="history-topic-text history-text">{{ paragraph }}</p>
+            }
+        </div>
+        <img class="history-image history-image-right history-image-1-page-1" src="assets/site-images/history-images/almagyar-2.jpg" alt="">
+    </div>
 </div>

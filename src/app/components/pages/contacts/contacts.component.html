@@ -2,41 +2,41 @@
     <div class="contacts-map" [ngClass]="isMobileResolution ? 'contacts-map-hun-mobile' : 'contacts-map-hun-full'"></div>
     <div class="contacts-menu">
         <div class="contacts-main-title">
-            Elérhetőségek
+            {{ t('contacts.title') }}
         </div>
         <div class="contacts-content">
             <div class="contacts-address-title contacts-title">
-                Cím
+                {{ t('contacts.addressTitle') }}
             </div>
             <div class="contacts-address-text contacts-text">
-                <a href="https://goo.gl/maps/m9mMU29RR27igdeP8" rel="noopener" target="_blank">Eger, Almagyar u. 7, 3300</a>
+                <a href="https://goo.gl/maps/m9mMU29RR27igdeP8" rel="noopener" target="_blank">{{ t('contacts.address') }}</a>
                 <br>
-                Magyarország, Heves Megye
+                {{ t('contacts.region') }}
             </div>
             <div class="contacts-email-title contacts-title">
-                Email cím
+                {{ t('contacts.emailTitle') }}
             </div>
             <div class="contacts-email-text contacts-text">
-                Információ és foglalás
+                {{ t('contacts.emailLabel') }}
                 <br>
                 <a href="mailto:info@rad-var-apartmanhaz.hu" rel="noopener" target="_blank">info@rad-var-apartmanhaz.hu</a>
             </div>
             <div class="contacts-telephone-title contacts-title">
-                Telefon
+                {{ t('contacts.phoneTitle') }}
             </div>
             <div class="contacts-telephone-text contacts-text">
-                Információ (magyar)
+                {{ t('contacts.phoneLabel') }}
                 <br>
                 <a href="tel:06302289284" rel="noopener" target="_blank">(06 30) 228 92 84</a>
                 <br>
                 <a href="tel:06306103196" rel="noopener" target="_blank">(06 30) 610 31 96</a>
             </div>
             <div class="contacts-telephone-title contacts-title">
-                Közösségi média
+                {{ t('contacts.socialTitle') }}
             </div>
             <div class="contacts-social-media-container contacts-text">
-                <div class="contacts-facebook" (click)="this.openLink('https://www.facebook.com/rad.var.apartmanhaz')"></div>
-                <div class="contacts-instagram" (click)="this.openLink('https://www.instagram.com/radvarapartmanhaz')"></div>
+                <div class="contacts-facebook" role="link" tabindex="0" aria-label="Facebook" (click)="this.openLink('https://www.facebook.com/rad.var.apartmanhaz')" (keydown.enter)="this.openLink('https://www.facebook.com/rad.var.apartmanhaz')"></div>
+                <div class="contacts-instagram" role="link" tabindex="0" aria-label="Instagram" (click)="this.openLink('https://www.instagram.com/radvarapartmanhaz')" (keydown.enter)="this.openLink('https://www.instagram.com/radvarapartmanhaz')"></div>
             </div>
         </div>
     </div>

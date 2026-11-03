@@ -1,11 +1,16 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild, inject } from '@angular/core';
+import { I18nService } from 'src/app/shared/services/i18n.service';
 
 @Component({
+  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager,
   selector: 'app-history-page-three',
   templateUrl: './page-three.component.html',
   styleUrls: ['./page-three.component.scss']
 })
 export class PageThreeComponent implements OnInit {
+  protected readonly t = inject(I18nService).t;
+  protected readonly tList = inject(I18nService).tList;
   pagePos: number = 2;
   @Input() observeStart: boolean = true;
   @Output() onPage: EventEmitter<number> = new EventEmitter<number>();
@@ -17,7 +22,6 @@ export class PageThreeComponent implements OnInit {
     @ViewChild('topic3') yourElement: ElementRef;
 
     ngAfterViewInit() {
-        const threshold = 0.5; // how much % of the element is in view
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
@@ -29,7 +33,8 @@ export class PageThreeComponent implements OnInit {
                     }
                 });
             },
-            { threshold }
+            // Fires when the page crosses the middle of the viewport, whatever its height.
+            { rootMargin: '-50% 0px -50% 0px' }
         );
         observer.observe(this.yourElement.nativeElement);
     }

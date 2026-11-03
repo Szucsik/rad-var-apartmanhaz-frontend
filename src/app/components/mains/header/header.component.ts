@@ -1,9 +1,15 @@
-import { Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
-import { MenuItem, PrimeNGConfig } from 'primeng/api';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild, ViewEncapsulation, computed, inject } from '@angular/core';
 import { AnimationService } from 'src/app/shared/services/animation.service';
+import { I18nService, Language, LANGUAGES } from 'src/app/shared/services/i18n.service';
 import { ScrollAnimationService } from 'src/app/shared/services/scrollAnimation.service';
 
+type LanguageMenuDirection = 'left' | 'right';
+
+const MOBILE_MEDIA_QUERY = '(max-width: 1023.98px)';
+
 @Component({
+  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager,
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
@@ -13,39 +19,43 @@ import { ScrollAnimationService } from 'src/app/shared/services/scrollAnimation.
 export class HeaderComponent implements OnInit {
   @Output() finishedLoading: EventEmitter<boolean> = new EventEmitter<boolean>();
   @ViewChild('container', { static: true }) container: ElementRef<HTMLElement>;
+  @ViewChild('langDial', { static: true }) langDial: ElementRef<HTMLElement>;
 
   scrollAnimationService: ScrollAnimationService;
 
-  langDirection: string = "left";
-  items: MenuItem[];
+  langDirection: LanguageMenuDirection = "left";
+  readonly menuSections = ['gallery', 'booking', 'history', 'contacts'] as const;
+  readonly languages = LANGUAGES;
+  protected readonly i18n = inject(I18nService);
+  protected readonly t = this.i18n.t;
+  readonly currentLanguage = computed(() => this.languages.find(language => language.code === this.i18n.language()) ?? this.languages[0]);
+  isLangMenuOpen: boolean = false;
   contextName: string = 'header';
 
   isMobileResolution: boolean = false;
   isMobileMenuActive: boolean = false;
 
-  constructor(private primengConfig: PrimeNGConfig, private animationService: AnimationService, private _scrollAnimationService: ScrollAnimationService) { this.scrollAnimationService = _scrollAnimationService; }
+  constructor(private animationService: AnimationService, private _scrollAnimationService: ScrollAnimationService) { this.scrollAnimationService = _scrollAnimationService; }
 
   ngOnInit(): void {
-    if(window.innerWidth < 1300) {
-      this.langDirection = 'right';
-      this.isMobileResolution = true;
-    }
+    this.updateResolution();
 
     this.animationService.contentLoaded.subscribe(result => {
       this.animationService.headerAnimations(this.container);
     });
 
-    this.languageCompSetUp();
   }
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
-    if(window.innerHeight > window.innerWidth) {
-      this.langDirection = 'right';
-      this.isMobileResolution = true;
-    } else {
-      this.langDirection = 'left';
-      this.isMobileResolution = false;
+    this.updateResolution();
+  }
+
+  // Keep in sync with $desktop-breakpoint in shared/scss/sizes.scss.
+  private updateResolution(): void {
+    this.isMobileResolution = window.matchMedia(MOBILE_MEDIA_QUERY).matches;
+    if (!this.isMobileResolution) {
+      this.isMobileMenuActive = false;
     }
   }
 
@@ -54,46 +64,34 @@ export class HeaderComponent implements OnInit {
     this.isMobileMenuActive = false;
   }
 
-  languageCompSetUp(): void {
-    this.primengConfig.ripple = true;
-    this.items = [
-      {
-        icon: 'lang-hun-icon lang-icon',
-        command: () => {
-            
-        }
-      },
-      {
-          icon: 'lang-pol-icon lang-icon',
-          command: () => {
-              
-          }
-      },
-      {
-          icon: 'lang-eng-icon lang-icon',
-          command: () => {
-              
-          }
-      },
-      {
-          icon: 'lang-ger-icon lang-icon',
-          command: () => {
-              
-          }
-      }
-    ];
+
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: Event) {
+    if (this.isLangMenuOpen && !this.langDial.nativeElement.contains(event.target as Node)) {
+      this.isLangMenuOpen = false;
+    }
+  }
+
+  toggleLangMenu(): void {
+    this.isLangMenuOpen = !this.isLangMenuOpen;
+  }
+
+  async onLanguageClick(language: Language): Promise<void> {
+    this.isLangMenuOpen = false;
+    await this.i18n.setLanguage(language.code);
+    // Texts have different lengths in every language, so the scroll animation positions must be recalculated.
+    setTimeout(() => this.scrollAnimationService.refresh());
+  }
+
+  // Staggers the items: they open from the button outwards and close in reverse order.
+  getLangItemDelay(index: number): number {
+    const step = 30;
+    return this.isLangMenuOpen ? index * step : (this.languages.length - index - 1) * step;
   }
 
   showMobileMenu(): void {
     this.isMobileMenuActive  = !this.isMobileMenuActive;
-  }
-
-  getLanguageItems(): void {
-
-  }
-
-  setLanguage(): void {
-
   }
 }
 

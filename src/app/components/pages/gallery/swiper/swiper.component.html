@@ -1,13 +1,9 @@
-<swiper #swiperGallery
-    [autoHeight]="true"
-    [effect]="'cards'"
-    [grabCursor]="true"
-    [pagination]="true"
-    [autoplay]="{ delay: 1000, disableOnInteraction: true }"
-    (slideChange)="onSlideChange()"
-    class="gallery-swiper"
->
-    <ng-template data-swiper-autoplay="6000" swiperSlide *ngFor="let image of images; index as i">
-        <img class="swiper-image" src="{{ image }}" alt="">
-    </ng-template>
-</swiper>
+<div #swiperGallery class="gallery-swiper swiper">
+    <div class="swiper-wrapper">
+        @for (image of images; track image; let i = $index) {
+            <div class="swiper-slide" data-swiper-autoplay="6000">
+                <img class="swiper-image" [src]="image" [alt]="captions()[i] ?? ''">
+            </div>
+        }
+    </div>
+</div>

@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AppModule } from 'src/app/app.module';
 
 import { LogoStartComponent } from './logo-start.component';
 
@@ -8,7 +9,7 @@ describe('LogoStartComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LogoStartComponent ]
+      imports: [ AppModule ]
     })
     .compileComponents();
   });

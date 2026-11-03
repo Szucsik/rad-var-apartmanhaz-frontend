@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable } from "@angular/core";
 import { Configuration } from "../config";
-import { GalleryImageDescriptions } from "../texts/hun/gallery.image.descriptions";
+import { I18nService } from "./i18n.service";
 import { AnimationService } from "./animation.service";
 
 @Injectable({
@@ -11,11 +11,14 @@ export class GalleryService{
     fullscreenEvent: EventEmitter<boolean> = new EventEmitter();
 
     private currentImageID: number = 0;
-    private readonly imageSources: Array<string> = this.config.getPhotoPreviewList();
-    private readonly HDImageSources: Array<string> = this.config.getPhotoList();
+    private readonly imageSources: Array<string>;
+    private readonly HDImageSources: Array<string>;
     private fullscreenState: boolean = false;
 
-    constructor(private animationService: AnimationService, private config: Configuration, private galleryImageDescriptions: GalleryImageDescriptions) {       
+    constructor(private animationService: AnimationService, private config: Configuration, private i18n: I18nService) {
+      this.imageSources = this.config.getPhotoPreviewList();
+      this.HDImageSources = this.config.getPhotoList();
+
       this.animationService.galleryAnimationCompleted.subscribe(increaseOrDecrease => {
         this.ChangeCurrentImageID(increaseOrDecrease);
       });
@@ -81,7 +84,7 @@ export class GalleryService{
     }
 
     getPhotoDescriptions(): Array<string> {
-      return this.galleryImageDescriptions.text;
+      return this.i18n.tList('gallery.images');
     }
 
     // private

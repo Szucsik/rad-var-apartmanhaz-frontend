@@ -1,32 +1,12 @@
-@import '../history.component.scss';
-.history-image-1-page-1 {
-    float: right;
-    z-index: -1;
-    margin-right: 2vw;
-    margin-top: 0vw;
-    width: 25vw;
-    opacity: 1;
-}
+@use '../history.component' as *;
+@use 'src/app/shared/scss/sizes' as *;
 
-.history-image-2-page-1 {
-    float: left;
-    z-index: -1;
-    margin-left: 2vw;
-    margin-top: -5vw;
-    width: 15vw;
-    opacity: 1;
-}
-
-@media only screen and (orientation: portrait) {
+@include wide {
     .history-image-1-page-1 {
-        margin-right: 0vw;
-        margin-top: 0vw;
-        width: 48%;
+        width: min(100%, 25vw);
     }
-    
+
     .history-image-2-page-1 {
-        margin-left: 0vw;
-        margin-top: 0vw;
-        width: 48%;
-    }    
+        width: min(100%, 15vw);
+    }
 }

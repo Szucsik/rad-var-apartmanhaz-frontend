@@ -1,0 +1,120 @@
+# English texts of the site. Keep the same keys as hu.yaml.
+
+meta:
+  title: Rád-Vár Apartment House
+
+header:
+  gallery: Gallery
+  booking: Booking
+  history: History
+  contacts: Contact
+  menu: Menu
+  languageMenu: Choose language
+
+home:
+  quote: Eger is a city where arriving is not enough. In Eger, you can also come home.
+  quoteAuthor: "- Sándor Márai"
+  welcome: Welcome to the Rád-Vár Apartment House!
+
+gallery:
+  title: Gallery
+  subtitle: Our own photos
+  previous: Previous photo
+  next: Next photo
+  close: Close
+  images:
+    - Apartment - bedroom
+    - Apartment - bedroom
+    - Apartment - living room
+    - Apartment - living room
+    - Apartment - kitchen
+    - Apartment - kitchen
+    - Apartment - bathroom
+    - Apartment - bathroom
+    - Apartment - bathroom
+    - Studio apartment - bedroom
+    - Studio apartment - bedroom
+    - Studio apartment - bedroom
+    - Studio apartment - hallway
+    - Studio apartment - bathroom
+    - Studio apartment - bathroom
+
+booking:
+  title: Booking options
+  question: Did you like one of the rooms?
+  callToAction: See where you can book it!
+  description: >-
+    If you are looking for comfortable, family-style accommodation in the centre of Eger, you are in the
+    right place. You can find more details and free dates on the booking portals on the right.
+  openHint: Click here to open
+  previous: Previous booking option
+  next: Next booking option
+  options:
+    booking: Booking
+    szallas: Szállás.hu
+    facebook: Facebook & phone
+
+history:
+  title: A short history
+  subtitleLine1: of Almagyar Street in Eger
+  subtitleLine2: and of the Rád-Vár Apartment House
+  pages:
+    intro:
+      timeline: "Introduction: the beginnings"
+      title: Introduction
+      paragraphs:
+        - >-
+          As early as the Middle Ages, the main road leading through Maklár, along the Eger valley, towards
+          the southern and eastern parts of the country ran here. It took its name from the settlement
+          called Almagyar.
+        - >-
+          After the Ottoman rule, almost the entire town had to be rebuilt from scratch. Most of the
+          streets kept winding where they had in the Middle Ages. The monograph Monuments of Heves County
+          writes that "at the beginning of the 18th century, and even according to the street census of
+          1788, the German immigrants who settled here called it German Street or Tanners' Street. Until
+          the regulation of the Eger stream, one of its branches ran along the back boundary of the plots,
+          which made the place ideal for practising the craft."
+    residents:
+      timeline: Famous residents
+      title: Famous residents
+      paragraphs:
+        - >-
+          József Francz, a master mason of Eger who worked as murariorum magister on the building of the
+          Lyceum, bought a house here in 1779. In 1780 he rebuilt it into a small palace bearing the
+          characteristic features of the Lyceum's façade. On 8 March 1790 the town magistrate dealt with
+          József Francz's building plan.
+        - >-
+          In 1831 the building belonged to József Francz Jr., and later to the Galambos family. It is very
+          likely that the famous cinematographer György Illés (1914–2006), twice awarded the Kossuth
+          Prize and later rector of the University of Theatre and Film Arts, was born in this house at
+          number 7 on 2 November 1914. Among others, he was the cinematographer of the films Budapesti
+          tavasz, Ház a sziklák alatt, Húsz óra, Isten hozta, őrnagy úr! and Az ötödik pecsét. In 1995
+          György Illés was made an honorary citizen of Eger.
+    recent:
+      timeline: From 1939 to the present
+      title: From 1939 to the present
+      paragraphs:
+        - >-
+          Between the autumn of 1939 and the spring of 1944, Polish civilian refugees lived in the
+          building. But this is not the end of the house's story: in the autumn of 1944 heavy fighting
+          broke out in the town, and on 29 November the retreating German 8th Jäger Division blew up the
+          bridges over the Eger stream together with other buildings, including this 18th-century house,
+          to block the advancing Soviet tanks. A large part of the street front was destroyed in the
+          explosion: the gateway and two street-facing rooms of the former baroque house were lost.
+        - >-
+          The ruined building was restored after the war, but because of the hard living conditions it was
+          sadly not rebuilt in its original form. The house still reflects this today.
+
+contacts:
+  title: Contact
+  addressTitle: Address
+  address: Eger, Almagyar u. 7, 3300
+  region: Hungary, Heves County
+  emailTitle: Email
+  emailLabel: Information and booking
+  phoneTitle: Phone
+  phoneLabel: Information (in Hungarian)
+  socialTitle: Social media
+
+nearby:
+  title: Places nearby

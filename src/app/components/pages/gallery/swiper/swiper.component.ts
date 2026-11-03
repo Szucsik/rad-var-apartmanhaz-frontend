@@ -1,43 +1,54 @@
-import { Component, ViewEncapsulation, ViewChild, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from "@angular/core";
 import { GalleryService } from "src/app/shared/services/gallery.service";
-import { SwiperComponent } from "swiper/angular";
-// import Swiper core and required modules
-import SwiperCore, { Autoplay, EffectCards } from "swiper";
-
-// install Swiper modules
-SwiperCore.use([Autoplay, EffectCards]);
-
+import Swiper from "swiper";
+import { Autoplay, EffectCards } from "swiper/modules";
 
 @Component({
+  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager,
   selector: 'gallery-swiper',
   templateUrl: './swiper.component.html',
   styleUrls: ['./swiper.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class GallerySwiperComponent implements OnInit{
-  @ViewChild('swiperGallery', { static: false }) gallery: SwiperComponent;
-  images: String[];
+export class GallerySwiperComponent implements OnInit, AfterViewInit, OnDestroy {
+  @ViewChild('swiperGallery', { static: true }) gallery: ElementRef<HTMLDivElement>;
+  images: string[];
+  protected readonly captions = () => this.galleryService.getPhotoDescriptions();
+  private swiper: Swiper;
+
   constructor(private galleryService: GalleryService) {  }
 
   ngOnInit(): void {
-    this.images =  this.galleryService.GetAllPrevievImageSources();
-    this.AdjustSwiperSize();
+    this.images = this.galleryService.GetAllPrevievImageSources();
   }
 
-  private AdjustSwiperSize(): void {
-    // Swiper cant calculate percentage size when you use it in the CSS, thats why we need this method.
-    
+  ngAfterViewInit(): void {
+    this.swiper = new Swiper(this.gallery.nativeElement, {
+      modules: [Autoplay, EffectCards],
+      autoHeight: true,
+      effect: 'cards',
+      grabCursor: true,
+      autoplay: { delay: 1000, disableOnInteraction: true },
+      on: {
+        slideChange: () => this.onSlideChange()
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.swiper?.destroy();
   }
 
   public NextImage(): void {
-    this.gallery.swiperRef.slideNext();
+    this.swiper.slideNext();
   }
 
   public PrevImage(): void {
-    this.gallery.swiperRef.slidePrev();
+    this.swiper.slidePrev();
   }
 
   onSlideChange() {
-    this.galleryService.SetCurrentImageID(this.gallery.swiperRef.snapIndex);
+    this.galleryService.SetCurrentImageID(this.swiper.snapIndex);
   }
 }

@@ -1,5 +1,4 @@
 import { Injectable } from "@angular/core";
-import { GalleryImageDescriptions } from "./texts/hun/gallery.image.descriptions";
 
 @Injectable({
     providedIn: 'root',

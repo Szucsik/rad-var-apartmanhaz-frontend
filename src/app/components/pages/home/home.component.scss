@@ -1,8 +1,10 @@
-$layer-bottom-height: 180px;
-$quote-width: 2vw;
+@use 'src/app/shared/scss/sizes' as *;
 
-$quote-fontsize: 1.5vw;
-$home-fontsize: 3vw;
+$layer-bottom-height: clamp(120px, 20vh, 180px);
+$quote-width: clamp(16px, 2vw, 40px);
+
+$quote-fontsize: clamp(16px, 1.5vw, 34px);
+$home-fontsize: clamp(24px, 3vw, 64px);
 
 ::selection {
   background: darkkhaki;
@@ -10,18 +12,24 @@ $home-fontsize: 3vw;
 
 ::selection {
   background: darkkhaki;
+}
+
+:host {
+  display: block;
 }
 
 .home-container {
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  height: 100svh;
 }
 
 .quote {
   float: right;
-  margin-top: 150px;
+  margin-top: max($header-clearance, 18vh);
   margin-right: 10%;
+  max-width: 80%;
   width: fit-content;
 }
 
@@ -43,7 +51,7 @@ $home-fontsize: 3vw;
 
 .home-wellcome-text {
   font-size: $home-fontsize;
-  padding-top: 20px;
+  padding: 20px 5% 0;
   text-align: center;
   height: 100%;
   width: 100%;
@@ -65,7 +73,8 @@ $home-fontsize: 3vw;
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
-  height: calc(100% - $layer-bottom-height);
+  height: calc(100vh - $layer-bottom-height);
+  height: calc(100svh - $layer-bottom-height);
   position: fixed;
   z-index: -1;
 }
@@ -84,16 +93,32 @@ $home-fontsize: 3vw;
   background-image: url("/assets/site-images/background.jpg");
 }
 
-@media only screen and (orientation: portrait) {  
+@include mobile {
+  .quote {
+    float: none;
+    margin: max($header-clearance-mobile, 14vh) auto 0;
+    max-width: 90%;
+  }
+
   .quote-start, .quote-end {
-    max-width: calc($quote-width * 2);
+    max-width: clamp(24px, 6vw, 40px);
   }
-  
+
   .quote-text, .quote-author {
-    font-size: calc($quote-fontsize * 2);
+    font-size: clamp(18px, 4.5vw, 30px);
   }
-  
+
   .home-wellcome-text {
-    font-size: calc($home-fontsize * 2);
-  }  
+    font-size: clamp(24px, 6vw, 44px);
+  }
+}
+
+@media only screen and (max-height: 500px) {
+  .quote {
+    margin-top: $header-clearance-mobile;
+  }
+
+  .quote-text, .quote-author {
+    font-size: 16px;
+  }
 }

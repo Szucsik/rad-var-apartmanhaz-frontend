@@ -1,7 +1,9 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { AnimationService } from 'src/app/shared/services/animation.service';
 
 @Component({
+  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager,
   selector: 'app-logo-start',
   templateUrl: './logo-start.component.html',
   styleUrls: ['./logo-start.component.css']

@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { Configuration } from "./shared/config";
 import { AnimationService } from "./shared/services/animation.service";
 import { GalleryService } from "./shared/services/gallery.service";
@@ -6,6 +6,8 @@ import { PreloadService } from "./shared/services/preload.service";
 import { ScrollAnimationService } from "./shared/services/scrollAnimation.service";
 
 @Component({
+  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager,
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']

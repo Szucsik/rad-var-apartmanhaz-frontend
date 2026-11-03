@@ -75,3 +75,33 @@
     height: 150px;
     width: 300px;
 }
+/* Global reset previously provided by the PrimeNG saga-blue theme; the layout relies on it. */
+* {
+  box-sizing: border-box;
+}
+
+/* Ink ripple used by the appRipple directive */
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-ink {
+  display: block;
+  position: absolute;
+  background: rgba(255, 255, 255, .5);
+  border-radius: 100%;
+  transform: scale(0);
+  pointer-events: none;
+}
+
+.ripple-ink-active {
+  animation: ripple .4s linear;
+}
+
+@keyframes ripple {
+  to {
+    opacity: 0;
+    transform: scale(2.5);
+  }
+}

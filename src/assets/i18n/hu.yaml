@@ -1,0 +1,122 @@
+# Hungarian texts of the site. Every language file must have the same keys.
+# Missing keys fall back to this (Hungarian) file.
+
+meta:
+  title: Rád-Vár Apartmanház
+
+header:
+  gallery: Galéria
+  booking: Foglalás
+  history: Történet
+  contacts: Elérhetőségek
+  menu: Menü
+  languageMenu: Nyelv kiválasztása
+
+home:
+  quote: Eger az a város, ahová nem elég megérkezni. Hazaérkezni is lehet Egerbe.
+  quoteAuthor: "- Márai Sándor"
+  welcome: Üdvözlünk a Rád-Vár Apartmanház oldalán!
+
+gallery:
+  title: Galéria
+  subtitle: Saját képeink
+  previous: Előző kép
+  next: Következő kép
+  close: Bezárás
+  # One caption per photo, in the order of the gallery (see Configuration.photoList).
+  images:
+    - Apartman - háló szoba
+    - Apartman - háló szoba
+    - Apartman - nappali
+    - Apartman - nappali
+    - Apartman - konyha
+    - Apartman - konyha
+    - Apartman - fürdőszoba
+    - Apartman - fürdőszoba
+    - Apartman - fürdőszoba
+    - Stúdióapartman - háló szoba
+    - Stúdióapartman - háló szoba
+    - Stúdióapartman - háló szoba
+    - Stúdióapartman - előtér
+    - Stúdióapartman - fürdőszoba
+    - Stúdióapartman - fürdőszoba
+
+booking:
+  title: Foglalási lehetőségek
+  question: Megtetszett az egyik szoba?
+  callToAction: Nézd meg hol tudsz foglalni!
+  description: >-
+    Ha szeretnél Eger központjában egy kényelmes családias szállást akkor jó helyen jársz.
+    További részleteket, szabad idő pontokat találsz a foglalási portálokon jobbra.
+  openHint: Kattints ide a megnyitáshoz
+  previous: Előző foglalási lehetőség
+  next: Következő foglalási lehetőség
+  options:
+    booking: Booking
+    szallas: Szállás.hu
+    facebook: Facebook & telefon
+
+history:
+  title: Rövid történelme
+  subtitleLine1: Eger, Almagyar utcájának
+  subtitleLine2: és a Rád-Vár Apartmanháznak
+  pages:
+    intro:
+      timeline: "Bevezetés: kezdetek"
+      title: Bevezetés
+      paragraphs:
+        - >-
+          Már a középkorban is itt volt a Makláron át, az Eger völgye mentén az ország déli és keleti részei
+          felé vezető országút, mely nevét az Almagyar nevű településről nyerte.
+        - >-
+          A török uralom után az egész várost szinte a nulláról kellett újjáépíteni. Az utcák jelentős
+          részben továbbra is ugyanott kanyarogtak, ahol a középkorban. A Heves megye műemlékei című
+          monográfia írja, hogy „a XVIII. század elején, de még az 1788-as utcaösszeírás szerint is – az
+          ide települő német bevándorlók – Német utcának vagy Tímárok utcájának nevezik. Az Eger-patak
+          szabályozásáig ugyanis annak egyik ága a fundusok (telkek) hátsó határa mentén haladt s így a
+          hely rendkívül alkalmas volt a mesterség gyakorlásához.”
+    residents:
+      timeline: Híres lakók
+      title: Híres lakók
+      paragraphs:
+        - >-
+          A Líceum építésénél murariorum magisterként dolgozó Francz József egri kőművesmester 1779-ben
+          vásárolt itt házat, melyet 1780-ban átépített, és a Líceum homlokzatának jellegzetességeit
+          magán viselő kis palotácskát húzott itt fel. 1790. március 8-án foglalkozott a magisztrátus
+          Francz József házépítési tervével.
+        - >-
+          Az épület 1831-ben ifj. Francz Józsefé, majd a Galambos családé. Nagy valószínűséggel ebben a
+          7-es számú házban született 1914. november 2-án a későbbi híres operatőr, a kétszeres
+          Kossuth-díjas Illés György (1914– 2006). aki a Színház- és Filmművészeti Főiskola rektora is
+          volt. Ő volt az operatőre többek között a Budapesti tavasz, a Ház a sziklák alatt, a Húsz óra,
+          az Isten hozta, őrnagy úr! vagy Az ötödik pecsét című filmeknek. Illés Györgyöt 1995-ben Eger
+          díszpolgárává választották.
+    recent:
+      timeline: 1939-től mostanáig
+      title: 1939-től mostanáig
+      paragraphs:
+        - >-
+          Az épületben 1939 ősze és 1944 tavasza között lengyel polgári menekültek laktak. Ezzel azonban
+          még nincs vége a ház történetének: 1944. őszén súlyos harcok folynak a városban, majd november
+          29-én a visszavonuló német 8. vadászhadosztály csapatai az Eger-patak hídjaival, valamint más
+          épületekkel együtt felrobbantották a XVIII. századi épületet is, hogy az előre nyomuló szovjet
+          harckocsik útjában akadályt képezzen. A robbanásban megsemmisült az épület utca frontjának nagy
+          része: az egykori barokk ház kapualja, két utcai szobája pusztult el a robbanásban.
+        - >-
+          A háborút követően történt meg a lerombolt épület helyreállítása, azonban a nehéz
+          életviszonyok miatt sajnos már nem építették újjá eredeti állapotában. A ház arculata máig ezt
+          tükrözi.
+
+contacts:
+  title: Elérhetőségek
+  addressTitle: Cím
+  address: Eger, Almagyar u. 7, 3300
+  region: Magyarország, Heves Megye
+  emailTitle: Email cím
+  emailLabel: Információ és foglalás
+  phoneTitle: Telefon
+  phoneLabel: Információ (magyar)
+  socialTitle: Közösségi média
+
+nearby:
+  title: Közeli helyek

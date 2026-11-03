@@ -1,40 +1,52 @@
+@use 'src/app/shared/scss/sizes' as *;
+
 $timeline-dot-color: white;
 $timeline-dot-size: 0.8vw;
 $timeline-dot-margin: 2vw;
 
 $timeline-left: 4vw;
-$timeline-top: 7vw;
+// Horizontal space reserved on the left for the sticky timeline (dots + highlight pill).
+$timeline-gutter: 18vw;
 
-$history-topic-font-size: 1.5vw;
-$history-topic-title-font-size: 1.5vw;
-$history-topic-title-part-2-font-size: 2vw;
-$history-title-dot-font-size: 3vw;
-$history-topic-text-font-size: 1vw;
+$history-topic-font-size: clamp(18px, 1.5vw, 30px);
+$history-topic-title-font-size: clamp(18px, 1.5vw, 30px);
+$history-topic-title-part-2-font-size: clamp(22px, 2vw, 40px);
+$history-title-dot-font-size: clamp(30px, 3vw, 60px);
+$history-topic-text-font-size: clamp(15px, 1vw, 20px);
 
-$history-title-line-width: 20%;
-$history-topic-text-line-height: 2vw;
 $timeline-active-highlight-width: 12vw;
-
-$mobile-multiplier: 3;
 
 ::selection {
     background: darkgoldenrod;
 }
 
-.history-container {
-    height: 300%;
-    width: 100%;
-    background-color: #282828;
+:host {
+    display: block;
 }
 
+.history-container {
+    width: 100%;
+    background-color: #282828;
+    // Keeps the sticky timeline from showing over the next section (clip does not break sticky).
+    overflow: clip;
+}
+
+/* Sticky timeline: the negative margin cancels its height, so it takes no space in the page flow
+   but still stays (and stops) inside the history section */
+$timeline-height: 130px;
+
 .timeline-container {
+    display: none;
     position: sticky;
-    top: calc(50% - $timeline-top);
-    left: 0px;
-    float: left;
-    padding-top: $timeline-top;
-    margin-bottom: $timeline-top;
-    left: $timeline-left;
+    top: calc(50vh - $timeline-height / 2);
+    height: $timeline-height;
+    margin-bottom: -$timeline-height;
+    margin-left: $timeline-left;
+    z-index: 2;
+
+    @include wide {
+        display: block;
+    }
 }
 
 .timeline-dot, .timeline-dot-active {
@@ -68,6 +80,8 @@ $mobile-multiplier: 3;
     font-size: 0.8vw;
     padding-left: 2.4vw;
     padding-top: 0.4vw;
+    margin: 0;
+    white-space: nowrap;
 }
 
 .timeline-hidden-highlight {
@@ -79,11 +93,30 @@ $mobile-multiplier: 3;
     width: 40px;
 }
 
+/* Topic pages */
+
 .history-topic-container {
+    @include full-screen-height;
     width: 100%;
-    height: 33.33%;
-    padding-top: 50px;
+    padding: $header-clearance-mobile 5vw 60px;
     text-align: center;
+
+    @include desktop {
+        padding-top: $header-clearance;
+    }
+
+    @include wide {
+        padding-left: $timeline-gutter;
+        padding-right: 4vw;
+    }
+}
+
+.topic-2, .topic-3 {
+    border-top: 1px solid gray;
+}
+
+.history-separater-line {
+    display: none;
 }
 
 .history-topic-title {
@@ -96,77 +129,95 @@ $mobile-multiplier: 3;
 .history-topic {
     font-size: $history-topic-font-size;
     color: white;
-    display: inline;
+    margin: 0 0 0.5em;
 }
 
 .history-title-dot {
     font-size: $history-title-dot-font-size;
     color: gold;
+    line-height: 0;
 }
 
 .history-title-line {
-    margin-top: 2vw;
-    margin-bottom: 2vw;
-    width: $history-title-line-width;
+    margin: clamp(16px, 2vw, 40px) auto;
+    width: min(60%, 400px);
+    border: 0;
     border-top: 1px solid gold;
-}
 
-.history-separater-line {
-    width: 100%;
-    border-top: 1px solid gray;
-    margin-top: 2vw;
-    margin-bottom: 2vw;
+    @include desktop {
+        width: 20%;
+    }
 }
 
 .history-topic-title-part-2 {
     font-size: $history-topic-title-part-2-font-size;
     color: white;
     padding: 0px;
-    margin: 0px;
+    margin: 0.3em 0 0;
 }
 
 .history-topic-text {
     font-size: $history-topic-text-font-size;
-    line-height: $history-topic-text-line-height;
+    line-height: 2;
     color: white;
-    max-width: 50%;
-    -ms-transform: translate(50%, 0%);
-    transform: translate(50%, 0%);
-    margin-top: 2vw;
+    margin: clamp(12px, 2vw, 40px) 0 0;
     backdrop-filter: blur(1px);
     background-color:rgba(40, 40, 40, 0.5);
 }
 
-@media only screen and (orientation: portrait) {  
-    .history-topic-title {
-        font-size: calc($history-topic-title-font-size * $mobile-multiplier);
-    }
-    
-    .history-topic {
-        font-size: calc($history-topic-font-size * $mobile-multiplier);
-    }
+/* Text + two images: images below the text by default, beside it on wide screens */
+.history-topic-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "text text"
+        "left right";
+    column-gap: 4%;
+    row-gap: 30px;
+    max-width: 900px;
+    margin: 0 auto;
 
-    .history-topic-title-part-2 {
-        font-size: calc($history-topic-title-part-2-font-size * $mobile-multiplier);
+    @include wide {
+        grid-template-columns: 1fr minmax(0, 40vw) 1fr;
+        grid-template-areas: "left text right";
+        column-gap: 3vw;
+        max-width: none;
     }
+}
 
-    .history-title-dot {
-        font-size: calc($history-title-dot-font-size * $mobile-multiplier);
-    }
-    
-    .history-title-line {
-        width: calc($history-title-line-width * $mobile-multiplier);
-    }
+.history-topic-texts {
+    grid-area: text;
+}
 
-    .history-topic-text {
-        font-size: calc($history-topic-text-font-size * $mobile-multiplier);
-        line-height: calc($history-topic-text-line-height * $mobile-multiplier);
-        max-width: 100%;
-        -ms-transform: translate(0%, 0%);
-        transform: translate(0%, 0%);
-    }
+.history-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 50vh;
+    object-fit: contain;
+    object-position: top;
+    align-self: start;
 
-    .timeline-container {
-        display: none;
+    @include wide {
+        max-height: none;
+    }
+}
+
+.history-image-left {
+    grid-area: left;
+
+    @include wide {
+        justify-self: end;
+        align-self: end;
+    }
+}
+
+.history-image-right {
+    grid-area: right;
+
+    @include wide {
+        justify-self: start;
+        align-self: start;
+        margin-top: 2vw;
     }
 }

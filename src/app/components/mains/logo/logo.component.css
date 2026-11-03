@@ -3,7 +3,7 @@
     height: 83px;
 }
 
-@media only screen and (min-width: 1000px) { 
+@media only screen and (min-width: 1024px) { 
     .header-logo {
         width: 200px;
         height: 110px;
