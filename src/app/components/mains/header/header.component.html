@@ -6,18 +6,29 @@
         <div class="mobile-burger-button" (click)="this.showMobileMenu()"></div>
     </div>
     <div class="header-menu-item-details menu-item" [ngClass]="{'mobile-hidden': isMobileResolution && !isMobileMenuActive}">
-        <button pButton pRipple type="button" class="p-button-raised header-menu-button-details btns" (click)="this.scrollAnimationService.navigate('gallery')">Galéria</button>
+        <button appRipple type="button" class="header-btn header-btn-raised header-menu-button-details btns" (click)="this.scrollAnimationService.navigate('gallery')">Galéria</button>
     </div>
     <div class="header-menu-item-details menu-item" [ngClass]="{'mobile-hidden': isMobileResolution && !isMobileMenuActive}">
-        <button pButton pRipple type="button" class="p-button-raised header-menu-button-details btns" (click)="this.scrollAnimationService.navigate('booking')">Foglalás</button>
+        <button appRipple type="button" class="header-btn header-btn-raised header-menu-button-details btns" (click)="this.scrollAnimationService.navigate('booking')">Foglalás</button>
     </div>
     <div class="header-menu-item-details menu-item" [ngClass]="{'mobile-hidden': isMobileResolution && !isMobileMenuActive}">
-        <button pButton pRipple type="button" class="p-button-raised header-menu-button-details btns" (click)="this.scrollAnimationService.navigate('history')">Történet</button>
+        <button appRipple type="button" class="header-btn header-btn-raised header-menu-button-details btns" (click)="this.scrollAnimationService.navigate('history')">Történet</button>
     </div>
     <div class="header-menu-item-details menu-item" [ngClass]="{'mobile-hidden': isMobileResolution && !isMobileMenuActive}">
-        <button pButton pRipple type="button" class="p-button-raised header-menu-button-details btns" (click)="this.scrollAnimationService.navigate('contacts')">Elérhetőségek</button>
+        <button appRipple type="button" class="header-btn header-btn-raised header-menu-button-details btns" (click)="this.scrollAnimationService.navigate('contacts')">Elérhetőségek</button>
     </div>
     <div class="header-menu-item-details lang-item" [ngClass]="{'mobile-hidden': isMobileResolution && !isMobileMenuActive}">
-        <p-speedDial [model]="items" direction="{{ langDirection }}"></p-speedDial>
+        <div #langDial class="lang-dial lang-dial-direction-{{ langDirection }}" [class.lang-dial-opened]="isLangMenuOpen">
+            <button appRipple type="button" class="lang-dial-button" aria-haspopup="menu" [attr.aria-expanded]="isLangMenuOpen" (click)="toggleLangMenu()"></button>
+            <ul role="menu" class="lang-dial-list">
+                @for (item of items; track item.icon; let i = $index) {
+                    <li class="lang-dial-item" [style.transition-delay.ms]="getLangItemDelay(i)">
+                        <a appRipple role="menuitem" tabindex="0" class="lang-dial-action" (click)="onLangItemClick(item)" (keydown.enter)="onLangItemClick(item)">
+                            <span class="lang-dial-action-icon {{ item.icon }}"></span>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
     </div>
 </div>

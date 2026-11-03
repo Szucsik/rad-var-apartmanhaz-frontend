@@ -6,6 +6,7 @@ import { PreloadService } from "./shared/services/preload.service";
 import { ScrollAnimationService } from "./shared/services/scrollAnimation.service";
 
 @Component({
+  standalone: false,
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']

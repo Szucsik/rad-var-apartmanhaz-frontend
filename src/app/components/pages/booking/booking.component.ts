@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ScrollAnimationService } from 'src/app/shared/services/scrollAnimation.service';
 
 @Component({
+  standalone: false,
   selector: 'app-booking',
   templateUrl: './booking.component.html',
   styleUrls: ['./booking.component.scss']

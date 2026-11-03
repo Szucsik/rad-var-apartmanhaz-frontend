@@ -1,6 +1,7 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'app-history-page-two',
   templateUrl: './page-two.component.html',
   styleUrls: ['./page-two.component.scss']

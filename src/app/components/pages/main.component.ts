@@ -3,6 +3,7 @@ import { Configuration } from 'src/app/shared/config';
 import { AnimationService } from 'src/app/shared/services/animation.service';
 
 @Component({
+  standalone: false,
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']

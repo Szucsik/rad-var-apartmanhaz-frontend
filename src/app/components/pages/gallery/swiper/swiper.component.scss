@@ -1,8 +1,8 @@
 
-@import "~swiper/css";
-@import "~swiper/css/effect-flip";
-@import "~swiper/css/pagination";
-@import "~swiper/css/navigation";
+@use "swiper/css";
+@use "swiper/css/effect-flip";
+@use "swiper/css/pagination";
+@use "swiper/css/navigation";
 
 .swiper {
   width: 100%;

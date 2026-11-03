@@ -1,4 +1,37 @@
-@import 'src/app/shared/scss/sizes.scss';
+@use 'src/app/shared/scss/sizes' as *;
+
+/* Menu buttons (ported from the PrimeNG 13 saga-blue "p-button p-button-raised" styles) */
+
+.header-btn {
+    box-sizing: border-box;
+    position: relative;
+    margin: 0;
+    padding: .5rem 1rem;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    vertical-align: bottom;
+    text-align: center;
+    font-size: 1rem;
+    color: #fff;
+    background: #2196F3;
+    border: 1px solid #2196F3;
+    border-radius: 3px;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color .2s, color .2s, border-color .2s, box-shadow .2s;
+
+    &:focus {
+        outline: 0 none;
+        outline-offset: 0;
+        box-shadow: 0 0 0 .2rem #a6d5fa;
+    }
+}
+
+.header-btn-raised {
+    box-shadow: 0 3px 1px -2px #0003, 0 2px 2px #00000024, 0 1px 5px #0000001f;
+}
+
 
 .header-container {
     position: fixed;
@@ -55,6 +88,124 @@
     font-size: 15px;
 }
 
+/* Language speed dial (ported from the PrimeNG 13 SpeedDial component) */
+
+.lang-dial {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+
+    &, & * {
+        box-sizing: border-box;
+    }
+}
+
+.lang-dial-direction-left {
+    flex-direction: row-reverse;
+
+    .lang-dial-list {
+        flex-direction: row-reverse;
+    }
+
+    .lang-dial-item:first-child {
+        margin-right: .5rem;
+    }
+}
+
+.lang-dial-direction-right {
+    flex-direction: row;
+
+    .lang-dial-list {
+        flex-direction: row;
+    }
+
+    .lang-dial-item:first-child {
+        margin-left: .5rem;
+    }
+}
+
+.lang-dial-button {
+    position: relative;
+    margin: 0;
+    padding: .5rem 0;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    background-color: #2196F3;
+    border: 1px solid #2196F3;
+    border-radius: 50%;
+    cursor: pointer;
+    user-select: none;
+    transition: transform .25s cubic-bezier(.4, 0, .2, 1) 0ms;
+    will-change: transform;
+
+    &:hover {
+        background-color: #0d89ec;
+    }
+
+    &:focus {
+        outline: 0 none;
+        outline-offset: 0;
+        box-shadow: 0 0 0 .2rem #a6d5fa;
+    }
+}
+
+.lang-dial-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: top 0s linear .2s;
+    pointer-events: none;
+}
+
+.lang-dial-item {
+    margin: 0 .25rem;
+    transform: scale(0);
+    opacity: 0;
+    transition: transform .2s cubic-bezier(.4, 0, .2, 1) 0ms, opacity .8s;
+    will-change: transform;
+}
+
+.lang-dial-action {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    background: #495057;
+    color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+
+    &:hover {
+        background: #343a40;
+    }
+}
+
+.lang-dial-opened {
+    .lang-dial-list {
+        pointer-events: auto;
+    }
+
+    .lang-dial-item {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    .lang-dial-button {
+        transform: rotate(45deg);
+    }
+}
+
 /* Language icons */
 
 .lang-icon {
@@ -80,7 +231,7 @@
     background-image: url('/assets/site-images/country-flags/flag-en.png');
 }
 
-.p-speeddial-button {
+.lang-dial-button {
     margin-left: 50px;
     height: calc($header-height-mobile - 10px)!important;
     width: calc($header-height-mobile - 10px)!important;
@@ -92,7 +243,7 @@
     border-color: white!important;
 }
 
-.p-speeddial-button:hover {
+.lang-dial-button:hover {
     height: calc($header-height-mobile - 10px)!important;
     width: calc($header-height-mobile - 10px)!important;
     background-image: url('/assets/site-images/country-flags/flag-hu.png')!important;
@@ -172,13 +323,13 @@
         background-size: 25px;
     }
 
-    .p-speeddial-button {
+    .lang-dial-button {
         margin-left: 0px;
         height: 65px!important;
         width: 65px!important;
     }
 
-    .p-speeddial-button:hover {
+    .lang-dial-button:hover {
         height: 65px!important;
         width: 65px!important;
     }

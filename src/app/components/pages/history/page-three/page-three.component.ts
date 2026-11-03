@@ -1,6 +1,7 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'app-history-page-three',
   templateUrl: './page-three.component.html',
   styleUrls: ['./page-three.component.scss']

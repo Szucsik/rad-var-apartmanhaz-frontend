@@ -1,9 +1,16 @@
 import { Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
-import { MenuItem, PrimeNGConfig } from 'primeng/api';
 import { AnimationService } from 'src/app/shared/services/animation.service';
 import { ScrollAnimationService } from 'src/app/shared/services/scrollAnimation.service';
 
+type LanguageMenuDirection = 'left' | 'right';
+
+interface LanguageMenuItem {
+  icon: string;
+  command: () => void;
+}
+
 @Component({
+  standalone: false,
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
@@ -13,17 +20,19 @@ import { ScrollAnimationService } from 'src/app/shared/services/scrollAnimation.
 export class HeaderComponent implements OnInit {
   @Output() finishedLoading: EventEmitter<boolean> = new EventEmitter<boolean>();
   @ViewChild('container', { static: true }) container: ElementRef<HTMLElement>;
+  @ViewChild('langDial', { static: true }) langDial: ElementRef<HTMLElement>;
 
   scrollAnimationService: ScrollAnimationService;
 
-  langDirection: string = "left";
-  items: MenuItem[];
+  langDirection: LanguageMenuDirection = "left";
+  items: LanguageMenuItem[];
+  isLangMenuOpen: boolean = false;
   contextName: string = 'header';
 
   isMobileResolution: boolean = false;
   isMobileMenuActive: boolean = false;
 
-  constructor(private primengConfig: PrimeNGConfig, private animationService: AnimationService, private _scrollAnimationService: ScrollAnimationService) { this.scrollAnimationService = _scrollAnimationService; }
+  constructor(private animationService: AnimationService, private _scrollAnimationService: ScrollAnimationService) { this.scrollAnimationService = _scrollAnimationService; }
 
   ngOnInit(): void {
     if(window.innerWidth < 1300) {
@@ -55,7 +64,6 @@ export class HeaderComponent implements OnInit {
   }
 
   languageCompSetUp(): void {
-    this.primengConfig.ripple = true;
     this.items = [
       {
         icon: 'lang-hun-icon lang-icon',
@@ -82,6 +90,28 @@ export class HeaderComponent implements OnInit {
           }
       }
     ];
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: Event) {
+    if (this.isLangMenuOpen && !this.langDial.nativeElement.contains(event.target as Node)) {
+      this.isLangMenuOpen = false;
+    }
+  }
+
+  toggleLangMenu(): void {
+    this.isLangMenuOpen = !this.isLangMenuOpen;
+  }
+
+  onLangItemClick(item: LanguageMenuItem): void {
+    item.command();
+    this.isLangMenuOpen = false;
+  }
+
+  // Staggers the items: they open from the button outwards and close in reverse order.
+  getLangItemDelay(index: number): number {
+    const step = 30;
+    return this.isLangMenuOpen ? index * step : (this.items.length - index - 1) * step;
   }
 
   showMobileMenu(): void {

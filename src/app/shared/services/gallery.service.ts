@@ -11,11 +11,14 @@ export class GalleryService{
     fullscreenEvent: EventEmitter<boolean> = new EventEmitter();
 
     private currentImageID: number = 0;
-    private readonly imageSources: Array<string> = this.config.getPhotoPreviewList();
-    private readonly HDImageSources: Array<string> = this.config.getPhotoList();
+    private readonly imageSources: Array<string>;
+    private readonly HDImageSources: Array<string>;
     private fullscreenState: boolean = false;
 
-    constructor(private animationService: AnimationService, private config: Configuration, private galleryImageDescriptions: GalleryImageDescriptions) {       
+    constructor(private animationService: AnimationService, private config: Configuration, private galleryImageDescriptions: GalleryImageDescriptions) {
+      this.imageSources = this.config.getPhotoPreviewList();
+      this.HDImageSources = this.config.getPhotoList();
+
       this.animationService.galleryAnimationCompleted.subscribe(increaseOrDecrease => {
         this.ChangeCurrentImageID(increaseOrDecrease);
       });
