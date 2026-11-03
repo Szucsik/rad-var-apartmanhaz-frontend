@@ -13,6 +13,7 @@ Every deploy branch publishes the site **on push**:
 | `production.yml` | push `main` | FTP `wh23.rackhost.hu` → `./` |
 | `main.yml` | push `main` | FTP `wh24.rackhost.hu` → `./` |
 | `azure-static-web-apps-delightful-plant-0e6866a03.yml` | push `main`, PRs to `main` | Azure Static Web Apps (PRs create public preview environments) |
+| `docker-publish.yml` | push `main`, manual | GitHub Container Registry `ghcr.io/<owner>/rad-var-apartmanhaz-frontend` (`latest`, `sha-<commit>`) |
 
 ## Rules
 
@@ -26,6 +27,7 @@ Every deploy branch publishes the site **on push**:
   - The Azure workflow uses `output_location: "dist/rad-var-apartmanhaz"`.
   - If you change `outputPath`, update all of them.
 - **Azure MIME types and routes:** `src/staticwebapp.config.json` is copied to the build root so Azure Static Web Apps serves the `.yaml` translation files and rewrites the language URLs (`/hu`, `/pl`, `/en`, `/de`) to `index.html`. Keep it in the `assets` list of `angular.json`.
+- **Docker image:** `Dockerfile` builds with `npm run build` and serves `dist/rad-var-apartmanhaz/` with nginx (`docker/nginx.conf`). Keep the language rewrites and the `.yaml` MIME type there in sync with `.htaccess` / `staticwebapp.config.json`. `.dockerignore` excludes `src/assets/photoshop-files` (83 MB of sources) — keep that exclusion. `docker-build-push.sh`, `docker-compose.yml` and `docker-publish.yml` use the same GHCR image name.
 - **FTP hosts (Apache/LiteSpeed):** `src/.htaccess` is copied to the build root and does the same rewrites, plus the `https`/non-`www` redirect on the production domain only. `robots.txt` and `sitemap.xml` are copied to the root too. If a host ignores `.htaccess`, the language URLs return 404.
 - **Local scripts:** `build.sh` and `run.sh` run `npm ci` when `node_modules` is missing, then `ng build` / `ng serve` with any extra arguments. Keep them POSIX-bash compatible and executable (`chmod +x`).
 - **Verify before changing a workflow:** run `./build.sh` and `npx ng test --watch=false` locally. The workflows don't run tests today; consider adding `npx ng test --watch=false` before the build step when touching them.

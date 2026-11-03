@@ -1,0 +1,10 @@
+node_modules
+dist
+.angular
+.git
+.github
+.vscode
+docs
+*.md
+# Photoshop sources are copied into the build by angular.json but never served.
+src/assets/photoshop-files

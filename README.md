@@ -34,6 +34,16 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
+## Docker
+
+`Dockerfile` builds the app and serves the static output with nginx (`docker/nginx.conf` handles the language URLs and the `.yaml` MIME type). `.dockerignore` keeps `node_modules`, `dist`, `.git` and the 83 MB Photoshop sources out of the build.
+
+- Build and push to GitHub Container Registry: `./docker-build-push.sh` (run `docker login ghcr.io` first, or set `GHCR_USER` and `GHCR_TOKEN` with the `write:packages` scope). Tags: `latest` and `sha-<commit>`.
+- Pull and run the latest image: `docker compose pull && docker compose up -d`, then open `http://localhost:8080/`. `PORT` overrides the published port and `IMAGE` the image.
+- `.github/workflows/docker-publish.yml` publishes the image to `ghcr.io/<owner>/<repo>` on every push to `main` (a merged PR) and on manual dispatch, using the built-in `GITHUB_TOKEN`.
+
+The GHCR package is private by default: make it public in the package settings, or run `docker login ghcr.io` on the server before `docker compose pull`.
+
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Vitest](https://vitest.dev) (jsdom environment). Use `ng test --watch=false` for a single run.
