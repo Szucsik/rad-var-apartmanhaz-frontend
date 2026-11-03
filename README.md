@@ -4,6 +4,13 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Requires Node.js `^22.22.3`, `^24.15.0` or `>=26.0.0` (see `engines` in `package.json`).
 
+## Scripts
+
+- `./build.sh` builds the project into `dist/rad-var-apartmanhaz/` (extra arguments are passed to `ng build`, e.g. `./build.sh --configuration development`).
+- `./run.sh` starts the dev server at `http://localhost:4200/` (extra arguments are passed to `ng serve`, e.g. `./run.sh --port 4300 --open`).
+
+Both scripts run `npm ci` first if `node_modules` is missing.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
