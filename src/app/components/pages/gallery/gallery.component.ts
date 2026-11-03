@@ -1,5 +1,6 @@
 
-import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ViewChild, inject } from '@angular/core';
+import { I18nService } from 'src/app/shared/services/i18n.service';
 import { GalleryService } from 'src/app/shared/services/gallery.service';
 import { GallerySwiperComponent } from './swiper/swiper.component';
 
@@ -12,6 +13,7 @@ import { GallerySwiperComponent } from './swiper/swiper.component';
 })
 
 export class GalleryComponent implements OnInit {
+  protected readonly t = inject(I18nService).t;
   @ViewChild('swiper', { static: false }) swiper: GallerySwiperComponent;
   galleryService: GalleryService;
 

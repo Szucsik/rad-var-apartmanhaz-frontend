@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild, inject } from '@angular/core';
+import { I18nService } from 'src/app/shared/services/i18n.service';
 
 @Component({
   standalone: false,
@@ -8,6 +9,8 @@ import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, On
   styleUrls: ['./page-two.component.scss']
 })
 export class PageTwoComponent implements OnInit {
+  protected readonly t = inject(I18nService).t;
+  protected readonly tList = inject(I18nService).tList;
   pagePos: number = 1;
   @Input() observeStart: boolean = true;
   @Output() onPage: EventEmitter<number> = new EventEmitter<number>();

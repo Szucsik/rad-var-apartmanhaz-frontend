@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { I18nService } from 'src/app/shared/services/i18n.service';
 @Component({
   standalone: false,
   changeDetection: ChangeDetectionStrategy.Eager,
@@ -8,5 +9,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 })
 
 export class HomeComponent  {
+  protected readonly t = inject(I18nService).t;
   constructor() { }
 }

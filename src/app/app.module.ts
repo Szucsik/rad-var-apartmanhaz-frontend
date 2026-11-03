@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, inject, provideAppInitializer } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +21,7 @@ import { PageOneComponent } from './components/pages/history/page-one/page-one.c
 import { PageTwoComponent } from './components/pages/history/page-two/page-two.component';
 import { PageThreeComponent } from './components/pages/history/page-three/page-three.component';
 import { RippleDirective } from './shared/directives/ripple.directive';
+import { I18nService } from './shared/services/i18n.service';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,10 @@ import { RippleDirective } from './shared/directives/ripple.directive';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    // Load the texts of the selected language before the first render.
+    provideAppInitializer(() => inject(I18nService).init())
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -14,6 +14,7 @@ import { Autoplay, EffectCards } from "swiper/modules";
 export class GallerySwiperComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('swiperGallery', { static: true }) gallery: ElementRef<HTMLDivElement>;
   images: string[];
+  protected readonly captions = () => this.galleryService.getPhotoDescriptions();
   private swiper: Swiper;
 
   constructor(private galleryService: GalleryService) {  }

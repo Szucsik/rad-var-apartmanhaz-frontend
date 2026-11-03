@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, HostListener, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, OnInit, inject } from '@angular/core';
+import { I18nService } from 'src/app/shared/services/i18n.service';
 
 @Component({
   standalone: false,
@@ -8,6 +9,7 @@ import { ChangeDetectionStrategy, Component, HostListener, OnInit } from '@angul
   styleUrls: ['./contacts.component.css']
 })
 export class ContactsComponent implements OnInit {
+  protected readonly t = inject(I18nService).t;
   constructor() { }
   isMobileResolution: boolean = false;
 

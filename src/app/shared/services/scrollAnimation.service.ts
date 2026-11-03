@@ -29,6 +29,10 @@ export class ScrollAnimationService {
       this.historyScrollTrigger();
     }
 
+    public refresh(): void {
+      ScrollTrigger.refresh();
+    }
+
     public ActivateScrollService(): void {
       gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
     }

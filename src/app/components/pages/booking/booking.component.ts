@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, HostListener, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, OnInit, inject } from '@angular/core';
+import { I18nService } from 'src/app/shared/services/i18n.service';
 import { ScrollAnimationService } from 'src/app/shared/services/scrollAnimation.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { ScrollAnimationService } from 'src/app/shared/services/scrollAnimation.
   styleUrls: ['./booking.component.scss']
 })
 export class BookingComponent implements OnInit {
+  protected readonly t = inject(I18nService).t;
   maxFocus: number = 3;
   focus: number = 0;
   mobileMod: boolean = false;

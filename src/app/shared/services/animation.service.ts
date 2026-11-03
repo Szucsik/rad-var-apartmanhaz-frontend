@@ -67,11 +67,11 @@ export class AnimationService {
       headerAnimations(content: ElementRef<HTMLElement>): void {
         let delay: number = this.config.getHeaderDelay();
         gsap.fromTo(content.nativeElement, {opacity: 0}, {opacity: 0.9, duration: 1.2, delay: delay});
-        gsap.fromTo(content.nativeElement.childNodes, {opacity: 0}, {opacity: 1, duration: 1.2, delay: delay + 0.2});
+        gsap.fromTo(content.nativeElement.children, {opacity: 0}, {opacity: 1, duration: 1.2, delay: delay + 0.2});
       }
 
       headerButtonsAnimationsMobile(content: ElementRef<HTMLElement>): void {
-        gsap.fromTo(content.nativeElement.childNodes, {opacity: 0}, {opacity: 0.9, duration: 1});
+        gsap.fromTo(content.nativeElement.children, {opacity: 0}, {opacity: 0.9, duration: 1});
       }
 
       async delayExec(ms: number) {

@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, HostListener } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, inject } from '@angular/core';
+import { I18nService } from 'src/app/shared/services/i18n.service';
 import { GalleryService } from 'src/app/shared/services/gallery.service';
 
 @Component({
@@ -11,6 +12,7 @@ import { GalleryService } from 'src/app/shared/services/gallery.service';
 
 
 export class FullscreenComponent {
+  protected readonly t = inject(I18nService).t;
   @HostListener('document:keydown.escape', ['$event']) onKeydownHandler(event: Event) {
     this.galleryService.FullScreen(false);
   }

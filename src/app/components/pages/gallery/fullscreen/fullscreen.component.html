@@ -1,7 +1,7 @@
 <div class="gallery-fullscreen-container">
     <div class="gallery-fullscreen-background"></div>
-    <div class="gallery-fullscreen-close-button" (click)="this.galleryService.FullScreen(false)"></div>
+    <div class="gallery-fullscreen-close-button" role="button" tabindex="0" [attr.aria-label]="t('gallery.close')" (click)="this.galleryService.FullScreen(false)" (keydown.enter)="this.galleryService.FullScreen(false)"></div>
     <div class="gallery-fullscreen-image-container">
-        <img class="image-viewer" src="{{ this.galleryService.GetCurrentHDImageSource() }}" alt="...">
+        <img class="image-viewer" src="{{ this.galleryService.GetCurrentHDImageSource() }}" [alt]="this.galleryService.getPhotoDescriptions()[this.galleryService.GetCurrentImageID()]">
     </div>
 </div>

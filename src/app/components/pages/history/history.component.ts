@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
+import { I18nService } from 'src/app/shared/services/i18n.service';
 
 @Component({
   standalone: false,
@@ -8,7 +9,9 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   styleUrls: ['./history.component.scss']
 })
 export class HistoryComponent implements OnInit {
-  topics: Array<string> = [ "Bevezetés: kezdetek", "Híres lakók", "1939-től mostanáig"]
+  protected readonly t = inject(I18nService).t;
+  // Keys of the pages under history.pages in the language files, in page order.
+  readonly topics = ['intro', 'residents', 'recent'] as const;
   inactivePages: Array<boolean> = [ true, true, true]
   focus: number = 0;
   constructor() { }

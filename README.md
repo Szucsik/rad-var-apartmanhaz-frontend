@@ -11,6 +11,15 @@ Requires Node.js `^22.22.3`, `^24.15.0` or `>=26.0.0` (see `engines` in `package
 
 Both scripts run `npm ci` first if `node_modules` is missing.
 
+## Texts and languages
+
+Every text of the page lives in one YAML file per language in `src/assets/i18n/`: `hu.yaml` (Hungarian, default), `pl.yaml`, `en.yaml` and `de.yaml`. All files use the same keys. Templates read them through the `t('section.key')` and `tList('section.key')` functions of `I18nService` (`src/app/shared/services/i18n.service.ts`). A key missing from a language falls back to the Hungarian text.
+
+- To change a text, edit the YAML files. They are loaded at runtime, so on a deployed site you can update them without rebuilding.
+- To add a language, create `src/assets/i18n/<code>.yaml` with the same keys, add it to `LANGUAGES` in `i18n.service.ts` and add a flag class in `header.component.scss`.
+
+On the first visit the site uses the browser language if it is supported, Hungarian otherwise. The language picked in the header flag menu is remembered in `localStorage`.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

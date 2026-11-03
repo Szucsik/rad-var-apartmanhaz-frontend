@@ -3,28 +3,21 @@
         <div class="logo-container" (click)="this.scrollAnimationService.navigate('home')">
             <app-logo #logo></app-logo>
         </div>
-        <div class="mobile-burger-button" (click)="this.showMobileMenu()"></div>
+        <div class="mobile-burger-button" role="button" tabindex="0" [attr.aria-label]="t('header.menu')" [attr.aria-expanded]="isMobileMenuActive" (click)="this.showMobileMenu()" (keydown.enter)="this.showMobileMenu()"></div>
     </div>
-    <div class="header-menu-item-details menu-item" [ngClass]="{'mobile-hidden': isMobileResolution && !isMobileMenuActive}">
-        <button appRipple type="button" class="header-btn header-btn-raised header-menu-button-details btns" (click)="this.scrollAnimationService.navigate('gallery')">Galéria</button>
-    </div>
-    <div class="header-menu-item-details menu-item" [ngClass]="{'mobile-hidden': isMobileResolution && !isMobileMenuActive}">
-        <button appRipple type="button" class="header-btn header-btn-raised header-menu-button-details btns" (click)="this.scrollAnimationService.navigate('booking')">Foglalás</button>
-    </div>
-    <div class="header-menu-item-details menu-item" [ngClass]="{'mobile-hidden': isMobileResolution && !isMobileMenuActive}">
-        <button appRipple type="button" class="header-btn header-btn-raised header-menu-button-details btns" (click)="this.scrollAnimationService.navigate('history')">Történet</button>
-    </div>
-    <div class="header-menu-item-details menu-item" [ngClass]="{'mobile-hidden': isMobileResolution && !isMobileMenuActive}">
-        <button appRipple type="button" class="header-btn header-btn-raised header-menu-button-details btns" (click)="this.scrollAnimationService.navigate('contacts')">Elérhetőségek</button>
-    </div>
+    @for (section of menuSections; track section) {
+        <div class="header-menu-item-details menu-item" [ngClass]="{'mobile-hidden': isMobileResolution && !isMobileMenuActive}">
+            <button appRipple type="button" class="header-btn header-btn-raised header-menu-button-details btns" (click)="this.scrollAnimationService.navigate(section)">{{ t('header.' + section) }}</button>
+        </div>
+    }
     <div class="header-menu-item-details lang-item" [ngClass]="{'mobile-hidden': isMobileResolution && !isMobileMenuActive}">
         <div #langDial class="lang-dial lang-dial-direction-{{ langDirection }}" [class.lang-dial-opened]="isLangMenuOpen">
-            <button appRipple type="button" class="lang-dial-button" aria-haspopup="menu" [attr.aria-expanded]="isLangMenuOpen" (click)="toggleLangMenu()"></button>
-            <ul role="menu" class="lang-dial-list">
-                @for (item of items; track item.icon; let i = $index) {
+            <button appRipple type="button" class="lang-dial-button {{ currentLanguage().flagClass }}" aria-haspopup="menu" [attr.aria-expanded]="isLangMenuOpen" [attr.aria-label]="t('header.languageMenu') + ': ' + currentLanguage().name" [attr.title]="currentLanguage().name" (click)="toggleLangMenu()"></button>
+            <ul role="menu" class="lang-dial-list" [attr.aria-label]="t('header.languageMenu')">
+                @for (language of languages; track language.code; let i = $index) {
                     <li class="lang-dial-item" [style.transition-delay.ms]="getLangItemDelay(i)">
-                        <a appRipple role="menuitem" tabindex="0" class="lang-dial-action" (click)="onLangItemClick(item)" (keydown.enter)="onLangItemClick(item)">
-                            <span class="lang-dial-action-icon {{ item.icon }}"></span>
+                        <a appRipple role="menuitemradio" tabindex="0" class="lang-dial-action" [class.lang-dial-action-active]="language.code === i18n.language()" [attr.aria-checked]="language.code === i18n.language()" [attr.aria-label]="language.name" [attr.title]="language.name" [attr.lang]="language.code" (click)="onLanguageClick(language)" (keydown.enter)="onLanguageClick(language)">
+                            <span class="lang-dial-action-icon lang-icon {{ language.flagClass }}"></span>
                         </a>
                     </li>
                 }

@@ -229,6 +229,10 @@
 
 /* Language icons */
 
+.lang-dial-action-active {
+    box-shadow: 0 0 0 3px #658285;
+}
+
 .lang-icon {
     width: $header-height-mobile;
     height: $header-height-mobile;
@@ -252,11 +256,11 @@
     background-image: url('/assets/site-images/country-flags/flag-en.png');
 }
 
+/* The flag of the current language comes from its lang-*-icon class */
 .lang-dial-button {
     margin-left: 50px;
     height: calc($header-height-mobile - 10px)!important;
     width: calc($header-height-mobile - 10px)!important;
-    background-image: url('/assets/site-images/country-flags/flag-hu.png');
     background-position: center;
     background-size: 100%!important;
     background-repeat: no-repeat;
@@ -267,7 +271,6 @@
 .lang-dial-button:hover {
     height: calc($header-height-mobile - 10px)!important;
     width: calc($header-height-mobile - 10px)!important;
-    background-image: url('/assets/site-images/country-flags/flag-hu.png')!important;
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100%!important;

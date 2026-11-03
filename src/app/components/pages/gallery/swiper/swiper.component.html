@@ -1,8 +1,8 @@
 <div #swiperGallery class="gallery-swiper swiper">
     <div class="swiper-wrapper">
-        @for (image of images; track image) {
+        @for (image of images; track image; let i = $index) {
             <div class="swiper-slide" data-swiper-autoplay="6000">
-                <img class="swiper-image" [src]="image" alt="">
+                <img class="swiper-image" [src]="image" [alt]="captions()[i] ?? ''">
             </div>
         }
     </div>

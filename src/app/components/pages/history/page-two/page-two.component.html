@@ -1,20 +1,16 @@
 <div #topic2 class="history-topic-container topic-2">
     <hr class="history-separater-line">
-    <p class="history-topic-title history-title">Rövid történelme</p>
-    <p class="history-topic-title-part-2 history-subtitle">Eger, Almagyar utcájának</p>
-    <p class="history-topic-title-part-2 history-subtitle">és a Rád-Vár Apartmanháznak<span class="history-title-dot">.</span></p>
+    <p class="history-topic-title history-title">{{ t('history.title') }}</p>
+    <p class="history-topic-title-part-2 history-subtitle">{{ t('history.subtitleLine1') }}</p>
+    <p class="history-topic-title-part-2 history-subtitle">{{ t('history.subtitleLine2') }}<span class="history-title-dot">.</span></p>
     <hr class="history-title-line">
-    <p class="history-topic history-subtitle">Híres lakók</p>
+    <p class="history-topic history-subtitle">{{ t('history.pages.residents.title') }}</p>
     <div class="history-topic-body">
         <img class="history-image history-image-left history-image-1-page-2" src="assets/site-images/history-images/almagyar-1.jpg" alt="">
         <div class="history-topic-texts">
-            <p class="history-topic-text history-text">
-                A Líceum építésénél murariorum magisterként dolgozó Francz József egri kőművesmester 1779-ben vásárolt itt házat, melyet 1780-ban átépített, és a Líceum homlokzatának jellegzetességeit magán viselő kis palotácskát húzott itt fel.
-                1790. március 8-án foglalkozott a magisztrátus Francz József házépítési tervével.
-            </p>
-            <p class="history-topic-text history-text">
-                Az épület 1831-ben ifj. Francz Józsefé, majd a Galambos családé. Nagy valószínűséggel ebben a 7-es számú házban született 1914. november 2-án a későbbi híres operatőr, a kétszeres Kossuth-díjas Illés György (1914– 2006). aki a Színház- és Filmművészeti Főiskola rektora is volt. Ő volt az operatőre többek között a Budapesti tavasz, a Ház a sziklák alatt, a Húsz óra, az Isten hozta, őrnagy úr! vagy Az ötödik pecsét című filmeknek. Illés Györgyöt 1995-ben Eger díszpolgárává választották. 
-            </p>
+            @for (paragraph of tList('history.pages.residents.paragraphs'); track $index) {
+                <p class="history-topic-text history-text">{{ paragraph }}</p>
+            }
         </div>
         <img class="history-image history-image-right history-image-2-page-2" src="assets/site-images/history-images/almagyar-3.jpg" alt="">
     </div>
