@@ -53,7 +53,8 @@
                 "rad-var-apartmanhaz.hu",
                 "www.rad-var-apartmanhaz.hu",
                 "localhost",
-                "127.0.0.1"
+                "127.0.0.1",
+                "192.168.0.170"
               ]
             },
             "ssr": {
