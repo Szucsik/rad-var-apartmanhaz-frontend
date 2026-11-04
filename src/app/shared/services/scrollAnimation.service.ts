@@ -22,10 +22,11 @@ export class ScrollAnimationService {
   }
 
     public RegisterScrollServices(): void {
-      // this.homeScrollTrigger();
+      this.homeScrollTrigger();
       this.galleryScrollTrigger();
       this.contactsScrollTrigger();
       this.bookingScrollTrigger();
+      this.nearbyScrollTrigger();
       this.historyScrollTrigger();
     }
 
@@ -42,11 +43,11 @@ export class ScrollAnimationService {
           scrollTrigger: {
             trigger: "#hero",
             start: "top top",
-            end: "bottom top",
+            // end: "bottom top",
             scrub: true
           }
         });
-        
+
         gsap.utils.toArray<HTMLElement>(".parallax").forEach(layer => {
           let depth = Number(layer.dataset.depth);
           let movement = -(layer.offsetHeight * depth)
@@ -123,7 +124,7 @@ export class ScrollAnimationService {
           toggleActions: "play none none reverse",
         }
       });
-      
+
       scrollTexts.from(document.querySelector(".booking-text-1"), { x: -50, opacity: 0 });
       scrollTexts.from(document.querySelector(".booking-text-2"), { x: -50, opacity: 0 });
       scrollTexts.from(document.querySelector(".booking-text-3"), { x: -50, opacity: 0 });
@@ -136,31 +137,53 @@ export class ScrollAnimationService {
           toggleActions: "play none none reverse",
           }
       });
-      
+
       scrollPanels.from(document.querySelector(".booking-options-background-container"), { opacity: 0, duration: 2 });
     }
 
+    private nearbyScrollTrigger(): void {
+      const scrollNearby= gsap.timeline({
+        scrollTrigger: {
+          trigger: document.querySelector(".nearby-container"),
+          start: "20% center",
+          toggleActions: "play none none reverse",
+        }
+      });
+
+      scrollNearby.from(document.querySelector(".nearby-content"), { opacity: 0 });
+      scrollNearby.from(document.querySelector(".nearby-image"), { delay: 0.1, opacity: 0 });
+    }
+
     private historyScrollTrigger(): void {
-      const scrollTimline= gsap.timeline({
+      const scrollTimlineStart = gsap.timeline({
         scrollTrigger: {
           trigger: document.querySelector(".topic-1"),
-          start: "-10% center",
+          start: "20% center",
           toggleActions: "play none none reverse",
         }
       });
 
-      const scrollPageOne= gsap.timeline({
+      const scrollTimlineEnd = gsap.timeline({
         scrollTrigger: {
-          trigger: document.querySelector(".topic-1"),
-          start: "-10% center",
+          trigger: document.querySelector(".topic-3"),
+          start: "80% center",
           toggleActions: "play none none reverse",
         }
       });
 
-      scrollTimline.from(document.querySelector(".timeline-container"), {opacity: 0 });
+      const scrollPageOne = gsap.timeline({
+        scrollTrigger: {
+          trigger: document.querySelector(".topic-1"),
+          start: "-5% center",
+          toggleActions: "play none none reverse",
+        }
+      });
+
+      scrollTimlineStart.from(document.querySelector(".timeline-container"), { opacity: 0 });
+      scrollTimlineEnd.to(document.querySelector(".timeline-container"), {opacity: 0 });
       scrollPageOne.from(document.querySelector(".topic-1"), {opacity: 0 });
 
-      const scrollPageTwo= gsap.timeline({
+      const scrollPageTwo = gsap.timeline({
         scrollTrigger: {
           trigger: document.querySelector(".topic-2"),
           start: "-10% center",
@@ -169,8 +192,8 @@ export class ScrollAnimationService {
       });
 
       scrollPageTwo.from(document.querySelector(".topic-2"), {opacity: 0 });
-      
-      const scrollPageThree= gsap.timeline({
+
+      const scrollPageThree = gsap.timeline({
         scrollTrigger: {
           trigger: document.querySelector(".topic-3"),
           start: "-10% center",
