@@ -16,8 +16,8 @@ export const OG_LOCALES: Record<LanguageCode, string> = {
 };
 
 export const BUSINESS = {
-  email: 'rad-var-apartmanhaz@gmail.com',
-  telephones: ['+36302289284', '+36306103196'],
+  email: 'rad.var.apartmanhaz@gmail.com',
+  telephones: ['+36302289284', '+36306103196', '+36305445383'],
   address: {
     streetAddress: 'Almagyar u. 7',
     addressLocality: 'Eger',

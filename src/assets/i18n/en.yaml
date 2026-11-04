@@ -126,6 +126,7 @@ contacts:
   emailLabel: Information and booking
   phoneTitle: Phone
   phoneLabel: Information (in Hungarian)
+  phoneLabelEn: Information (in English)
   socialTitle: Social media
 
 nearby:

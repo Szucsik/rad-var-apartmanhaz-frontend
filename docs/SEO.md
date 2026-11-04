@@ -85,8 +85,8 @@ The language-independent data lives in `src/app/shared/seo.ts`:
 | Field | Value |
 |-------|-------|
 | Site URL | `https://rad-var-apartmanhaz.hu` |
-| Email | `rad-var-apartmanhaz@gmail.com` (the contacts section still shows `info@rad-var-apartmanhaz.hu`) |
-| Phones | `+36302289284`, `+36306103196` |
+| Email | `rad.var.apartmanhaz@gmail.com` |
+| Phones | `+36302289284`, `+36306103196` (Hungarian), `+36305445383` (English) |
 | Address | Almagyar u. 7, 3300 Eger, Heves, HU |
 | Coordinates | 47.9019629, 20.3815486 (OpenStreetMap) |
 
