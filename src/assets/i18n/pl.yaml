@@ -125,6 +125,7 @@ contacts:
   emailLabel: Informacje i rezerwacje
   phoneTitle: Telefon
   phoneLabel: Informacje (po węgiersku)
+  phoneLabelEn: Informacje (po angielsku)
   socialTitle: Media społecznościowe
 
 nearby:

@@ -68,7 +68,8 @@ $timeline-height: 130px;
     position: relative;
     top: calc(-1 * ($timeline-dot-size + $timeline-dot-margin + $timeline-dot-size / 2 + 2px));
     left: calc(-1 * $timeline-dot-size);
-    width: $timeline-active-highlight-width;
+    // Set by HistoryComponent to the longest label in the current language, so every pill has the same width.
+    width: var(--timeline-highlight-pill-width, #{$timeline-active-highlight-width});
     height: calc($timeline-dot-size + $timeline-dot-margin/2);
     opacity: 0.8;
     background-color: $timeline-dot-color;
@@ -79,13 +80,15 @@ $timeline-height: 130px;
     color: black;
     font-size: 0.8vw;
     padding-left: 2.4vw;
+    padding-right: 1vw;
     padding-top: 0.4vw;
     margin: 0;
     white-space: nowrap;
 }
 
 .timeline-hidden-highlight {
-    display: none;
+    // Not display:none: the hidden labels must keep a layout box so their text can be measured.
+    visibility: hidden;
 }
 
 .timeline-line {

@@ -128,6 +128,7 @@ contacts:
   emailLabel: Információ és foglalás
   phoneTitle: Telefon
   phoneLabel: Információ (magyar)
+  phoneLabelEn: Információ (angol)
   socialTitle: Közösségi média
 
 nearby:
