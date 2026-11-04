@@ -4,10 +4,15 @@ services:
     container_name: rad-var-apartmanhaz-frontend
     pull_policy: always
     restart: unless-stopped
+    init: true
     ports:
-      - "${PORT:-8080}:80"
+      - "${PORT:-8080}:4000"
+    environment:
+      PORT: 4000
+      # Comma-separated Host header allowlist. Add your server's domain/IP here if it differs.
+      NG_ALLOWED_HOSTS: ${NG_ALLOWED_HOSTS:-rad-var-apartmanhaz.hu,www.rad-var-apartmanhaz.hu,localhost,127.0.0.1}
     healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://127.0.0.1/"]
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:4000/hu"]
       interval: 30s
       timeout: 5s
       retries: 3

@@ -1,5 +1,5 @@
 import { NgModule, inject, provideAppInitializer } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,6 +23,7 @@ import { PageThreeComponent } from './components/pages/history/page-three/page-t
 import { RippleDirective } from './shared/directives/ripple.directive';
 import { I18nService } from './shared/services/i18n.service';
 import { SeoService } from './shared/services/seo.service';
+import { FetchTranslationsLoader, TRANSLATIONS_LOADER } from './shared/services/translations-loader';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,9 @@ import { SeoService } from './shared/services/seo.service';
     provideAppInitializer(() => inject(I18nService).init()),
     // Keep the title, meta tags and structured data in sync with the language.
     provideAppInitializer(() => { inject(SeoService); }),
+    // The browser fetches the YAML from the assets; AppServerModule overrides this with a disk reader.
+    { provide: TRANSLATIONS_LOADER, useClass: FetchTranslationsLoader },
+    provideClientHydration(),
   ],
   bootstrap: [AppComponent]
 })

@@ -22,6 +22,9 @@ export class PageTwoComponent implements OnInit {
     @ViewChild('topic2') yourElement: ElementRef;
 
     ngAfterViewInit() {
+        if (typeof IntersectionObserver === 'undefined') {
+            return;
+        }
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {

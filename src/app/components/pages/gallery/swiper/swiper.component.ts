@@ -24,6 +24,9 @@ export class GallerySwiperComponent implements OnInit, AfterViewInit, OnDestroy 
   }
 
   ngAfterViewInit(): void {
+    if (typeof window === 'undefined') {
+      return;
+    }
     this.swiper = new Swiper(this.gallery.nativeElement, {
       modules: [Autoplay, EffectCards],
       autoHeight: true,

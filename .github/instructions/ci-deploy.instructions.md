@@ -22,12 +22,14 @@ Every deploy branch publishes the site **on push**:
   - `staging.yml` currently contains a plaintext FTP password; this is a known issue. Don't copy or print it.
   - When editing that workflow, replace the password with a secret (for example `secrets.FTP_PW_STAGING`). Tell the owner the secret must be created and the old password rotated.
 - **Node version:** Angular 22 needs Node `^22.22.3 || ^24.15.0 || >=26`. The workflows use `node-version: [24.x]`; keep them in line with `engines` in `package.json`.
-- **Build output:** `npm run ng build` writes to `dist/rad-var-apartmanhaz/` with no `browser/` subfolder (`outputPath.browser: ""` in `angular.json`).
-  - The FTP actions upload `./dist/rad-var-apartmanhaz/`.
-  - The Azure workflow uses `output_location: "dist/rad-var-apartmanhaz"`.
+- **Build output:** `npm run ng build` writes to `dist/rad-var-apartmanhaz/`:
+  - `browser/`: the client app and static assets.
+  - `server/server.mjs`: the Node/Express SSR server.
+  - The FTP actions upload `./dist/rad-var-apartmanhaz/browser/` (static CSR).
+  - The Azure workflow uses `output_location: "dist/rad-var-apartmanhaz/browser"` (static CSR).
   - If you change `outputPath`, update all of them.
 - **Azure MIME types and routes:** `src/staticwebapp.config.json` is copied to the build root so Azure Static Web Apps serves the `.yaml` translation files and rewrites the language URLs (`/hu`, `/pl`, `/en`, `/de`) to `index.html`. Keep it in the `assets` list of `angular.json`.
-- **Docker image:** `Dockerfile` builds with `npm run build` and serves `dist/rad-var-apartmanhaz/` with nginx (`docker/nginx.conf`). Keep the language rewrites and the `.yaml` MIME type there in sync with `.htaccess` / `staticwebapp.config.json`. `.dockerignore` excludes `src/assets/photoshop-files` (83 MB of sources) — keep that exclusion. `docker-build-push.sh`, `docker-compose.yml` and `docker-publish.yml` use the same GHCR image name.
+- **Docker image:** `Dockerfile` builds the browser and server bundles and runs `dist/rad-var-apartmanhaz/server/server.mjs` with Node on port 4000 (Express serves assets and SSR pages; no nginx). The container needs `NG_ALLOWED_HOSTS` to include the public Host header. `.dockerignore` excludes `src/assets/photoshop-files` (83 MB of sources) — keep that exclusion. `docker-build-push.sh`, `docker-compose.yml` and `docker-publish.yml` use the same GHCR image name.
 - **FTP hosts (Apache/LiteSpeed):** `src/.htaccess` is copied to the build root and does the same rewrites, plus the `https`/non-`www` redirect on the production domain only. `robots.txt` and `sitemap.xml` are copied to the root too. If a host ignores `.htaccess`, the language URLs return 404.
 - **Local scripts:** `build.sh` and `run.sh` run `npm ci` when `node_modules` is missing, then `ng build` / `ng serve` with any extra arguments. Keep them POSIX-bash compatible and executable (`chmod +x`).
 - **Verify before changing a workflow:** run `./build.sh` and `npx ng test --watch=false` locally. The workflows don't run tests today; consider adding `npx ng test --watch=false` before the build step when touching them.

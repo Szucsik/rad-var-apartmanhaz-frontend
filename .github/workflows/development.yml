@@ -37,5 +37,5 @@ jobs:
         port: 21
         username:  rad-var-develop
         password: ${{ secrets.FTP_PW  }}
-        local-dir: ./dist/rad-var-apartmanhaz/
+        local-dir: ./dist/rad-var-apartmanhaz/browser/
         server-dir: ./public_html/

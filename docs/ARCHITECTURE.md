@@ -89,9 +89,11 @@ Components communicate through `EventEmitter`s on root services, and through sig
 
 ## Build, tests and deployment
 
-- **Builder:** `@angular/build:application` (esbuild). Output goes to `dist/rad-var-apartmanhaz/` (the `browser: ""` setting means no `browser/` subfolder).
+- **Builder:** `@angular/build:application` (esbuild). With Angular SSR enabled, output goes to `dist/rad-var-apartmanhaz/`:
+  - `browser/`: the client app and all static assets (used by the FTP and Azure static deployments).
+  - `server/server.mjs`: the Node/Express SSR server (used by the Docker/Ubuntu deployment).
   - Assets: `src/assets/**` (including `.psd` sources), `castle-logo.ico`, and `staticwebapp.config.json`, `robots.txt`, `sitemap.xml`, `.htaccess` at the root.
-  - Budgets: initial bundle warning at 550 kB, error at 1 MB; the current size is about 575 kB, so a warning is expected.
+  - Budgets: initial bundle warning at 550 kB, error at 1 MB; the current size is about 625 kB, so a warning is expected.
 - **Tests:** `@angular/build:unit-test` with Vitest and jsdom. The setup file is `src/test-setup.ts`; specs import `AppModule`.
 - **Deployment:** GitHub Actions in `.github/workflows/`:
 
@@ -102,6 +104,7 @@ Components communicate through `EventEmitter`s on root services, and through sig
 | `production.yml` | push `main` | FTP `wh23.rackhost.hu` |
 | `main.yml` ("Production deploy etst 1") | push `main` | FTP `wh24.rackhost.hu` |
 | `azure-static-web-apps-*.yml` | push `main`, PRs to `main` | Azure Static Web Apps (PRs get preview environments) |
+| `docker-publish.yml` | push `main`, manual | GHCR image `ghcr.io/<owner>/rad-var-apartmanhaz-frontend` → Ubuntu server via `docker compose` (SSR) |
 
   The FTP workflows run `npm ci` and `npm run ng build` on Node 24.x.
 - **Branch flow:** feature branches → `develop` → `staging` → `main`.
@@ -115,7 +118,7 @@ Full details, the texts and the post-deployment checklist: [SEO.md](SEO.md).
 - **Head tags:** `src/index.html` holds static Hungarian defaults (title, description, hreflang, Open Graph, JSON-LD, a `<noscript>` summary) for crawlers that don't run JavaScript. `SeoService` replaces them per language at runtime. `seo.service.spec.ts` fails if the static defaults drift from `hu.yaml` or from the generated JSON-LD. There is no static `canonical` on purpose: the same file is served for every language.
 - **Texts:** `meta.title` (≤ 60 chars) and `meta.description` (≤ 155 chars) in every YAML file, `meta.imageAlt` for the share image (`assets/seo/og-image.jpg`, 1200×630). `home.tagline` is part of the `h1`. The `nearby` section carries the keyword-rich text (accommodation, amenities, sights). Its distances are straight-line distances from OpenStreetMap coordinates.
 - **Crawlers:** `src/robots.txt` points to `src/sitemap.xml`, which lists the four language URLs with `xhtml:link` alternates and the photos. Update `<lastmod>` when texts change.
-- **SSR later:** keep `SeoService` free of `window`/`localStorage`. With SSR the same tags will be rendered on the server, and the per-language routes can replace the wildcard route.
+- **SSR:** the app is rendered on the server for `/hu`, `/pl`, `/en`, `/de` (`app.routes.server.ts`, `RenderMode.Server`); `/` stays client-side because it redirects to the saved/browser language. `AppServerModule` provides a disk-based `TranslationsLoader` so the YAML is available before rendering. `AppComponent` keeps the real content in the SSR HTML and only plays the intro overlay after hydration. Docker/Ubuntu is the SSR target; the FTP and Azure workflows keep deploying the static `browser/` build.
 - **After deployment:** add the domain to Google Search Console and Bing Webmaster Tools, submit `sitemap.xml`, and keep the Google Business Profile name, address and phone identical to `shared/seo.ts`.
 
 ## Known issues and technical debt

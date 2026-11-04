@@ -22,12 +22,13 @@ Node `^22.22.3 || ^24.15.0 || >=26` (see `engines` in `package.json`; CI uses No
 |------|---------|
 | Install | `npm ci` |
 | Dev server (http://localhost:4200) | `./run.sh` (= `ng serve`; extra args are passed on, e.g. `./run.sh --port 4300`) |
-| Production build → `dist/rad-var-apartmanhaz/` | `./build.sh` (= `ng build`) |
+| Production build (browser + SSR server) → `dist/rad-var-apartmanhaz/{browser,server}` | `./build.sh` (= `ng build`) |
+| Run the built SSR server | `npm run serve:ssr:rad-var-apartmanhaz` (port 4000) |
 | Unit tests (single run) | `npx ng test --watch=false` |
 | Translation consistency check | `node .github/skills/manage-translations/scripts/check-i18n.mjs` |
 | Screenshots at 12 resolutions | see the [visual-check skill](.github/skills/visual-check/SKILL.md) |
 
-The production build prints a warning that the initial bundle exceeds the 550 kB budget (it is ~575 kB). That warning is expected; a build **error** is not.
+The production build prints a warning that the initial bundle exceeds the 550 kB budget (it is ~625 kB). That warning is expected; a build **error** is not.
 
 ## Definition of done
 

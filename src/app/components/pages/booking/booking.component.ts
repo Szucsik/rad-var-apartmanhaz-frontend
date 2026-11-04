@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, HostListener, OnInit, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, OnInit, PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { I18nService } from 'src/app/shared/services/i18n.service';
 import { ScrollAnimationService } from 'src/app/shared/services/scrollAnimation.service';
 
@@ -11,6 +12,7 @@ import { ScrollAnimationService } from 'src/app/shared/services/scrollAnimation.
 })
 export class BookingComponent implements OnInit {
   protected readonly t = inject(I18nService).t;
+  private readonly platformId = inject(PLATFORM_ID);
   maxFocus: number = 3;
   focus: number = 0;
   mobileMod: boolean = false;
@@ -67,6 +69,9 @@ export class BookingComponent implements OnInit {
 
   // One card at a time (with the swap arrows) below the desktop breakpoint; keep in sync with $desktop-breakpoint.
   CheckResolutionForAnimation(): void {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
     this.mobileMod = window.matchMedia('(max-width: 1023.98px)').matches;
   }
 }

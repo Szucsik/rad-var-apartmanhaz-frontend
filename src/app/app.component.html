@@ -1,9 +1,6 @@
-<app-loading *ngIf="!loaded"></app-loading>
-<div [ngClass]="{'hidden': !loaded, 'blur': fullscreen}">
+<div [ngClass]="{'blur': fullscreen}">
     <app-header></app-header>
-    <app-start *ngIf="this.config.getLoadingContentNeeded()"></app-start>
-    <div [ngClass]="{'loading-container': !startAnimationFinished}">
-        <app-main></app-main>
-    </div>
+    <app-start *ngIf="showIntro"></app-start>
+    <app-main></app-main>
 </div>
 <app-fullscreen *ngIf="fullscreen"></app-fullscreen>

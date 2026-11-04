@@ -20,10 +20,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "outputPath": {
-              "base": "dist/rad-var-apartmanhaz",
-              "browser": ""
-            },
+            "outputPath": "dist/rad-var-apartmanhaz",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -48,7 +45,20 @@
                 "."
               ]
             },
-            "scripts": []
+            "scripts": [],
+            "server": "src/main.server.ts",
+            "outputMode": "server",
+            "security": {
+              "allowedHosts": [
+                "rad-var-apartmanhaz.hu",
+                "www.rad-var-apartmanhaz.hu",
+                "localhost",
+                "127.0.0.1"
+              ]
+            },
+            "ssr": {
+              "entry": "src/server.ts"
+            }
           },
           "configurations": {
             "production": {

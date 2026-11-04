@@ -1,4 +1,4 @@
-# Build the Angular app, then serve the static output with nginx.
+# Build the Angular app with server-side rendering, then serve it with Node.
 FROM node:24-alpine AS build
 WORKDIR /app
 
@@ -8,8 +8,16 @@ RUN npm ci
 COPY . .
 RUN npm run build
 
-FROM nginx:alpine
-COPY docker/nginx.conf /etc/nginx/conf.d/default.conf
-COPY --from=build /app/dist/rad-var-apartmanhaz /usr/share/nginx/html
+# The server bundle also contains Express and compression; only the build output is needed at runtime.
+FROM node:24-alpine AS runtime
+WORKDIR /app
 
-EXPOSE 80
+ENV NODE_ENV=production
+ENV PORT=4000
+
+COPY --from=build /app/dist/rad-var-apartmanhaz ./dist/rad-var-apartmanhaz
+
+USER node
+EXPOSE 4000
+
+CMD ["node", "dist/rad-var-apartmanhaz/server/server.mjs"]

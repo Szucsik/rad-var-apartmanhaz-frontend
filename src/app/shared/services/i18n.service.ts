@@ -1,5 +1,6 @@
-import { Location } from '@angular/common';
-import { Injectable, inject, signal } from '@angular/core';
+import { DOCUMENT, Location, isPlatformBrowser } from '@angular/common';
+import { Injectable, PLATFORM_ID, inject, signal } from '@angular/core';
+import { FetchTranslationsLoader, TRANSLATIONS_LOADER } from './translations-loader';
 
 export type LanguageCode = 'hu' | 'pl' | 'en' | 'de';
 
@@ -21,7 +22,6 @@ export const LANGUAGES: readonly Language[] = [
 export const DEFAULT_LANGUAGE: LanguageCode = 'hu';
 
 const STORAGE_KEY = 'language';
-const TRANSLATIONS_URL = (code: LanguageCode) => `assets/i18n/${code}.yaml`;
 
 type TranslationValue = string | string[] | Translations;
 interface Translations {
@@ -46,9 +46,15 @@ export class I18nService {
   private readonly fallbackTranslations = signal<Translations>({});
   private readonly cache = new Map<LanguageCode, Promise<Translations | null>>();
   private readonly location = inject(Location);
+  private readonly document = inject(DOCUMENT);
+  private readonly loader = inject(TRANSLATIONS_LOADER, { optional: true }) ?? new FetchTranslationsLoader();
+  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
   private latestRequest = 0;
 
   constructor() {
+    if (!this.isBrowser) {
+      return;
+    }
     // Browser back/forward between the language URLs.
     this.location.onUrlChange(url => {
       const code = languageFromPath(url);
@@ -89,12 +95,16 @@ export class I18nService {
     this.translations.set(translations);
     this.language.set(code);
     this.persist(code);
-    document.documentElement.lang = code;
+    this.document.documentElement.lang = code;
     this.syncUrl(code);
   }
 
   /** Puts the language into the URL: `/` is replaced (a redirect), a language switch adds a history entry. */
   private syncUrl(code: LanguageCode): void {
+    // The server renders the request URL as it is; only the browser may navigate.
+    if (!this.isBrowser) {
+      return;
+    }
     const current = this.location.path(true);
     if (languageFromPath(current) === code) {
       return;
@@ -127,19 +137,21 @@ export class I18nService {
 
   private async fetchTranslations(code: LanguageCode): Promise<Translations> {
     // js-yaml is loaded on demand so it is not part of the initial bundle.
-    const [response, yaml] = await Promise.all([fetch(TRANSLATIONS_URL(code)), import('js-yaml')]);
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status} for ${response.url}`);
-    }
+    const [text, yaml] = await Promise.all([this.loader.load(code), import('js-yaml')]);
 
-    const data = yaml.load(await response.text());
+    const data = yaml.load(text);
     if (!isTranslations(data)) {
-      throw new Error(`${TRANSLATIONS_URL(code)} does not contain a YAML mapping`);
+      throw new Error(`assets/i18n/${code}.yaml does not contain a YAML mapping`);
     }
     return data;
   }
 
   private detectInitialLanguage(): LanguageCode {
+    // There is no stored/browser language on the server; `/` (without a language path) defaults to Hungarian.
+    if (!this.isBrowser) {
+      return DEFAULT_LANGUAGE;
+    }
+
     const saved = this.readSaved();
     if (saved) {
       return saved;

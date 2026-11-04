@@ -37,5 +37,5 @@ jobs:
         port: 21
         username: rad-var-apartmanhaz-staging
         password: Asdfghfg001
-        local-dir: ./dist/rad-var-apartmanhaz/
+        local-dir: ./dist/rad-var-apartmanhaz/browser/
         server-dir: ./public_html/

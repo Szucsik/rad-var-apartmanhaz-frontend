@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild, ViewEncapsulation, computed, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostListener, OnInit, Output, PLATFORM_ID, ViewChild, ViewEncapsulation, computed, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { AnimationService } from 'src/app/shared/services/animation.service';
 import { I18nService, Language, LANGUAGES } from 'src/app/shared/services/i18n.service';
 import { ScrollAnimationService } from 'src/app/shared/services/scrollAnimation.service';
@@ -28,6 +29,7 @@ export class HeaderComponent implements OnInit {
   readonly languages = LANGUAGES;
   protected readonly i18n = inject(I18nService);
   protected readonly t = this.i18n.t;
+  private readonly platformId = inject(PLATFORM_ID);
   readonly currentLanguage = computed(() => this.languages.find(language => language.code === this.i18n.language()) ?? this.languages[0]);
   isLangMenuOpen: boolean = false;
   contextName: string = 'header';
@@ -53,6 +55,9 @@ export class HeaderComponent implements OnInit {
 
   // Keep in sync with $desktop-breakpoint in shared/scss/sizes.scss.
   private updateResolution(): void {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
     this.isMobileResolution = window.matchMedia(MOBILE_MEDIA_QUERY).matches;
     if (!this.isMobileResolution) {
       this.isMobileMenuActive = false;

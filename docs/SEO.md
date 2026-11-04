@@ -46,8 +46,11 @@ The static hosts must serve `index.html` for the language paths:
 
 | Host | File | Rules |
 |------|------|-------|
+| Ubuntu server (Docker Compose) | `Dockerfile`, `docker-compose.yml`, `src/server.ts` | Node/Express renders `/hu`, `/pl`, `/en`, `/de` on the server; `/` is client-side; `/en/` → 301 `/en`; unknown paths → 404; hashed assets cached, HTML/YAML revalidated |
 | FTP hosts (Apache/LiteSpeed) | `src/.htaccess` | `/hu`, `/pl`, `/en`, `/de` → `index.html`; `/en/` → `/en` (301); `http`/`www` → `https://rad-var-apartmanhaz.hu` **on the production domain only** (the dev/staging hosts have no https); gzip and cache headers |
 | Azure Static Web Apps | `src/staticwebapp.config.json` | `routes` rewriting the four paths to `/index.html`; `.yaml` MIME type |
+
+The FTP and Azure rows serve the static `browser/` build (client-side rendering). The Ubuntu row serves the SSR `browser/` + `server/` build.
 
 Other paths return 404 on purpose, so search engines don't index error pages that look like real pages (soft 404s). All of these files and `robots.txt`/`sitemap.xml` are copied to the build root through the `assets` list in `angular.json`.
 
@@ -62,7 +65,7 @@ Other paths return 404 on purpose, so search engines don't index error pages tha
 - Twitter: `summary_large_image` card with title, description and image;
 - the JSON-LD in `<script id="structured-data">`.
 
-It only uses Angular's `Meta`, `Title` and `DOCUMENT`, so the same code renders the tags on the server once SSR is added.
+It only uses Angular's `Meta`, `Title` and `DOCUMENT`, so the same code runs on the server and the tags are part of the initial HTML for `/hu`, `/pl`, `/en` and `/de`.
 
 ### Static defaults in `index.html`
 
@@ -160,7 +163,7 @@ These were also checked manually in headless Chrome: redirects from `/` for Germ
 - **Adding a language:** follow the [manage-translations skill](../.github/skills/manage-translations/SKILL.md). Besides the usual steps, add it to `OG_LOCALES` in `seo.ts`, the hreflang links in `index.html`, `sitemap.xml`, the rewrite in `.htaccess` and the `routes` in `staticwebapp.config.json`.
 - **Links:** the global `a:link, a:visited` style in `src/styles/light-blue-style.scss` (gold text sweep, `display: inline-block`, background clipped to text) applies to every `<a>` with an `href`. When you turn a clickable element into a real link for SEO, override it with a more specific selector, as `.lang-dial .lang-dial-action` does in `header.component.scss`.
 - **Adding a section:** use one `h2` for its title, translated `alt` texts and real text (not text inside images).
-- **SSR (planned):** keep `SeoService` free of `window`/`localStorage`. With SSR the tags are rendered on the server and the per-language routes can replace the wildcard route. `I18nService` and `Configuration` still use `document`, `localStorage`, `sessionStorage` and `navigator` directly and will need platform checks.
+- **SSR:** Angular server-side rendering is enabled. `/hu`, `/pl`, `/en` and `/de` are rendered on the Node server, so crawlers and social previews get the language-specific head tags and page content without running JavaScript. `I18nService` uses `DOCUMENT` and a platform-specific `TranslationsLoader` (fetch in the browser, `readFile` on the server); browser-only setup runs in `afterNextRender`. `/` remains client-side because it redirects by saved/browser language. Docker Compose on the Ubuntu server runs the SSR build; the FTP and Azure workflows still serve the static `browser/` build.
 
 ## After deployment (outside the code)
 
@@ -174,7 +177,7 @@ These were also checked manually in headless Chrome: redirects from `/` for Germ
 
 ## Known limitations and next steps
 
-- Until SSR is live, search engines see the per-language titles only after running JavaScript (Google and Bing do). Social previews always show the Hungarian defaults until then.
+- The SSR server is the only place that returns per-language HTML. The FTP and Azure Static Web Apps deployments still use the client-side `browser/` build, so their social previews keep the static Hungarian defaults.
 - Page speed affects ranking: the intro animation and loading screen delay the first content, and `src/assets` contains multi-MB JPEGs and TTF fonts. Converting photos to WebP/AVIF at web sizes and fonts to WOFF2 would improve Core Web Vitals.
 - `priceRange`, check-in/check-out times and the number of guests are not in the structured data because they weren't known. Add them to `buildStructuredData()` and the static JSON-LD when available.
 - The nearby section is not in the header menu; add `header.nearby` texts and a menu entry if wanted (check the header width in German at 1024 px).
